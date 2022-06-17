@@ -4,8 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.websopti.ngosys.dto.EventListDTO;
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.repository.EventRepository;
 
@@ -25,5 +29,11 @@ public class EventService {
 
 	public List<Event> getAll() {
 		return eventRepository.findAll();
+	}
+
+	public Page<Event> getWithParams(EventListDTO eventListDto) {
+		
+		Pageable page = PageRequest.of(eventListDto.getPageNo(), eventListDto.getPageSize());
+		return eventRepository.findAll(page);
 	}
 }
