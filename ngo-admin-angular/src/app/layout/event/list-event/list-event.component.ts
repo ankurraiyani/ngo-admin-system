@@ -10,6 +10,7 @@ export class ListEventComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("List Event");
   }
 
 }
