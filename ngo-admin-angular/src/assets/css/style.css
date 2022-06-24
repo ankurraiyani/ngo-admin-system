@@ -1,0 +1,146 @@
+.help-block {
+    color :#dc3545;
+    display:block;
+    width:100%;
+}
+.success-password{
+	 color :#28a745 !important;
+}
+.error-password{
+	color :#dc3545 !important;
+}
+.form-control.is-valid, .was-validated .form-control:valid,
+.form-control.is-invalid, .was-validated .form-control:invalid {
+	    background-position: right 7px center !important;
+}
+.password{
+	pointer-events: auto !important;
+	cursor: pointer !important;
+}
+.help-block.password-msg{
+	white-space:pre;
+}
+.input-group-text{ padding:.375rem .75rem .375rem 10px;}
+
+.table.usr-table .custom-control.custom-switch.custom-switch-off-danger.custom-switch-on-success{ display:inline-block; margin:0 1px 0 6px;}
+
+.is-invalid .ng-select-container {
+	border-color: #dc3545 !important;
+}
+.is-valid .ng-select-container {
+	border-color: #28a745 !important;
+}
+.dt-cursor{
+	cursor: pointer !important;
+}
+.dt-notAllowed-cursor{
+	cursor: not-allowed !important;
+}
+.w-10{width: 50px;}
+
+/* .block-domain-ul{list-style-type: none !important; padding-inline-start: 10px; width: 60%;}
+.block-domain-ul li{list-style-type: none; margin: 1em 0; position: relative;}
+
+.block-domain-ul .btn{position: absolute; right: 0; padding: 2px 8px;} */
+.danger-back-ground-color,.danger-back-ground-color span{
+	background-color: #dc3e46;
+	color :#fff !important;
+}
+.info-back-ground-color, .info-back-ground-color span{
+	background-color: #147dfa;
+	color :#fff !important;
+}
+.warning-back-ground-color,.warning-back-ground-color span{
+	background-color: #fec236;
+	color :#121212 !important;
+}
+
+/* phone number input box */
+
+/* before login */
+.custom-tel-input-valid-login{width: 90%; max-width: 90%;}
+.custom-tel-input-valid-login .iti{width: 100%;}
+/* after login */
+.custom-tel-input-valid{width: 93.5%; max-width: 93.5%;}
+.custom-tel-input-valid .iti{width: 100%;}
+/* common */
+.custom-tel-input{
+    border: 1px solid #ccc;
+    border-radius: .25rem !important;
+    min-height: 38px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+	border-top-right-radius: 0!important;
+	border-bottom-right-radius: 0!important;
+}
+
+.custom-tel-input-valid  input:focus-visible,.custom-tel-input-valid-login  input:focus-visible {
+	outline: none !important;
+	color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: inset 0 0 0 transparent;
+}
+
+.phn-valid{
+   border:1px solid #28a745 !important ;
+   border-radius: .25rem !important;
+   min-height: 38px !important;
+   width: 100% !important;
+   max-width: 100% !important;
+   border-top-right-radius: 0!important;
+   border-bottom-right-radius: 0!important;
+}
+.phn-invalid{
+   
+	border:1px solid #dc3545 !important; 
+	border-radius: .25rem !important;
+    min-height: 38px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+	border-top-right-radius: 0!important;
+	border-bottom-right-radius: 0!important;
+
+}
+.custom-alert-sucess{
+	color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+	padding: 6px !important;
+   font-size: 14px;
+  }
+ 
+.display-block{display: block !important;}
+
+.dashboard-icn i{position: relative !important;}
+input[type=checkbox]{width: 15px; height: 15px;}
+.signup-tel-iti .iti input{border-top-right-radius: .25rem !important;border-bottom-right-radius: 0.25rem !important;}
+.signup-tel-iti .iti input{width: 100% !important; padding-right: 0 !important; max-width: 100% !important;}
+
+.signup-tel-iti, .signup-tel-iti .iti{width: 100% !important; padding-right: 0 !important; max-width: 100% !important;}
+.signup-tel-iti  input:focus-visible,.signup-tel-iti-login  input:focus-visible {
+	outline: none !important;
+	color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: inset 0 0 0 transparent;
+}
+
+
+.signup-mobile-icon{
+	position: absolute;
+    right: 15px;
+    top: 10px;
+}
+
+/*button css*/
+.btn_global-swal{margin:3px !important;}
+.btn_global.red{ background:#E82535;}
+.btn_global.red:hover{ background:#d21b2a;}
+.btn_global{ width:100%; max-width:128px; text-align:center; display:inline-block; margin:0; padding:10px 15px 12px 15px; background:#074167; font-size:15px; color:#fff; text-transform:uppercase; font-weight:700; border:none; box-shadow:none; border-radius:30px; -webkit-transition: all .6s ease-in-out; -moz-transition: all .6s ease-in-out; -o-transition: all .6s ease-in-out; -ms-transition: all .6s ease-in-out; transition:all .6s ease-in-out;}
+.btn_global:hover{ background:#043453; color:#fff;}
+.edit_sec .edit_right .btn_global.red{ background:#E82535; margin-left:20px;}
+.edit_sec .edit_right .btn_global.red:hover{ background:#d21b2a;}
+

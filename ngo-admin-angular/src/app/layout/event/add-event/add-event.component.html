@@ -1,1 +1,48 @@
-<p>add-event works!</p>
+<div class="card card-primary">
+    <form [formGroup]="eventFrom" #add="ngForm" (ngSubmit)="submit()">
+        <div class="card-body">
+            <div class="row">
+                
+                <div class="form-group col-md-6">
+                    <label>Name:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="name" placeholder="Name" minlength="3"
+                            maxlength="50" formControlName="name" [ngClass]=" {'is-invalid' : eventFrom.controls.name.touched && eventFrom.controls.name.invalid,
+						'is-valid' : eventFrom.controls.name.touched && eventFrom.controls.name.valid}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="eventFrom.controls.name.touched && eventFrom.controls.name.invalid">
+                        <ng-container *ngIf="eventFrom.controls.name.errors?.minlength">Min
+                            length is 3</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.name.errors?.maxlength">Max
+                            length is 50</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.name.errors?.whitespace">Please
+                            enter valid name.</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.name.errors?.required">
+                            Name is required</ng-container>
+                    </span>
+                </div>
+                <!-- add extra fields -->
+
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-primary mr-2">
+                        <span>Add Event</span>
+                    </button>
+                    <a [routerLinkActive]="['active']" routerLink="/event" class="btn btn-default ">
+                        Cancel</a>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
