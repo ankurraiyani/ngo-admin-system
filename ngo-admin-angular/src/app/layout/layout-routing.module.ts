@@ -20,7 +20,13 @@ const routes: Routes = [
                 path: 'doner', 
                 loadChildren: () => import('./doner/doner.module')
                                 .then(module => module.DonerModule) 
+            },
+            {
+                path: 'volunteer', 
+                loadChildren: () => import('./volunteer/volunteer.module')
+                                .then(module => module.VolunteerModule) 
             }
+            
         ]
     }
 ];
