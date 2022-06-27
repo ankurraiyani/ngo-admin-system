@@ -15,6 +15,11 @@ const routes: Routes = [
                 path: 'event', 
                 loadChildren: () => import('./event/event.module')
                                 .then(module => module.EventModule) 
+            },
+            { 
+                path: 'employee', 
+                loadChildren: () => import('./employee/employee.module')
+                                .then(module => module.EmployeeModule) 
             }
         ]
     }

@@ -1,0 +1,347 @@
+<div class="card card-primary">
+    <form [formGroup]="employeeForm" #add="ngForm" (ngSubmit)="submit()">
+        <div class="card-body">
+            <div class="row">
+                
+                <div class="form-group col-md-6">
+                    <label>First Name:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="name" placeholder="First Name" 
+                        formControlName="name" [ngClass]=" {'is-invalid' : employeeForm.controls.name.touched && employeeForm.controls.name.invalid,	'is-valid' : employeeForm.controls.name.touched && employeeForm.controls.name.valid
+					}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="employeeForm.controls.name.touched && employeeForm.controls.name.invalid||employeeForm.controls.name.dirty">
+                        <!-- <ng-container *ngIf="employeeForm.controls.name.errors?.minlength">Min
+                            length is 3</ng-container> -->
+                        <!-- <ng-container *ngIf="employeeForm.controls.name.errors?.maxlength">Max
+                            length is 50</ng-container> -->
+                       
+                        <ng-container *ngIf="employeeForm.controls.name.errors?.required">
+                          First Name is required</ng-container>
+                          <ng-container *ngIf="employeeForm.controls.name.errors?.pattern">Please
+                            enter valid name.</ng-container>
+                    </span>
+                </div>
+                <!-- add extra fields -->
+
+
+                <div class="form-group col-md-6">
+                    <label>Last Name:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="lastname" placeholder="Last Name" 
+                            maxlength="50" formControlName="lastname" [ngClass]=" {'is-invalid' : employeeForm.controls.lastname.touched && employeeForm.controls.lastname.invalid,
+						'is-valid' : employeeForm.controls.lastname.touched && employeeForm.controls.lastname.valid}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="employeeForm.controls.lastname.touched && employeeForm.controls.lastname.invalid||employeeForm.controls.lastname.dirty">
+                        <!-- <ng-container *ngIf="employeeForm.controls.lastname.errors?.minlength">Min
+                            length is 3</ng-container> -->
+                        <!-- <ng-container *ngIf="employeeForm.controls.lastname.errors?.maxlength">Max
+                            length is 50</ng-container> -->
+                       
+                        <ng-container *ngIf="employeeForm.controls.lastname.errors?.required">
+                            lastName is required</ng-container>
+                            <ng-container *ngIf="employeeForm.controls.lastname.errors?.pattern">Please
+                                enter valid lastName.</ng-container>
+                    </span>
+                </div>
+                 <!-- add extra fields -->
+                 <div class="form-group col-md-6">
+                    <label>Email Address:</label>
+                    <div class="input-group">
+                        <input type="text"  class="form-control" name="email" placeholder="abc@gmail.com"   formControlName="email" [ngClass]=" {'is-invalid' : employeeForm.controls.email.touched && employeeForm.controls.email.invalid,						'is-valid' : employeeForm.controls.email.touched && employeeForm.controls.email.valid
+					}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block"
+                         *ngIf="employeeForm.controls.email.touched && employeeForm.controls.email.invalid || employeeForm.controls.email.dirty">
+                       
+                             <ng-container *ngIf="employeeForm.controls.email.errors?.required">
+                            Email is required</ng-container> 
+
+                            <ng-container *ngIf="employeeForm.controls.email.errors?.pattern">
+                                Enter valid email</ng-container>
+                    </span>
+                </div>
+
+             <!-- add extra fields -->
+             <div class="form-group col-md-6">
+                <label>Contact Number:</label>
+                <div class="input-group">
+                    <input type="tel" class="form-control" name="contactNumber" placeholder="Contact Number"
+                    maxlength="10"
+                         formControlName="contactNumber" [ngClass]=" {'is-invalid' : employeeForm.controls.contactNumber.touched && employeeForm.controls.contactNumber.invalid,
+                    'is-valid' : employeeForm.controls.contactNumber.touched && employeeForm.controls.contactNumber.valid}">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <span class="help-block"
+                    *ngIf="employeeForm.controls.contactNumber.touched && employeeForm.controls.contactNumber.invalid || employeeForm.controls.contactNumber.dirty">
+                   
+                    <ng-container *ngIf="employeeForm.controls.contactNumber.errors?.required">
+                        Contact Number is required</ng-container>
+                        <ng-container *ngIf="employeeForm.controls.aadharNumber.errors?.whitespace">Please
+                            enter valid aadharNumber.</ng-container> 
+                            <ng-container *ngIf="employeeForm.controls.contactNumber.errors?.pattern">Please
+                                enter valid Contact Number.</ng-container>
+                                <ng-container *ngIf="employeeForm.controls.contactNumber.errors?.maxlength">Max
+                                    length is 10</ng-container>
+                </span>
+            </div>
+
+
+
+
+               <!-- add extra fields -->
+               <div class="form-group col-md-6">
+                <label>Address:</label>
+                <div class="input-group">
+                    <textarea rows="3" cols="5" class="form-control" name="address" placeholder="Address" minlength="3"
+                        maxlength="50" formControlName="address" [ngClass]=" {'is-invalid' : employeeForm.controls.address.touched && employeeForm.controls.address.invalid,
+                    'is-valid' : employeeForm.controls.address.touched && employeeForm.controls.address.valid}"></textarea>
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <span class="help-block"
+                    *ngIf="employeeForm.controls.address.touched && employeeForm.controls.address.invalid">
+                    <ng-container *ngIf="employeeForm.controls.address.errors?.minlength">Min
+                        length is 3</ng-container>
+                    <ng-container *ngIf="employeeForm.controls.address.errors?.maxlength">Max
+                        length is 50</ng-container>
+                    <ng-container *ngIf="employeeForm.controls.address.errors?.whitespace">Please
+                        enter valid Address.</ng-container>
+                    <ng-container *ngIf="employeeForm.controls.address.errors?.required">
+                        Address is required</ng-container>
+                </span>
+            </div>
+
+
+              <!-- add extra fields -->
+              <div class="form-group col-md-6">
+                <label>AadharNumber:</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="aadharNumber" placeholder="AadharNumber" 
+                    maxlength="12" formControlName="aadharNumber" [ngClass]=" {'is-invalid' : employeeForm.controls.aadharNumber.touched && employeeForm.controls.aadharNumber.invalid,
+                    'is-valid' : employeeForm.controls.aadharNumber.touched && employeeForm.controls.aadharNumber.valid}">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <span class="help-block"
+                    *ngIf="employeeForm.controls.aadharNumber.touched && employeeForm.controls.aadharNumber.invalid || employeeForm.controls.aadharNumber.dirty">
+                     <!-- <ng-container *ngIf="employeeForm.controls.aadharNumber.errors?.minlength">Min
+                        length is 3</ng-container>  -->
+                    <ng-container *ngIf="employeeForm.controls.aadharNumber.errors?.maxlength">Max
+                        length is 14</ng-container>
+                     <ng-container *ngIf="employeeForm.controls.aadharNumber.errors?.whitespace">Please
+                        Enter valid Aadhar Card Number.</ng-container> 
+                    <ng-container *ngIf="employeeForm.controls.aadharNumber.errors?.required">
+                        aadharNumber is required</ng-container>
+                    
+                       
+                     <ng-container *ngIf="employeeForm.controls.aadharNumber.errors?.pattern">
+                            valid aadhar card Number</ng-container> 
+                </span>
+              
+             <!-- </div>  -->
+
+
+
+              <!-- add extra fields -->
+            <!-- <div class="form-group col-md-6"> -->
+                <br>
+                <label>Gender</label>&nbsp;&nbsp;&nbsp;
+    
+                <!-- <div class="input-group"> -->
+                    <input type="radio" name="gender" value="male" formControlName="gender" [ngClass]=" {'is-invalid' : employeeForm.controls.gender.touched && employeeForm.controls.gender.invalid,
+                    'is-valid' : employeeForm.controls.gender.touched && employeeForm.controls.gender.valid}">Male
+
+                    <input type="radio" name="gender" value="female" formControlName="gender" >Female
+                    
+
+                <!-- </div> -->
+                <span class="help-block"
+                    *ngIf="employeeForm.controls.gender.touched && employeeForm.controls.gender.invalid">
+                    <ng-container *ngIf="employeeForm.controls.gender.errors?.required">
+                        Gender is required</ng-container>
+                </span>
+            </div> 
+
+<!-- add extra fields -->
+             <div class="form-group col-md-6">
+                <label>Role of Employee</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="roleemployee" placeholder="Role of Employee" minlength="3"
+                        maxlength="50" formControlName="roleemployee" [ngClass]=" {'is-invalid' : employeeForm.controls.roleemployee.touched && employeeForm.controls.roleemployee.invalid,
+                    'is-valid' : employeeForm.controls.roleemployee.touched && employeeForm.controls.roleemployee.valid}">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <span class="help-block"
+                    *ngIf="employeeForm.controls.roleemployee.touched && employeeForm.controls.roleemployee.invalid">
+                    <ng-container *ngIf="employeeForm.controls.roleemployee.errors?.minlength">Min
+                        length is 3</ng-container>
+                    <ng-container *ngIf="employeeForm.controls.roleemployee.errors?.maxlength">Max
+                        length is 50</ng-container>
+                    <ng-container *ngIf="employeeForm.controls.roleemployee.errors?.whitespace">Please
+                        enter valid Role Of Employee</ng-container>
+                    <ng-container *ngIf="employeeForm.controls.roleemployee.errors?.required">
+                        Role Of Employee is required</ng-container>
+                </span>
+            </div> 
+
+
+            <div class="form-group col-md-6">
+                <label>Age</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" name="age" placeholder="Age" minlength="3"
+                        maxlength="50" formControlName="age" [ngClass]=" {'is-invalid' : employeeForm.controls.age.touched && employeeForm.controls.age.invalid,
+                    'is-valid' : employeeForm.controls.age.touched && employeeForm.controls.age.valid}">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <span class="help-block"
+                    *ngIf="employeeForm.controls.age.touched && employeeForm.controls.age.invalid">
+                    <ng-container *ngIf="employeeForm.controls.age.errors?.minlength">Min
+                        length is 3</ng-container>
+                    <ng-container *ngIf="employeeForm.controls.age.errors?.maxlength">Max
+                        length is 50</ng-container>
+                    <ng-container *ngIf="employeeForm.controls.age.errors?.whitespace">Please
+                        enter valid Email Address.</ng-container>
+                    <ng-container *ngIf="employeeForm.controls.age.errors?.required">
+                        Age is required</ng-container>
+                </span>
+            </div> 
+
+
+             <div class="form-group col-md-6">
+                <label>Date of join</label>
+                
+                    <input type="date" name="date" class="form-control" formControlName="date" [ngClass]=" {'is-invalid' : employeeForm.controls.date.touched && employeeForm.controls.date.invalid,
+                    'is-valid' : employeeForm.controls.date.touched && employeeForm.controls.date.valid}">
+               
+
+                <span class="help-block"
+                *ngIf="employeeForm.controls.date.touched && employeeForm.controls.date.invalid">
+
+                <ng-container *ngIf="employeeForm.controls.date.errors?.required">
+                    Date is required</ng-container>
+
+                </span>
+
+            </div>
+
+            <div class="form-group col-md-6">
+                <label>Salary</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="salary" placeholder="Salary" 
+                        maxlength="50" formControlName="salary" [ngClass]=" {'is-invalid' : employeeForm.controls.salary.touched && employeeForm.controls.salary.invalid,
+                    'is-valid' : employeeForm.controls.salary.touched && employeeForm.controls.salary.valid}">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <span class="help-block"
+                    *ngIf="employeeForm.controls.salary.touched && employeeForm.controls.salary.invalid || employeeForm.controls.salary.dirty">
+                    <!-- <ng-container *ngIf="employeeForm.controls.salary.errors?.minlength">Min
+                        length is 3</ng-container> -->
+                    <ng-container *ngIf="employeeForm.controls.salary.errors?.maxlength">Max
+                        length is 50</ng-container>
+                    <ng-container *ngIf="employeeForm.controls.salary.errors?.whitespace">Please
+                        enter valid Salary.</ng-container>
+                    <ng-container *ngIf="employeeForm.controls.salary.errors?.required">
+                        Salary is required</ng-container>
+                        <ng-container *ngIf="employeeForm.controls.salary.errors?.pattern">
+                            enter valid salary</ng-container>
+                </span>
+            </div> 
+
+
+
+            <div class="form-group col-md-6">
+                <label>Timing Of Employee</label>
+                <div class="input-group">
+                    <input type="time" class="form-control" name="time" placeholder="time" formControlName="time" [ngClass]=" {'is-invalid' : employeeForm.controls.time.touched && employeeForm.controls.time.invalid,
+                    'is-valid' : employeeForm.controls.time.touched && employeeForm.controls.time.valid}">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-user"></span>
+                        </div>
+                    </div>
+                </div>
+                <span class="help-block"
+                    *ngIf="employeeForm.controls.time.touched && employeeForm.controls.time.invalid">
+                    <!-- <ng-container *ngIf="employeeForm.controls.time.errors?.minlength">Min
+                        length is 3</ng-container>
+                    <ng-container *ngIf="employeeForm.controls.time.errors?.maxlength">Max
+                        length is 50</ng-container> -->
+                    <!-- <ng-container *ngIf="employeeForm.controls.time.errors?.whitespace">Please
+                        enter valid time.</ng-container> -->
+                    <ng-container *ngIf="employeeForm.controls.time.errors?.required">
+                        time is required</ng-container>
+                </span>
+            </div> 
+
+
+
+           
+
+           
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-primary mr-2">
+                        <span>Add Employee</span>
+                    </button>
+                    <a [routerLinkActive]="['active']" routerLink="/event" class="btn btn-default ">
+                        Cancel</a>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+
