@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EvnetService } from 'src/app/services/event.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-event',
@@ -8,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AddEventComponent implements OnInit {
 
-  constructor() { }
+  constructor(private eventService : EvnetService) { }
 
   eventFrom : FormGroup;
 
@@ -25,6 +27,30 @@ export class AddEventComponent implements OnInit {
     this.eventFrom.markAllAsTouched();
     if(this.eventFrom.valid) {
       console.log("success");
+      this.eventService.addEvent(this.eventFrom.value).subscribe((results) => {
+        console.log("api success");
+        // showMessage(icon, message) {
+        //   const Toast = Swal.mixin({
+        //     toast: true,
+        //     position: 'top',
+        //     showConfirmButton: false,
+        //     timer: icon == 'error' ? 7000 : 2000,
+        //     timerProgressBar: true,
+        //     didOpen: (toast) => {
+        //       toast.addEventListener('mouseenter', Swal.stopTimer)
+        //       toast.addEventListener('mouseleave', Swal.resumeTimer)
+        //     }
+        //   })
+        //   Toast.fire({
+        //     icon: icon,
+        //     title: message
+        //   })
+        // }
+       
+      }, (error) => {
+
+      });
+
     }
   }
 }
