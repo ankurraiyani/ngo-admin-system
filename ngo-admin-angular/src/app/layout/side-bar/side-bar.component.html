@@ -21,7 +21,7 @@
           <li [routerLinkActive]="['active']" class="nav-item has-treeview">
             <a [routerLink]="['/event']" class="nav-link" [routerLinkActive]="['active']"
               [routerLinkActiveOptions]="{exact:true}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-calendar"></i>
               <p>
                 Manage Event
               </p>
@@ -36,6 +36,16 @@
               </p>
             </a>
           </li>
+
+          <li [routerLinkActive]="['active']" class="nav-item has-treeview">
+            <a [routerLink]="['/volunteer']" class="nav-link" [routerLinkActive]="['active']"
+              [routerLinkActiveOptions]="{exact:true}">
+              <i class="nav-icon fa fa-users"></i>
+              <p>
+                Manage Volunteer
+              </p>
+            </a>
+
           <!-- <li [routerLinkActive]="['active']" class="nav-item has-treeview" >
             <a [routerLink]="['../settings']" class="nav-link" [routerLinkActive]="['active']"
               [routerLinkActiveOptions]="{exact:true}">
