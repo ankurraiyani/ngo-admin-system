@@ -20,7 +20,18 @@ const routes: Routes = [
                 path: 'employee', 
                 loadChildren: () => import('./employee/employee.module')
                                 .then(module => module.EmployeeModule) 
+            },
+            {
+                path: 'doner', 
+                loadChildren: () => import('./doner/doner.module')
+                                .then(module => module.DonerModule) 
+            },
+            {
+                path: 'volunteer', 
+                loadChildren: () => import('./volunteer/volunteer.module')
+                                .then(module => module.VolunteerModule) 
             }
+            
         ]
     }
 ];
