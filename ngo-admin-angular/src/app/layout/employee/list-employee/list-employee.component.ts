@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from 'src/app/common/common.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
@@ -8,15 +9,26 @@ import { EmployeeService } from 'src/app/services/employee.service';
 })
 export class ListEmployeeComponent implements OnInit {
 
-  constructor(private employeeService:EmployeeService) { }
-  employee:any[];
+  constructor(private employeeService:EmployeeService,
+              private commonService:CommonService) { }
+
+  employee:any;
+
   ngOnInit(): void {
-    console.log("List Event");
+    setTimeout(() => {
+      this.commonService.currentPageTitle = 'Employee List';
+    });
+
+    this.getAllEmployee();
+  }
+
+  getAllEmployee(){
     this.employeeService.getAllEmployee().subscribe((results)=>{
-      console.log("done");
-      this.employee=results as any[];
+      this.employee=results;
     },
-    (error)=>{}
+    (error)=>{
+      this.commonService.showMessage('error',error.message);
+    }
     );
   }
 

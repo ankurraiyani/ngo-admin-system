@@ -2,11 +2,11 @@
     <form [formGroup]="donerForm" #add="ngForm" (ngSubmit)="submit()">
         <div class="card-body">
             <div class="row">
-                
+
                 <div class="form-group col-md-6">
                     <label>First Name:</label>
                     <div class="input-group">
-                    <input type="text" class="form-control" name="donerName" placeholder="First Name" minlength="3"
+                        <input type="text" class="form-control" name="donerName" placeholder="First Name" minlength="3"
                             maxlength="50" formControlName="donerName" [ngClass]=" {'is-invalid' : donerForm.controls.donerName.touched && donerForm.controls.donerName.invalid,
 						'is-valid' : donerForm.controls.donerName.touched && donerForm.controls.donerName.valid}">
                         <div class="input-group-append">
@@ -33,7 +33,7 @@
                 <div class="form-group col-md-6">
                     <label>Last Name:</label>
                     <div class="input-group">
-                    <input type="text" class="form-control" name="lastName" placeholder="Last Name" minlength="3"
+                        <input type="text" class="form-control" name="lastName" placeholder="Last Name" minlength="3"
                             maxlength="50" formControlName="lastName" [ngClass]=" {'is-invalid' : donerForm.controls.lastName.touched && donerForm.controls.lastName.invalid,
 						'is-valid' : donerForm.controls.lastName.touched && donerForm.controls.lastName.valid}">
                         <div class="input-group-append">
@@ -54,14 +54,14 @@
                             Last Name is Required</ng-container>
                     </span>
                 </div>
-                
+
 
 
                 <div class="form-group col-md-6">
                     <label>Email Address:</label>
                     <div class="input-group">
-                    <input type="email" class="form-control" name="donerEmail" placeholder="abc@gmail.com" minlength="3"
-                            maxlength="50" formControlName="donerEmail" [ngClass]=" {'is-invalid' : donerForm.controls.donerEmail.touched && donerForm.controls.donerEmail.invalid,
+                        <input type="email" class="form-control" name="donerEmail" placeholder="abc@gmail.com"
+                            minlength="3" maxlength="50" formControlName="donerEmail" [ngClass]=" {'is-invalid' : donerForm.controls.donerEmail.touched && donerForm.controls.donerEmail.invalid,
 						'is-valid' : donerForm.controls.donerEmail.touched && donerForm.controls.donerEmail.valid}">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -80,13 +80,13 @@
                         <ng-container *ngIf="donerForm.controls.donerEmail.errors?.required">
                             Email is Required</ng-container>
                     </span>
-                </div> 
+                </div>
 
                 <div class="form-group col-md-6">
                     <label>Contact Number:</label>
                     <div class="input-group">
-                    <input type="tel" class="form-control" name="contactNumber" placeholder="Contact Number" minlength="10"
-                            maxlength="10" formControlName="contactNumber" [ngClass]=" {'is-invalid' : donerForm.controls.contactNumber.touched && donerForm.controls.contactNumber.invalid,
+                        <input type="tel" class="form-control" name="contactNumber" placeholder="Contact Number"
+                            minlength="10" maxlength="10" formControlName="contactNumber" [ngClass]=" {'is-invalid' : donerForm.controls.contactNumber.touched && donerForm.controls.contactNumber.invalid,
 						'is-valid' : donerForm.controls.contactNumber.touched && donerForm.controls.contactNumber.valid}">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -106,11 +106,11 @@
                             Contact Number is Required</ng-container>
                     </span>
                 </div>
-                
+
 
                 <div class="form-group col-md-6">
                     <label>Type of Donation: </label>
-                    
+
                     <div class="input-group">
                         <select class="form-control" name="typeofDonation" formControlName="typeofDonation" [ngClass]=" {'is-invalid' : donerForm.controls.typeofDonation.touched && donerForm.controls.typeofDonation.invalid,
 						'is-valid' : donerForm.controls.typeofDonation.touched && donerForm.controls.typeofDonation.valid}">Donation
@@ -122,42 +122,43 @@
                         </select>
                     </div>
                     <span class="help-block"
-                    *ngIf="donerForm.controls.typeofDonation.touched && donerForm.controls.typeofDonation.invalid">
-                    
-                    
-                    <ng-container *ngIf="donerForm.controls.typeofDonation.errors?.required">
-                        Required</ng-container>
-                </span>
+                        *ngIf="donerForm.controls.typeofDonation.touched && donerForm.controls.typeofDonation.invalid">
+
+
+                        <ng-container *ngIf="donerForm.controls.typeofDonation.errors?.required">
+                            Required</ng-container>
+                    </span>
                 </div>
 
 
                 <div class="form-group col-md-6">
                     <label>Date of Donation: </label>
-                    
-                    <input class="form-control" type="date" name="dateOfDonation" formControlName="dateOfDonation" [ngClass]=" {'is-invalid' : donerForm.controls.dateOfDonation.touched && donerForm.controls.dateOfDonation.invalid,
-                    'is-valid' : donerForm.controls.dateOfDonation.touched && donerForm.controls.dateOfDonation.valid }">
-                   
-                    <span class="help-block"
-                    *ngIf="donerForm.controls.dateOfDonation.touched && donerForm.controls.dateOfDonation.invalid">
 
-                    <ng-container *ngIf="donerForm.controls.dateOfDonation.errors?.required">
-                        Date is Required</ng-container>
+                    <input class="form-control" type="date" name="dateOfDonation" formControlName="dateOfDonation"
+                        [ngClass]=" {'is-invalid' : donerForm.controls.dateOfDonation.touched && donerForm.controls.dateOfDonation.invalid,
+                    'is-valid' : donerForm.controls.dateOfDonation.touched && donerForm.controls.dateOfDonation.valid }">
+
+                    <span class="help-block"
+                        *ngIf="donerForm.controls.dateOfDonation.touched && donerForm.controls.dateOfDonation.invalid">
+
+                        <ng-container *ngIf="donerForm.controls.dateOfDonation.errors?.required">
+                            Date is Required</ng-container>
                     </span>
                 </div>
-                
+
 
                 <div class="form-group col-md-6">
                     <label>Description:</label>
                     <div class="input-group">
-                    <textarea  class="form-control" name="reason" row="4" cols="5"  minlength="3"
-                            maxlength="50" formControlName="reason" [ngClass]=" {'is-invalid' : donerForm.controls.reason.touched && donerForm.controls.reason.invalid,
+                        <textarea class="form-control" name="reason" row="4" cols="5" minlength="3" maxlength="50"
+                            formControlName="reason" [ngClass]=" {'is-invalid' : donerForm.controls.reason.touched && donerForm.controls.reason.invalid,
 						'is-valid' : donerForm.controls.reason.touched && donerForm.controls.reason.valid}"> </textarea>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="nav-icon fas fa-edit"></span>
                             </div>
                         </div>
-                       
+
                     </div>
                     <span class="help-block"
                         *ngIf="donerForm.controls.reason.touched && donerForm.controls.reason.invalid">
@@ -168,12 +169,12 @@
                         <ng-container *ngIf="donerForm.controls.reason.errors?.whitespace">Please
                             Enter valid Last Name.</ng-container>
                         <ng-container *ngIf="donerForm.controls.reason.errors?.required">
-                             Description is Required</ng-container>
+                            Description is Required</ng-container>
                     </span>
                 </div>
 
 
-               
+
                 <!-- f0d -->
 
             </div>
@@ -192,4 +193,3 @@
         </div>
     </form>
 </div>
-

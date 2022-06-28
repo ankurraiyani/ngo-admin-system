@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonService } from 'src/app/common/common.service';
 import { DonerService } from 'src/app/services/doner.service';
 
 @Component({
@@ -8,17 +9,23 @@ import { DonerService } from 'src/app/services/doner.service';
 })
 export class ListDonerComponent implements OnInit {
 
-  constructor(private donerService: DonerService) { }
-  doner : any[];
-  ngOnInit(): void {
-   
-    this.donerService.getAllDoner().subscribe((results)=>
-    {
-      console.log("Done");
-      this.doner=results as any[];
-    },(error)=>
-    {
+  constructor(private donerService: DonerService,
+    private commonService: CommonService) { }
 
+  doner: any;
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.commonService.currentPageTitle = 'Donner List';
+    });
+    this.getAllDonner();
+  }
+
+  getAllDonner() {
+    this.donerService.getAllDoner().subscribe((results) => {
+      this.doner = results;
+    }, (error) => {
+      this.commonService.showMessage("error", error.message);
     });
   }
 

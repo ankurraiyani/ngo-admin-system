@@ -24,7 +24,4 @@ export class ApiClientRepository {
         return headers;
     }
 
-    
-
-
 }

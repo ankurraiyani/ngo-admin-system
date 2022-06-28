@@ -4,9 +4,9 @@ import Swal from "sweetalert2";
 @Injectable()
 export class CommonService {
 
+	currentPageTitle: any = "Dashboard";
 
-
-  showMessage(icon, message) {
+	showMessage(icon, message) {
 		const Toast = Swal.mixin({
 			toast: true,
 			position: 'top',
@@ -24,5 +24,5 @@ export class CommonService {
 		})
 	}
 }
-  
+
 

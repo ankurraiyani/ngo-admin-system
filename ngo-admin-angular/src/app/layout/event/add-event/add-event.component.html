@@ -2,7 +2,7 @@
     <form [formGroup]="eventFrom" #add="ngForm" (ngSubmit)="submit()">
         <div class="card-body">
             <div class="row">
-                
+
                 <div class="form-group col-md-6">
                     <label>Name:</label>
                     <div class="input-group">
@@ -15,8 +15,7 @@
                             </div>
                         </div>
                     </div>
-                    <span class="help-block"
-                        *ngIf="eventFrom.controls.name.touched && eventFrom.controls.name.invalid">
+                    <span class="help-block" *ngIf="eventFrom.controls.name.touched && eventFrom.controls.name.invalid">
                         <ng-container *ngIf="eventFrom.controls.name.errors?.minlength">Min
                             length is 3</ng-container>
                         <ng-container *ngIf="eventFrom.controls.name.errors?.maxlength">Max
@@ -45,4 +44,3 @@
         </div>
     </form>
 </div>
-

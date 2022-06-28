@@ -1,6 +1,7 @@
 package com.websopti.ngosys.entity;
 
 import java.sql.Date;
+import java.sql.Time;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,6 +40,8 @@ public class Volunteer{
 	private Integer age;
 	
 	private Date dateOfJoining;
+	
+//	private Time availableTime;
 	
 	@Column(columnDefinition = "text")
 	private String areaOfInterest;

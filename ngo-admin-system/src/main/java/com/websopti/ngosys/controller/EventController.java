@@ -19,6 +19,7 @@ import com.websopti.ngosys.service.EventService;
 @RestController
 @CrossOrigin
 @RequestMapping("/api/event")
+@CrossOrigin
 public class EventController {
 	
 	@Autowired

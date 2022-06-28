@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/common/common.service';
 import { EvnetService } from 'src/app/services/event.service';
 
-
 @Component({
   selector: 'app-list-event',
   templateUrl: './list-event.component.html',
@@ -11,15 +10,12 @@ import { EvnetService } from 'src/app/services/event.service';
 export class ListEventComponent implements OnInit {
 
 
-
-
-
   constructor(private eventService: EvnetService,
-    private commonService: CommonService) { }
+              private commonService: CommonService) { }
+
   eventList: any;
   pageLimitOptions: any = [10, 15, 20, 25, 30];
   totalCount: any = 0;
-
   fetchEventListParam = {
     pageSize: this.pageLimitOptions[0],
     searchStr: "",
@@ -28,16 +24,16 @@ export class ListEventComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("List Event");
+    setTimeout(() => {
+			this.commonService.currentPageTitle = 'Event List';
+		});
     this.getEventData();
   }
 
   getEventData() {
     this.eventService.getAllEvent(this.fetchEventListParam).subscribe((results) => {
-      console.log(results);
       this.eventList = results.content;
       this.totalCount = results.totalElements;
-
     }, (error) => {
       this.commonService.showMessage("error", error.message)
     });
