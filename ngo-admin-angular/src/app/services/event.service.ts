@@ -9,4 +9,9 @@ export class EvnetService {
     addEvent(data : any){
         return this.eventRepo.addEvent(data);
     }
+
+    getAllEvent()
+    {
+        return this.eventRepo.getAllEvent();
+    }
 }

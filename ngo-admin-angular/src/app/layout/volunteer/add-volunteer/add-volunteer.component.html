@@ -80,7 +80,7 @@
                 <div class="form-group col-md-6">
                     <label>Contact Number :</label>
                     <div class="input-group">
-                        <input type="tel" class="form-control" name="contactNumber" placeholder="Contact Number"
+                        <input type="tel" class="form-control" name="contactNumber" placeholder="Contact Number" minlength="10"
                             maxlength="10" formControlName="contactNumber" [ngClass]=" {'is-invalid' : volunteerForm.controls.contactNumber.touched && volunteerForm.controls.contactNumber.invalid,
 						'is-valid' : volunteerForm.controls.contactNumber.touched && volunteerForm.controls.contactNumber.valid}">
                         <div class="input-group-append">
@@ -165,12 +165,12 @@
                 <div class="form-group col-md-6">
                     <label>Joining Date :</label>
                     <div class="input-group">
-                        <input type="date" class="form-control" name="date" placeholder="Date" formControlName="date" [ngClass]=" {'is-invalid' : volunteerForm.controls.date.touched && volunteerForm.controls.date.invalid,
-						'is-valid' : volunteerForm.controls.date.touched && volunteerForm.controls.date.valid}">
+                        <input type="date" class="form-control" name="dateOfJoining" placeholder="Date" formControlName="dateOfJoining" [ngClass]=" {'is-invalid' : volunteerForm.controls.dateOfJoining.touched && volunteerForm.controls.dateOfJoining.invalid,
+						'is-valid' : volunteerForm.controls.dateOfJoining.touched && volunteerForm.controls.dateOfJoining.valid}">
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.date.touched && volunteerForm.controls.date.invalid">
-                        <ng-container *ngIf="volunteerForm.controls.date.errors?.required">
+                        *ngIf="volunteerForm.controls.dateOfJoining.touched && volunteerForm.controls.dateOfJoining.invalid">
+                        <ng-container *ngIf="volunteerForm.controls.dateOfJoining.errors?.required">
                             Joining Date is required</ng-container>
                     </span>
                 </div>
@@ -178,13 +178,13 @@
                 <div class="form-group col-md-6">
                     <label>Availability Of Time :</label>
                     <div class="input-group">
-                        <input type="time" class="form-control" name="time" placeholder="Time" formControlName="time" [ngClass]=" {'is-invalid' : volunteerForm.controls.time.touched && volunteerForm.controls.time.invalid,
-						'is-valid' : volunteerForm.controls.time.touched && volunteerForm.controls.time.valid}">
+                        <input type="time" class="form-control" name="availableTime" placeholder="Time" formControlName="availableTime" [ngClass]=" {'is-invalid' : volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.invalid,
+						'is-valid' : volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.valid}">
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.time.touched && volunteerForm.controls.time.invalid">
+                        *ngIf="volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.invalid">
 
-                        <ng-container *ngIf="volunteerForm.controls.time.errors?.required">
+                        <ng-container *ngIf="volunteerForm.controls.availableTime.errors?.required">
                             Time is required</ng-container>
                     </span>
                 </div>
@@ -192,9 +192,9 @@
                 <div class="form-group col-md-6">
                     <label>Area Of Interest : </label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="interest" placeholder="Area of Interest" minlength="3"
-                            maxlength="80" formControlName="interest" [ngClass]=" {'is-invalid' : volunteerForm.controls.interest.touched && volunteerForm.controls.interest.invalid,
-						'is-valid' : volunteerForm.controls.interest.touched && volunteerForm.controls.interest.valid}">
+                        <input type="text" class="form-control" name="areaOfInterest" placeholder="Area of Interest" minlength="3"
+                            maxlength="80" formControlName="areaOfInterest" [ngClass]=" {'is-invalid' : volunteerForm.controls.areaOfInterest.touched && volunteerForm.controls.areaOfInterest.invalid,
+						'is-valid' : volunteerForm.controls.areaOfInterest.touched && volunteerForm.controls.areaOfInterest.valid}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fa fa-user"></span>
@@ -202,14 +202,14 @@
                         </div>
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.interest.touched && volunteerForm.controls.interest.invalid">
-                        <ng-container *ngIf="volunteerForm.controls.interest.errors?.minlength">Min
+                        *ngIf="volunteerForm.controls.areaOfInterest.touched && volunteerForm.controls.areaOfInterest.invalid">
+                        <ng-container *ngIf="volunteerForm.controls.areaOfInterest.errors?.minlength">Min
                             Length is 3</ng-container>
-                        <ng-container *ngIf="volunteerForm.controls.interest.errors?.maxlength">Max
+                        <ng-container *ngIf="volunteerForm.controls.areaOfInterest.errors?.maxlength">Max
                             Length is 80</ng-container>
-                        <ng-container *ngIf="volunteerForm.controls.interest.errors?.whitespace">Please
+                        <ng-container *ngIf="volunteerForm.controls.areaOfInterest.errors?.whitespace">Please
                             Enter valid Interest.</ng-container>
-                        <ng-container *ngIf="volunteerForm.controls.interest.errors?.required">
+                        <ng-container *ngIf="volunteerForm.controls.areaOfInterest.errors?.required">
                             Area Of Interest is required</ng-container>
                     </span>
                 </div>

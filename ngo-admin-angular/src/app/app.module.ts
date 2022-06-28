@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { EvnetRepository } from './repository/event.repository';
 import { EvnetService } from './services/event.service';
 import { ApiClientRepository } from './common/Apiclient.repository';
+import { VolunteerService } from './services/volunteer.service';
+import { VolunteerRepository } from './repository/volunteer.repository';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ApiClientRepository } from './common/Apiclient.repository';
   providers: [
     EvnetRepository,
     EvnetService,
+    VolunteerRepository,
+    VolunteerService,
     ApiClientRepository
   ],
   bootstrap: [AppComponent],

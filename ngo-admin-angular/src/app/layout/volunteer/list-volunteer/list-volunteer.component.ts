@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VolunteerService } from 'src/app/services/volunteer.service';
 
 @Component({
   selector: 'app-list-volunteer',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListVolunteerComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private volunteerService : VolunteerService) { }
+  volunteer : any[];
   ngOnInit(): void {
+
+    console.log("List Volunteer");
+
+    this.volunteerService.getAllVolunteer().subscribe((results)=>{
+      console.log("done");
+      this.volunteer=results as any[];
+    },(error)=>{
+
+    });
+
   }
 
 }

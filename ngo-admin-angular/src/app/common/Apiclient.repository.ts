@@ -19,4 +19,11 @@ export class ApiClientRepository {
         return headers;
     }
 
+    doPublicGetAll(url : any):Observable<any>
+    {
+        return this.httpClient.get(url);
+    }
+
+    
+
 }
