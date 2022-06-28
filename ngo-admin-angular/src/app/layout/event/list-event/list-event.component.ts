@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-list-event',
   templateUrl: './list-event.component.html',
@@ -8,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class ListEventComponent implements OnInit {
 
   constructor() { }
-
   ngOnInit(): void {
-    console.log("List Event");
+    
+    
   }
 
 }
