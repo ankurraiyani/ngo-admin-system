@@ -7,21 +7,26 @@ import { EvnetService } from 'src/app/services/event.service';
   styleUrls: ['./list-event.component.css']
 })
 export class ListEventComponent implements OnInit {
+  
 
+
+    
   constructor(private eventService : EvnetService) { }
-  event : any[];
+  event:any[];
   ngOnInit(): void {
     
     console.log("List Event");
 
-    this.eventService.getAllEvent().subscribe((results)=>{
+    
+    this.eventService.getAllEvent().subscribe((results) => {
       console.log("done");
-      this.event=results as any[];
-    },(error)=>{
+      this.event= results as any[];
+   
+  }, (error) => {   
+  });
 
-    });
   }
-
-
+  
 }
+
 

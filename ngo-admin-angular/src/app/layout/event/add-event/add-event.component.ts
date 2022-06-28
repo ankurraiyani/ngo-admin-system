@@ -17,6 +17,7 @@ export class AddEventComponent implements OnInit {
   ngOnInit(): void {
     this.iniatilzeFrom();
   }
+  
   iniatilzeFrom() {
     this.eventFrom = new FormGroup({
       name: new FormControl('',  [Validators.required, Validators.minLength(3), Validators.maxLength(50)])
@@ -30,8 +31,6 @@ export class AddEventComponent implements OnInit {
       console.log("success");
       this.eventService.addEvent(this.eventFrom.value).subscribe((results) => {
         console.log("api success");
-        // this.showMessage("success","Event Added Sucessfully");
-        
 
       }, (error) => {
 

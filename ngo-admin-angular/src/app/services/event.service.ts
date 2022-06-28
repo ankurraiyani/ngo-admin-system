@@ -3,6 +3,7 @@ import { EvnetRepository } from "../repository/event.repository";
 
 @Injectable()
 export class EvnetService {
+    //showMessage: any;
     constructor( 
         private eventRepo:EvnetRepository) { }
 

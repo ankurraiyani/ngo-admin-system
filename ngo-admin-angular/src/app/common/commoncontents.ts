@@ -1,3 +1,4 @@
+
 import Swal from "sweetalert2"
 
 function  showMessage(icon:any, message:any) {
@@ -17,5 +18,4 @@ function  showMessage(icon:any, message:any) {
             title: message 
           });
         }
-
 

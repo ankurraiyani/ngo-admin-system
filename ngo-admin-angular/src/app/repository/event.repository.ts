@@ -4,7 +4,7 @@ import { BASE_URL, EVENT_ADD, EVENT_GETALL } from "../common/url";
 
 @Injectable()
 export class EvnetRepository {
-    
+   
     constructor(private apiClient:ApiClientRepository) { }
     
     addEvent(data : any){
@@ -14,6 +14,5 @@ export class EvnetRepository {
     getAllEvent() {
         return this.apiClient.doPublicGetAll(EVENT_GETALL);
     }
-    
-
+        
 }
