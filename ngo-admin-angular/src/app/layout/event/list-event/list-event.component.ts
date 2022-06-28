@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/common/common.service';
 import { EvnetService } from 'src/app/services/event.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-event',
@@ -45,6 +46,33 @@ export class ListEventComponent implements OnInit {
     this.eventList = [];
     this.getEventData();
   }
+
+  // deleteEvent(){
+  //   const swalWithBootstrapButtons = Swal.mixin({
+  //     customClass: {
+  //       confirmButton: 'btn btn-primary ml-2 ',
+  //       cancelButton: 'btn btn-danger'
+  //     },
+  //     buttonsStyling: false,
+  //   })
+  //   swalWithBootstrapButtons.fire({
+  //     title: 'Are you sure you want to delete event?',
+  //     icon: 'warning',
+  //     showCancelButton: true,
+  //     confirmButtonText: 'Yes',
+  //     cancelButtonText: 'Cancel',
+  //     allowOutsideClick: false
+  //   }).then((result) => {
+  //     if (result.value) {
+  //       this.eventService.deleteEvent(id).subscribe((results) => {
+  //         this.commonService.showMessage('success', 'Event Delete Sucessfully');
+  //         this.getEventData();
+  //       }, (error) => {
+  //         this.commonService.showMessage('error',error.message);
+  //       });
+  //     }
+  //   });
+  // }
 
 }
 
