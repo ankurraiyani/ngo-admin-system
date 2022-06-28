@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CommonService } from 'src/app/common/common.service';
 import { EvnetService } from 'src/app/services/event.service';
 import Swal from 'sweetalert2';
 
@@ -10,30 +12,31 @@ import Swal from 'sweetalert2';
 })
 export class AddEventComponent implements OnInit {
 
-  constructor(private eventService : EvnetService) { }
+  constructor(private eventService: EvnetService,
+    private commonService: CommonService,
+    private rourte: Router) { }
 
-  eventFrom : FormGroup;
+  eventFrom: FormGroup;
 
   ngOnInit(): void {
     this.iniatilzeFrom();
   }
-  
+
   iniatilzeFrom() {
     this.eventFrom = new FormGroup({
-      name: new FormControl('',  [Validators.required, Validators.minLength(3), Validators.maxLength(50)])
+      name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)])
     });
   }
 
   submit() {
     this.eventFrom.markAllAsTouched();
-    if(this.eventFrom.valid) {
-      console.log("success");
+    if (this.eventFrom.valid) {
       this.eventService.addEvent(this.eventFrom.value).subscribe((results) => {
-        console.log("api success");
-      //  this.eventService.showMessage("success","Event Added Sucessfully");
-       
-      }, (error) => {
+        this.commonService.showMessage("success", "Event Added Sucessfully");
+        this.rourte.navigate(['/event']);
 
+      }, (error) => {
+        this.commonService.showMessage("error", error.message);
       });
 
     }

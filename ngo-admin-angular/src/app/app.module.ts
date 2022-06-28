@@ -10,6 +10,7 @@ import { EmployeeRepository } from './repository/employee.repository';
 import { EmployeeService } from './services/employee.service';
 import { DonerService } from './services/doner.service';
 import { DonerRepository } from './repository/doner.repository';
+import { CommonService } from './common/common.service';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { DonerRepository } from './repository/doner.repository';
     EmployeeService,
     DonerService,
     DonerRepository,
-    ApiClientRepository
+    CommonService
  
   ],
   bootstrap: [AppComponent],

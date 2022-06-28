@@ -13,8 +13,8 @@ export class EvnetRepository {
         return this.apiClient.doPublicPost(EVENT_ADD , data);
     }
 
-    getAllEvent() {
-       return this.apiClient.doPublicGetAll(EVENT_GETALL);
+    getAllEvent(fetchEventListParam:any) {
+       return this.apiClient.doPublicPost(EVENT_GETALL,fetchEventListParam);
     }
 
 }

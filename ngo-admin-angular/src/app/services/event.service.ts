@@ -11,8 +11,8 @@ export class EvnetService {
         return this.eventRepo.addEvent(data);
     }
 
-    getAllEvent()
+    getAllEvent(fetchEventListParam : any)
     {
-        return this.eventRepo.getAllEvent();
+        return this.eventRepo.getAllEvent(fetchEventListParam);
     }
 }
