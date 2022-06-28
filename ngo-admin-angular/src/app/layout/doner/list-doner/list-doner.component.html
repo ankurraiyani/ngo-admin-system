@@ -1,1 +1,9 @@
-<p>list-doner works!</p>
+<!-- <p>list-doner works!</p> -->
+<!-- <a [routerLinkActive]="['active']" routerLink="/doner/add" class="btn btn-default ">
+    Doner </a><br><br> -->
+<p>Doner Details</p>
+<p *ngFor="let i of doner">
+    {{i.donerName}}
+</p>
+
+

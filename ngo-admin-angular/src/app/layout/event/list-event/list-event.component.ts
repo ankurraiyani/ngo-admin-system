@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EvnetService } from 'src/app/services/event.service';
 
 
 @Component({
@@ -7,11 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-event.component.css']
 })
 export class ListEventComponent implements OnInit {
+  
 
-  constructor() { }
+
+    
+    
+  constructor(private eventService : EvnetService) { }
+  event:any[];
   ngOnInit(): void {
+    console.log("List Event");
     
-    
-  }
+    this.eventService.getAllEvent().subscribe((results) => {
+      console.log("done");
+      this.event= results as any[];
+   
+  }, (error) => {   
+  });
 
+  }
+  
 }
+
+

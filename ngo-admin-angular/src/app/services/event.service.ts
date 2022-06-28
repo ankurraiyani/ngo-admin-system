@@ -3,10 +3,16 @@ import { EvnetRepository } from "../repository/event.repository";
 
 @Injectable()
 export class EvnetService {
+    //showMessage: any;
     constructor( 
         private eventRepo:EvnetRepository) { }
 
     addEvent(data : any){
         return this.eventRepo.addEvent(data);
+    }
+
+    getAllEvent()
+    {
+        return this.eventRepo.getAllEvent();
     }
 }

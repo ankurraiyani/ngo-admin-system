@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DonerService } from 'src/app/services/doner.service';
 
 @Component({
   selector: 'app-list-doner',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListDonerComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private donerService: DonerService) { }
+  doner : any[];
   ngOnInit(): void {
+   
+    this.donerService.getAllDoner().subscribe((results)=>
+    {
+      console.log("Done");
+      this.doner=results as any[];
+    },(error)=>
+    {
+
+    });
   }
 
 }

@@ -8,6 +8,9 @@ import { EvnetService } from './services/event.service';
 import { ApiClientRepository } from './common/Apiclient.repository';
 import { EmployeeRepository } from './repository/employee.repository';
 import { EmployeeService } from './services/employee.service';
+import { DonerService } from './services/doner.service';
+import { DonerRepository } from './repository/doner.repository';
+
 
 @NgModule({
   declarations: [
@@ -23,9 +26,11 @@ import { EmployeeService } from './services/employee.service';
     EvnetService,
     ApiClientRepository,
     EmployeeRepository,
-    EmployeeService
-  
-    
+    EmployeeService,
+    DonerService,
+    DonerRepository,
+    ApiClientRepository
+ 
   ],
   bootstrap: [AppComponent],
 })

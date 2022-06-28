@@ -12,7 +12,7 @@ import { LayoutComponent } from './layout.component';
   declarations: [
     LayoutComponent,
     HeaderComponent,
-    SideBarComponent
+    SideBarComponent,
   ],
   imports: [
     CommonModule,
