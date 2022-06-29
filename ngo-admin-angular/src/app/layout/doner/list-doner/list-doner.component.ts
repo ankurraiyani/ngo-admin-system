@@ -12,21 +12,46 @@ export class ListDonerComponent implements OnInit {
   constructor(private donerService: DonerService,
     private commonService: CommonService) { }
 
-  doner: any;
+  donerList: any;
+  pageLimitOptions: any = [10, 15, 20, 25, 30];
+  totalCount: any = 0;
+  fetchDonerListParam = {
+    pageSize: this.pageLimitOptions[0],
+    searchStr: "",
+    pageNo: 0,
+    currentPage: 0
+  }
 
   ngOnInit(): void {
     setTimeout(() => {
       this.commonService.currentPageTitle = 'Donner List';
     });
-    this.getAllDonner();
+    this.getDonerData();
   }
 
-  getAllDonner() {
+  getDonerData() {
     this.donerService.getAllDoner().subscribe((results) => {
-      this.doner = results;
+      this.donerList = results;
+    }, (error) => {
+      this.commonService.showMessage("error", error.message);
+    });
+  }
+  pageChanged(e: any) {
+    this.fetchDonerListParam.currentPage = e;
+    this.fetchDonerListParam.pageNo = e - 1;
+    this.donerList = [];
+    this.getDonerData();
+  }
+
+  deleteDoner(id){
+    this.donerService.deleteDoner(id).subscribe((results) => {
+      this.donerList = results;
+      this.getDonerData();
     }, (error) => {
       this.commonService.showMessage("error", error.message);
     });
   }
 
+  
 }
+
