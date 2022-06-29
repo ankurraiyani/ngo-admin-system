@@ -1,5 +1,5 @@
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Observable, observable } from 'rxjs';
 import { CommonService } from 'src/app/common/common.service';
 import { EvnetService } from 'src/app/services/event.service';
 import Swal from 'sweetalert2';
@@ -12,9 +12,8 @@ import Swal from 'sweetalert2';
 export class ListEventComponent implements OnInit {
 
 
-  constructor(private eventService: EvnetService,
-              private commonService: CommonService) { }
-  
+  constructor(private eventService: EvnetService, private commonService:CommonService) { }
+
   eventList: any;
   pageLimitOptions: any = [10, 15, 20, 25, 30];
   totalCount: any = 0;
@@ -31,6 +30,8 @@ export class ListEventComponent implements OnInit {
 		});
     
     this.getEventData();
+    // this.deleteIdEvent(id);
+    
   }
 
   getEventData() {
@@ -49,6 +50,7 @@ export class ListEventComponent implements OnInit {
     this.getEventData();
   }
 
+
   deleteIdEvent(id){
     console.log("fdewfwe");
     this.eventService.deleteIdEvent(id).subscribe(result=>{
@@ -56,9 +58,7 @@ export class ListEventComponent implements OnInit {
       // this.eventList();
     })
 
-  }
-
   
+  
+  }
 }
-
-

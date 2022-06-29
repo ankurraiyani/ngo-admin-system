@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ApiClientRepository } from "../common/Apiclient.repository";
-import { BASE_URL,VOLUNTEER_ADD, VOLUNTEER_GETALL } from "../common/url";
+import { BASE_URL,EVENT_DELETE,VOLUNTEER_ADD, VOLUNTEER_DELETE, VOLUNTEER_GETALL } from "../common/url";
 
 @Injectable()
 export class VolunteerRepository {
@@ -13,10 +13,16 @@ export class VolunteerRepository {
         return this.apiClient.doPublicPost(VOLUNTEER_ADD,data);
     }
 
-    getAllVolunteer()
+    getAllVolunteer(fetchVolunteerListParam:any)
     {
-        return this.apiClient.doPublicGetAll(VOLUNTEER_GETALL);
+        return this.apiClient.doPublicPost(VOLUNTEER_GETALL,fetchVolunteerListParam);
     }
     
+    deleteIDVolunteer(data:any)
+    {
+        console.log("delete Repository");
+        return this.apiClient.doPublicDelete(VOLUNTEER_DELETE+'/'+data);
+        
+    }
 
 }

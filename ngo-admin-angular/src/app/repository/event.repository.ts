@@ -15,7 +15,8 @@ export class EvnetRepository {
        return this.apiClient.doPublicPost(EVENT_GETALL,fetchEventListParam);
     }
 
-    deleteIdEvent(data:any)
+
+    deleteIdEvent(data : any)
     {
         return this.apiClient.doPublicDelete(EVENT_DELETE+"/"+data);
     }
