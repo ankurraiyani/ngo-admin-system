@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CommonService } from 'src/app/common/common.service';
 import { EvnetService } from 'src/app/services/event.service';
 import Swal from 'sweetalert2';
@@ -23,6 +24,7 @@ export class ListEventComponent implements OnInit {
     pageNo: 0,
     currentPage: 0
   }
+  searchSubscriber:Subscription
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -32,7 +34,10 @@ export class ListEventComponent implements OnInit {
   }
 
   getEventData() {
-    this.eventService.getAllEvent(this.fetchEventListParam).subscribe((results) => {
+    if (this.searchSubscriber) {
+      this.searchSubscriber.unsubscribe();
+    }
+    this.searchSubscriber = this.eventService.getAllEvent(this.fetchEventListParam).subscribe((results) => {
       this.eventList = results.content;
       this.totalCount = results.totalElements;
     }, (error) => {
@@ -64,12 +69,18 @@ export class ListEventComponent implements OnInit {
   //     allowOutsideClick: false
   //   }).then((result) => {
   //     if (result.value) {
-  //       this.eventService.deleteEvent(id).subscribe((results) => {
-  //         this.commonService.showMessage('success', 'Event Delete Sucessfully');
-  //         this.getEventData();
-  //       }, (error) => {
-  //         this.commonService.showMessage('error',error.message);
-  //       });
+  //       // this.eventService.deleteEvent(id).subscribe((results) => {
+  //       //   this.commonService.showMessage('success', 'Event Delete Sucessfully');
+  //       //   this.getEventData();
+  //       // this.fetchEventListParam.pageSize=this.pageLimitOptions[0],
+  //       // this.fetchEventListParam.searchStr= "",
+  //       // this.fetchEventListParam.pageNo=0,
+  //       // this.fetchEventListParam.currentPage= 0;
+  //       //   this.getEventData();
+  //       // }, (error) => {
+  //       //   this.commonService.showMessage('error',error.message);
+  //       // });
+  //       console.log("deleted")
   //     }
   //   });
   // }
