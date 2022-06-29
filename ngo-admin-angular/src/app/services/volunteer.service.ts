@@ -10,8 +10,13 @@ export class VolunteerService {
     {
         return this.volunteerRepo.addVolunteer(data);
     }
-    getAllVolunteer()
+    getAllVolunteer(fetchVolunteerListParam : any)
     {
-        return this.volunteerRepo.getAllVolunteer();
+        return this.volunteerRepo.getAllVolunteer(fetchVolunteerListParam);
+    }
+
+    deleteIdVolunteer(id:any)
+    {
+        return this.volunteerRepo.deleteIDVolunteer(id);
     }
 }

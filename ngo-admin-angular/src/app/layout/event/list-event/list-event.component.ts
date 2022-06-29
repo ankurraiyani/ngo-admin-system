@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { Subscription } from 'rxjs';
+=======
+import { Observable, observable } from 'rxjs';
+>>>>>>> 514e20b312e8f691995086516c1bd32874f5187e
 import { CommonService } from 'src/app/common/common.service';
 import { EvnetService } from 'src/app/services/event.service';
 import Swal from 'sweetalert2';
@@ -12,8 +16,7 @@ import Swal from 'sweetalert2';
 export class ListEventComponent implements OnInit {
 
 
-  constructor(private eventService: EvnetService,
-              private commonService: CommonService) { }
+  constructor(private eventService: EvnetService, private commonService:CommonService) { }
 
   eventList: any;
   pageLimitOptions: any = [10, 15, 20, 25, 30];
@@ -30,7 +33,10 @@ export class ListEventComponent implements OnInit {
     setTimeout(() => {
 			this.commonService.currentPageTitle = 'Event List';
 		});
+    
     this.getEventData();
+    // this.deleteIdEvent(id);
+    
   }
 
   getEventData() {
@@ -43,7 +49,7 @@ export class ListEventComponent implements OnInit {
     }, (error) => {
       this.commonService.showMessage("error", error.message)
     });
-  }
+  } 
 
   pageChanged(e: any) {
     this.fetchEventListParam.currentPage = e;
@@ -85,6 +91,15 @@ export class ListEventComponent implements OnInit {
   //   });
   // }
 
+
+  deleteIdEvent(id){
+    console.log("fdewfwe");
+    this.eventService.deleteIdEvent(id).subscribe(result=>{
+      console.log("id:"+id);
+      // this.eventList();
+    })
+
+  
+  
+  }
 }
-
-
