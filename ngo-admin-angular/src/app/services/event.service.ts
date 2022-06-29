@@ -15,4 +15,9 @@ export class EvnetService {
     {
         return this.eventRepo.getAllEvent(fetchEventListParam);
     }
+
+    deleteIdEvent(data : any)
+    {
+        return this.eventRepo.deleteIdEvent(data);
+    }
 }

@@ -10,7 +10,11 @@ export class EmployeeService {
     addEmployee(data : any){
         return this.employeeRepo.addEmployee(data);
     }
-    getAllEmployee(){
-        return this.employeeRepo.getAllEmployee();
+    getAllEmployee(fetchEmployeeListParam : any){
+        return this.employeeRepo.getAllEmployee(fetchEmployeeListParam);
+    }
+    deleteIdEmployee(data:any)
+    {
+        return this.employeeRepo.deleteIdEmployee(data);
     }
 }

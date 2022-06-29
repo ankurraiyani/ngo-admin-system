@@ -5,7 +5,7 @@ import { CommonService } from 'src/app/common/common.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
-  selector: 'app-add-employee',
+  selector: 'app-add-Employee',
   templateUrl: './add-employee.component.html',
   styleUrls: ['./add-employee.component.css']
 })
@@ -66,7 +66,7 @@ export class AddEmployeeComponent implements OnInit {
         this.router.navigate(['/employee']);
       },
         (error) => { 
-          this.commonService.showMessage('error',error.message);
+          // this.commonService.showMessage('error',error.message);
         }
       );
     }

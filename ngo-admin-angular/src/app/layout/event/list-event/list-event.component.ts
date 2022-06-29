@@ -29,6 +29,7 @@ export class ListEventComponent implements OnInit {
 			this.commonService.currentPageTitle = 'Event List';
 		});
     this.getEventData();
+    // this.deleteIdEvent();
   }
 
   getEventData() {
@@ -74,6 +75,38 @@ export class ListEventComponent implements OnInit {
   //   });
   // }
 
+
+  // deleteIdEvent(){
+  //   const swalWithBootstrapButtons = Swal.mixin({
+  //     customClass: {
+  //       confirmButton: 'btn btn-primary ml-2 ',
+  //       cancelButton: 'btn btn-danger'
+  //     },
+  //     buttonsStyling: false,
+  //   })
+  //   swalWithBootstrapButtons.fire({
+  //     title: 'Are you sure you want to delete event?',
+  //     icon: 'warning',
+  //     showCancelButton: true,
+  //     confirmButtonText: 'Yes',
+  //     cancelButtonText: 'Cancel',
+  //     allowOutsideClick: false
+  //   }).then((result) => {
+  //     if (result.value) {
+  //       this.eventService.deleteIdEvent(id).subscribe((results) => {
+  //         this.commonService.showMessage('success', 'Event Delete Sucessfully');
+  //         this.getEventData();
+  //       }, (error) => {
+  //         this.commonService.showMessage('error',error.message);
+  //       });
+  //     }
+  //   });
+  // }
+
 }
 
+
+function id(id: any) {
+  throw new Error('Function not implemented.');
+}
 
