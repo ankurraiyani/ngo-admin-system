@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { Subscription } from 'rxjs';
-=======
 import { Observable, observable } from 'rxjs';
->>>>>>> 514e20b312e8f691995086516c1bd32874f5187e
 import { CommonService } from 'src/app/common/common.service';
 import { EvnetService } from 'src/app/services/event.service';
 import Swal from 'sweetalert2';
