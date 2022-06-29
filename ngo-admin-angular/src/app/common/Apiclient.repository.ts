@@ -13,6 +13,12 @@ export class ApiClientRepository {
         return this.httpClient.post(url,data,{ headers: this.getAuthenticationHeader() });
     }
 
+    doPublicDelete(url : any): Observable<any> {
+        return this.httpClient.delete(url);
+        // return this.httpClient.delete(`${url}/${data}`,{ headers: this.getAuthenticationHeader() });
+    }
+
+
     doPublicGetAll(url : any ): Observable<any> {
         return this.httpClient.get(url);
     }

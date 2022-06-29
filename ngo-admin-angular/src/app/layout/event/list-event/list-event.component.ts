@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable, observable } from 'rxjs';
 import { CommonService } from 'src/app/common/common.service';
 import { EvnetService } from 'src/app/services/event.service';
 import Swal from 'sweetalert2';
@@ -12,7 +14,8 @@ export class ListEventComponent implements OnInit {
 
 
   constructor(private eventService: EvnetService,
-              private commonService: CommonService) { }
+              private commonService: CommonService,
+              private http:HttpClient) { }
 
   eventList: any;
   pageLimitOptions: any = [10, 15, 20, 25, 30];
@@ -29,6 +32,8 @@ export class ListEventComponent implements OnInit {
 			this.commonService.currentPageTitle = 'Event List';
 		});
     this.getEventData();
+    // this.deleteIdEvent(id);
+    
   }
 
   getEventData() {
@@ -45,6 +50,38 @@ export class ListEventComponent implements OnInit {
     this.fetchEventListParam.pageNo = e - 1;
     this.eventList = [];
     this.getEventData();
+  }
+
+  
+  deleteIdEvent(id){
+    console.log("idd: "+id);
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-primary ml-2 ',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false,
+    })
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure you want to delete event?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'Cancel',
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.value) {
+        this.eventService.deleteIdEvent(id).subscribe((results) => {
+          
+          this.commonService.showMessage('success', 'Event Delete Sucessfully');
+          this.getEventData();
+
+
+        }, (error) => {
+          this.commonService.showMessage('error',error.message);
+        });
+      }
+    });
   }
 
   // deleteEvent(){
@@ -76,4 +113,8 @@ export class ListEventComponent implements OnInit {
 
 }
 
+
+// function id(id: any) {
+//   throw new Error('Function not implemented.');
+// }
 
