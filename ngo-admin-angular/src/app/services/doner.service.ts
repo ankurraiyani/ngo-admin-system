@@ -12,12 +12,17 @@ export class DonerService {
     {
         return this.donerRepo.addDoner(data);
     }
-    getAllDoner()
+    getAllDoner(fetchDonerListParam:any)
     {
-        return this.donerRepo.getAllDoner();
+        return this.donerRepo.getAllDoner(fetchDonerListParam);
     }
     deleteDoner(data:any)
     {
         return this.donerRepo.deleteDoner(data);
+    }
+    getIdDoner(data:any)
+    {  
+        return this.donerRepo.getIdDoner(data);
+        
     }
 }

@@ -32,8 +32,6 @@ export class ListVolunteerComponent implements OnInit {
       this.commonService.currentPageTitle = 'Volunteer List';
     });
     this.getVolunteerData();
-    // this.getAllVolunteer();
-    // this.deleteIdVolunteer(id);
   }
 
   getVolunteerData() {
@@ -67,60 +65,33 @@ export class ListVolunteerComponent implements OnInit {
   //   });
   // }
 
-  // deleteIdVolunteer(id:any)
-  // {
-  //   console.log(id);
-  //   this.volunteerService.deleteIdVolunteer(id).subscribe((result)=>
-  //   {
-  //     this.result=JSON.stringify(result);
-  //     console.log("result:"+result);
-  //   })
-  // }
- 
-  deleteIdVolunteer(id:any){
-        this.volunteerService.deleteIdVolunteer(id).subscribe((results) => {
-          this.getVolunteerData();
-        },(error)=>{
 
+      deleteIdVolunteer(id){
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-primary ml-2 ',
+            cancelButton: 'btn btn-danger'
+          },
+          buttonsStyling: false,
+        })
+        swalWithBootstrapButtons.fire({
+          title: 'Are you sure you want to delete volunteer?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes',
+          cancelButtonText: 'Cancel',
+          allowOutsideClick: false
+        }).then((result) => {
+          if (result.value) {
+            this.volunteerService.deleteIdVolunteer(id).subscribe((results) => {
+              this.commonService.showMessage('success', 'Volunteer Delete Sucessfully');
+              this.getVolunteerData();
+              this.commonService.fetchSearch();
+              this.getVolunteerData();
+            }, (error) => {
+              this.commonService.showMessage('error',error.message);
+            });
+          }
         });
       }
-
-
-      // deleteIdVolunteer(id){
-      //   console.log("idd: "+id);
-      //   const swalWithBootstrapButtons = Swal.mixin({
-      //     customClass: {
-      //       confirmButton: 'btn btn-primary ml-2 ',
-      //       cancelButton: 'btn btn-danger'
-      //     },
-      //     buttonsStyling: false,
-      //   })
-      //   swalWithBootstrapButtons.fire({
-      //     title: 'Are you sure you want to delete event?',
-      //     icon: 'warning',
-      //     showCancelButton: true,
-      //     confirmButtonText: 'Yes',
-      //     cancelButtonText: 'Cancel',
-      //     allowOutsideClick: false
-      //   }).then((result) => {
-      //     if (result.value) {
-      //       this.volunteerService.deleteIdVolunteer(id).subscribe((results) => {
-              
-      //         this.commonService.showMessage('success', 'Event Delete Sucessfully');
-      //         this.getVolunteerData();
-    
-    
-      //       }, (error) => {
-      //         this.commonService.showMessage('error',error.message);
-      //       });
-      //     }
-      //   });
-      // }
-
-
-
 }
-// function id(id: any) {
-//   throw new Error('Function not implemented.');
-// }
-

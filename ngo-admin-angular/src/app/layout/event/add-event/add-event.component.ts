@@ -42,6 +42,7 @@ export class AddEventComponent implements OnInit {
 
                 });
     }
+
   }
 
   iniatilzeFrom() {
@@ -66,5 +67,7 @@ export class AddEventComponent implements OnInit {
     }
   }
 
-    
 }
+  
+
+

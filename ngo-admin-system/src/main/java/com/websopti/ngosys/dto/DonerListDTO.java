@@ -10,8 +10,4 @@ public class DonerListDTO {
 	private int pageNo;
 	
 	private int pageSize;
-
-	
-
-
 }

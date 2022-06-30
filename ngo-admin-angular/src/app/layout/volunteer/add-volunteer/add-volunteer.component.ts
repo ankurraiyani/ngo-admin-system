@@ -11,17 +11,14 @@ import { VolunteerService } from 'src/app/services/volunteer.service';
 })
 export class AddVolunteerComponent implements OnInit {
   volunteerId: any;
-  vounteerId: any;
-
+  isAddForm=true;
+  
   constructor(private volunteerService: VolunteerService,
     private commonService: CommonService,
     private router: Router,private activatedRoute : ActivatedRoute) { }
 
   volunteerForm: FormGroup;
-
-
   ngOnInit(): void {
-
    
     this.iniatilzeForm();
     this.volunteerId=this.activatedRoute.queryParams['value'].id;
@@ -31,11 +28,10 @@ export class AddVolunteerComponent implements OnInit {
       setTimeout(() => {
         this.commonService.currentPageTitle = 'Add Volunteer';
       });
-  
-      
     }
     else
     {
+      this.isAddForm=false;
       setTimeout(() => {
         this.commonService.currentPageTitle = 'Edit Event';
       });
@@ -55,19 +51,13 @@ export class AddVolunteerComponent implements OnInit {
                 });
       
     }
-
-
   }
   iniatilzeForm() {
     this.volunteerForm = new FormGroup({
       id:new FormControl(''),
       name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]),
 
-      lastName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
-
       email: new FormControl('', [Validators.required, Validators.maxLength(50), Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-
-      // Validators.email(^[a-z0-9._]@[a-z0-9.-]+\.[a-z]{2,4}$)
 
       contactNumber: new FormControl('', [Validators.required, Validators.maxLength(10), Validators.maxLength(10), Validators.pattern("^[0-9]*$")]),
 

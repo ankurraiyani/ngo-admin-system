@@ -9,10 +9,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.websopti.ngosys.dto.DonerListDTO;
-import com.websopti.ngosys.dto.EventListDTO;
 import com.websopti.ngosys.entity.Doner;
-import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.repository.DonerRepository;
+
 
 @Service
 public class DonerService {
@@ -54,7 +53,9 @@ public class DonerService {
 	
 	public Page<Doner> getWithParams(DonerListDTO donerListDto) {
 		Pageable page = PageRequest.of(donerListDto.getPageNo(), donerListDto.getPageSize());
-		return donerRepository.findAll(page);
+		//return donerRepository.findAll(page);
+		
+		return donerRepository.findDonerData(donerListDto.getSearchStr(),page);
 	}
 
 }

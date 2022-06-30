@@ -13,7 +13,6 @@ import com.websopti.ngosys.dto.employeeListDTO;
 import com.websopti.ngosys.entity.Employee;
 import com.websopti.ngosys.repository.EmployeeRepository;
 
-
 @Service
 public class EmployeeService {
 
@@ -23,12 +22,15 @@ public class EmployeeService {
 	public Employee save(Employee employee) {
 		return employeeRepository.save(employee);
 	}
+	
 	public List<Employee> getAll() {
 		return employeeRepository.findAll();
 	}
+	
 	public Optional<Employee> get(Long employeeId) {
 		return employeeRepository.findById(employeeId);
 	}
+	
 	public void deleteId(Long employeeId)
 	{	
 //		optional<Employee> i= emplyeeRepository.findById(employeeId)
@@ -41,6 +43,7 @@ public class EmployeeService {
 			System.out.println("Not Available");
 		}
 	}
+	
 	public Page<Employee> getWithParams(employeeListDTO employeeListDto) {
 		
 		Pageable page = PageRequest.of(employeeListDto.getPageNo(), employeeListDto.getPageSize());

@@ -17,6 +17,7 @@ import com.websopti.ngosys.dto.EventListDTO;
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.service.EventService;
 
+
 @RestController
 @CrossOrigin
 @RequestMapping("/api/event")
@@ -40,16 +41,17 @@ public class EventController {
 		return eventService.getAll();
 	}
 	
+	@DeleteMapping("delete/{eventId}")
+	public void deleteId(@PathVariable Long eventId)
+	{
+		 eventService.deleteEventById(eventId);
+	}
+	
 	@PostMapping("/get")
 	public Page<Event> getWithParams(@RequestBody EventListDTO eventListDto) {
 		return eventService.getWithParams(eventListDto);
 	}
 	
-	@DeleteMapping("/delete/{eventId}")
-	public void deleteId(@PathVariable Long eventId)
-	{
-		eventService.deleteEventById(eventId);
-	}
 	
 	
 }

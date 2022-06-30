@@ -9,9 +9,15 @@
                     </div>
 
                     <div class="col-md-3 align-self-center">
-                        Search:<input type="text" [(ngModel)]="fetchVolunteerListParam.searchStr" (keyup)="getVolunteerData()"
-									 class="form-control">
-                    </div>
+                        <div class="input-group input-group-lg">
+                            <input type="text"  placeholder="Search here..."       [(ngModel)]="fetchVolunteerListParam.searchStr" (keyup)="getVolunteerData()" class="form-control">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-lg btn-default">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        </div>
 
 
                     <div class="col-md-1 align-self-center">
@@ -82,17 +88,6 @@
                     </tbody>
                 </table>
             </div>
-
-            
-
-            <!-- <div class="row" *ngIf="volunteerList?.length>0">
-                <div class="col-sm-12 col-md-5"></div>
-                <div class="col-sm-12 col-md-7">
-                    <pagination-controls id="volunteer_pages" (pageChange)="pageChanged($volunteer)"
-                        (pageBoundsCorrection)="pageChanged($volunteer)" maxSize="9" directionLinks="true" autoHide="true"
-                        responsive="true" previousLabel="Previous" nextLabel="Next"></pagination-controls>
-                </div>
-            </div> -->
 
         </div>
     </div>

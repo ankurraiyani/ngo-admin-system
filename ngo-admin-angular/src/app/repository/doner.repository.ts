@@ -1,9 +1,12 @@
 import { Injectable } from "@angular/core";
 import { ApiClientRepository } from "../common/Apiclient.repository";
-import { BASE_URL, DONER_ADD, DONER_DELETE, DONER_GETALL, EVENT_ADD, EVENT_GETALL } from "../common/url";
+import { BASE_URL, DONER_ADD, DONER_DELETE, DONER_GETALL, DONER_GETID, EVENT_ADD, EVENT_GETALL } from "../common/url";
 
 @Injectable()
 export class DonerRepository {
+    getIdDoner(data: any) {
+        return this.apiClient.doPublicGetAll(DONER_GETID+"/"+data);
+    }
     
     constructor( 
         private apiClient:ApiClientRepository) { }
@@ -12,9 +15,9 @@ export class DonerRepository {
     {
         return this.apiClient.doPublicPost(DONER_ADD,data);
     }
-    getAllDoner()
+    getAllDoner(fetchEventListParam:any)
     {
-        return this.apiClient.doPublicGetAll(DONER_GETALL);
+        return this.apiClient.doPublicPost(DONER_GETALL,fetchEventListParam);
     }
 
     deleteDoner(data:any)

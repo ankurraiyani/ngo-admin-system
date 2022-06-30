@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLinkActive } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Observable, observable } from 'rxjs';
 import { CommonService } from 'src/app/common/common.service';
@@ -32,7 +32,7 @@ export class ListEventComponent implements OnInit {
 		});
     
     this.getEventData();
-    // this.deleteIdEvent(id);
+   
     
   }
 
@@ -75,10 +75,7 @@ export class ListEventComponent implements OnInit {
         this.eventService.deleteIdEvent(id).subscribe((results) => {
           this.commonService.showMessage('success', 'Event Delete Sucessfully');
           this.getEventData();
-        this.fetchEventListParam.pageSize=this.pageLimitOptions[0],
-        this.fetchEventListParam.searchStr= "",
-        this.fetchEventListParam.pageNo=0,
-        this.fetchEventListParam.currentPage= 0;
+          this.commonService.fetchSearch();
           this.getEventData();
         }, (error) => {
           this.commonService.showMessage('error',error.message);
@@ -87,14 +84,6 @@ export class ListEventComponent implements OnInit {
       }
     });
   }
-
-
-  // deleteIdEvent(id){
-  //   console.log("fdewfwe");
-  //   this.eventService.deleteIdEvent(id).subscribe(result=>{
-  //     console.log("id:"+id);
-  //     // this.eventList();
-  //   })
 
   editEvent(id)
   {
