@@ -9,8 +9,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.websopti.ngosys.dto.employeeListDTO;
+import com.websopti.ngosys.dto.EmployeeListDTO;
+import com.websopti.ngosys.dto.EventListDTO;
 import com.websopti.ngosys.entity.Employee;
+import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.repository.EmployeeRepository;
 
 
@@ -41,10 +43,13 @@ public class EmployeeService {
 			System.out.println("Not Available");
 		}
 	}
-	public Page<Employee> getWithParams(employeeListDTO employeeListDto) {
-		
+	public Page<Employee> getWithParams(EmployeeListDTO employeeListDto) {
+	
 		Pageable page = PageRequest.of(employeeListDto.getPageNo(), employeeListDto.getPageSize());
-		return employeeRepository.findAll(page);
+		//return employeeRepository.findAll(page);
+		
+		return employeeRepository.findEmployeeData(employeeListDto.getSearchStr(),page);
 	}
+
 
 }

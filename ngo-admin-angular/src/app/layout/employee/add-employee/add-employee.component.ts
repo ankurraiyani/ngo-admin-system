@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/common/common.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 
@@ -10,10 +10,12 @@ import { EmployeeService } from 'src/app/services/employee.service';
   styleUrls: ['./add-employee.component.css']
 })
 export class AddEmployeeComponent implements OnInit {
+  employeeId: any;
 
   constructor(private employeeService: EmployeeService,
               private commonService: CommonService,
-              private router: Router) { }
+              private router: Router,
+              private activatedRoute:ActivatedRoute) { }
 
   employeeForm: FormGroup;
 
@@ -22,11 +24,46 @@ export class AddEmployeeComponent implements OnInit {
       this.commonService.currentPageTitle = 'Add Employee';
     });
 
+    
+
+
     this.iniatilzeFrom();
+    this.employeeId=this.activatedRoute.queryParams['value'].id;
+    if(this.employeeId==undefined || this.employeeId==null)
+    {
+      setTimeout(() => {
+        this.commonService.currentPageTitle = 'Add Employee';
+      });
+  
+
+    }
+    else
+    {
+      setTimeout(() => {
+        this.commonService.currentPageTitle = 'edit Employee';
+      });
+      this.employeeService.getEmployeeId(this.employeeId).subscribe((result)=>{
+        this.employeeForm.controls.employeeName.setValue(result.employeeName);
+        this.employeeForm.controls.id.setValue(result.id);
+        this.employeeForm.controls.contactEmployyeEmail.setValue(result.contactEmployyeEmail)
+        this.employeeForm.controls.contactNumber.setValue(result.contactNumber)
+        this.employeeForm.controls.aadharcardNo.setValue(result.aadharcardNo)
+        this.employeeForm.controls.address.setValue(result.address)
+        this.employeeForm.controls.roleOfEmployee.setValue(result.roleOfEmployee)
+        this.employeeForm.controls.gender.setValue(result.gender)
+        this.employeeForm.controls.age.setValue(result.age)
+        this.employeeForm.controls.joiningDate.setValue(result.joiningDate)
+        this.employeeForm.controls.salary.setValue(result.salary)
+        this.employeeForm.controls.employeeTiming.setValue(result.employeeTiming)
+      });
+  
+
+    }
   }
 
   iniatilzeFrom() {
     this.employeeForm = new FormGroup({
+      id:new FormControl(''),
       employeeName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]),
 
       // lastname: new FormControl('',  [Validators.required,Validators.pattern('^[a-zA-Z ]*$')]),
@@ -43,7 +80,7 @@ export class AddEmployeeComponent implements OnInit {
 
       gender: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
 
-      age: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+      age: new FormControl('', [Validators.required, Validators.maxLength(50)]),
 
       joiningDate: new FormControl('', [Validators.required]),
 
@@ -66,7 +103,7 @@ export class AddEmployeeComponent implements OnInit {
         this.router.navigate(['/employee']);
       },
         (error) => { 
-          // this.commonService.showMessage('error',error.message);
+          this.commonService.showMessage('error',error.message);
         }
       );
     }

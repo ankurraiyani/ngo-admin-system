@@ -7,6 +7,10 @@
                         <a href="javascript:void(0);" [routerLink]="['../employee/add']" class="btn btn-primary mr-3"><i
                                 class="fa fa-plus"></i> Create Employee</a>
                     </div>
+                     <div class="col-md-3 align-self-center">
+                        <input type="text" [(ngModel)]="fetchEmployeeListParam.searchStr" (keyup)="getEmployeeData()"
+									 class="form-control">
+                    </div> 
 
 
                     <div class="col-md-1 align-self-center">
@@ -64,7 +68,10 @@
                                     <td>{{employee.employeeTiming}}</td>
                                     <td>
                                     <span class="mr-2">
-                                        <i class="fas fa-edit action-icon"></i>
+                                        <a (click)="editEmployee(employee.id)">
+                                        <i class="fas fa-edit action-icon">
+                                            
+                                        </i></a>
                                     </span>
                                     <span class="mr-2">
                                         <a (click)="deleteIdEmployee(employee.id)">
@@ -84,14 +91,14 @@
                 </table>
             </div>
 
-             <!-- <div class="row" *ngIf="employeeList?.length>0">
+            <div class="row" *ngIf="employeeList?.length>0">
                 <div class="col-sm-12 col-md-5"></div>
                 <div class="col-sm-12 col-md-7">
-                    <pagination-controls id="employee_pages" (pageChange)="pageChanged($employee)"
-                        (pageBoundsCorrection)="pageChanged($employee)" maxSize="9" directionLinks="true" autoHide="true"
+                    <pagination-controls id="employee_pages" (pageChange)="pageChanged($event)"
+                        (pageBoundsCorrection)="pageChanged($event)" maxSize="9" directionLinks="true" autoHide="true"
                         responsive="true" previousLabel="Previous" nextLabel="Next"></pagination-controls>
                 </div>
-            </div>  -->
+            </div>
 
         </div>
     </div>

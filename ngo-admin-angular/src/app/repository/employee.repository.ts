@@ -1,9 +1,12 @@
 import { Injectable } from "@angular/core";
 import { ApiClientRepository } from "../common/Apiclient.repository";
-import { BASE_URL, EMPLOYEE_ADD, EMPLOYEE_DELETE, EMPLOYEE_GETALL, EVENT_ADD } from "../common/url";
+import { BASE_URL, EMPLOYEE_ADD, EMPLOYEE_DELETE, EMPLOYEE_GETALL} from "../common/url";
 
 @Injectable()
 export class EmployeeRepository {
+    getEmployeeId(id: any) {
+        return this.apiClient.doPublicGetAll(EMPLOYEE_GETALL+"/"+id);
+    }
     
     constructor( 
         private apiClient:ApiClientRepository) { }

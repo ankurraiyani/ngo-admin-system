@@ -1,6 +1,93 @@
-<p>list-volunteer works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row justify-content-between">
+                    <div class="col-md-8 align-self-center">
+                        <a href="javascript:void(0);" [routerLink]="['../volunteer/add']" class="btn btn-primary mr-3"><i
+                                class="fa fa-plus"></i> Create Volunteer</a>
+                    </div>
 
-<br>
-<h5 *ngFor="let i of volunteer">
-    {{i.name}}
-</h5>
+
+                    <div class="col-md-1 align-self-center">
+                        <div class="card-tools">
+                            <div class="dataTables_length" id="example1_length">
+                                <label>Show:</label>
+                                <select name="example1_length" aria-controls="example1"
+                                    [(ngModel)]="fetchVolunteerListParam.pageSize"
+                                    class="custom-select custom-select-sm form-control form-control-sm"
+                                    (change)="getVolunteerData()">
+                                    <option *ngFor="let p of pageLimitOptions" [value]=p>{{p}}</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover usr-table">
+                    <thead>
+                        <tr role="row">
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Area Of Interest</th>
+                            <th>Date of Joining</th>
+                            <th>Contact Number</th>                        
+                            <th>Address</th>
+                            <th width="15%">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngIf="volunteerList?.length>0">
+                            <tr *ngFor="let volunteer of volunteerList | paginate: { id: 'volunteer_pages',
+                                                     itemsPerPage: fetchVolunteerListParam.pageSize,
+                                                     currentPage: fetchVolunteerListParam.currentPage,
+                                                     totalItems: totalCount }">
+                                <td>{{volunteer.name}}</td>
+                                <td>{{volunteer.email}}</td>
+                                <td>{{volunteer.gender}}</td>
+                                <td>{{volunteer.age}}</td>
+                                <td>{{volunteer.areaOfInterest}}</td>
+                                <td>{{volunteer.dateOfJoining}}</td>
+                                <td>{{volunteer.contactNumber}}</td>                               
+                                <td>{{volunteer.address}}</td>                            
+                                <td>
+                                    <span class="mr-2">
+                                        <i class="fas fa-edit action-icon"></i>
+                                    </span>
+                                    <span class="mr-2">
+                                        <a (click)="deleteIdVolunteer(volunteer.id)">
+                                        <i class="fa fa-trash action-icon"></i>
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+                        </ng-container>
+                        <ng-container *ngIf="volunteerList?.length<=0">
+                            <tr>
+                                <td [attr.colspan]="6" class="text-center">No Results Found</td>
+                            </tr>
+                        </ng-container>
+
+                    </tbody>
+                </table>
+            </div>
+
+            
+
+            <!-- <div class="row" *ngIf="volunteerList?.length>0">
+                <div class="col-sm-12 col-md-5"></div>
+                <div class="col-sm-12 col-md-7">
+                    <pagination-controls id="volunteer_pages" (pageChange)="pageChanged($volunteer)"
+                        (pageBoundsCorrection)="pageChanged($volunteer)" maxSize="9" directionLinks="true" autoHide="true"
+                        responsive="true" previousLabel="Previous" nextLabel="Next"></pagination-controls>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+
+</div>

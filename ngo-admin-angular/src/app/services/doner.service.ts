@@ -16,4 +16,8 @@ export class DonerService {
     {
         return this.donerRepo.getAllDoner();
     }
+    deleteDoner(data:any)
+    {
+        return this.donerRepo.deleteDoner(data);
+    }
 }

@@ -227,7 +227,7 @@
                 <div class="form-group col-md-6">
                     <label>Age</label>
                     <div class="input-group">
-                        <input type="number" class="form-control" name="age" placeholder="Age" minlength="3"
+                        <input type="number" class="form-control" name="age" placeholder="Age" 
                             maxlength="50" formControlName="age" [ngClass]=" {'is-invalid' : employeeForm.controls.age.touched && employeeForm.controls.age.invalid,
                     'is-valid' : employeeForm.controls.age.touched && employeeForm.controls.age.valid}">
                         <div class="input-group-append">
@@ -238,8 +238,7 @@
                     </div>
                     <span class="help-block"
                         *ngIf="employeeForm.controls.age.touched && employeeForm.controls.age.invalid">
-                        <ng-container *ngIf="employeeForm.controls.age.errors?.minlength">Min
-                            length is 3</ng-container>
+                        
                         <ng-container *ngIf="employeeForm.controls.age.errors?.maxlength">Max
                             length is 50</ng-container>
                         <ng-container *ngIf="employeeForm.controls.age.errors?.whitespace">Please

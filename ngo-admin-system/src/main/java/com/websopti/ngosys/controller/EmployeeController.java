@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.websopti.ngosys.dto.EmployeeListDTO;
 import com.websopti.ngosys.dto.EventListDTO;
-import com.websopti.ngosys.dto.employeeListDTO;
 import com.websopti.ngosys.entity.Employee;
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.service.EmployeeService;
@@ -49,8 +49,7 @@ public class EmployeeController {
 			employeeService.deleteId(employeeId);
 		}
 		@PostMapping("/get")
-		public Page<Employee> getWithParams(@RequestBody employeeListDTO employeeListDto) {
+		public Page<Employee> getWithParams(@RequestBody EmployeeListDTO employeeListDto) {
 			return employeeService.getWithParams(employeeListDto);
-			
 		}
 }

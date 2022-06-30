@@ -45,7 +45,9 @@ public class EventService {
 	public Page<Event> getWithParams(EventListDTO eventListDto) {
 		
 		Pageable page = PageRequest.of(eventListDto.getPageNo(), eventListDto.getPageSize());
-		return eventRepository.findAll(page);
+//		return eventRepository.findAll(page);
+		
+		return eventRepository.findEventData(eventListDto.getSearchStr(),page);
 	}
 
 	

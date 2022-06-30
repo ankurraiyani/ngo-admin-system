@@ -17,4 +17,8 @@ export class EmployeeService {
     {
         return this.employeeRepo.deleteIdEmployee(data);
     }
+    getEmployeeId(id:any)
+    {
+        return this.employeeRepo.getEmployeeId(id);
+    }
 }

@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { AddDonerComponent } from './add-doner/add-doner.component';
 import { DONER_ROUTE } from './doner-routing.module';
 import { ListDonerComponent } from './list-doner/list-doner.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -15,6 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
+    FormsModule,
     DONER_ROUTE
   ]
 })
