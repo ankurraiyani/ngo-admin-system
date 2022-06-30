@@ -24,7 +24,7 @@ export class EvnetService {
     }
 
     getIdEvent(data:any)
-    {   console.log("sdervice :"+data);
+    {   //console.log("sdervice :"+data);
         return this.eventRepo.getIdEvent(data);
         
     }

@@ -3,7 +3,6 @@ import { RouterModule, Routes } from "@angular/router";
 import { AddDonerComponent } from "./add-doner/add-doner.component";
 import { ListDonerComponent } from "./list-doner/list-doner.component";
 
-
 const routes: Routes = [
     
     { path:'add',component:AddDonerComponent },

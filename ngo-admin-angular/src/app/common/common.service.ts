@@ -5,6 +5,8 @@ import Swal from "sweetalert2";
 export class CommonService {
 
 	currentPageTitle: any = "Dashboard";
+	fetchDonerListParam: any;
+	pageLimitOptions: any;
 
 	showMessage(icon, message) {
 		const Toast = Swal.mixin({
@@ -23,6 +25,19 @@ export class CommonService {
 			title: message
 		})
 	}
+
+	fetchSearch()
+	{
+	this.fetchDonerListParam.pageSize=this.pageLimitOptions[0],
+	this.fetchDonerListParam.searchStr= "",
+	this.fetchDonerListParam.pageNo=0,
+	this.fetchDonerListParam.currentPage= 0;
+	}
+
+
+
+
+
 }
 
 
