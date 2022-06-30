@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="form-group col-md-6">
-                    <label>First Name : </label>
+                    <label>Volunteer Name : </label>
                     <div class="input-group">
                         <input type="text" class="form-control" name="name" placeholder="First Name" minlength="2"
                             maxlength="10" formControlName="name" [ngClass]=" {'is-invalid' : volunteerForm.controls.name.touched && volunteerForm.controls.name.invalid,
@@ -15,7 +15,7 @@
                         </div>
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.name.touched && volunteerForm.controls.name.invalid">
+                        *ngIf="volunteerForm.controls.name.touched && volunteerForm.controls.name.invalid || volunteerForm.controls.contactNumber.dirty">
                         <ng-container *ngIf="volunteerForm.controls.name.errors?.minlength">Min
                             Length is 2</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.name.errors?.maxlength">Max
@@ -27,31 +27,7 @@
                     </span>
                 </div>
     
-                <div class="form-group col-md-6">
-                    <label>Last Name : </label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="lastName" placeholder="Last Name" minlength="3"
-                            maxlength="20" formControlName="lastName" [ngClass]=" {'is-invalid' : volunteerForm.controls.lastName.touched && volunteerForm.controls.lastName.invalid,
-						'is-valid' : volunteerForm.controls.lastName.touched && volunteerForm.controls.lastName.valid}">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fa fa-user"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="help-block"
-                        *ngIf="volunteerForm.controls.lastName.touched && volunteerForm.controls.lastName.invalid">
-                        <ng-container *ngIf="volunteerForm.controls.lastName.errors?.minlength">Min
-                            Length is 3</ng-container>
-                        <ng-container *ngIf="volunteerForm.controls.lastName.errors?.maxlength">Max
-                            Length is 20</ng-container>
-                        <ng-container *ngIf="volunteerForm.controls.lastName.errors?.whitespace">Please
-                            Enter valid Last Name.</ng-container>
-                        <ng-container *ngIf="volunteerForm.controls.lastName.errors?.required">
-                            Last Name is required</ng-container>
-                    </span>
-                </div>
-
+                
                 <div class="form-group col-md-6">
                     <label>Email Address :</label>
                     <div class="input-group">
@@ -65,7 +41,7 @@
                         </div>
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.email.touched && volunteerForm.controls.email.invalid">
+                        *ngIf="volunteerForm.controls.email.touched && volunteerForm.controls.email.invalid || volunteerForm.controls.contactNumber.dirty">
                         <ng-container *ngIf="volunteerForm.controls.email.errors?.maxlength">Max
                             Length is 50</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.email.errors?.whitespace">Please
@@ -90,15 +66,37 @@
                         </div>
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.contactNumber.touched && volunteerForm.controls.contactNumber.invalid">
-                        <!-- <ng-container *ngIf="volunteerForm.controls.contactNumber.errors?.minlength">Min
-                            Length is 3</ng-container> -->
-                        <!-- <ng-container *ngIf="volunteerForm.controls.contactNumber.errors?.maxlength">Max
-                            Length is 10</ng-container> -->
+                        *ngIf="volunteerForm.controls.contactNumber.touched && volunteerForm.controls.contactNumber.invalid || volunteerForm.controls.contactNumber.dirty ">
+                        
                         <ng-container *ngIf="volunteerForm.controls.contactNumber.errors?.pattern">Please
                             Enter valid Contact Number</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.contactNumber.errors?.required">
                             Contact Number is required</ng-container>
+                    </span>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Area Of Interest : </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="areaOfInterest" placeholder="Area of Interest" minlength="3"
+                            maxlength="80" formControlName="areaOfInterest" [ngClass]=" {'is-invalid' : volunteerForm.controls.areaOfInterest.touched && volunteerForm.controls.areaOfInterest.invalid,
+						'is-valid' : volunteerForm.controls.areaOfInterest.touched && volunteerForm.controls.areaOfInterest.valid}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="volunteerForm.controls.areaOfInterest.touched && volunteerForm.controls.areaOfInterest.invalid || volunteerForm.controls.contactNumber.dirty">
+                        <ng-container *ngIf="volunteerForm.controls.areaOfInterest.errors?.minlength">Min
+                            Length is 3</ng-container>
+                        <ng-container *ngIf="volunteerForm.controls.areaOfInterest.errors?.maxlength">Max
+                            Length is 80</ng-container>
+                        <ng-container *ngIf="volunteerForm.controls.areaOfInterest.errors?.whitespace">Please
+                            Enter valid Interest.</ng-container>
+                        <ng-container *ngIf="volunteerForm.controls.areaOfInterest.errors?.required">
+                            Area Of Interest is required</ng-container>
                     </span>
                 </div>
 
@@ -116,7 +114,7 @@
                         </textarea>
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.address.touched && volunteerForm.controls.address.invalid">
+                        *ngIf="volunteerForm.controls.address.touched && volunteerForm.controls.address.invalid || volunteerForm.controls.contactNumber.dirty">
                         <ng-container *ngIf="volunteerForm.controls.address.errors?.minlength">Min
                             Length is 3</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.address.errors?.maxlength">Max
@@ -136,7 +134,7 @@
 						'is-valid' : volunteerForm.controls.age.touched && volunteerForm.controls.age.valid}">
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.age.touched && volunteerForm.controls.age.invalid">
+                        *ngIf="volunteerForm.controls.age.touched && volunteerForm.controls.age.invalid || volunteerForm.controls.contactNumber.dirty">
                         <ng-container *ngIf="volunteerForm.controls.age.errors?.minlength">Min
                             Length is 1</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.age.errors?.maxlength">Max
@@ -156,7 +154,7 @@
                     'is-valid' : volunteerForm.controls.gender.touched && volunteerForm.controls.gender.valid}">&nbsp; Female
 
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.gender.touched && volunteerForm.controls.gender.invalid">
+                        *ngIf="volunteerForm.controls.gender.touched && volunteerForm.controls.gender.invalid || volunteerForm.controls.contactNumber.dirty">
                         <ng-container *ngIf="volunteerForm.controls.gender.errors?.required">
                             gender is required</ng-container>
                     </span>
@@ -169,7 +167,7 @@
 						'is-valid' : volunteerForm.controls.dateOfJoining.touched && volunteerForm.controls.dateOfJoining.valid}">
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.dateOfJoining.touched && volunteerForm.controls.dateOfJoining.invalid">
+                        *ngIf="volunteerForm.controls.dateOfJoining.touched && volunteerForm.controls.dateOfJoining.invalid || volunteerForm.controls.contactNumber.dirty">
                         <ng-container *ngIf="volunteerForm.controls.dateOfJoining.errors?.required">
                             Joining Date is required</ng-container>
                     </span>
@@ -182,48 +180,19 @@
 						'is-valid' : volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.valid}">
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.invalid">
-
+                        *ngIf="volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.invalid || volunteerForm.controls.contactNumber.dirty">
                         <ng-container *ngIf="volunteerForm.controls.availableTime.errors?.required">
                             Time is required</ng-container>
                     </span>
                 </div>
-
-                <div class="form-group col-md-6">
-                    <label>Area Of Interest : </label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="areaOfInterest" placeholder="Area of Interest" minlength="3"
-                            maxlength="80" formControlName="areaOfInterest" [ngClass]=" {'is-invalid' : volunteerForm.controls.areaOfInterest.touched && volunteerForm.controls.areaOfInterest.invalid,
-						'is-valid' : volunteerForm.controls.areaOfInterest.touched && volunteerForm.controls.areaOfInterest.valid}">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fa fa-user"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="help-block"
-                        *ngIf="volunteerForm.controls.areaOfInterest.touched && volunteerForm.controls.areaOfInterest.invalid">
-                        <ng-container *ngIf="volunteerForm.controls.areaOfInterest.errors?.minlength">Min
-                            Length is 3</ng-container>
-                        <ng-container *ngIf="volunteerForm.controls.areaOfInterest.errors?.maxlength">Max
-                            Length is 80</ng-container>
-                        <ng-container *ngIf="volunteerForm.controls.areaOfInterest.errors?.whitespace">Please
-                            Enter valid Interest.</ng-container>
-                        <ng-container *ngIf="volunteerForm.controls.areaOfInterest.errors?.required">
-                            Area Of Interest is required</ng-container>
-                    </span>
-                </div>
-
-
-                <!-- add extra fields -->
-
             </div>
         </div>
         <div class="card-footer">
             <div class="row">
                 <div class="col-md-12 text-center">
                     <button type="submit" class="btn btn-primary mr-2">
-                        <span>Add Event</span>
+                        <span *ngIf="isAddForm">Add Volunteer</span>
+                        <span *ngIf="!isAddForm">Edit Volunteer</span>
                     </button>
                     <a [routerLinkActive]="['active']" routerLink="/volunteer" class="btn btn-default ">
                         Cancel</a>

@@ -5,11 +5,15 @@ import { BASE_URL, EVENT_ADD, EVENT_DELETE, EVENT_GETALL, EVENT_GETID } from "..
 
 @Injectable()
 export class EvnetRepository {
+
+
    
    
+
     constructor(private apiClient:ApiClientRepository ) { }
     
     addEvent(data : any){
+        console.log("repo"+data);
         return this.apiClient.doPublicPost(EVENT_ADD , data);
     }
 
@@ -17,14 +21,16 @@ export class EvnetRepository {
        return this.apiClient.doPublicPost(EVENT_GETALL,fetchEventListParam);
     }
 
+    getIdEvent(data: any) {
+       return this.apiClient.doPublicGetAll(EVENT_GETID+"/"+data);
+    }
 
     deleteIdEvent(data : any)
     {
         return this.apiClient.doPublicDelete(EVENT_DELETE+"/"+data);
+
     }
     
-    getIdEvent(data: any) {
-        return this.apiClient.doPublicGetAll(EVENT_GETID+"/"+data);
-    }
+    
         
 }

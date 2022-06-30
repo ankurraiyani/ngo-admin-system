@@ -40,7 +40,8 @@ public class VolunteerService {
 	{
 		
 		Pageable page = PageRequest.of(volunteerListDto.getPageNo(), volunteerListDto.getPageSize());
-		return volunteerRepository.findAll(page);
+//		return volunteerRepository.findAll(page);
+		return volunteerRepository.findVolunteerData(volunteerListDto.getSearchStr(),page);
 	}
 	
 

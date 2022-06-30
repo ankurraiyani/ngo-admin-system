@@ -17,7 +17,7 @@ public class Employee {
 	
     private String employeeName;
 
-	private Date joiningDate;
+	private java.sql.Date joiningDate;
 	
 	private Date leavingDate;
 	

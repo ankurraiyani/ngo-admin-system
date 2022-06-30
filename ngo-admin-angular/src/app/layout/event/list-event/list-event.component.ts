@@ -12,9 +12,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./list-event.component.css']
 })
 export class ListEventComponent implements OnInit {
-
-
-  constructor(private eventService: EvnetService, private commonService:CommonService,private router: Router ) { }
+ 
+  constructor(private eventService: EvnetService, private commonService:CommonService,private router: Router) { }
 
   eventList: any;
   pageLimitOptions: any = [10, 15, 20, 25, 30];
@@ -83,10 +82,7 @@ export class ListEventComponent implements OnInit {
         this.eventService.deleteIdEvent(id).subscribe((results) => {
           this.commonService.showMessage('success', 'Event Delete Sucessfully');
           this.getEventData();
-        this.fetchEventListParam.pageSize=this.pageLimitOptions[0],
-        this.fetchEventListParam.searchStr= "",
-        this.fetchEventListParam.pageNo=0,
-        this.fetchEventListParam.currentPage= 0;
+          this.commonService.fetchSearch();
           this.getEventData();
         }, (error) => {
           this.commonService.showMessage('error',error.message);
@@ -97,10 +93,12 @@ export class ListEventComponent implements OnInit {
   }
 
 
+
  
 
   editEvent(id)
   {
     this.router.navigate(['/event/add'],{queryParams:{id:id}});
+ 
   }
 }

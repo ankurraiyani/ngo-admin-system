@@ -3,10 +3,21 @@
         <div class="card">
             <div class="card-header">
                 <div class="row justify-content-between">
-                    <div class="col-md-8 align-self-center">
+                    <div class="col-md-6 align-self-center">
                         <a href="javascript:void(0);" [routerLink]="['../volunteer/add']" class="btn btn-primary mr-3"><i
                                 class="fa fa-plus"></i> Create Volunteer</a>
                     </div>
+
+                    <div class="col-md-3 align-self-center">
+                        <div class="input-group input-group-lg">
+                            <input type="text"  placeholder="Search here..."       [(ngModel)]="fetchVolunteerListParam.searchStr" (keyup)="getVolunteerData()" class="form-control">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-lg btn-default">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        </div>
 
 
                     <div class="col-md-1 align-self-center">
@@ -56,7 +67,9 @@
                                 <td>{{volunteer.address}}</td>                            
                                 <td>
                                     <span class="mr-2">
+                                        <a (click)="editVolunteer(volunteer.id)">
                                         <i class="fas fa-edit action-icon"></i>
+                                    </a>
                                     </span>
                                     <span class="mr-2">
                                         <a (click)="deleteIdVolunteer(volunteer.id)">
@@ -75,17 +88,14 @@
                     </tbody>
                 </table>
             </div>
-
-            
-
-            <!-- <div class="row" *ngIf="volunteerList?.length>0">
+            <div class="row" *ngIf="volunteerList?.length>0">
                 <div class="col-sm-12 col-md-5"></div>
                 <div class="col-sm-12 col-md-7">
-                    <pagination-controls id="volunteer_pages" (pageChange)="pageChanged($volunteer)"
-                        (pageBoundsCorrection)="pageChanged($volunteer)" maxSize="9" directionLinks="true" autoHide="true"
+                    <pagination-controls id="volunteer_pages" (pageChange)="pageChanged($event)"
+                        (pageBoundsCorrection)="pageChanged($event)" maxSize="9" directionLinks="true" autoHide="true"
                         responsive="true" previousLabel="Previous" nextLabel="Next"></pagination-controls>
                 </div>
-            </div> -->
+            </div>
 
         </div>
     </div>

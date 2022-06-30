@@ -3,6 +3,7 @@ import { VolunteerRepository } from "../repository/volunteer.repository";
 
 @Injectable()
 export class VolunteerService {
+   
     constructor( 
         private volunteerRepo:VolunteerRepository) { }
  
@@ -13,6 +14,10 @@ export class VolunteerService {
     getAllVolunteer(fetchVolunteerListParam : any)
     {
         return this.volunteerRepo.getAllVolunteer(fetchVolunteerListParam);
+    }
+
+    getIdVolunteer(data: any) {
+        return this.volunteerRepo.getIdVolunteer(data);
     }
 
     deleteIdVolunteer(id:any)

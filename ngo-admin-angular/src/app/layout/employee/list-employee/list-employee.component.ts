@@ -85,10 +85,6 @@ export class ListEmployeeComponent implements OnInit {
           this.commonService.showMessage('success', 'Empployee Delete Sucessfully');
            this.getEmployeeData();
            this.commonService.fetchSearch();
-          //   this.fetchEmployeeListParam.pageSize=this.pageLimitOptions[0],
-          // this.fetchEmployeeListParam.searchStr= "",
-          // this.fetchEmployeeListParam.pageNo=0,
-          // this.fetchEmployeeListParam.currentPage= 0;
           this.getEmployeeData();
          }, (error) => {
             this.commonService.showMessage('error',error.message);

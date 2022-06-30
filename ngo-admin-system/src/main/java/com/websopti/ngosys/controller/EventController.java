@@ -17,6 +17,7 @@ import com.websopti.ngosys.dto.EventListDTO;
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.service.EventService;
 
+
 @RestController
 @CrossOrigin
 @RequestMapping("/api/event")
@@ -50,6 +51,7 @@ public class EventController {
 	public Page<Event> getWithParams(@RequestBody EventListDTO eventListDto) {
 		return eventService.getWithParams(eventListDto);
 	}
+	
 	
 	
 }

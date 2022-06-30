@@ -9,11 +9,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.websopti.ngosys.dto.DonerListDTO;
-import com.websopti.ngosys.dto.EventListDTO;
 import com.websopti.ngosys.entity.Doner;
-import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.repository.DonerRepository;
-import com.websopti.ngosys.entity.Doner;
+
+
 @Service
 public class DonerService {
 	

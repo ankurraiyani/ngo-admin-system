@@ -98,9 +98,9 @@
                 <div class="form-group col-md-6">
                     <label>Date of Donation: </label>
 
-                    <input class="form-control" type="date" name="dateOfDonation" formControlName="dateOfDonation"
+                    <input type="date" name="dateOfDonation" formControlName="dateOfDonation" class="form-control" 
                         [ngClass]=" {'is-invalid' : donerForm.controls.dateOfDonation.touched && donerForm.controls.dateOfDonation.invalid,
-                    'is-valid' : donerForm.controls.dateOfDonation.touched && donerForm.controls.dateOfDonation.valid }">
+                    'is-valid' : donerForm.controls.dateOfDonation.touched && donerForm.controls.dateOfDonation.valid}">
 
                     <span class="help-block"
                         *ngIf="donerForm.controls.dateOfDonation.touched && donerForm.controls.dateOfDonation.invalid">

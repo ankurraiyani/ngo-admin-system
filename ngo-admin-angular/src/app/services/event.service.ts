@@ -5,11 +5,12 @@ import { EvnetRepository } from "../repository/event.repository";
 @Injectable()
 export class EvnetService {
     
-    //showMessage: any;
+    
     constructor( 
         private eventRepo:EvnetRepository) { }
 
     addEvent(data : any){
+        console.log(data);
         return this.eventRepo.addEvent(data);
     }
 
@@ -23,16 +24,14 @@ export class EvnetService {
         return this.eventRepo.deleteIdEvent(data);
     }
 
+
+
     getIdEvent(data:any)
-    {   //console.log("sdervice :"+data);
+    {
+        
+        this.addEvent(data);
         return this.eventRepo.getIdEvent(data);
         
     }
-
-    editEvent(id)
-  {
-    return this.eventRepo.getIdEvent(id);
-
-  }
 
 }

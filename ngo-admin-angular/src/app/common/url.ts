@@ -4,6 +4,7 @@ export const BASE_URL: string = "http://localhost:8080/api/";
 export const VOLUNTEER_ADD : string = BASE_URL + "volunteer/save";
 export const VOLUNTEER_GETALL : string = BASE_URL + "volunteer/get";
 export const VOLUNTEER_DELETE : string = BASE_URL + "volunteer/delete";
+export const VOLUNTEER_GETID : string = BASE_URL + "volunteer/get";
 
 //event apis
 export const EVENT_ADD: string = BASE_URL + "event/save";
