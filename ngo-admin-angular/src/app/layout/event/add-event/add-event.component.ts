@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/common/common.service';
 import { EvnetService } from 'src/app/services/event.service';
 
@@ -10,23 +10,45 @@ import { EvnetService } from 'src/app/services/event.service';
   styleUrls: ['./add-event.component.css']
 })
 export class AddEventComponent implements OnInit {
+  eventId: any;
 
   constructor(private eventService: EvnetService,
     private commonService: CommonService,
-    private router: Router) { }
+    private router: Router,private activatedRoute : ActivatedRoute) { }
 
   eventFrom: FormGroup;
 
   ngOnInit(): void {
-    setTimeout(() => {
-			this.commonService.currentPageTitle = 'Add Event';
-		});
+    
     this.iniatilzeFrom();
+    
+    this.eventId=this.activatedRoute.queryParams['value'].id;
+    if(this.eventId==undefined || this.eventId==null)
+    {
+        setTimeout(() => {
+          this.commonService.currentPageTitle = 'Add Event';
+        });
+
+    }
+    else
+    {
+      setTimeout(() => {
+        this.commonService.currentPageTitle = 'Edit Event';
+      });
+      
+        this.eventService.getIdEvent(this.eventId).subscribe((results)=> {
+            this.eventFrom.controls.name.setValue(results.name);
+            this.eventFrom.controls.id.setValue(results.id);
+
+                });
+    }
   }
 
   iniatilzeFrom() {
     this.eventFrom = new FormGroup({
+      id:new FormControl(''),
       name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)])
+      
     });
   }
 
@@ -43,4 +65,6 @@ export class AddEventComponent implements OnInit {
 
     }
   }
+
+    
 }

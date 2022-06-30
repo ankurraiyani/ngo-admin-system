@@ -33,7 +33,15 @@ public class EventService {
 
 	public void deleteEventById(Long EventId)
 	{
+		if(eventRepository.findById(EventId).isPresent())
+		{
 			eventRepository.deleteById(EventId);
+		}
+		else
+		{
+			System.out.println("Not Available");
+		}
+			
 	}
 	public Page<Event> getWithParams(EventListDTO eventListDto) {
 		

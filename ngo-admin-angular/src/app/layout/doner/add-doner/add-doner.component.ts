@@ -52,7 +52,7 @@ export class AddDonerComponent implements OnInit {
 
       this.donerService.addDoner(this.donerForm.value).subscribe((resultes) => {
         this.commonService.showMessage("success", "Donner Added Sucessfully");
-        this.router.navigate(['/event']);
+        this.router.navigate(['/doner']);
       }, (error) => {
         this.commonService.showMessage("error", error.message);
       });

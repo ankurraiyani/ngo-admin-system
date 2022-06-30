@@ -13,4 +13,5 @@ export class EmployeeService {
     getAllEmployee(){
         return this.employeeRepo.getAllEmployee();
     }
+    
 }

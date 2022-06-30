@@ -6,7 +6,6 @@ import { __param } from "tslib";
 
 @Injectable()
 export class ApiClientRepository {
-
     constructor( 
         private httpClient: HttpClient) { }
 

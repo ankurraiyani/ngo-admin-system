@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscriber, Subscription } from 'rxjs';
 import { CommonService } from 'src/app/common/common.service';
 import { VolunteerService } from 'src/app/services/volunteer.service';
 import Swal from 'sweetalert2';
@@ -12,7 +14,7 @@ export class ListVolunteerComponent implements OnInit {
   result: string;
 
   constructor(private volunteerService: VolunteerService,
-    private commonService: CommonService) { }
+    private commonService: CommonService,private router : Router) { }
 
   volunteerList: any;
   pageLimitOptions: any = [10, 15, 20, 25, 30];
@@ -23,6 +25,7 @@ export class ListVolunteerComponent implements OnInit {
     pageNo: 0,
     currentPage: 0
   }
+  searchSubscriber : Subscription
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -34,7 +37,10 @@ export class ListVolunteerComponent implements OnInit {
   }
 
   getVolunteerData() {
-    this.volunteerService.getAllVolunteer(this.fetchVolunteerListParam).subscribe((results) => {
+    if(this.searchSubscriber){
+      this.searchSubscriber.unsubscribe();
+    }
+    this.searchSubscriber = this.volunteerService.getAllVolunteer(this.fetchVolunteerListParam).subscribe((results) => {
       this.volunteerList = results.content;
       this.totalCount = results.totalElements;
     }, (error) => {
@@ -49,6 +55,10 @@ export class ListVolunteerComponent implements OnInit {
     this.getVolunteerData();
   }
 
+  editVolunteer(id)
+  {
+    this.router.navigate(['volunteer/add'],{queryParams:{id:id}});
+  }
   // getAllVolunteer() {
   //   this.volunteerService.getAllVolunteer().subscribe((results) => {
   //     this.volunteer = results;

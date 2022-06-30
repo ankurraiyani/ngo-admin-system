@@ -9,6 +9,7 @@ export class EvnetService {
         private eventRepo:EvnetRepository) { }
 
     addEvent(data : any){
+        console.log(data);
         return this.eventRepo.addEvent(data);
     }
 
@@ -20,5 +21,14 @@ export class EvnetService {
     deleteIdEvent(data:any)
     {
         return this.eventRepo.deleteIdEvent(data);
+    }
+
+
+    getIdEvent(data:any)
+    {
+        console.log("get id "+data);
+        this.addEvent(data);
+        return this.eventRepo.getIdEvent(data);
+        
     }
 }
