@@ -11,6 +11,8 @@ import { EmployeeService } from 'src/app/services/employee.service';
 })
 export class AddEmployeeComponent implements OnInit {
   employeeId: any;
+  isAddForm = true;
+ 
 
   constructor(private employeeService: EmployeeService,
               private commonService: CommonService,
@@ -18,6 +20,7 @@ export class AddEmployeeComponent implements OnInit {
               private activatedRoute:ActivatedRoute) { }
 
   employeeForm: FormGroup;
+
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -39,6 +42,7 @@ export class AddEmployeeComponent implements OnInit {
     }
     else
     {
+      this.isAddForm=false;
       setTimeout(() => {
         this.commonService.currentPageTitle = 'edit Employee';
       });
@@ -74,7 +78,8 @@ export class AddEmployeeComponent implements OnInit {
 
       address: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
 
-      aadharcardNo: new FormControl('', [Validators.required, Validators.maxLength(50), Validators.pattern("^[0-9]*$")]),
+      aadharcardNo: new FormControl('', [Validators.required,
+        Validators.minLength(12), Validators.maxLength(50), Validators.pattern("^[0-9]*$")]),
 
       roleOfEmployee: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
 

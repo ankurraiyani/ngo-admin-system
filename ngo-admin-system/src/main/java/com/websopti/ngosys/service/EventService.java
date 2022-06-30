@@ -31,6 +31,7 @@ public class EventService {
 		return eventRepository.findAll();
 	}
 
+	
 	public void deleteEventById(Long EventId)
 	{
 		if(eventRepository.findById(EventId).isPresent())
@@ -42,6 +43,8 @@ public class EventService {
 			System.out.println("Not Available");
 		}
 	}
+	
+	
 	public Page<Event> getWithParams(EventListDTO eventListDto) {
 		
 		Pageable page = PageRequest.of(eventListDto.getPageNo(), eventListDto.getPageSize());

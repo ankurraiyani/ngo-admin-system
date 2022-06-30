@@ -4,13 +4,23 @@
             <div class="card-header">
                 <div class="row justify-content-between">
                     <div class="col-md-8 align-self-center">
-                        <a href="javascript:void(0);" [routerLink]="['../employee/add']" class="btn btn-primary mr-3"><i
-                                class="fa fa-plus"></i> Create Employee</a>
+                        <a href="javascript:void(0);" [routerLink]="['../employee/add']"
+                            class="btn btn-primary ms-3 btn-lg"><i class="fa fa-plus"></i> Create Employee</a>
                     </div>
-                     <div class="col-md-3 align-self-center">
-                        <input type="text" [(ngModel)]="fetchEmployeeListParam.searchStr" (keyup)="getEmployeeData()"
-									 class="form-control">
-                    </div> 
+
+
+                    <div class="col-md-3 align-self-center">
+                        <div class="input-group input-group-lg">
+                            <input type="text" placeholder="Search here..."
+                                [(ngModel)]="fetchEmployeeListParam.searchStr" (keyup)="getEmployeeData()"
+                                class="form-control">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-lg btn-default">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
 
                     <div class="col-md-1 align-self-center">
@@ -57,26 +67,26 @@
                                 <td>{{employee.contactEmployyeEmail}}</td>
                                 <td>{{employee.contactNumber}}</td>
                                 <td>{{employee.aadharcardNo}}</td>
-                                    <td>{{employee.address}}</td>
-                             
-                                     <td>{{employee.roleOfEmployee}}</td>
-                                     <td>{{employee.gender}}</td>
-                                     <td>{{employee.age}}</td> 
-                                     <td>{{employee.joiningDate}}</td>
-                                     <td>{{employee.salary}}</td>
-                                
-                                    <td>{{employee.employeeTiming}}</td>
-                                    <td>
+                                <td>{{employee.address}}</td>
+
+                                <td>{{employee.roleOfEmployee}}</td>
+                                <td>{{employee.gender}}</td>
+                                <td>{{employee.age}}</td>
+                                <td>{{employee.joiningDate}}</td>
+                                <td>{{employee.salary}}</td>
+
+                                <td>{{employee.employeeTiming}}</td>
+                                <td>
                                     <span class="mr-2">
                                         <a (click)="editEmployee(employee.id)">
-                                        <i class="fas fa-edit action-icon">
-                                            
-                                        </i></a>
+                                            <i class="fas fa-edit action-icon">
+
+                                            </i></a>
                                     </span>
                                     <span class="mr-2">
                                         <a (click)="deleteIdEmployee(employee.id)">
-                                        <i class="fa fa-trash action-icon"></i>
-                                    </a>
+                                            <i class="fa fa-trash action-icon"></i>
+                                        </a>
                                     </span>
                                 </td>
                             </tr>

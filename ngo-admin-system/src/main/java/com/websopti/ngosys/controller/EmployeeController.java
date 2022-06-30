@@ -19,9 +19,6 @@ import com.websopti.ngosys.entity.Employee;
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.service.EmployeeService;
 
-
-
-
 @RestController
 @RequestMapping("/api/employee")
 @CrossOrigin

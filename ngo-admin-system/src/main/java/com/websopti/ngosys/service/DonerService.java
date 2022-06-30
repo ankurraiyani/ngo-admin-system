@@ -13,7 +13,7 @@ import com.websopti.ngosys.dto.EventListDTO;
 import com.websopti.ngosys.entity.Doner;
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.repository.DonerRepository;
-
+import com.websopti.ngosys.entity.Doner;
 @Service
 public class DonerService {
 	
@@ -54,7 +54,9 @@ public class DonerService {
 	
 	public Page<Doner> getWithParams(DonerListDTO donerListDto) {
 		Pageable page = PageRequest.of(donerListDto.getPageNo(), donerListDto.getPageSize());
-		return donerRepository.findAll(page);
+		//return donerRepository.findAll(page);
+		
+		return donerRepository.findDonerData(donerListDto.getSearchStr(),page);
 	}
 
 }

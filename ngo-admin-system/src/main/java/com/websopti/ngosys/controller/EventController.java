@@ -23,7 +23,7 @@ import com.websopti.ngosys.service.EventService;
 public class EventController {
 	
 	@Autowired
-	private EventService eventService;
+	private EventService eventService;  
 
 	@PostMapping("/save")
 	public Event save(@RequestBody Event event) {
@@ -40,14 +40,15 @@ public class EventController {
 		return eventService.getAll();
 	}
 	
+	@DeleteMapping("delete/{eventId}")
+	public void deleteId(@PathVariable Long eventId)
+	{
+		 eventService.deleteEventById(eventId);
+	}
+	
 	@PostMapping("/get")
 	public Page<Event> getWithParams(@RequestBody EventListDTO eventListDto) {
 		return eventService.getWithParams(eventListDto);
-	}
-	@DeleteMapping("/deleteId/{eventId}")
-	public void deleteId(@PathVariable Long eventId)
-	{
-		eventService.deleteEventById(eventId);
 	}
 	
 	

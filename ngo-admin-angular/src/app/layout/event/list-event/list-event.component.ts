@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterLinkActive } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Observable, observable } from 'rxjs';
 import { CommonService } from 'src/app/common/common.service';
@@ -13,7 +14,7 @@ import Swal from 'sweetalert2';
 export class ListEventComponent implements OnInit {
 
 
-  constructor(private eventService: EvnetService, private commonService:CommonService) { }
+  constructor(private eventService: EvnetService, private commonService:CommonService,private router: Router ) { }
 
   eventList: any;
   pageLimitOptions: any = [10, 15, 20, 25, 30];
@@ -32,6 +33,7 @@ export class ListEventComponent implements OnInit {
 		});
     
     this.getEventData();
+
     
   }
 
@@ -54,83 +56,51 @@ export class ListEventComponent implements OnInit {
     this.getEventData();
   }
 
-  // deleteEvent(){
-  //   const swalWithBootstrapButtons = Swal.mixin({
-  //     customClass: {
-  //       confirmButton: 'btn btn-primary ml-2 ',
-  //       cancelButton: 'btn btn-danger'
-  //     },
-  //     buttonsStyling: false,
-  //   })
-  //   swalWithBootstrapButtons.fire({
-  //     title: 'Are you sure you want to delete event?',
-  //     icon: 'warning',
-  //     showCancelButton: true,
-  //     confirmButtonText: 'Yes',
-  //     cancelButtonText: 'Cancel',
-  //     allowOutsideClick: false
-  //   }).then((result) => {
-  //     if (result.value) {
-  //       // this.eventService.deleteEvent(id).subscribe((results) => {
-  //       //   this.commonService.showMessage('success', 'Event Delete Sucessfully');
-  //       //   this.getEventData();
-  //       // this.fetchEventListParam.pageSize=this.pageLimitOptions[0],
-  //       // this.fetchEventListParam.searchStr= "",
-  //       // this.fetchEventListParam.pageNo=0,
-  //       // this.fetchEventListParam.currentPage= 0;
-  //       //   this.getEventData();
-  //       // }, (error) => {
-  //       //   this.commonService.showMessage('error',error.message);
-  //       // });
-  //       console.log("deleted")
-  //     }
-  //   });
-  // }
 
 
-
-  // deleteIdEvent(){
-  //   const swalWithBootstrapButtons = Swal.mixin({
-  //     customClass: {
-  //       confirmButton: 'btn btn-primary ml-2 ',
-  //       cancelButton: 'btn btn-danger'
-  //     },
-  //     buttonsStyling: false,
-  //   })
-  //   swalWithBootstrapButtons.fire({
-  //     title: 'Are you sure you want to delete event?',
-  //     icon: 'warning',
-  //     showCancelButton: true,
-  //     confirmButtonText: 'Yes',
-  //     cancelButtonText: 'Cancel',
-  //     allowOutsideClick: false
-  //   }).then((result) => {
-  //     if (result.value) {
-  //       this.eventService.deleteIdEvent(id).subscribe((results) => {
-  //         this.commonService.showMessage('success', 'Event Delete Sucessfully');
-  //         this.getEventData();
-  //       }, (error) => {
-  //         this.commonService.showMessage('error',error.message);
-  //       });
-  //     }
-  //   });
-  // }
-
-
-
-  deleteIdEvent(id){
-    // console.log("fdewfwe");
-    this.eventService.deleteIdEvent(id).subscribe(result=>{
-        this.getEventData();
+  
+ 
       // this.eventList();
+
+  deleteIdEvent(id:any){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-primary ml-2 ',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false,
+
     })
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure you want to delete event?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'Cancel',
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.value) {
+        this.eventService.deleteIdEvent(id).subscribe((results) => {
+          this.commonService.showMessage('success', 'Event Delete Sucessfully');
+          this.getEventData();
+        this.fetchEventListParam.pageSize=this.pageLimitOptions[0],
+        this.fetchEventListParam.searchStr= "",
+        this.fetchEventListParam.pageNo=0,
+        this.fetchEventListParam.currentPage= 0;
+          this.getEventData();
+        }, (error) => {
+          this.commonService.showMessage('error',error.message);
+        });
+        console.log("deleted")
+      }
+    });
+  }
 
-   
 
-// function id(id: any) {
-//   throw new Error('Function not implemented.');
-// }
-  
-  
+ 
+
+  editEvent(id)
+  {
+    this.router.navigate(['/event/add'],{queryParams:{id:id}});
   }
 }

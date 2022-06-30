@@ -17,46 +17,13 @@
                     </div>
                     <span class="help-block"
                         *ngIf="employeeForm.controls.employeeName.touched && employeeForm.controls.employeeName.invalid||employeeForm.controls.employeeName.dirty">
-                        <!-- <ng-container *ngIf="employeeForm.controls.name.errors?.minlength">Min
-                            length is 3</ng-container> -->
-                        <!-- <ng-container *ngIf="employeeForm.controls.name.errors?.maxlength">Max
-                            length is 50</ng-container> -->
-
                         <ng-container *ngIf="employeeForm.controls.employeeName.errors?.required">
                             First Name is required</ng-container>
                         <ng-container *ngIf="employeeForm.controls.employeeName.errors?.pattern">Please
                             enter valid name.</ng-container>
                     </span>
                 </div>
-                <!-- add extra fields -->
-
-
-                <!-- <div class="form-group col-md-6">
-                    <label>Last Name:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="lastname" placeholder="Last Name" 
-                            maxlength="50" formControlName="lastname" [ngClass]=" {'is-invalid' : employeeForm.controls.lastname.touched && employeeForm.controls.lastname.invalid,
-						'is-valid' : employeeForm.controls.lastname.touched && employeeForm.controls.lastname.valid}">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fa fa-user"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <span class="help-block"
-                        *ngIf="employeeForm.controls.lastname.touched && employeeForm.controls.lastname.invalid||employeeForm.controls.lastname.dirty">
-                         <ng-container *ngIf="employeeForm.controls.lastname.errors?.minlength">Min
-                            length is 3</ng-container> -->
-                <!-- <ng-container *ngIf="employeeForm.controls.lastname.errors?.maxlength">Max
-                            length is 50</ng-container> -->
-
-                <!-- <ng-container *ngIf="employeeForm.controls.lastname.errors?.required">
-                            lastName is required</ng-container>
-                            <ng-container *ngIf="employeeForm.controls.lastname.errors?.pattern">Please
-                                enter valid lastName.</ng-container>
-                    </span> -->
-                <!-- </div> -->
-                <!-- add extra fields -->
+              
                 <div class="form-group col-md-6">
                     <label>Email Address:</label>
                     <div class="input-group">
@@ -65,7 +32,7 @@
 					}">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fa fa-user"></span>
+                                <span class="fas fa-envelope"></span>
                             </div>
                         </div>
                     </div>
@@ -90,7 +57,7 @@
                     'is-valid' : employeeForm.controls.contactNumber.touched && employeeForm.controls.contactNumber.valid}">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fa fa-user"></span>
+                                <span class="fa fa-phone"></span>
                             </div>
                         </div>
                     </div>
@@ -108,17 +75,11 @@
                     </span>
                 </div>
 
-
-
-
-                <!-- add extra fields -->
-
-
-                <!-- add extra fields -->
                 <div class="form-group col-md-6">
                     <label>AadharNumber:</label>
                     <div class="input-group">
                         <input type="text" class="form-control" name="aadharcardNo" placeholder="AadharNumber"
+                            minlength="12"
                             maxlength="12" formControlName="aadharcardNo"
                             [ngClass]=" {'is-invalid' : employeeForm.controls.aadharcardNo.touched && employeeForm.controls.aadharcardNo.invalid,
                     'is-valid' : employeeForm.controls.aadharcardNo.touched && employeeForm.controls.aadharcardNo.valid}">
@@ -130,10 +91,10 @@
                     </div>
                     <span class="help-block"
                         *ngIf="employeeForm.controls.aadharcardNo.touched && employeeForm.controls.aadharcardNo.invalid || employeeForm.controls.aadharcardNo.dirty">
-                        <!-- <ng-container *ngIf="employeeForm.controls.aadharNumber.errors?.minlength">Min
-                        length is 3</ng-container>  -->
+                        <ng-container *ngIf="employeeForm.controls.aadharcardNo.errors?.minlength">min
+                            length is 12</ng-container>
                         <ng-container *ngIf="employeeForm.controls.aadharcardNo.errors?.maxlength">Max
-                            length is 14</ng-container>
+                            length is 12</ng-container>
                         <ng-container *ngIf="employeeForm.controls.aadharcardNo.errors?.whitespace">Please
                             Enter valid Aadhar Card Number.</ng-container>
                         <ng-container *ngIf="employeeForm.controls.aadharcardNo.errors?.required">
@@ -230,11 +191,7 @@
                         <input type="number" class="form-control" name="age" placeholder="Age" 
                             maxlength="50" formControlName="age" [ngClass]=" {'is-invalid' : employeeForm.controls.age.touched && employeeForm.controls.age.invalid,
                     'is-valid' : employeeForm.controls.age.touched && employeeForm.controls.age.valid}">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fa fa-user"></span>
-                            </div>
-                        </div>
+
                     </div>
                     <span class="help-block"
                         *ngIf="employeeForm.controls.age.touched && employeeForm.controls.age.invalid">
@@ -273,11 +230,7 @@
                         <input type="text" class="form-control" name="salary" placeholder="Salary" maxlength="50"
                             formControlName="salary" [ngClass]=" {'is-invalid' : employeeForm.controls.salary.touched && employeeForm.controls.salary.invalid,
                     'is-valid' : employeeForm.controls.salary.touched && employeeForm.controls.salary.valid}">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fa fa-user"></span>
-                            </div>
-                        </div>
+                        
                     </div>
                     <span class="help-block"
                         *ngIf="employeeForm.controls.salary.touched && employeeForm.controls.salary.invalid || employeeForm.controls.salary.dirty">
@@ -303,11 +256,7 @@
                             formControlName="employeeTiming"
                             [ngClass]=" {'is-invalid' : employeeForm.controls.employeeTiming.touched && employeeForm.controls.employeeTiming.invalid,
                     'is-valid' : employeeForm.controls.employeeTiming.touched && employeeForm.controls.employeeTiming.valid}">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fa fa-user"></span>
-                            </div>
-                        </div>
+                        
                     </div>
                     <span class="help-block"
                         *ngIf="employeeForm.controls.employeeTiming.touched && employeeForm.controls.employeeTiming.invalid">
@@ -342,7 +291,8 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <button type="submit" class="btn btn-primary mr-2">
-                        <span>Add Employee</span>
+                        <span *ngIf="isAddForm">Add Employee</span>
+                        <span *ngIf="!isAddForm">Edit Employee</span>
                     </button>
                     <a [routerLinkActive]="['active']" routerLink="/event" class="btn btn-default ">
                         Cancel</a>
