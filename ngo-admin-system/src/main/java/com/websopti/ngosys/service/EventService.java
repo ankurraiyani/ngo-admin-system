@@ -31,10 +31,13 @@ public class EventService {
 		return eventRepository.findAll();
 	}
 
+	
 	public void deleteEventById(Long EventId)
 	{
 			eventRepository.deleteById(EventId);
 	}
+	
+	
 	public Page<Event> getWithParams(EventListDTO eventListDto) {
 		
 		Pageable page = PageRequest.of(eventListDto.getPageNo(), eventListDto.getPageSize());

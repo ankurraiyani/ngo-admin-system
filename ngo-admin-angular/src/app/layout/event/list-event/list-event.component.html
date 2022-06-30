@@ -7,6 +7,7 @@
                         <a href="javascript:void(0);" [routerLink]="['../event/add']" class="btn btn-primary mr-3"><i
                                 class="fa fa-plus"></i> Create Evnet</a>
                     </div>
+                    
                     <div class="col-md-3 align-self-center">
                         <input type="text" [(ngModel)]="fetchEventListParam.searchStr" (keyup)="getEventData()"
 									 class="form-control">
@@ -47,8 +48,11 @@
                                 <td>{{event.name}}</td>
                                 <td>
                                     <span class="mr-2">
+                                        <a (click)="editEvent(event.id)">
                                         <i class="fas fa-edit action-icon"></i>
+                                    </a>
                                     </span>
+
                                     <span class="mr-2">
                                         <a (click)="deleteIdEvent(event.id)">
                                     

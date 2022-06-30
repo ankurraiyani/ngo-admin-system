@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { CommonService } from 'src/app/common/common.service';
 import { DonerService } from 'src/app/services/doner.service';
 
@@ -10,7 +12,7 @@ import { DonerService } from 'src/app/services/doner.service';
 export class ListDonerComponent implements OnInit {
 
   constructor(private donerService: DonerService,
-    private commonService: CommonService) { }
+    private commonService: CommonService,private router: Router  ) { }
 
   donerList: any;
   pageLimitOptions: any = [10, 15, 20, 25, 30];
@@ -21,6 +23,7 @@ export class ListDonerComponent implements OnInit {
     pageNo: 0,
     currentPage: 0
   }
+  searchSubscriber:Subscription;
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -28,14 +31,25 @@ export class ListDonerComponent implements OnInit {
     });
     this.getDonerData();
   }
-
   getDonerData() {
-    this.donerService.getAllDoner().subscribe((results) => {
-      this.donerList = results;
+    if (this.searchSubscriber) {
+      this.searchSubscriber.unsubscribe();
+    }
+    this.searchSubscriber =this.donerService.getAllDoner(this.fetchDonerListParam).subscribe((results) => {
+      this.donerList = results.content;
+      this.totalCount = results.totalElements;
     }, (error) => {
-      this.commonService.showMessage("error", error.message);
+      this.commonService.showMessage("error", error.message)
     });
-  }
+  } 
+
+  // getDonerData() {
+  //   this.donerService.getAllDoner().subscribe((results) => {
+  //     this.donerList = results;
+  //   }, (error) => {
+  //     this.commonService.showMessage("error", error.message);
+  //   });
+  // }
   pageChanged(e: any) {
     this.fetchDonerListParam.currentPage = e;
     this.fetchDonerListParam.pageNo = e - 1;
@@ -50,6 +64,11 @@ export class ListDonerComponent implements OnInit {
     }, (error) => {
       this.commonService.showMessage("error", error.message);
     });
+  }
+
+  editDoner(id)
+  {
+    this.router.navigate(['/doner/add'],{queryParams:{id:id}});
   }
 
   

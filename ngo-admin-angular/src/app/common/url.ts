@@ -9,6 +9,7 @@ export const VOLUNTEER_DELETE : string = BASE_URL + "volunteer/delete";
 export const EVENT_ADD: string = BASE_URL + "event/save";
 export const EVENT_GETALL:string= BASE_URL + "event/get";
 export const EVENT_DELETE: string=BASE_URL+"event/delete";
+export const EVENT_GETID: string=BASE_URL+"event/get"
 
 //employee apis
 export const EMPLOYEE_ADD: string = BASE_URL + "employee/save";
@@ -16,6 +17,7 @@ export const EMPLOYEE_GETALL: string = BASE_URL + "employee/get/all";
 
 //donner apis
 export const DONER_ADD:string =BASE_URL+"doner/save";
-export const DONER_GETALL:string =BASE_URL+"doner/get/all";
+export const DONER_GETALL:string =BASE_URL+"doner/get";
 export const DONER_DELETE: string=BASE_URL+"doner/delete";
+export const DONER_GETID:string=BASE_URL+"doner/get";
 

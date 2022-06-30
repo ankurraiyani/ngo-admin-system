@@ -12,9 +12,14 @@
         <div class="card">
             <div class="card-header">
                 <div class="row justify-content-between">
-                    <div class="col-md-8 align-self-center">
+                    <div class="col-md-6 align-self-center">
                         <a href="javascript:void(0);" [routerLink]="['../doner/add']" class="btn btn-primary mr-3"><i
-                                class="fa fa-plus"></i> Create Evnet</a>
+                                class="fa fa-plus"></i> Create Doner</a>
+                    </div>
+
+                    <div class="col-md-3 align-self-center">
+                        <input type="text" [(ngModel)]="fetchDonerListParam.searchStr" (keyup)="getDonerData()"
+									 class="form-control">
                     </div>
 
 
@@ -65,7 +70,8 @@
                                 <td>{{doner.reason}}</td>
                                 <td>
                                     <span class="mr-2">
-                                        <i class="fas fa-edit action-icon"></i>
+                                        <a (click)="editDoner(doner.id)">
+                                        <i class="fas fa-edit action-icon"></i></a>
                                     </span>
                                     <span class="mr-2">
                                         <a (click)="deleteDoner(doner.id)">
@@ -86,14 +92,14 @@
                 </table>
             </div>
 
-            <!-- <div class="row" *ngIf="donerList?.length>0">
+            <div class="row" *ngIf="donerList?.length>0">
                 <div class="col-sm-12 col-md-5"></div>
                 <div class="col-sm-12 col-md-7">
-                    <pagination-controls id="event_pages" (pageChange)="pageChanged($doner)"
-                        (pageBoundsCorrection)="pageChanged($doner)" maxSize="9" directionLinks="true" autoHide="true"
+                    <pagination-controls id="event_pages" (pageChange)="pageChanged($event)"
+                        (pageBoundsCorrection)="pageChanged($event)" maxSize="9" directionLinks="true" autoHide="true"
                         responsive="true" previousLabel="Previous" nextLabel="Next"></pagination-controls>
                 </div>
-            </div> -->
+            </div>
 
         </div>
     </div>
