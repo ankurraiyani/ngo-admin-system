@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.websopti.ngosys.dto.EventListDTO;
@@ -47,7 +48,7 @@ public class EventService {
 	
 	public Page<Event> getWithParams(EventListDTO eventListDto) {
 		
-		Pageable page = PageRequest.of(eventListDto.getPageNo(), eventListDto.getPageSize());
+		Pageable page = PageRequest.of(eventListDto.getPageNo(), eventListDto.getPageSize(),Direction.DESC, "start_date");
 //		return eventRepository.findAll(page);
 		
 		return eventRepository.findEventData(eventListDto.getSearchStr(),page);

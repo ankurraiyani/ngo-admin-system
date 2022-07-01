@@ -11,13 +11,16 @@ import { DonerService } from 'src/app/services/doner.service';
   styleUrls: ['./add-doner.component.css']
 })
 export class AddDonerComponent implements OnInit {
-  donerId: any;
-  isAddForm = true;
+  
   constructor(private donerService: DonerService,
     private commonService: CommonService,
     private router: Router, private activatedRouter: ActivatedRoute) { }
 
   donerForm: FormGroup;
+  donerId: any;
+  isAddForm = true;
+  isDiscritpionShow : boolean = false;
+
 
   ngOnInit(): void {
     this.iniatilzeFrom();
@@ -71,6 +74,8 @@ export class AddDonerComponent implements OnInit {
 
       typeofDonation: new FormControl('', [Validators.required]),
 
+      donationDiscription : new FormControl('', []),
+
     });
   }
 
@@ -86,6 +91,31 @@ export class AddDonerComponent implements OnInit {
       });
     }
   }
+
+  donationTypeChnage(e : any){
+    this.removeValidation('donationDiscription');
+    if(e.target.value){
+      this.isDiscritpionShow = true;
+      if(e.target.value == "money"){
+        this.addValidation('donationDiscription', [Validators.required, Validators.pattern("^[0-9]*$")]);
+      }else{
+        this.addValidation('donationDiscription', [Validators.required]);
+      }
+    } else {
+      this.isDiscritpionShow = false;
+    }
+  }
+
+  addValidation(fieldName, validations) {
+		this.donerForm.controls[fieldName].setValidators(validations);
+		this.donerForm.controls[fieldName].updateValueAndValidity();
+	}
+
+	removeValidation(fieldName) {
+		this.donerForm.controls[fieldName].setErrors(null);
+		this.donerForm.controls[fieldName].clearValidators();
+		this.donerForm.controls[fieldName].updateValueAndValidity();
+	}
 }
 
 

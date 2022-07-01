@@ -88,6 +88,20 @@
                                             <i class="fa fa-trash action-icon"></i>
                                         </a>
                                     </span>
+                                    <span class="mr-2">
+                                        <!-- <span (click)="toggleClick(employee.id,employee.isActive)">
+											<i *ngIf="!employee.isActive" class="fas fa-toggle-on"></i>
+											<i *ngIf="employee.isActive" class="fas fa-toggle-off"></i>
+										</span> -->
+                                        <div class="custom-control 
+											custom-switch custom-switch-off-danger custom-switch-on-success">
+											<input type="checkbox" class="custom-control-input" [checked]="employee.isActive"
+												(change)="toggleClick(employee.id,employee.isActive)"
+												 id="cb_{{employee.id}}">
+											<label class="custom-control-label"	[attr.for]="'cb_' + employee.id"
+											></label>
+										</div>
+                                    </span>
                                 </td>
                             </tr>
                         </ng-container>

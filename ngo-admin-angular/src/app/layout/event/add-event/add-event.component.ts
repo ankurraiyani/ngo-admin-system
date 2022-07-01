@@ -11,6 +11,7 @@ import { EvnetService } from 'src/app/services/event.service';
 })
 export class AddEventComponent implements OnInit {
   eventId: any;
+  isAddFrom : boolean = true;
 
   constructor(private eventService: EvnetService,
     private commonService: CommonService,
@@ -35,7 +36,7 @@ export class AddEventComponent implements OnInit {
       setTimeout(() => {
         this.commonService.currentPageTitle = 'Edit Event';
       });
-      
+        this.isAddFrom = false;
         this.eventService.getIdEvent(this.eventId).subscribe((results)=> {
             this.eventFrom.controls.name.setValue(results.name);
             this.eventFrom.controls.id.setValue(results.id);
@@ -58,7 +59,13 @@ export class AddEventComponent implements OnInit {
     this.eventFrom.markAllAsTouched();
     if (this.eventFrom.valid) {
       this.eventService.addEvent(this.eventFrom.value).subscribe((results) => {
-        this.commonService.showMessage("success", "Event Added Sucessfully");
+        let msg;
+        if(this.isAddFrom){
+          msg="Event Added Sucessfully";
+        } else{
+          msg="Event Updated Sucessfully";
+        }
+        this.commonService.showMessage("success", msg);
         this.router.navigate(['/event']);
       }, (error) => {
         this.commonService.showMessage("error", error.message);

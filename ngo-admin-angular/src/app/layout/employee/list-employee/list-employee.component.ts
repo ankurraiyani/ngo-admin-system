@@ -97,7 +97,22 @@ export class ListEmployeeComponent implements OnInit {
       //console.log(id)
        this.router.navigate(['/employee/add'],{queryParams:{id:id}});
     }
-  
+    
+    toggleClick(employeeId:any , isActive:any) {
+      console.log(isActive)
+      this.employeeService.isActiveDeactiveEmployee(employeeId,!isActive).subscribe((results) => {
+        let msg ;
+        if(!isActive) {
+           msg = 'Empployee Activated Sucessfully';
+        } else {
+          msg = 'Empployee Deactivated Sucessfully';
+        }
+        this.commonService.showMessage('success', msg);
+        this.getEmployeeData();
+      }, (error) => {
+        this.commonService.showMessage("error", error.message)
+      });
+    }
   
 
 }

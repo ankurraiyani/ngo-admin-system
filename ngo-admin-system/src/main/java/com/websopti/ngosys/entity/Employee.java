@@ -39,7 +39,7 @@ public class Employee {
 	
 	private Long salary;
 	
-	private String isActive;
+	private Boolean isActive;
 	
 }
 

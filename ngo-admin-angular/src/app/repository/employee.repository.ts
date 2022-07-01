@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ApiClientRepository } from "../common/Apiclient.repository";
-import { BASE_URL, EMPLOYEE_ADD, EMPLOYEE_DELETE, EMPLOYEE_GETALL} from "../common/url";
+import { BASE_URL, EMPLOYEE_ADD, EMPLOYEE_DELETE, EMPLOYEE_GETALL, EMPLOYEE_ISACTIVE_DEACTIVE} from "../common/url";
 
 @Injectable()
 export class EmployeeRepository {
@@ -22,5 +22,11 @@ export class EmployeeRepository {
         console.log(data)
         return this.apiClient.doPublicDelete(EMPLOYEE_DELETE+"/"+data);
     }
+    isActiveDeactiveEmployee(employeeId:any, isActive:any) {
+        let formData = new FormData();
+        formData.append('employeeId', employeeId);
+		formData.append('isActive', isActive);
+        return this.apiClient.doPublicPostWithoutJson(EMPLOYEE_ISACTIVE_DEACTIVE,formData);
+     }
 
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.websopti.ngosys.dto.EmployeeListDTO;
@@ -48,5 +49,10 @@ public class EmployeeController {
 		@PostMapping("/get")
 		public Page<Employee> getWithParams(@RequestBody EmployeeListDTO employeeListDto) {
 			return employeeService.getWithParams(employeeListDto);
+		}
+		
+		@PostMapping("/employeeActiveDeactive")
+		public void employeeActiveDeactive(@RequestParam (value = "employeeId") Long employeeId,@RequestParam (value = "isActive") Boolean isActive ) {
+			this.employeeService.employeeActiveDeactive(employeeId,isActive);
 		}
 }

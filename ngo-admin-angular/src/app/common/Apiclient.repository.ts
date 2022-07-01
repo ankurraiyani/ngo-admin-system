@@ -27,6 +27,9 @@ export class ApiClientRepository {
         });
         return headers;
     }
+    doPublicPostWithoutJson(url : any ,data : any): Observable<any> {
+        return this.httpClient.post(url,data);
+    }
 
    
 

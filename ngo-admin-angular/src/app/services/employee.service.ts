@@ -21,5 +21,8 @@ export class EmployeeService {
     {
         return this.employeeRepo.getEmployeeId(id);
     }
+    isActiveDeactiveEmployee(employeeId:any ,isActive :any){
+        return this.employeeRepo.isActiveDeactiveEmployee(employeeId,isActive);
+    }
     
 }

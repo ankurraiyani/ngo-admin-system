@@ -11,8 +11,9 @@ import com.websopti.ngosys.entity.Event;
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
 
-	@Query(value="SELECT * FROM event "
-			+ "WHERE ?1 IS NULL OR LOWER(name) LIKE LOWER(concat('%', ?1, '%'))",nativeQuery = true)
+	@Query(value="SELECT * FROM event"
+			+ " WHERE ?1 IS NULL OR LOWER(name) LIKE LOWER(concat('%', ?1, '%')) "
+			+ " OR LOWER(city) LIKE LOWER(concat('%', ?1, '%'))",nativeQuery = true)
 	Page<Event> findEventData(String searchStr, Pageable page);
 
 }

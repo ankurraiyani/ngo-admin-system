@@ -56,5 +56,16 @@ public class EmployeeService {
 		return employeeRepository.findEmployeeData(employeeListDto.getSearchStr(),page);
 	}
 
+	public void employeeActiveDeactive(Long employeeId, Boolean isActive) {
+		Employee employee =  employeeRepository.findById(employeeId).orElse(null);
+		if(employee != null) {
+			employee.setIsActive(isActive);
+			employeeRepository.save(employee);
+		} else {
+			System.out.println("Employee not fount at active deactive time");
+		}
+		
+	}
+
 
 }
