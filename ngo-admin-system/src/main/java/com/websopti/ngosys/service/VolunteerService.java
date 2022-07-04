@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.websopti.ngosys.dto.EventListDTO;
 import com.websopti.ngosys.dto.VolunteerListDTO;
+import com.websopti.ngosys.entity.Employee;
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.entity.Volunteer;
 import com.websopti.ngosys.repository.VolunteerRepository;
@@ -57,6 +58,16 @@ public class VolunteerService {
 			System.out.println("Not Available");
 		}
 		
+	}
+
+	public void volunteerActiveDeactive(Long volunteerId, Boolean isActive) {
+		Volunteer volunteer =  volunteerRepository.findById(volunteerId).orElse(null);
+		if(volunteer != null) {
+			volunteer.setIsActive(isActive);
+			volunteerRepository.save(volunteer);
+		} else {
+			System.out.println("Volunteer not fount at active deactive time");
+		}
 	}
 	
 

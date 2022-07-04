@@ -5,6 +5,9 @@ export const VOLUNTEER_ADD : string = BASE_URL + "volunteer/save";
 export const VOLUNTEER_GETALL : string = BASE_URL + "volunteer/get";
 export const VOLUNTEER_DELETE : string = BASE_URL + "volunteer/delete";
 export const VOLUNTEER_GETID : string = BASE_URL + "volunteer/get";
+export const VOLUNTEER_ISACTIVE_DEACTIVE: string = BASE_URL + "volunteer/volunteerActiveDeactive";
+
+
 
 //event apis
 export const EVENT_ADD: string = BASE_URL + "event/save";

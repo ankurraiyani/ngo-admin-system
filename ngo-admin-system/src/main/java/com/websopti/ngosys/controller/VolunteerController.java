@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.websopti.ngosys.dto.EventListDTO;
@@ -54,6 +55,11 @@ public class VolunteerController {
 	public void deleteId(@PathVariable Long volunteerId)
 	{
 		volunteerService.deleteId(volunteerId);
+	}
+	
+	@PostMapping("/volunteerActiveDeactive")
+	public void volunteerActiveDeactive(@RequestParam (value = "volunteerId") Long volunteerId,@RequestParam (value = "isActive") Boolean isActive ) {
+		this.volunteerService.volunteerActiveDeactive(volunteerId,isActive);
 	}
 	
 	

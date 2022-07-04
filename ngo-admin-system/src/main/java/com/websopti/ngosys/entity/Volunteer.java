@@ -41,12 +41,13 @@ public class Volunteer{
 	
 	private Date dateOfJoining;
 	
-//	private Time availableTime;
+	private String availableTime;
+	
 	
 	@Column(columnDefinition = "text")
 	private String areaOfInterest;
 	
-	private String isActive;
+	private Boolean isActive;
 	
 	
 }

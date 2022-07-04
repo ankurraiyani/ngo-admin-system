@@ -94,4 +94,21 @@ export class ListVolunteerComponent implements OnInit {
           }
         });
       }
+
+      toggleClick(volunteerId:any , isActive:any) {
+        console.log(isActive)
+        this.volunteerService.isActiveDeactiveVolunteer(volunteerId,!isActive).subscribe((results) => {
+          let msg ;
+          if(!isActive) {
+             msg = 'Volunteer Activated Sucessfully';
+          } else {
+            msg = 'Volunteer Deactivated Sucessfully';
+          }
+          this.commonService.showMessage('success', msg);
+          this.getVolunteerData();
+        }, (error) => {
+          this.commonService.showMessage("error", error.message)
+        });
+      }
+
 }
