@@ -33,11 +33,14 @@ public class EmployeeService {
 	public Optional<Employee> get(Long employeeId) {
 		return employeeRepository.findById(employeeId);
 	}
+	public Employee findBydId(Long id) {
+		return employeeRepository.findById(id).orElse(null);
+	}
 	
 	public void deleteId(Long employeeId)
 	{	
 //		optional<Employee> i= emplyeeRepository.findById(employeeId)
-		if(employeeRepository.findById(employeeId).isPresent())
+		if(findBydId(employeeId) != null)
 		{
 			employeeRepository.deleteById(employeeId);
 		}
@@ -58,7 +61,7 @@ public class EmployeeService {
 	}
 
 	public void employeeActiveDeactive(Long employeeId, Boolean isActive) {
-		Employee employee =  employeeRepository.findById(employeeId).orElse(null);
+		Employee employee =  findBydId(employeeId);
 		if(employee != null) {
 			employee.setIsActive(isActive);
 			employeeRepository.save(employee);

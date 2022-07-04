@@ -1,12 +1,16 @@
  package com.websopti.ngosys.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import lombok.Data;
 
@@ -48,4 +52,10 @@ public class Event {
 	private String contactNumber;
 
 	private String contactEmail;
+	
+	@ManyToMany
+	@JoinTable(name="event_employee", joinColumns = {
+	@JoinColumn(name = "event_id")}, inverseJoinColumns = {
+	@JoinColumn(name = "employee_id")})
+	private List<Employee> employeeList;
 }
