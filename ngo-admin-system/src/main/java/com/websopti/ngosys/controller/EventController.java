@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.websopti.ngosys.dto.EventDto;
 import com.websopti.ngosys.dto.EventListDTO;
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.service.EventService;
@@ -27,8 +28,8 @@ public class EventController {
 	private EventService eventService;  
 
 	@PostMapping("/save")
-	public Event save(@RequestBody Event event) {
-		return eventService.save(event);
+	public Event save(@RequestBody EventDto EventDto) {
+		return eventService.save(EventDto);
 	}
 	
 	@GetMapping("/get/{eventId}")
