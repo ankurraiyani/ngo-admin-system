@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.websopti.ngosys.dto.DonerListDTO;
@@ -52,7 +53,7 @@ public class DonerService {
 	}
 	
 	public Page<Doner> getWithParams(DonerListDTO donerListDto) {
-		Pageable page = PageRequest.of(donerListDto.getPageNo(), donerListDto.getPageSize());
+		Pageable page = PageRequest.of(donerListDto.getPageNo(), donerListDto.getPageSize(),Direction.DESC, "date_of_donation");
 		//return donerRepository.findAll(page);
 		
 		return donerRepository.findDonerData(donerListDto.getSearchStr(),page);

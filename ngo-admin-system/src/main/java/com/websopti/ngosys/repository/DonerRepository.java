@@ -12,7 +12,8 @@ import com.websopti.ngosys.entity.Doner;
 public interface DonerRepository extends JpaRepository<Doner, Long> {
 	
 	@Query(value="SELECT * FROM doner "
-			+ "WHERE ?1 IS NULL OR LOWER(doner_name) LIKE LOWER(concat('%', ?1, '%'))",nativeQuery = true)
+			+ "WHERE ?1 IS NULL OR LOWER(doner_name) LIKE LOWER(concat('%', ?1, '%'))"
+			+ "OR LOWER(typeof_donation) LIKE LOWER(concat('%', ?1, '%'))",nativeQuery = true)
 	Page<Doner> findDonerData(String searchStr, Pageable page);
 
 }
