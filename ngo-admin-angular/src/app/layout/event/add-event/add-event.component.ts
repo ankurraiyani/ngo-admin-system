@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/common/common.service';
+import { DonerService } from 'src/app/services/doner.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { EvnetService } from 'src/app/services/event.service';
 
@@ -15,12 +16,14 @@ export class AddEventComponent implements OnInit {
   constructor(private eventService: EvnetService,
     private commonService: CommonService,
     private employeeService: EmployeeService,
+    private donerService : DonerService,
     private router: Router, private activatedRoute: ActivatedRoute) { }
 
   eventFrom: FormGroup;
   eventId: any;
   isAddFrom: boolean = true;
   employeeList: any = [];
+  donerList:any=[];
 
   async ngOnInit() {
 
@@ -90,16 +93,18 @@ export class AddEventComponent implements OnInit {
 
       employeeIds: new FormControl([]),
 
+      donerIds: new FormControl([]),
+
     });
   }
 
 
   submit() {
     this.eventFrom.markAllAsTouched();
-    console.log("hello");
     if (this.eventFrom.valid) {
-      console.log("hello");
       this.eventService.addEvent(this.eventFrom.value).subscribe((results) => {
+
+        console.log(results);
         let msg;
         if (this.isAddFrom) {
           msg = "Event Added Sucessfully";
@@ -116,13 +121,22 @@ export class AddEventComponent implements OnInit {
   }
 
   getActiveEmployee() {
-
     this.employeeService.getAllActiveEmployee().subscribe((results) => {
+      console.log(results); 
       this.employeeList = results;
       console.log(this.employeeList)
     }, (error) => {
       this.commonService.showMessage("error", error.message);
     });
+  }
+
+  getActiveDoner(){
+    this.donerService.getAllActiveDoner().subscribe((result)=>{
+    this.donerList=result;
+  },(error)=>
+  {
+    this.commonService.showMessage("error", error.message);
+  });
   }
 
 }

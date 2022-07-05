@@ -22,7 +22,10 @@ export class DonerService {
     }
     getIdDoner(data:any)
     {  
-        return this.donerRepo.getIdDoner(data);
-        
+        return this.donerRepo.getIdDoner(data);      
     }
+    getAllActiveDoner() {
+        return this.donerRepo.getAllActiveDoner();
+    }
+
 }

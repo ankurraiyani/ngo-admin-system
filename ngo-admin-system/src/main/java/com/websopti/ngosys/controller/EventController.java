@@ -36,7 +36,8 @@ public class EventController {
 	}
 	
 	@GetMapping("/get/{eventId}")
-	public EventDto get(@PathVariable Long eventId) {		
+	public EventDto get(@PathVariable Long eventId) {
+		System.out.println("--------------------------------"+eventId);
 		return eventService.get(eventId);
 		
 	}

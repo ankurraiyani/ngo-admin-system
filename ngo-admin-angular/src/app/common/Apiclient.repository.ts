@@ -14,6 +14,7 @@ export class ApiClientRepository {
     }
 
     doPublicGet(url : any ): Observable<any> {
+        console.log("inget")
         return this.httpClient.get(url);
     }
 

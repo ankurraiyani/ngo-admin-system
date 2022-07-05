@@ -40,8 +40,7 @@ public class EventService {
 	
 	
 	public Event save(EventDto eventDto) {
-		Event event = this.convertDtoToEntity(eventDto);
-		
+		Event event = this.convertDtoToEntity(eventDto);		
 		return eventRepository.save(event);
 	}
 
@@ -55,15 +54,6 @@ public class EventService {
 		return eventDto;
 	}
 	
-
-	
-//	
-//	public List<Employee> get() {
-//		List<Employee> employeeList=this.convertEntityToDto();
-//		
-//		System.out.println(employeeList);
-//		return employeeList;
-//	}
 
 	public List<Event> getAll() {
 		
@@ -94,7 +84,6 @@ public class EventService {
 
 	private Event convertDtoToEntity(EventDto eventDto) {
 		Event event = new Event();
-		
 		BeanUtils.copyProperties(eventDto, event);
 		
 		//employee
@@ -107,24 +96,15 @@ public class EventService {
 			event.setEmployeeList(employeeList);
 		}
 		
-		//donner
+		//donner...
 		if(eventDto.getDonerIds() != null && eventDto.getDonerIds().size() > 0) {
 			List<Doner> donerList = new ArrayList<Doner>();
 			for(Long donerId : eventDto.getDonerIds()) {
-				Doner doner = this.donerService.findBydId(donerId);
+				Doner doner = this.donerService.findById(donerId);
 				donerList.add(doner);
 			}
 			event.setDonerList(donerList);
 		}
-		
-//		if(eventDto.getVolunteerIds() != null && eventDto.getVolunteerIds().size() > 0) {
-//			List<Volunteer> volunteerList = new ArrayList<Volunteer>();
-//			for(Long volunteerId : eventDto.getVolunteerIds()) {
-//				Volunteer volunteer = this.volunteerService.findBydId(volunteerId);
-//				employeeList.add(employee);
-//			}
-//			event.setEmployeeList(employeeList);
-//		}
 		
 		return event;
 	}
@@ -135,6 +115,7 @@ public class EventService {
 		BeanUtils.copyProperties(event, eventDto);
 		
 		//employee
+		
 		if(event.getEmployeeList() != null && event.getEmployeeList().size() > 0) {
 			List<Long> employeeIds = new ArrayList<Long>();
 			
@@ -144,6 +125,15 @@ public class EventService {
 			eventDto.setEmployeeIds(employeeIds);
 		}
 		
+		//Doner
+		
+		if(event.getDonerList() != null && event.getDonerList().size() > 0) {
+			List<Long> donerIds = new ArrayList<Long>();
+			for(Doner doner:event.getDonerList()) {
+				donerIds.add(doner.getId());
+			}
+			eventDto.setDonerIds(donerIds);
+		}
 		return eventDto;
 	}
 	

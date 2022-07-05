@@ -26,7 +26,7 @@
                             Name is required</ng-container>
                     </span>
                 </div>
-                <!-- add extra fields -->
+          
                 <div class="form-group col-md-6">
                     <label>Event Type:</label>
                     <div class="input-group">
@@ -66,13 +66,13 @@
                     </span>
                 </div>
 
-                <!-- nfdsjfjdrgnkdfgkjdfj -->
+           
 
                 <div class="form-group col-md-6">
                     <label>End Date</label>
                     <div class="input-group">
                         <input type="date" class="form-control" name="endDate" formControlName="endDate" [ngClass]=" {'is-invalid' : eventFrom.controls.endDate.touched && eventFrom.controls.endDate.invalid,
-        'is-valid' : eventFrom.controls.endDate.touched && eventFrom.controls.endDate.valid}">
+                        'is-valid' : eventFrom.controls.endDate.touched && eventFrom.controls.endDate.valid}">
 
                     </div>
                     <span class="help-block"
@@ -82,22 +82,18 @@
                     </span>
                 </div>
 
-
-                <!-- dfrdgrdgdtrfhbfg -->
-
-
                 <div class="form-group col-md-6">
                     <label>Address :</label>
                     <div class="input-group">
                         <textarea class="form-control" rows="4" cols="4" name="address" placeholder="Address"
                             minlength="3" maxlength="150" formControlName="address" [ngClass]=" {'is-invalid' : eventFrom.controls.address.touched && eventFrom.controls.address.invalid,
-        'is-valid' : eventFrom.controls.address.touched && eventFrom.controls.address.valid}">
-        <div class="input-group-append">
-            <div class="input-group-text">
-                <span class="fa fa-user"></span>
-            </div>
-        </div>
-        </textarea>
+                            'is-valid' : eventFrom.controls.address.touched && eventFrom.controls.address.valid}">
+                         <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fa fa-user"></span>
+                        </div>
+                    </div>
+                    </textarea>
                     </div>
                     <span class="help-block"
                         *ngIf="eventFrom.controls.address.touched && eventFrom.controls.address.invalid || eventFrom.controls.contactNumber.dirty">
@@ -117,13 +113,13 @@
                     <div class="input-group">
                         <textarea class="form-control" rows="4" cols="4" name="description" placeholder="Description"
                             minlength="3" maxlength="150" formControlName="description" [ngClass]=" {'is-invalid' : eventFrom.controls.description.touched && eventFrom.controls.description.invalid,
-'is-valid' : eventFrom.controls.description.touched && eventFrom.controls.description.valid}">
+                            'is-valid' : eventFrom.controls.description.touched && eventFrom.controls.description.valid}">
                         <div class="input-group-append">
                         <div class="input-group-text">
-<span class="fa fa-user"></span>
-</div>
-</div>
-</textarea>
+                        <span class="fa fa-user"></span>
+                    </div>
+                    </div>
+                    </textarea>
                     </div>
                     <span class="help-block"
                         *ngIf="eventFrom.controls.description.touched && eventFrom.controls.description.invalid || eventFrom.controls.contactNumber.dirty">
@@ -138,19 +134,17 @@
                     </span>
                 </div>
 
-                <!-- njefjkwebnfwebgfe -->
-
                 <div class="form-group col-md-6">
                     <label>Volunteer Name:</label>
                     <div class="input-group">
                         <input type="text" class="form-control" name="volunteer" placeholder="volunteer Name"
                             minlength="3" maxlength="50" formControlName="volunteer" [ngClass]=" {'is-invalid' : eventFrom.controls.volunteer.touched && eventFrom.controls.volunteer.invalid,
-						'is-valid' : eventFrom.controls.volunteer.touched && eventFrom.controls.volunteer.valid}">
-                        <div class="input-group-append">
+					    	'is-valid' : eventFrom.controls.volunteer.touched && eventFrom.controls.volunteer.valid}">
+                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fa fa-user"></span>
                             </div>
-                        </div>
+                         </div>
                     </div>
                     <span class="help-block"
                         *ngIf="eventFrom.controls.volunteer.touched && eventFrom.controls.volunteer.invalid">
@@ -165,15 +159,15 @@
                     </span>
                 </div>
 
-                <!-- ebfhrejbrdkjg -->
+
 
                 <div class="form-group col-md-6">
                     <label>Sponsors Name:</label>
                     <div class="input-group">
                         <input type="text" class="form-control" name="sponsors" placeholder="Sponsor Name" minlength="3"
                             maxlength="50" formControlName="sponsors" [ngClass]=" {'is-invalid' : eventFrom.controls.sponsors.touched && eventFrom.controls.sponsors.invalid,
-        'is-valid' : eventFrom.controls.sponsors.touched && eventFrom.controls.sponsors.valid}">
-                        <div class="input-group-append">
+                         'is-valid' : eventFrom.controls.sponsors.touched && eventFrom.controls.sponsors.valid}">
+                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fa fa-user"></span>
                             </div>
@@ -222,7 +216,6 @@
 
 
 
-                <!-- akjfnjklsedflkdfvn -->
                 <div class="form-group col-md-6">
                     <label>Contact Number :</label>
                     <div class="input-group">
@@ -244,7 +237,7 @@
                             Contact Number is required</ng-container>
                     </span>
                 </div>
-                <!-- fuhweukfhnlirgj -->
+
 
                 <div class="form-group col-md-6">
                     <label>Email Address :</label>
@@ -277,11 +270,36 @@
                     <label>Employee :</label>
                     <div class="input-group">
                         <div style="width: 100%;">
-                        <ng-select [searchable] ="true"[multiple]="true" [items]="employeeList" placeholder="Select Role"
+                        <ng-select [searchable] ="true"[multiple]="true" [items]="employeeList" placeholder="Select Employee"
                             [bindValue]="'id'" [bindLabel]="'employeeName'" formControlName="employeeIds">
                             <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
                                 <div class="ng-value" *ngFor="let item of items | slice:0:1">
                                     <span class="ng-value-label">{{item.employeeName}}</span>
+                                    <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                                </div>
+                                <div class="ng-value" *ngIf="items.length > 1">
+                                    <span class="ng-value-label">{{items.length - 1}} more..</span>
+                                </div>
+                            </ng-template>
+                        
+                        </ng-select>
+                    </div>
+
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group col-md-6">
+                    <label>Doner :</label>
+                    <div class="input-group">
+                        <div style="width: 100%;">
+                        <ng-select [searchable] ="true"[multiple]="true" [items]="donerList" placeholder="Select Doner"
+                            [bindValue]="'id'" [bindLabel]="'donerName'" formControlName="donerIds">
+                            <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                                <div class="ng-value" *ngFor="let item of items | slice:0:1">
+                                    <span class="ng-value-label">{{item.donerName}}</span>
                                     <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
                                 </div>
                                 <div class="ng-value" *ngIf="items.length > 1">

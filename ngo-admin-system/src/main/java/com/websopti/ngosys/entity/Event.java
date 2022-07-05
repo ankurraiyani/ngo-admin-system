@@ -65,11 +65,6 @@ public class Event {
 	@JoinColumn(name = "doner_id")})
 	private List<Doner> donerList;
 	
-//	@ManyToMany
-//	@JoinTable(name="event_volunteer", joinColumns = {
-//	@JoinColumn(name = "event_id")}, inverseJoinColumns = {
-//	@JoinColumn(name = "volunteer_id")})
-//	private List<Volunteer> volunteerList;
 	
 
 }

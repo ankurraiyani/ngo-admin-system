@@ -30,5 +30,10 @@ public class Doner {
 	@Column(columnDefinition = "text")
 	private String reason;
 	
-	private String isRegular;
+	@Column(columnDefinition = "text")
+	private String donationDescription;
+	
+	private Boolean isPresent;
+	
+	
 }

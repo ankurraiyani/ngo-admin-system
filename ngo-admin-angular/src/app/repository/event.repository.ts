@@ -5,15 +5,9 @@ import { BASE_URL, EVENT_ADD, EVENT_DELETE, EVENT_GETALL, EVENT_GETID } from "..
 
 @Injectable()
 export class EvnetRepository {
-
-
-   
-   
-
-    constructor(private apiClient:ApiClientRepository ) { }
+   constructor(private apiClient:ApiClientRepository ) { }
     
     addEvent(data : any){
-        console.log("repo"+data);
         return this.apiClient.doPublicPost(EVENT_ADD , data);
     }
 

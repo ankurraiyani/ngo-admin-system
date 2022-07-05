@@ -19,6 +19,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 			+ "OR LOWER(contact_employye_email) LIKE LOWER(concat('%', ?1, '%'))",nativeQuery = true)
 	Page<Employee> findEmployeeData(String searchStr, Pageable page);
 
-	List<Employee> findAllByIsActiveTrue();
+	List<Employee>findAllByIsActiveTrue();
 
 }

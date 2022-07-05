@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.websopti.ngosys.dto.DonerListDTO;
 import com.websopti.ngosys.dto.EventDto;
 import com.websopti.ngosys.entity.Doner;
+import com.websopti.ngosys.entity.Employee;
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.service.DonerService;
 
@@ -33,11 +34,15 @@ public class DonerController {
 		return donerService.save(doner);
 	}
 	
-	@GetMapping("/get/all")
-	public List<Doner> getAllId()
+	
+	@GetMapping("/getAll/active")
+	public List<Doner> getAllActive()
 	{
-		return donerService.getAllId();
+		System.out.println("============ACTIVE===============");
+		return donerService.getAllActive();
 	}
+	
+	
 	
 	@GetMapping("/get/{donerId}")
 	public Doner get(@PathVariable Long donerId)

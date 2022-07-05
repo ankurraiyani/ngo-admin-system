@@ -40,7 +40,7 @@ public class DonerService {
 	
 	//Remove	
 	public void  deleteId (Long donerId) {		
-		if(donerRepository.findById(donerId).isPresent())
+		if(findById(donerId)!=null)
 		{
 			
 				donerRepository.deleteById(donerId);
@@ -59,9 +59,14 @@ public class DonerService {
 		return donerRepository.findDonerData(donerListDto.getSearchStr(),page);
 	}
 
-	public Doner findBydId(Long donerId) {
+	public Doner findById(Long donerId) {
 		return donerRepository.findById(donerId).orElse(null);
 		
+	}
+
+	public List<Doner> getAllActive() {
+		System.out.println("--------------2nd Active----------------");
+		return donerRepository.findByIsPresentTrue();
 	}
 
 }

@@ -33,19 +33,23 @@ public class EmployeeController {
 		public Employee save(@RequestBody Employee employee) {
 			return employeeService.save(employee);
 		}
+		
 		@GetMapping("/getAll/active")
 		public List<Employee> getAllActive() {
 			return employeeService.getAllActive();
 		}
+		
 		@GetMapping("/get/{employeeId}")
 		public Employee get(@PathVariable Long employeeId) {		
 			return employeeService.get(employeeId).get();
 		}
+		
 		@DeleteMapping("/deleteId/{employeeId}")
 		public void deleteId(@PathVariable Long employeeId)
 		{
 			employeeService.deleteId(employeeId);
 		}
+		
 		@PostMapping("/get")
 		public Page<Employee> getWithParams(@RequestBody EmployeeListDTO employeeListDto) {
 			return employeeService.getWithParams(employeeListDto);
