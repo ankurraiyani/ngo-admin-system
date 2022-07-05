@@ -5,6 +5,7 @@ import { CommonService } from 'src/app/common/common.service';
 import { DonerService } from 'src/app/services/doner.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { EvnetService } from 'src/app/services/event.service';
+import { VolunteerService } from 'src/app/services/volunteer.service';
 
 @Component({
   selector: 'app-add-event',
@@ -17,18 +18,25 @@ export class AddEventComponent implements OnInit {
     private commonService: CommonService,
     private employeeService: EmployeeService,
     private donerService : DonerService,
+    private volunteerService : VolunteerService,
+
     private router: Router, private activatedRoute: ActivatedRoute) { }
 
   eventFrom: FormGroup;
   eventId: any;
   isAddFrom: boolean = true;
   employeeList: any = [];
+
   donerList:any=[];
+  volunteerList : any = [];
+ 
 
   async ngOnInit() {
 
     this.iniatilzeFrom();
     await this.getActiveEmployee();
+    await this.getActiveDoner();
+    await this.getActiveVolunteer();
 
     this.eventId = this.activatedRoute.queryParams['value'].id;
     if (this.eventId == undefined || this.eventId == null) {
@@ -93,7 +101,11 @@ export class AddEventComponent implements OnInit {
 
       employeeIds: new FormControl([]),
 
+
       donerIds: new FormControl([]),
+
+      volunteerIds: new FormControl([]),
+
 
     });
   }
@@ -130,6 +142,7 @@ export class AddEventComponent implements OnInit {
     });
   }
 
+
   getActiveDoner(){
     this.donerService.getAllActiveDoner().subscribe((result)=>{
     this.donerList=result;
@@ -137,6 +150,17 @@ export class AddEventComponent implements OnInit {
   {
     this.commonService.showMessage("error", error.message);
   });
+  }
+  
+  getActiveVolunteer(){
+
+    this.volunteerService.getAllActiveVolunteer().subscribe((results) => {
+      this.volunteerList = results;
+      console.log(this.volunteerList)
+    }, (error) => {
+      this.commonService.showMessage("error", error.message);
+    });
+
   }
 
 }

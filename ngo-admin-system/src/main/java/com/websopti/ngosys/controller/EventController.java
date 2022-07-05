@@ -21,43 +21,38 @@ import com.websopti.ngosys.entity.Doner;
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.service.EventService;
 
-
 @RestController
 @CrossOrigin
 @RequestMapping("/api/event")
 public class EventController {
-	
+
 	@Autowired
-	private EventService eventService;  
+	private EventService eventService;
 
 	@PostMapping("/save")
 	public Event save(@RequestBody EventDto eventDto) {
 		return eventService.save(eventDto);
 	}
-	
+
 	@GetMapping("/get/{eventId}")
 	public EventDto get(@PathVariable Long eventId) {
-		System.out.println("--------------------------------"+eventId);
 		return eventService.get(eventId);
-		
+
 	}
-	
+
 	@GetMapping("/get/all")
 	public List<Event> getAll() {
 		return eventService.getAll();
 	}
-	
+
 	@DeleteMapping("delete/{eventId}")
-	public void deleteId(@PathVariable Long eventId)
-	{
-		 eventService.deleteEventById(eventId);
+	public void deleteId(@PathVariable Long eventId) {
+		eventService.deleteEventById(eventId);
 	}
-	
+
 	@PostMapping("/get")
 	public Page<Event> getWithParams(@RequestBody EventListDTO eventListDto) {
 		return eventService.getWithParams(eventListDto);
 	}
-	
-	
-	
+
 }

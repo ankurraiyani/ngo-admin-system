@@ -3,6 +3,7 @@ import { VolunteerRepository } from "../repository/volunteer.repository";
 
 @Injectable()
 export class VolunteerService {
+    
    
     constructor( 
         private volunteerRepo:VolunteerRepository) { }
@@ -24,4 +25,13 @@ export class VolunteerService {
     {
         return this.volunteerRepo.deleteIDVolunteer(id);
     }
+
+    isActiveDeactiveVolunteer(volunteerId: any,isActive : any) {
+      return this.volunteerRepo.isActiveDeactiveVolunteer(volunteerId,isActive);
+    }
+
+    getAllActiveVolunteer() {
+        return this.volunteerRepo.getAllActiveVolunteer();
+    }
+
 }

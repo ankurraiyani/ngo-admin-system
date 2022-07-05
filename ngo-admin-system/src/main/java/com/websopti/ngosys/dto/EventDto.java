@@ -44,4 +44,6 @@ public class EventDto {
 	
 	private List<Long> donerIds;
 	
+	private List<Long> volunteerIds;
+
 }

@@ -180,7 +180,7 @@
 						'is-valid' : volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.valid}">
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.invalid || volunteerForm.controls.contactNumber.dirty">
+                        *ngIf="volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.invalid || volunteerForm.controls.availableTimeirty">
                         <ng-container *ngIf="volunteerForm.controls.availableTime.errors?.required">
                             Time is required</ng-container>
                     </span>
@@ -210,6 +210,11 @@
             </div>
 
         </div>
+
+        
+
+        
+
     </form>
 </div>
 

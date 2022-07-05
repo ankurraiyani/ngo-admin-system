@@ -1,4 +1,4 @@
- package com.websopti.ngosys.entity;
+package com.websopti.ngosys.entity;
 
 import java.util.Date;
 import java.util.List;
@@ -17,12 +17,12 @@ import lombok.Data;
 @Data
 @Entity
 public class Event {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-    
-    private String name;
+
+	private String name;
 
 	private Date startDate;
 
@@ -30,14 +30,14 @@ public class Event {
 
 	private String address;
 
-    private String city;
+	private String city;
 
 	private String state;
 
 	private String country;
 
 	private String zipcode;
-	
+
 	private String volunteers;
 
 	private String sponsors;
@@ -52,19 +52,20 @@ public class Event {
 	private String contactNumber;
 
 	private String contactEmail;
-	
+
 	@ManyToMany
-	@JoinTable(name="event_employee", joinColumns = {
-	@JoinColumn(name = "event_id")}, inverseJoinColumns = {
-	@JoinColumn(name = "employee_id")})
+	@JoinTable(name = "event_employee", joinColumns = { @JoinColumn(name = "event_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "employee_id") })
 	private List<Employee> employeeList;
-	
+
 	@ManyToMany
-	@JoinTable(name="event_doner", joinColumns = {
-	@JoinColumn(name = "event_id")}, inverseJoinColumns = {
-	@JoinColumn(name = "doner_id")})
+	@JoinTable(name = "event_doner", joinColumns = { @JoinColumn(name = "event_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "doner_id") })
 	private List<Doner> donerList;
-	
-	
+
+	@ManyToMany
+	@JoinTable(name = "event_volunteer", joinColumns = { @JoinColumn(name = "event_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "volunteer_id") })
+	private List<Volunteer> volunteerList;
 
 }

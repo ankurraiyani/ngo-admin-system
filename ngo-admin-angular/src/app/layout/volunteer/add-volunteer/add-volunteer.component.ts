@@ -45,7 +45,7 @@ export class AddVolunteerComponent implements OnInit {
             this.volunteerForm.controls.areaOfInterest.setValue(results.areaOfInterest);
             this.volunteerForm.controls.dateOfJoining.setValue(results.dateOfJoining);
             this.volunteerForm.controls.contactNumber.setValue(results.contactNumber);
-            // this.volunteerForm.controls.availableTime.setValue(results.availableTime);
+            this.volunteerForm.controls.availableTime.setValue(results.availableTime);
             this.volunteerForm.controls.id.setValue(results.id);
             this.volunteerForm.controls.isActive.setValue(results.isActive);
 

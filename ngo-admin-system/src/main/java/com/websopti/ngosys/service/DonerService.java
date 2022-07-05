@@ -65,7 +65,6 @@ public class DonerService {
 	}
 
 	public List<Doner> getAllActive() {
-		System.out.println("--------------2nd Active----------------");
 		return donerRepository.findByIsPresentTrue();
 	}
 

@@ -134,6 +134,7 @@
                     </span>
                 </div>
 
+
                 <div class="form-group col-md-6">
                     <label>Volunteer Name:</label>
                     <div class="input-group">
@@ -158,6 +159,7 @@
                             volunteer Name is required</ng-container>
                     </span>
                 </div>
+
 
 
 
@@ -275,6 +277,28 @@
                             <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
                                 <div class="ng-value" *ngFor="let item of items | slice:0:1">
                                     <span class="ng-value-label">{{item.employeeName}}</span>
+                                    <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                                </div>
+                                <div class="ng-value" *ngIf="items.length > 1">
+                                    <span class="ng-value-label">{{items.length - 1}} more..</span>
+                                </div>
+                            </ng-template>
+                        
+                        </ng-select>
+                    </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Volunteer :</label>
+                    <div class="input-group">
+                        <div style="width: 100%;">
+                        <ng-select [searchable] ="true"[multiple]="true" [items]="volunteerList" placeholder="Select Volunteer"
+                            [bindValue]="'id'" [bindLabel]="'nsame'" formControlName="volunteerIds">
+                            <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                                <div class="ng-value" *ngFor="let item of items | slice:0:1">
+                                    <span class="ng-value-label">{{item.name}}</span>
                                     <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
                                 </div>
                                 <div class="ng-value" *ngIf="items.length > 1">

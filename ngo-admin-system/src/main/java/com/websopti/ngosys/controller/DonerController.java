@@ -24,41 +24,33 @@ import com.websopti.ngosys.service.DonerService;
 @CrossOrigin
 @RequestMapping("api/doner")
 public class DonerController {
-	
+
 	@Autowired
 	private DonerService donerService;
-		
+
 	@PostMapping("/save")
-	public Doner save(@RequestBody Doner doner)
-	{
+	public Doner save(@RequestBody Doner doner) {
 		return donerService.save(doner);
 	}
-	
-	
+
 	@GetMapping("/getAll/active")
-	public List<Doner> getAllActive()
-	{
-		System.out.println("============ACTIVE===============");
+	public List<Doner> getAllActive() {
 		return donerService.getAllActive();
 	}
-	
-	
-	
+
 	@GetMapping("/get/{donerId}")
-	public Doner get(@PathVariable Long donerId)
-	{
+	public Doner get(@PathVariable Long donerId) {
 		return donerService.get(donerId).get();
 	}
-	
+
 	@DeleteMapping("delete/{donerId}")
-	public void deleteId(@PathVariable Long donerId)
-	{
-		 donerService.deleteId(donerId);
+	public void deleteId(@PathVariable Long donerId) {
+		donerService.deleteId(donerId);
 	}
-	
+
 	@PostMapping("/get")
 	public Page<Doner> getWithParams(@RequestBody DonerListDTO donerListDto) {
 		return donerService.getWithParams(donerListDto);
 	}
-	
+
 }
