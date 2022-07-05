@@ -19,6 +19,8 @@ export const EMPLOYEE_ADD: string = BASE_URL + "employee/save";
 export const EMPLOYEE_GETALL: string = BASE_URL + "employee/get";
 export const EMPLOYEE_DELETE:string= BASE_URL + "employee/deleteId";
 export const EMPLOYEE_ISACTIVE_DEACTIVE: string = BASE_URL + "employee/employeeActiveDeactive";
+export const GET_ALL_ACTIVE_EMPLOYEE: string = BASE_URL + "employee/getAll/active";
+
 
 //donner apis
 export const DONER_ADD:string =BASE_URL+"doner/save";

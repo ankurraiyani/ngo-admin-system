@@ -19,6 +19,7 @@ import com.websopti.ngosys.dto.EventListDTO;
 import com.websopti.ngosys.entity.Doner;
 import com.websopti.ngosys.entity.Employee;
 import com.websopti.ngosys.entity.Event;
+import com.websopti.ngosys.entity.Volunteer;
 import com.websopti.ngosys.repository.EventRepository;
 
 @Service
@@ -33,6 +34,9 @@ public class EventService {
 	@Autowired
 	private DonerService donerService;
 	
+	@Autowired
+	private VolunteerService volunteerService;
+	
 	
 	
 	public Event save(EventDto eventDto) {
@@ -44,10 +48,11 @@ public class EventService {
 
 	
 	
-	public Optional<Event> get(Long eventId)
+	public EventDto get(Long eventId)
 	{
-
-		return eventRepository.findById(eventId);
+		Event event = eventRepository.findById(eventId).orElse(null);
+		EventDto eventDto=this.convertEntityToDto(event);
+		return eventDto;
 	}
 	
 
@@ -92,49 +97,54 @@ public class EventService {
 		
 		BeanUtils.copyProperties(eventDto, event);
 		
-		List<Employee> employeeList = new ArrayList<Employee>();
-//		for(Long employeeId : eventDto.getEmployeeIds()) {
-//			Employee employee = this.employeeService.findBydId(employeeId);
-//			employeeList.add(employee);
+		//employee
+		if(eventDto.getEmployeeIds() != null && eventDto.getEmployeeIds().size() > 0) {
+			List<Employee> employeeList = new ArrayList<Employee>();
+			for(Long employeeId : eventDto.getEmployeeIds()) {
+				Employee employee = this.employeeService.findBydId(employeeId);
+				employeeList.add(employee);
+			}
+			event.setEmployeeList(employeeList);
+		}
+		
+		//donner
+		if(eventDto.getDonerIds() != null && eventDto.getDonerIds().size() > 0) {
+			List<Doner> donerList = new ArrayList<Doner>();
+			for(Long donerId : eventDto.getDonerIds()) {
+				Doner doner = this.donerService.findBydId(donerId);
+				donerList.add(doner);
+			}
+			event.setDonerList(donerList);
+		}
+		
+//		if(eventDto.getVolunteerIds() != null && eventDto.getVolunteerIds().size() > 0) {
+//			List<Volunteer> volunteerList = new ArrayList<Volunteer>();
+//			for(Long volunteerId : eventDto.getVolunteerIds()) {
+//				Volunteer volunteer = this.volunteerService.findBydId(volunteerId);
+//				employeeList.add(employee);
+//			}
+//			event.setEmployeeList(employeeList);
 //		}
-		event.setEmployeeList(employeeList);
 		
-		BeanUtils.copyProperties(eventDto, event);
-		
-		List<Doner> donerList = new ArrayList<Doner>();
-		for(Long donerId : eventDto.getDonerIds()) {
-			Doner doner = this.donerService.findBydId(donerId);
-			donerList.add(doner);
-		}
-		event.setDonerList(donerList);
 		return event;
 	}
-<<<<<<< HEAD
 	
-	private Event convertEntityToDto(EventDto eventDto)
-	{
-		Event event =new Event();
-		BeanUtils.copyProperties(eventDto, event);
-		
-		List<Employee> employeeList = new ArrayList<Employee>();
-		for(Long  employeeId :eventDto.getEmployeeIds())
-		{
-			Employee employee = this.employeeService.findBydId(employeeId);
-			employeeList.add(employee);
-			System.out.println("dto");
-		}
-		event.setEmployeeList(employeeList);
-		return event;
-		
-		
-		
-	}
 	
-
-	
+	private EventDto convertEntityToDto(Event event) {
+		EventDto eventDto = new EventDto();
+		BeanUtils.copyProperties(event, eventDto);
 		
-=======
+		//employee
+		if(event.getEmployeeList() != null && event.getEmployeeList().size() > 0) {
+			List<Long> employeeIds = new ArrayList<Long>();
 			
->>>>>>> f7c4e83e3f86e269ae2f5b585b66bc610ebee5a9
+			for(Employee employee:event.getEmployeeList()) {
+				employeeIds.add(employee.getId());
+			}
+			eventDto.setEmployeeIds(employeeIds);
+		}
+		
+		return eventDto;
+	}
 	
 }

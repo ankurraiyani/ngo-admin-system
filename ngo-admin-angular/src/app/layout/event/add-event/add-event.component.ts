@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/common/common.service';
+import { EmployeeService } from 'src/app/services/employee.service';
 import { EvnetService } from 'src/app/services/event.service';
 
 @Component({
@@ -10,38 +11,52 @@ import { EvnetService } from 'src/app/services/event.service';
   styleUrls: ['./add-event.component.css']
 })
 export class AddEventComponent implements OnInit {
-  eventId: any;
-  isAddFrom : boolean = true;
 
   constructor(private eventService: EvnetService,
     private commonService: CommonService,
-    private router: Router,private activatedRoute : ActivatedRoute) { }
+    private employeeService: EmployeeService,
+    private router: Router, private activatedRoute: ActivatedRoute) { }
 
   eventFrom: FormGroup;
+  eventId: any;
+  isAddFrom: boolean = true;
+  employeeList: any = [];
 
-  ngOnInit(): void {
-    
+  async ngOnInit() {
+
     this.iniatilzeFrom();
-    
-    this.eventId=this.activatedRoute.queryParams['value'].id;
-    if(this.eventId==undefined || this.eventId==null)
-    {
-        setTimeout(() => {
-          this.commonService.currentPageTitle = 'Add Event';
-        });
+    await this.getActiveEmployee();
+
+    this.eventId = this.activatedRoute.queryParams['value'].id;
+    if (this.eventId == undefined || this.eventId == null) {
+      setTimeout(() => {
+        this.commonService.currentPageTitle = 'Add Event';
+      });
 
     }
-    else
-    {
+    else {
       setTimeout(() => {
         this.commonService.currentPageTitle = 'Edit Event';
       });
-        this.isAddFrom = false;
-        this.eventService.getIdEvent(this.eventId).subscribe((results)=> {
-            this.eventFrom.controls.name.setValue(results.name);
-            this.eventFrom.controls.id.setValue(results.id);
+      this.isAddFrom = false;
+      this.eventService.getIdEvent(this.eventId).subscribe((results) => {
+        console.log(results);
+        this.eventFrom.controls.name.setValue(results.name);
+        this.eventFrom.controls.id.setValue(results.id);
+        this.eventFrom.controls.startDate.setValue(results.startDate);
+        this.eventFrom.controls.endDate.setValue(results.endDate);
+        this.eventFrom.controls.address.setValue(results.address);
+        this.eventFrom.controls.sponsors.setValue(results.sponsors);
+        this.eventFrom.controls.description.setValue(results.description);
+        this.eventFrom.controls.type.setValue(results.type);
+        this.eventFrom.controls.contactPerson.setValue(results.contactPerson);
+        this.eventFrom.controls.contactEmail.setValue(results.contactEmail);
+        this.eventFrom.controls.contactNumber.setValue(results.contactNumber);
+        this.eventFrom.controls.employeeIds.setValue(results.employeeIds);
 
-                });
+      }, (error) => {
+        this.commonService.showMessage("error", error.message);
+      });
     }
 
   }
@@ -49,12 +64,13 @@ export class AddEventComponent implements OnInit {
   iniatilzeFrom() {
     this.eventFrom = new FormGroup({
 
-      id:new FormControl(''),
+      id: new FormControl(''),
+
       name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
 
-      startDate:new FormControl('',[Validators.required]),
+      startDate: new FormControl('', [Validators.required]),
 
-      endDate:new FormControl('',[Validators.required]),
+      endDate: new FormControl('', [Validators.required]),
 
       address: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]),
 
@@ -72,25 +88,23 @@ export class AddEventComponent implements OnInit {
 
       contactNumber: new FormControl('', [Validators.required, Validators.maxLength(10), Validators.maxLength(10), Validators.pattern("^[0-9]*$")]),
 
+      employeeIds: new FormControl([]),
 
-
-      
     });
   }
 
-  
+
   submit() {
-    console.log("jkds");
     this.eventFrom.markAllAsTouched();
     console.log("hello");
     if (this.eventFrom.valid) {
       console.log("hello");
       this.eventService.addEvent(this.eventFrom.value).subscribe((results) => {
         let msg;
-        if(this.isAddFrom){
-          msg="Event Added Sucessfully";
-        } else{
-          msg="Event Updated Sucessfully";
+        if (this.isAddFrom) {
+          msg = "Event Added Sucessfully";
+        } else {
+          msg = "Event Updated Sucessfully";
         }
         this.commonService.showMessage("success", msg);
         this.router.navigate(['/event']);
@@ -101,7 +115,17 @@ export class AddEventComponent implements OnInit {
     }
   }
 
+  getActiveEmployee() {
+
+    this.employeeService.getAllActiveEmployee().subscribe((results) => {
+      this.employeeList = results;
+      console.log(this.employeeList)
+    }, (error) => {
+      this.commonService.showMessage("error", error.message);
+    });
+  }
+
 }
-  
+
 
 

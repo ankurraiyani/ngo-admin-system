@@ -250,8 +250,9 @@
                     <label>Email Address :</label>
                     <div class="input-group">
                         <input type="email" class="form-control" name="contactEmail" placeholder="E.g.- abc@gmail.com"
-                            minlength="3" maxlength="50" formControlName="contactEmail" [ngClass]=" {'is-invalid' : eventFrom.controls.contactEmail.touched && eventFrom.controls.contactEmail.invalid,
-        'is-valid' : eventFrom.controls.contactEmail.touched && eventFrom.controls.contactEmail.valid}">
+                            minlength="3" maxlength="50" formControlName="contactEmail"
+                            [ngClass]=" {'is-invalid' : eventFrom.controls.contactEmail.touched && eventFrom.controls.contactEmail.invalid,
+                            'is-valid' : eventFrom.controls.contactEmail.touched && eventFrom.controls.contactEmail.valid}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -272,11 +273,27 @@
                 </div>
 
 
+                <div class="form-group col-md-6">
+                    <label>Employee :</label>
+                    <div class="input-group">
+                        <div style="width: 100%;">
+                        <ng-select [searchable] ="true"[multiple]="true" [items]="employeeList" placeholder="Select Role"
+                            [bindValue]="'id'" [bindLabel]="'employeeName'" formControlName="employeeIds">
+                            <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                                <div class="ng-value" *ngFor="let item of items | slice:0:1">
+                                    <span class="ng-value-label">{{item.employeeName}}</span>
+                                    <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                                </div>
+                                <div class="ng-value" *ngIf="items.length > 1">
+                                    <span class="ng-value-label">{{items.length - 1}} more..</span>
+                                </div>
+                            </ng-template>
+                        
+                        </ng-select>
+                    </div>
 
-
-
-
-                <!-- ejkfnhkjewhfkjwergfr -->
+                    </div>
+                </div>
 
 
             </div>

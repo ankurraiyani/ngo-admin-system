@@ -13,7 +13,7 @@ export class ApiClientRepository {
         return this.httpClient.post(url,data,{ headers: this.getAuthenticationHeader() });
     }
 
-    doPublicGetAll(url : any ): Observable<any> {
+    doPublicGet(url : any ): Observable<any> {
         return this.httpClient.get(url);
     }
 

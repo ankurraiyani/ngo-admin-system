@@ -5,7 +5,7 @@ import { BASE_URL, DONER_ADD, DONER_DELETE, DONER_GETALL, DONER_GETID, EVENT_ADD
 @Injectable()
 export class DonerRepository {
     getIdDoner(data: any) {
-        return this.apiClient.doPublicGetAll(DONER_GETID+"/"+data);
+        return this.apiClient.doPublicGet(DONER_GETID+"/"+data);
     }
     
     constructor( 

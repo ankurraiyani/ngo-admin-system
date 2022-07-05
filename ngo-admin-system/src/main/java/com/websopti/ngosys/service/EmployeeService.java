@@ -26,8 +26,8 @@ public class EmployeeService {
 		return employeeRepository.save(employee);
 	}
 	
-	public List<Employee> getAll() {
-		return employeeRepository.findAll();
+	public List<Employee> getAllActive() {
+		return employeeRepository.findAllByIsActiveTrue();
 	}
 	
 	public Optional<Employee> get(Long employeeId) {

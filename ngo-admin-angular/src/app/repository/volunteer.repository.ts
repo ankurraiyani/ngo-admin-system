@@ -19,7 +19,7 @@ export class VolunteerRepository {
     }
 
     getIdVolunteer(data: any) {
-        return this.apiClient.doPublicGetAll(VOLUNTEER_GETID+"/"+data);
+        return this.apiClient.doPublicGet(VOLUNTEER_GETID+"/"+data);
     }
     
     deleteIDVolunteer(data:any)
