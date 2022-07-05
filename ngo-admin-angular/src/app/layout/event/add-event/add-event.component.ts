@@ -48,7 +48,7 @@ export class AddEventComponent implements OnInit {
 
   iniatilzeFrom() {
     this.eventFrom = new FormGroup({
-      id:new FormControl(''),
+      employeeids:new FormControl(''),
       name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)])
       
     });

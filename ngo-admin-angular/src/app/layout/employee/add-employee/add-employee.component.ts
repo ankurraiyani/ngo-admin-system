@@ -59,6 +59,7 @@ export class AddEmployeeComponent implements OnInit {
         this.employeeForm.controls.joiningDate.setValue(result.joiningDate)
         this.employeeForm.controls.salary.setValue(result.salary)
         this.employeeForm.controls.employeeTiming.setValue(result.employeeTiming)
+        this.employeeForm.controls.isActive.setValue(result.isActive)
       });
 
     }
@@ -96,7 +97,7 @@ export class AddEmployeeComponent implements OnInit {
 
       contactEmployyeEmail: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
 
-      isActive: new FormControl('')
+      isActive: new FormControl(true)
     })
   }
 

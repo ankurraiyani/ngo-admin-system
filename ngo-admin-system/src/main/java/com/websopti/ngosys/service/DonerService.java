@@ -59,4 +59,9 @@ public class DonerService {
 		return donerRepository.findDonerData(donerListDto.getSearchStr(),page);
 	}
 
+	public Doner findBydId(Long donerId) {
+		return donerRepository.findById(donerId).orElse(null);
+		
+	}
+
 }

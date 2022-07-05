@@ -47,6 +47,7 @@ export class AddVolunteerComponent implements OnInit {
             this.volunteerForm.controls.contactNumber.setValue(results.contactNumber);
             // this.volunteerForm.controls.availableTime.setValue(results.availableTime);
             this.volunteerForm.controls.id.setValue(results.id);
+            this.volunteerForm.controls.isActive.setValue(results.isActive);
 
                 });
       
@@ -71,8 +72,8 @@ export class AddVolunteerComponent implements OnInit {
 
       availableTime: new FormControl('', [Validators.required]),
 
-      areaOfInterest: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(80)])
-
+      areaOfInterest: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(80)]),
+      isActive:new FormControl(true)
     });
   }
 

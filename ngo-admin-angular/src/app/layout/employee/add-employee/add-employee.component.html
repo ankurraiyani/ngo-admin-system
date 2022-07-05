@@ -260,37 +260,25 @@
                     </div>
                     <span class="help-block"
                         *ngIf="employeeForm.controls.employeeTiming.touched && employeeForm.controls.employeeTiming.invalid">
-                        <!-- <ng-container *ngIf="employeeForm.controls.time.errors?.minlength">Min
-                        length is 3</ng-container>
-                    <ng-container *ngIf="employeeForm.controls.time.errors?.maxlength">Max
-                        length is 50</ng-container> -->
-                        <!-- <ng-container *ngIf="employeeForm.controls.time.errors?.whitespace">Please
-                        enter valid time.</ng-container> -->
                         <ng-container *ngIf="employeeForm.controls.employeeTiming.errors?.required">
                             time is required</ng-container>
                     </span>
                 </div>
 
 
-                <!-- <div class="custom-control 
-											custom-switch custom-switch-off-danger custom-switch-on-success">
-											<input type="checkbox" class="custom-control-input" [checked]="employee.isActive"
-												(change)="toggleClick(employee.id,employee.isActive)"
-												 id="cb_{{employee.id}}">
-											<label class="custom-control-label"	[attr.for]="'cb_' + employee.id"
-											></label> -->
-										<!-- </div> -->
+            
+												
 
-                                        <!-- <div class="custom-control 
-											custom-switch custom-switch-off-danger custom-switch-on-success">
-											<input type="checkbox" class="form-control  custom-control-input" [checked]="employee.isActive"
-												(change)="toggleClick(employee.employeeId,employee.isActive)"
-												 id="cb_{{employee.employeeId}}">
-											<label class="custom-control-label"	[attr.for]="'cb_' + employee.employeeId"
-											></label>
-										</div> -->
-
-
+                <div class="form-group col-md-6">
+                    <label>Employee's Activity</label>
+                    <div class="input-group custom-control 
+                    custom-switch custom-switch-off-danger custom-switch-on-success">
+                         <input type="checkbox" class="custom-control-input"  formControlName="isActive"
+                         id="togglebtn"> 
+                     <label class="custom-control-label"	[attr.for]="'togglebtn'"></label>
+                    </div>
+                   
+                </div>
 
 
 

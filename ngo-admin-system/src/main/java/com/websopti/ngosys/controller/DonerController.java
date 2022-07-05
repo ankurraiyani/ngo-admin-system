@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.websopti.ngosys.dto.DonerListDTO;
+import com.websopti.ngosys.dto.EventDto;
 import com.websopti.ngosys.entity.Doner;
+import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.service.DonerService;
 
 @RestController

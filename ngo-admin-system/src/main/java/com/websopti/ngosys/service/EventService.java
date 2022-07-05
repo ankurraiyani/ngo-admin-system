@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.websopti.ngosys.dto.EventDto;
 import com.websopti.ngosys.dto.EventListDTO;
+import com.websopti.ngosys.entity.Doner;
 import com.websopti.ngosys.entity.Employee;
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.repository.EventRepository;
@@ -27,14 +28,34 @@ public class EventService {
 	@Autowired
 	private EmployeeService employeeService;
 	
+	@Autowired
+	private DonerService donerService;
+	
+	
+	
 	public Event save(EventDto eventDto) {
 		Event event = this.convertDtoToEntity(eventDto);
+		
 		return eventRepository.save(event);
 	}
 
-	public Optional<Event> get(Long eventId) {
+	public Optional<Event> get(Long eventId)
+	{
+		System.out.println(eventId);
+		EventDto eventDto=new EventDto();
+		Event event=this.convertEntityToDto(eventDto);
 		return eventRepository.findById(eventId);
 	}
+	
+
+	
+//	
+//	public List<Employee> get() {
+//		List<Employee> employeeList=this.convertEntityToDto();
+//		
+//		System.out.println(employeeList);
+//		return employeeList;
+//	}
 
 	public List<Event> getAll() {
 		return eventRepository.findAll();
@@ -64,16 +85,45 @@ public class EventService {
 
 	private Event convertDtoToEntity(EventDto eventDto) {
 		Event event = new Event();
+		
 		BeanUtils.copyProperties(eventDto, event);
+		
 		List<Employee> employeeList = new ArrayList<Employee>();
 		for(Long employeeId : eventDto.getEmployeeIds()) {
 			Employee employee = this.employeeService.findBydId(employeeId);
 			employeeList.add(employee);
 		}
 		event.setEmployeeList(employeeList);
+		
+		BeanUtils.copyProperties(eventDto, event);
+		
+		List<Doner> donerList = new ArrayList<Doner>();
+		for(Long donerId : eventDto.getDonerIds()) {
+			Doner doner = this.donerService.findBydId(donerId);
+			donerList.add(doner);
+		}
+		event.setDonerList(donerList);
 		return event;
 	}
-
+	
+	private Event convertEntityToDto(EventDto eventDto)
+	{
+		Event event =new Event();
+		BeanUtils.copyProperties(eventDto, event);
+		
+		List<Employee> employeeList = new ArrayList<Employee>();
+		for(Long  employeeId :eventDto.getEmployeeIds())
+		{
+			Employee employee = this.employeeService.findBydId(employeeId);
+			employeeList.add(employee);
+			System.out.println("dto");
+		}
+		event.setEmployeeList(employeeList);
+		return event;
+		
+		
+		
+	}
 	
 
 	
