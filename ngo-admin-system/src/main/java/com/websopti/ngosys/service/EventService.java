@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.management.loading.PrivateClassLoader;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -39,11 +41,12 @@ public class EventService {
 		return eventRepository.save(event);
 	}
 
+
+	
+	
 	public Optional<Event> get(Long eventId)
 	{
-		System.out.println(eventId);
-		EventDto eventDto=new EventDto();
-		Event event=this.convertEntityToDto(eventDto);
+
 		return eventRepository.findById(eventId);
 	}
 	
@@ -58,6 +61,7 @@ public class EventService {
 //	}
 
 	public List<Event> getAll() {
+		
 		return eventRepository.findAll();
 	}
 
@@ -89,10 +93,10 @@ public class EventService {
 		BeanUtils.copyProperties(eventDto, event);
 		
 		List<Employee> employeeList = new ArrayList<Employee>();
-		for(Long employeeId : eventDto.getEmployeeIds()) {
-			Employee employee = this.employeeService.findBydId(employeeId);
-			employeeList.add(employee);
-		}
+//		for(Long employeeId : eventDto.getEmployeeIds()) {
+//			Employee employee = this.employeeService.findBydId(employeeId);
+//			employeeList.add(employee);
+//		}
 		event.setEmployeeList(employeeList);
 		
 		BeanUtils.copyProperties(eventDto, event);
@@ -105,6 +109,7 @@ public class EventService {
 		event.setDonerList(donerList);
 		return event;
 	}
+<<<<<<< HEAD
 	
 	private Event convertEntityToDto(EventDto eventDto)
 	{
@@ -128,5 +133,8 @@ public class EventService {
 
 	
 		
+=======
+			
+>>>>>>> f7c4e83e3f86e269ae2f5b585b66bc610ebee5a9
 	
 }

@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.websopti.ngosys.dto.EventDto;
 import com.websopti.ngosys.dto.EventListDTO;
+<<<<<<< HEAD
 import com.websopti.ngosys.entity.Employee;
+=======
+import com.websopti.ngosys.entity.Doner;
+>>>>>>> f7c4e83e3f86e269ae2f5b585b66bc610ebee5a9
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.service.EventService;
 
@@ -35,8 +39,10 @@ public class EventController {
 	}
 	
 	@GetMapping("/get/{eventId}")
+
 	public Optional<Event> get(@RequestBody Long id) {		
 		return eventService.get(id);
+		
 	}
 	
 	@GetMapping("/get/all")
