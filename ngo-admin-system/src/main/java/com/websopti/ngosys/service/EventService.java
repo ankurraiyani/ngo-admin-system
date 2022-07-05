@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.management.loading.PrivateClassLoader;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.websopti.ngosys.dto.EventDto;
 import com.websopti.ngosys.dto.EventListDTO;
+import com.websopti.ngosys.entity.Doner;
 import com.websopti.ngosys.entity.Employee;
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.repository.EventRepository;
@@ -32,11 +35,18 @@ public class EventService {
 		return eventRepository.save(event);
 	}
 
-	public Optional<Event> get(Long eventId) {
+//	public Optional<Event> get(Long eventId) {
+//		return eventRepository.findById(eventId);
+//	}
+	
+	
+	public Optional<Event> get(Long eventId)
+	{
 		return eventRepository.findById(eventId);
 	}
 
 	public List<Event> getAll() {
+		
 		return eventRepository.findAll();
 	}
 
@@ -66,17 +76,13 @@ public class EventService {
 		Event event = new Event();
 		BeanUtils.copyProperties(eventDto, event);
 		List<Employee> employeeList = new ArrayList<Employee>();
-		for(Long employeeId : eventDto.getEmployeeIds()) {
-			Employee employee = this.employeeService.findBydId(employeeId);
-			employeeList.add(employee);
-		}
+//		for(Long employeeId : eventDto.getEmployeeIds()) {
+//			Employee employee = this.employeeService.findBydId(employeeId);
+//			employeeList.add(employee);
+//		}
 		event.setEmployeeList(employeeList);
 		return event;
 	}
-
-	
-
-	
-		
+			
 	
 }

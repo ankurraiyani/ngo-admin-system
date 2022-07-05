@@ -1,6 +1,7 @@
 package com.websopti.ngosys.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.websopti.ngosys.dto.EventDto;
 import com.websopti.ngosys.dto.EventListDTO;
+import com.websopti.ngosys.entity.Doner;
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.service.EventService;
 
@@ -33,7 +35,8 @@ public class EventController {
 	}
 	
 	@GetMapping("/get/{eventId}")
-	public Event get(@PathVariable Long eventId) {		
+	public Event get(@PathVariable Long eventId)
+	{
 		return eventService.get(eventId).get();
 	}
 	

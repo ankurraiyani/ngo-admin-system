@@ -57,5 +57,7 @@ public class Event {
 	@JoinTable(name="event_employee", joinColumns = {
 	@JoinColumn(name = "event_id")}, inverseJoinColumns = {
 	@JoinColumn(name = "employee_id")})
+	
 	private List<Employee> employeeList;
+	
 }
