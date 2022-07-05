@@ -53,6 +53,4 @@ public class EventController {
 		return eventService.getWithParams(eventListDto);
 	}
 	
-	
-	
 }

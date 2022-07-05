@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.websopti.ngosys.dto.EventListDTO;
@@ -37,10 +38,11 @@ public class VolunteerService {
 		return volunteerRepository.findAll();
 	}
 	
+
 	public Page<Volunteer> getWithParams(VolunteerListDTO volunteerListDto) 
 	{
 		
-		Pageable page = PageRequest.of(volunteerListDto.getPageNo(), volunteerListDto.getPageSize());
+		Pageable page = PageRequest.of(volunteerListDto.getPageNo(), volunteerListDto.getPageSize(),Direction.DESC, "date_of_joining");
 //		return volunteerRepository.findAll(page);
 		return volunteerRepository.findVolunteerData(volunteerListDto.getSearchStr(),page);
 	}

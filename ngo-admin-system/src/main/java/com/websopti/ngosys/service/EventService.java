@@ -39,7 +39,6 @@ public class EventService {
 	public List<Event> getAll() {
 		return eventRepository.findAll();
 	}
-
 	
 	public void deleteEventById(Long EventId)
 	{
@@ -66,7 +65,8 @@ public class EventService {
 		Event event = new Event();
 		BeanUtils.copyProperties(eventDto, event);
 		List<Employee> employeeList = new ArrayList<Employee>();
-		for(Long employeeId : eventDto.getEmployeeIds()) {
+		for(Long employeeId : eventDto.getEmployeeIds()) 
+		{
 			Employee employee = this.employeeService.findBydId(employeeId);
 			employeeList.add(employee);
 		}
