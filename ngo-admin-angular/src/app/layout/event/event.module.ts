@@ -5,6 +5,7 @@ import { AddEventComponent } from './add-event/add-event.component';
 import { EVENT_ROUTE } from './event-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -15,6 +16,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     NgxPaginationModule,
     FormsModule,
+    NgSelectModule,
     EVENT_ROUTE
   ]
 })

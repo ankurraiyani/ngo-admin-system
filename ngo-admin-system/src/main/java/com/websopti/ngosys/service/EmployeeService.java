@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.websopti.ngosys.dto.EmployeeListDTO;
@@ -25,8 +26,8 @@ public class EmployeeService {
 		return employeeRepository.save(employee);
 	}
 	
-	public List<Employee> getAll() {
-		return employeeRepository.findAll();
+	public List<Employee> getAllActive() {
+		return employeeRepository.findAllByIsActiveTrue();
 	}
 	
 	public Optional<Employee> get(Long employeeId) {
@@ -53,7 +54,7 @@ public class EmployeeService {
 	public Page<Employee> getWithParams(EmployeeListDTO employeeListDto) {
 		
 
-		Pageable page = PageRequest.of(employeeListDto.getPageNo(), employeeListDto.getPageSize());
+		Pageable page = PageRequest.of(employeeListDto.getPageNo(), employeeListDto.getPageSize(),Direction.DESC, "joining_date");
 		//return employeeRepository.findAll(page);
 		
 		return employeeRepository.findEmployeeData(employeeListDto.getSearchStr(),page);

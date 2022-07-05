@@ -29,4 +29,9 @@ export class VolunteerService {
     isActiveDeactiveVolunteer(volunteerId: any,isActive : any) {
       return this.volunteerRepo.isActiveDeactiveVolunteer(volunteerId,isActive);
     }
+
+    getAllActiveVolunteer() {
+        return this.volunteerRepo.getAllActiveVolunteer();
+    }
+
 }

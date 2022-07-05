@@ -4,34 +4,26 @@ import { EvnetRepository } from "../repository/event.repository";
 
 @Injectable()
 export class EvnetService {
-    
-    
-    constructor( 
-        private eventRepo:EvnetRepository) { }
 
-    addEvent(data : any){
+
+    constructor(
+        private eventRepo: EvnetRepository) { }
+
+    addEvent(data: any) {
         console.log(data);
         return this.eventRepo.addEvent(data);
     }
 
-    getAllEvent(fetchEventListParam : any)
-    {
+    getAllEvent(fetchEventListParam: any) {
         return this.eventRepo.getAllEvent(fetchEventListParam);
     }
 
-    deleteIdEvent(data:any)
-    {
+    deleteIdEvent(data: any) {
         return this.eventRepo.deleteIdEvent(data);
     }
 
-
-
-    getIdEvent(data:any)
-    {
-        
-        this.addEvent(data);
+    getIdEvent(data: any) {
         return this.eventRepo.getIdEvent(data);
-        
     }
 
 }

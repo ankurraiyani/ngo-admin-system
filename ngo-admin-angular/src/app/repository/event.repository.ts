@@ -22,7 +22,7 @@ export class EvnetRepository {
     }
 
     getIdEvent(data: any) {
-       return this.apiClient.doPublicGetAll(EVENT_GETID+"/"+data);
+       return this.apiClient.doPublicGet(EVENT_GETID+"/"+data);
     }
 
     deleteIdEvent(data : any)
@@ -30,7 +30,6 @@ export class EvnetRepository {
         return this.apiClient.doPublicDelete(EVENT_DELETE+"/"+data);
 
     }
-    
     
         
 }

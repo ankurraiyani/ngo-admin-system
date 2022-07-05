@@ -59,8 +59,8 @@ export class AddEmployeeComponent implements OnInit {
         this.employeeForm.controls.joiningDate.setValue(result.joiningDate)
         this.employeeForm.controls.salary.setValue(result.salary)
         this.employeeForm.controls.employeeTiming.setValue(result.employeeTiming)
+        this.employeeForm.controls.isActive.setValue(result.isActive)
       });
-  
 
     }
   }
@@ -95,9 +95,31 @@ export class AddEmployeeComponent implements OnInit {
 
       employeeTiming: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
 
-      contactEmployyeEmail: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")])
+      contactEmployyeEmail: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+
+      isActive: new FormControl(true)
     })
   }
+
+  toggleClick(employeeId:any , isActive:any) {
+    console.log("asjcdfs"+employeeId)
+
+      console.log(isActive)
+      this.employeeService.isActiveDeactiveEmployee(this.employeeForm.controls.id,!isActive).subscribe((results) => {
+        console.log("olfdl")
+        let msg ;
+        if(!isActive) {
+           msg = 'Employee Activated Sucessfully';
+        } else {
+          msg = 'Employee Deactivated Sucessfully';
+        }
+        this.commonService.showMessage('success', msg);
+        
+      }, (error) => {
+        this.commonService.showMessage("error", error.message)
+      });
+    }
+
 
   submit() {
     this.employeeForm.markAllAsTouched();

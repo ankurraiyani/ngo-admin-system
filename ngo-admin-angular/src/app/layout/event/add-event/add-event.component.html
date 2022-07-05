@@ -4,9 +4,9 @@
             <div class="row">
 
                 <div class="form-group col-md-6">
-                    <label>Name:</label>
+                    <label>Event Name:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="name" placeholder="Name" minlength="3"
+                        <input type="text" class="form-control" name="name" placeholder="Event Name" minlength="3"
                             maxlength="50" formControlName="name" [ngClass]=" {'is-invalid' : eventFrom.controls.name.touched && eventFrom.controls.name.invalid,
 						'is-valid' : eventFrom.controls.name.touched && eventFrom.controls.name.valid}">
                         <div class="input-group-append">
@@ -27,6 +27,272 @@
                     </span>
                 </div>
                 <!-- add extra fields -->
+                <div class="form-group col-md-6">
+                    <label>Event Type:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="type" placeholder="Event Type" minlength="3"
+                            maxlength="50" formControlName="type" [ngClass]=" {'is-invalid' : eventFrom.controls.type.touched && eventFrom.controls.type.invalid,
+						'is-valid' : eventFrom.controls.type.touched && eventFrom.controls.type.valid}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block" *ngIf="eventFrom.controls.type.touched && eventFrom.controls.type.invalid">
+                        <ng-container *ngIf="eventFrom.controls.type.errors?.minlength">Min
+                            length is 3</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.type.errors?.maxlength">Max
+                            length is 50</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.type.errors?.whitespace">Please
+                            enter valid type.</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.type.errors?.required">
+                            type is required</ng-container>
+                    </span>
+                </div>
+
+
+                <!-- njsdnfjdsn -->
+                <div class="form-group col-md-6">
+                    <label>Start Date</label>
+                    <div class="input-group">
+                        <input type="date" class="form-control" name="startDate" formControlName="startDate" [ngClass]=" {'is-invalid' : eventFrom.controls.startDate.touched && eventFrom.controls.startDate.invalid,
+						'is-valid' : eventFrom.controls.startDate.touched && eventFrom.controls.startDate.valid}">
+                    </div>
+                    <span class="help-block"
+                        *ngIf="eventFrom.controls.startDate.touched && eventFrom.controls.startDate.invalid">
+                        <ng-container *ngIf="eventFrom.controls.startDate.errors?.required">
+                            startDate is required</ng-container>
+                    </span>
+                </div>
+
+                <!-- nfdsjfjdrgnkdfgkjdfj -->
+
+                <div class="form-group col-md-6">
+                    <label>End Date</label>
+                    <div class="input-group">
+                        <input type="date" class="form-control" name="endDate" formControlName="endDate" [ngClass]=" {'is-invalid' : eventFrom.controls.endDate.touched && eventFrom.controls.endDate.invalid,
+        'is-valid' : eventFrom.controls.endDate.touched && eventFrom.controls.endDate.valid}">
+
+                    </div>
+                    <span class="help-block"
+                        *ngIf="eventFrom.controls.endDate.touched && eventFrom.controls.endDate.invalid">
+                        <ng-container *ngIf="eventFrom.controls.endDate.errors?.required">
+                            endDate is required</ng-container>
+                    </span>
+                </div>
+
+
+                <!-- dfrdgrdgdtrfhbfg -->
+
+
+                <div class="form-group col-md-6">
+                    <label>Address :</label>
+                    <div class="input-group">
+                        <textarea class="form-control" rows="4" cols="4" name="address" placeholder="Address"
+                            minlength="3" maxlength="150" formControlName="address" [ngClass]=" {'is-invalid' : eventFrom.controls.address.touched && eventFrom.controls.address.invalid,
+        'is-valid' : eventFrom.controls.address.touched && eventFrom.controls.address.valid}">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fa fa-user"></span>
+            </div>
+        </div>
+        </textarea>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="eventFrom.controls.address.touched && eventFrom.controls.address.invalid || eventFrom.controls.contactNumber.dirty">
+                        <ng-container *ngIf="eventFrom.controls.address.errors?.minlength">Min
+                            Length is 3</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.address.errors?.maxlength">Max
+                            Length is 150</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.address.errors?.whitespace">Please
+                            Enter valid Address</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.address.errors?.required">
+                            Address is required</ng-container>
+                    </span>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Description :</label>
+                    <div class="input-group">
+                        <textarea class="form-control" rows="4" cols="4" name="description" placeholder="Description"
+                            minlength="3" maxlength="150" formControlName="description" [ngClass]=" {'is-invalid' : eventFrom.controls.description.touched && eventFrom.controls.description.invalid,
+'is-valid' : eventFrom.controls.description.touched && eventFrom.controls.description.valid}">
+                        <div class="input-group-append">
+                        <div class="input-group-text">
+<span class="fa fa-user"></span>
+</div>
+</div>
+</textarea>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="eventFrom.controls.description.touched && eventFrom.controls.description.invalid || eventFrom.controls.contactNumber.dirty">
+                        <ng-container *ngIf="eventFrom.controls.description.errors?.minlength">Min
+                            Length is 3</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.description.errors?.maxlength">Max
+                            Length is 150</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.description.errors?.whitespace">Please
+                            Enter valid description</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.description.errors?.required">
+                            description is required</ng-container>
+                    </span>
+                </div>
+
+                <!-- njefjkwebnfwebgfe -->
+
+                
+                <!-- ebfhrejbrdkjg -->
+
+                <div class="form-group col-md-6">
+                    <label>Sponsors Name:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="sponsors" placeholder="Sponsor Name" minlength="3"
+                            maxlength="50" formControlName="sponsors" [ngClass]=" {'is-invalid' : eventFrom.controls.sponsors.touched && eventFrom.controls.sponsors.invalid,
+        'is-valid' : eventFrom.controls.sponsors.touched && eventFrom.controls.sponsors.valid}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="eventFrom.controls.sponsors.touched && eventFrom.controls.sponsors.invalid">
+                        <ng-container *ngIf="eventFrom.controls.sponsors.errors?.minlength">Min
+                            length is 3</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.sponsors.errors?.maxlength">Max
+                            length is 50</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.sponsors.errors?.whitespace">Please
+                            enter valid name.</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.sponsors.errors?.required">
+                            Name is required</ng-container>
+                    </span>
+                </div>
+
+
+
+
+                <div class="form-group col-md-6">
+                    <label>Contact Person:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name=" Contact Person" placeholder=" contactPerson"
+                            minlength="3" maxlength="50" formControlName="contactPerson" [ngClass]=" {'is-invalid' : eventFrom.controls. contactPerson.touched && eventFrom.controls. contactPerson.invalid,
+        'is-valid' : eventFrom.controls.contactPerson.touched && eventFrom.controls.contactPerson.valid}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="eventFrom.controls.contactPerson.touched && eventFrom.controls.contactPerson.invalid">
+                        <ng-container *ngIf="eventFrom.controls.contactPerson.errors?.minlength">Min
+                            length is 3</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.contactPerson.errors?.maxlength">Max
+                            length is 50</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.contactPerson.errors?.whitespace">Please
+                            enter valid contactPerson.</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.contactPerson.errors?.required">
+                            contactPerson is required</ng-container>
+                    </span>
+                </div>
+
+
+
+                <!-- akjfnjklsedflkdfvn -->
+                <div class="form-group col-md-6">
+                    <label>Contact Number :</label>
+                    <div class="input-group">
+                        <input type="tel" class="form-control" name="contact Number" minlength="10" maxlength="10"
+                            formControlName="contactNumber" [ngClass]=" {'is-invalid' : eventFrom.controls.contactNumber.touched && eventFrom.controls.contactNumber.invalid,
+						'is-valid' : eventFrom.controls.contactNumber.touched && eventFrom.controls.contactNumber.valid}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-phone"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="eventFrom.controls.contactNumber.touched && eventFrom.controls.contactNumber.invalid || eventFrom.controls.contactNumber.dirty ">
+
+                        <ng-container *ngIf="eventFrom.controls.contactNumber.errors?.pattern">Please
+                            Enter valid Contact Number</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.contactNumber.errors?.required">
+                            Contact Number is required</ng-container>
+                    </span>
+                </div>
+                <!-- fuhweukfhnlirgj -->
+
+                <div class="form-group col-md-6">
+                    <label>Email Address :</label>
+                    <div class="input-group">
+                        <input type="email" class="form-control" name="contactEmail" placeholder="E.g.- abc@gmail.com"
+                            minlength="3" maxlength="50" formControlName="contactEmail"
+                            [ngClass]=" {'is-invalid' : eventFrom.controls.contactEmail.touched && eventFrom.controls.contactEmail.invalid,
+                            'is-valid' : eventFrom.controls.contactEmail.touched && eventFrom.controls.contactEmail.valid}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="eventFrom.controls.contactEmail.touched && eventFrom.controls.contactEmail.invalid || eventFrom.controls.contactEmail.dirty">
+                        <ng-container *ngIf="eventFrom.controls.contactEmail.errors?.maxlength">Max
+                            Length is 50</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.contactEmail.errors?.whitespace">Please
+                            Enter valid Email Address.</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.contactEmail.errors?.pattern">Please
+                            Enter valid Email Address.</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.contactEmail.errors?.required">
+                            Email is required</ng-container>
+                    </span>
+                </div>
+
+
+                <div class="form-group col-md-6">
+                    <label>Employee :</label>
+                    <div class="input-group">
+                        <div style="width: 100%;">
+                        <ng-select [searchable] ="true"[multiple]="true" [items]="employeeList" placeholder="Select Role"
+                            [bindValue]="'id'" [bindLabel]="'employeeName'" formControlName="employeeIds">
+                            <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                                <div class="ng-value" *ngFor="let item of items | slice:0:1">
+                                    <span class="ng-value-label">{{item.employeeName}}</span>
+                                    <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                                </div>
+                                <div class="ng-value" *ngIf="items.length > 1">
+                                    <span class="ng-value-label">{{items.length - 1}} more..</span>
+                                </div>
+                            </ng-template>
+                        
+                        </ng-select>
+                    </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Volunteer :</label>
+                    <div class="input-group">
+                        <div style="width: 100%;">
+                        <ng-select [searchable] ="true"[multiple]="true" [items]="volunteerList" placeholder="Select Volunteer"
+                            [bindValue]="'id'" [bindLabel]="'nsame'" formControlName="volunteerIds">
+                            <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                                <div class="ng-value" *ngFor="let item of items | slice:0:1">
+                                    <span class="ng-value-label">{{item.name}}</span>
+                                    <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+                                </div>
+                                <div class="ng-value" *ngIf="items.length > 1">
+                                    <span class="ng-value-label">{{items.length - 1}} more..</span>
+                                </div>
+                            </ng-template>
+                        
+                        </ng-select>
+                    </div>
+
+                    </div>
+                </div>
+
 
             </div>
         </div>

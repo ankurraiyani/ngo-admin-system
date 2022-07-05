@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.websopti.ngosys.dto.EventListDTO;
 import com.websopti.ngosys.dto.VolunteerListDTO;
+import com.websopti.ngosys.entity.Doner;
 import com.websopti.ngosys.entity.Employee;
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.entity.Volunteer;
@@ -71,6 +72,15 @@ public class VolunteerService {
 			System.out.println("Volunteer not fount at active deactive time");
 		}
 	}
+
 	
+	public List<Volunteer> getAllActive() {
+		return volunteerRepository.findAllByIsActiveTrue();
+	}
+	
+	public Volunteer findById(Long volunteerId) {
+		return volunteerRepository.findById(volunteerId).orElse(null);
+		
+	}
 
 }

@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import { ApiClientRepository } from "../common/Apiclient.repository";
-import { BASE_URL, EMPLOYEE_ADD, EMPLOYEE_DELETE, EMPLOYEE_GETALL, EMPLOYEE_ISACTIVE_DEACTIVE} from "../common/url";
+import { BASE_URL, EMPLOYEE_ADD, EMPLOYEE_DELETE, EMPLOYEE_GETALL, EMPLOYEE_ISACTIVE_DEACTIVE, GET_ALL_ACTIVE_EMPLOYEE} from "../common/url";
 
 @Injectable()
 export class EmployeeRepository {
     getEmployeeId(id: any) {
-        return this.apiClient.doPublicGetAll(EMPLOYEE_GETALL+"/"+id);
+        return this.apiClient.doPublicGet(EMPLOYEE_GETALL+"/"+id);
     }
     
     constructor( 
@@ -14,7 +14,7 @@ export class EmployeeRepository {
     addEmployee(data : any){
         return this.apiClient.doPublicPost(EMPLOYEE_ADD, data);
     }
-    getAllEmployee(fetchEmployeeListParam:any) {
+    searchEmployee(fetchEmployeeListParam:any) {
         return this.apiClient.doPublicPost(EMPLOYEE_GETALL,fetchEmployeeListParam);
      }
     
@@ -28,5 +28,8 @@ export class EmployeeRepository {
 		formData.append('isActive', isActive);
         return this.apiClient.doPublicPostWithoutJson(EMPLOYEE_ISACTIVE_DEACTIVE,formData);
      }
+    getAllActiveEmployee() {
+        return this.apiClient.doPublicGet(GET_ALL_ACTIVE_EMPLOYEE);
+    }
 
 }

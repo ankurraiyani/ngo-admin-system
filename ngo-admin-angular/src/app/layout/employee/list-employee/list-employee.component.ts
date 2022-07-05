@@ -46,7 +46,7 @@ export class ListEmployeeComponent implements OnInit {
     if (this.searchSubscriber) {
       this.searchSubscriber.unsubscribe();
     }
-    this.searchSubscriber = this.employeeService.getAllEmployee(this.fetchEmployeeListParam).subscribe((results) => {
+    this.searchSubscriber = this.employeeService.searchEmployee(this.fetchEmployeeListParam).subscribe((results) => {
       this.employeeList = results.content;
       this.totalCount = results.totalElements;
     }, (error) => {
@@ -103,9 +103,9 @@ export class ListEmployeeComponent implements OnInit {
       this.employeeService.isActiveDeactiveEmployee(employeeId,!isActive).subscribe((results) => {
         let msg ;
         if(!isActive) {
-           msg = 'Empployee Activated Sucessfully';
+           msg = 'Employee Activated Sucessfully';
         } else {
-          msg = 'Empployee Deactivated Sucessfully';
+          msg = 'Employee Deactivated Sucessfully';
         }
         this.commonService.showMessage('success', msg);
         this.getEmployeeData();

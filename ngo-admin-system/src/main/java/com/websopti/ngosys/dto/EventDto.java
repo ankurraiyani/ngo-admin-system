@@ -41,4 +41,8 @@ public class EventDto {
 	private String contactEmail;
 	
 	private List<Long> employeeIds;
+	
+	private List<Long> donerIds;
+	
+	private List<Long> volunteerIds;
 }

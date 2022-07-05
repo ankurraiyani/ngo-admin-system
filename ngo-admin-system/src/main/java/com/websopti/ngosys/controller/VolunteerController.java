@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.websopti.ngosys.dto.EventListDTO;
 import com.websopti.ngosys.dto.VolunteerListDTO;
+import com.websopti.ngosys.entity.Employee;
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.entity.Volunteer;
 import com.websopti.ngosys.service.VolunteerService;
@@ -33,6 +34,11 @@ public class VolunteerController {
 	public Volunteer save(@RequestBody Volunteer volunteer)
 	{
 		return volunteerService.save(volunteer);
+	}
+	
+	@GetMapping("/getAll/active")
+	public List<Volunteer> getAllActive() {
+		return volunteerService.getAllActive();
 	}
 	
 	@GetMapping("/get/{volunteerId}")
