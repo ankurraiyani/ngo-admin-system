@@ -82,7 +82,13 @@ export class AddVolunteerComponent implements OnInit {
 
     if (this.volunteerForm.valid) {
       this.volunteerService.addVolunteer(this.volunteerForm.value).subscribe((results) => {
-        this.commonService.showMessage("success", "Volunteer Added Sucessfully");
+        let msg;
+        if (this.isAddForm) {
+          msg = "Volunteer Added Sucessfully";
+        } else {
+          msg = "Volunteer Updated Sucessfully";
+        }
+        this.commonService.showMessage("success", msg);
         this.router.navigate(['/volunteer']);
       }, (error) => {
         this.commonService.showMessage("error", error.message);
