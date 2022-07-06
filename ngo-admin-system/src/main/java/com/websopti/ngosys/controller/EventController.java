@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.websopti.ngosys.dto.EventDto;
 import com.websopti.ngosys.dto.EventListDTO;
+import com.websopti.ngosys.dto.EventPagabelReponse;
 import com.websopti.ngosys.entity.Employee;
 import com.websopti.ngosys.entity.Doner;
 import com.websopti.ngosys.entity.Event;
@@ -40,18 +41,13 @@ public class EventController {
 
 	}
 
-	@GetMapping("/get/all")
-	public List<Event> getAll() {
-		return eventService.getAll();
-	}
-
 	@DeleteMapping("delete/{eventId}")
 	public void deleteId(@PathVariable Long eventId) {
 		eventService.deleteEventById(eventId);
 	}
 
 	@PostMapping("/get")
-	public Page<Event> getWithParams(@RequestBody EventListDTO eventListDto) {
+	public Page<EventPagabelReponse> getWithParams(@RequestBody EventListDTO eventListDto) {
 		return eventService.getWithParams(eventListDto);
 	}
 

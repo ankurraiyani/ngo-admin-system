@@ -31,5 +31,5 @@ export const DONER_ADD:string =BASE_URL+"doner/save";
 export const DONER_GETALL:string =BASE_URL+"doner/get";
 export const DONER_DELETE: string=BASE_URL+"doner/delete";
 export const DONER_GETID:string=BASE_URL+"doner/get";
-export const GET_ALL_ACTIVE_DONER:string=BASE_URL+"doner/getall/active";
+export const GET_ALL_ACTIVE_DONER:string=BASE_URL+"doner/getAll/active";
 

@@ -10,7 +10,6 @@ export class EvnetService {
         private eventRepo: EvnetRepository) { }
 
     addEvent(data: any) {
-        console.log(data);
         return this.eventRepo.addEvent(data);
     }
 

@@ -135,32 +135,6 @@
                 </div>
 
 
-                <div class="form-group col-md-6">
-                    <label>Volunteer Name:</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="volunteer" placeholder="volunteer Name"
-                            minlength="3" maxlength="50" formControlName="volunteer" [ngClass]=" {'is-invalid' : eventFrom.controls.volunteer.touched && eventFrom.controls.volunteer.invalid,
-					    	'is-valid' : eventFrom.controls.volunteer.touched && eventFrom.controls.volunteer.valid}">
-                         <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fa fa-user"></span>
-                            </div>
-                         </div>
-                    </div>
-                    <span class="help-block"
-                        *ngIf="eventFrom.controls.volunteer.touched && eventFrom.controls.volunteer.invalid">
-                        <ng-container *ngIf="eventFrom.controls.volunteer.errors?.minlength">Min
-                            length is 3</ng-container>
-                        <ng-container *ngIf="eventFrom.controls.volunteer.errors?.maxlength">Max
-                            length is 50</ng-container>
-                        <ng-container *ngIf="eventFrom.controls.volunteer.errors?.whitespace">Please
-                            enter valid volunteer name.</ng-container>
-                        <ng-container *ngIf="eventFrom.controls.volunteer.errors?.required">
-                            volunteer Name is required</ng-container>
-                    </span>
-                </div>
-
-
 
 
                 <div class="form-group col-md-6">
@@ -295,7 +269,7 @@
                     <div class="input-group">
                         <div style="width: 100%;">
                         <ng-select [searchable] ="true"[multiple]="true" [items]="volunteerList" placeholder="Select Volunteer"
-                            [bindValue]="'id'" [bindLabel]="'nsame'" formControlName="volunteerIds">
+                            [bindValue]="'id'" [bindLabel]="'name'" formControlName="volunteerIds">
                             <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
                                 <div class="ng-value" *ngFor="let item of items | slice:0:1">
                                     <span class="ng-value-label">{{item.name}}</span>

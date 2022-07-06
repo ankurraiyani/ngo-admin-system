@@ -85,8 +85,6 @@ export class AddEventComponent implements OnInit {
 
       address: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]),
 
-      volunteer: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
-
       sponsors: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
 
       description: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]),
@@ -116,7 +114,8 @@ export class AddEventComponent implements OnInit {
     if (this.eventFrom.valid) {
       this.eventService.addEvent(this.eventFrom.value).subscribe((results) => {
 
-        console.log(results);
+        console.log("-----------------------------")
+        // console.log(results);
         let msg;
         if (this.isAddFrom) {
           msg = "Event Added Sucessfully";
@@ -134,9 +133,7 @@ export class AddEventComponent implements OnInit {
 
   getActiveEmployee() {
     this.employeeService.getAllActiveEmployee().subscribe((results) => {
-      console.log(results); 
       this.employeeList = results;
-      console.log(this.employeeList)
     }, (error) => {
       this.commonService.showMessage("error", error.message);
     });
@@ -156,7 +153,6 @@ export class AddEventComponent implements OnInit {
 
     this.volunteerService.getAllActiveVolunteer().subscribe((results) => {
       this.volunteerList = results;
-      console.log(this.volunteerList)
     }, (error) => {
       this.commonService.showMessage("error", error.message);
     });

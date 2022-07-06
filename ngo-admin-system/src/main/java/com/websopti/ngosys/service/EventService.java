@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.websopti.ngosys.dto.EventDto;
 import com.websopti.ngosys.dto.EventListDTO;
+import com.websopti.ngosys.dto.EventPagabelReponse;
 import com.websopti.ngosys.entity.Doner;
 import com.websopti.ngosys.entity.Employee;
 import com.websopti.ngosys.entity.Event;
@@ -47,12 +48,7 @@ public class EventService {
 		EventDto eventDto = this.convertEntityToDto(event);
 		return eventDto;
 	}
-
-	public List<Event> getAll() {
-
-		return eventRepository.findAll();
-	}
-
+	
 	public void deleteEventById(Long EventId) {
 		if (eventRepository.findById(EventId).isPresent()) {
 			eventRepository.deleteById(EventId);
@@ -61,7 +57,7 @@ public class EventService {
 		}
 	}
 
-	public Page<Event> getWithParams(EventListDTO eventListDto) {
+	public Page<EventPagabelReponse> getWithParams(EventListDTO eventListDto) {
 
 		Pageable page = PageRequest.of(eventListDto.getPageNo(), eventListDto.getPageSize(), Direction.DESC,
 				"start_date");
@@ -70,6 +66,11 @@ public class EventService {
 		return eventRepository.findEventData(eventListDto.getSearchStr(), page);
 	}
 
+	/**
+	 * convert dto to entity
+	 * @param eventDto
+	 * @return
+	 */
 	private Event convertDtoToEntity(EventDto eventDto) {
 		Event event = new Event();
 
@@ -109,6 +110,11 @@ public class EventService {
 		return event;
 	}
 
+	/**
+	 * convert entity to dto
+	 * @param event
+	 * @return
+	 */
 	private EventDto convertEntityToDto(Event event) {
 		EventDto eventDto = new EventDto();
 		BeanUtils.copyProperties(event, eventDto);
