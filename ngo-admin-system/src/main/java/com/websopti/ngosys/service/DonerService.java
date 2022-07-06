@@ -17,6 +17,7 @@ import com.websopti.ngosys.dto.DonerPageableResponse;
 import com.websopti.ngosys.entity.Doner;
 import com.websopti.ngosys.entity.Volunteer;
 import com.websopti.ngosys.repository.DonerRepository;
+import com.websopti.ngosys.repository.VolunteerRepository;
 
 @Service
 public class DonerService {
@@ -107,14 +108,5 @@ public class DonerService {
 		return donerDto;
 	}
 
-	public void volunteerActiveDeactive(Long volunteerId, Boolean isActive) {
-		Volunteer volunteer = volunteerRepository.findById(volunteerId).orElse(null);
-		if (volunteer != null) {
-			volunteer.setIsActive(isActive);
-			volunteerRepository.save(volunteer);
-		} else {
-			System.out.println("Volunteer not fount at active deactive time");
-		}
-	}
 
 }
