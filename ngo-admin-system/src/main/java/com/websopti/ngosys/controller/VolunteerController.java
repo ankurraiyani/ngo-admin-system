@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.websopti.ngosys.dto.EventListDTO;
+import com.websopti.ngosys.dto.VolunteerDto;
 import com.websopti.ngosys.dto.VolunteerListDTO;
+import com.websopti.ngosys.dto.VolunteerPageableResponse;
 import com.websopti.ngosys.entity.Employee;
 import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.entity.Volunteer;
@@ -30,8 +32,8 @@ public class VolunteerController {
 	private VolunteerService volunteerService;
 
 	@PostMapping("/save")
-	public Volunteer save(@RequestBody Volunteer volunteer) {
-		return volunteerService.save(volunteer);
+	public Volunteer save(@RequestBody VolunteerDto volunteerDto) {
+		return volunteerService.save(volunteerDto);
 	}
 
 	@GetMapping("/getAll/active")
@@ -40,8 +42,8 @@ public class VolunteerController {
 	}
 
 	@GetMapping("/get/{volunteerId}")
-	public Volunteer get(@PathVariable Long volunteerId) {
-		return volunteerService.get(volunteerId).get();
+	public VolunteerDto get(@PathVariable Long volunteerId) {
+		return volunteerService.get(volunteerId);
 	}
 
 	@GetMapping("/get/all")
@@ -50,7 +52,7 @@ public class VolunteerController {
 	}
 
 	@PostMapping("/get")
-	public Page<Volunteer> getWithParams(@RequestBody VolunteerListDTO volunteerListDto) {
+	public Page<VolunteerPageableResponse> getWithParams(@RequestBody VolunteerListDTO volunteerListDto) {
 		return volunteerService.getWithParams(volunteerListDto);
 	}
 
