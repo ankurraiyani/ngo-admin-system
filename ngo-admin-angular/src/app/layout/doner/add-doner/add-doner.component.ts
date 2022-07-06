@@ -48,6 +48,7 @@ export class AddDonerComponent implements OnInit {
         this.donerForm.controls.reason.setValue(result.reason);
         this.donerForm.controls.dateOfDonation.setValue(result.dateOfDonation);
         this.donerForm.controls.donerEmail.setValue(result.donerEmail);
+        this.donerForm.controls.donationDescription.setValue(result.donationDescription);
       }, (error) => {
 
       });
@@ -74,8 +75,8 @@ export class AddDonerComponent implements OnInit {
 
       typeofDonation: new FormControl('', [Validators.required]),
 
-      donationDiscription : new FormControl('', []),
-
+      donationDescription : new FormControl('', []),
+      isPresent:new FormControl(true)
     });
   }
 
@@ -84,7 +85,14 @@ export class AddDonerComponent implements OnInit {
 
     if (this.donerForm.valid) {
       this.donerService.addDoner(this.donerForm.value).subscribe((resultes) => {
-        this.commonService.showMessage("success", "Donner Added Sucessfully");
+        let msg;
+        if (this.isAddForm) {
+          msg = "Doner Added Sucessfully";
+        } else {
+          msg = "Doner Updated Sucessfully";
+        }
+        this.commonService.showMessage("success", msg);
+       // this.commonService.showMessage("success", "Donner Added Sucessfully");
         this.router.navigate(['/doner']);
       }, (error) => {
         this.commonService.showMessage("error", error.message);
@@ -93,13 +101,13 @@ export class AddDonerComponent implements OnInit {
   }
 
   donationTypeChnage(e : any){
-    this.removeValidation('donationDiscription');
+    this.removeValidation('donationDescription');
     if(e.target.value){
       this.isDiscritpionShow = true;
       if(e.target.value == "money"){
-        this.addValidation('donationDiscription', [Validators.required, Validators.pattern("^[0-9]*$")]);
+        this.addValidation('donationDescription', [Validators.required, Validators.pattern("^[0-9]*$")]);
       }else{
-        this.addValidation('donationDiscription', [Validators.required]);
+        this.addValidation('donationDescription', [Validators.required]);
       }
     } else {
       this.isDiscritpionShow = false;

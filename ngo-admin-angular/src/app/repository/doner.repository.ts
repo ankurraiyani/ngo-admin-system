@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ApiClientRepository } from "../common/Apiclient.repository";
-import { BASE_URL, DONER_ADD, DONER_DELETE, DONER_GETALL, DONER_GETID, EVENT_ADD, EVENT_GETALL, GET_ALL_ACTIVE_DONER } from "../common/url";
+import { BASE_URL, DONER_ADD, DONER_DELETE, DONER_GETALL, DONER_GETID, DONER_ISACTIVE_DEACTIVE, EVENT_ADD, EVENT_GETALL, GET_ALL_ACTIVE_DONER } from "../common/url";
 
 @Injectable()
 export class DonerRepository {
@@ -16,9 +16,9 @@ export class DonerRepository {
     {
         return this.apiClient.doPublicPost(DONER_ADD,data);
     }
-    getAllDoner(fetchEventListParam:any)
+    getAllDoner(fetchDonerListParam:any)
     {
-        return this.apiClient.doPublicPost(DONER_GETALL,fetchEventListParam);
+        return this.apiClient.doPublicPost(DONER_GETALL,fetchDonerListParam);
     }
 
     deleteDoner(data:any)
@@ -28,6 +28,14 @@ export class DonerRepository {
 
     getAllActiveDoner() {
         return this.apiClient.doPublicGet(GET_ALL_ACTIVE_DONER);
+    }
+
+    isActiveDeactiveDoner(donerId: any, isPresent: any) {
+        let formData = new FormData();
+        formData.append('donerId', donerId);
+		formData.append('isPresent', isPresent);
+        return this.apiClient.doPublicPostWithoutJson(DONER_ISACTIVE_DEACTIVE,formData);
+   
     }
 
     

@@ -312,6 +312,35 @@
                 </div>
 
 
+                <div class="form-group col-md-6">
+                    <label>City:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="city" placeholder="city" minlength="2"
+                            maxlength="50" formControlName="city" [ngClass]=" {'is-invalid' : eventFrom.controls.city.touched && eventFrom.controls.city.invalid,
+                         'is-valid' : eventFrom.controls.city.touched && eventFrom.controls.city.valid}">
+                         <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="eventFrom.controls.city.touched && eventFrom.controls.city.invalid">
+                        <ng-container *ngIf="eventFrom.controls.city.errors?.minlength">Min
+                            length is 3</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.city.errors?.maxlength">Max
+                            length is 50</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.city.errors?.whitespace">Please
+                            enter valid name.</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.city.errors?.required">
+                            Name is required</ng-container>
+                    </span>
+                </div>
+
+
+
+
+
             </div>
         </div>
         <div class="card-footer">

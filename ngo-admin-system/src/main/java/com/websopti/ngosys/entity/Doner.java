@@ -24,7 +24,7 @@ public class Doner {
 
 	private String donerEmail;
 
-	private java.sql.Date dateOfDonation;
+	private Date dateOfDonation ;
 
 	private String typeofDonation;
 

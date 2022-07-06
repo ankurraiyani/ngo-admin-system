@@ -97,9 +97,9 @@
                 <div class="form-group col-md-6" *ngIf="isDiscritpionShow">
                     <label>Donation Discription:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="donationDiscription" placeholder="Donation Discription"
-                            formControlName="donationDiscription" [ngClass]=" {'is-invalid' : donerForm.controls.donationDiscription.touched && donerForm.controls.donationDiscription.invalid,
-						'is-valid' : donerForm.controls.donationDiscription.touched && donerForm.controls.donationDiscription.valid}">
+                        <input type="text" class="form-control" name="donationDescription" placeholder="donationDescription"
+                            formControlName="donationDescription" [ngClass]=" {'is-invalid' : donerForm.controls.donationDescription.touched && donerForm.controls.donationDescription.invalid,
+						'is-valid' : donerForm.controls.donationDescription.touched && donerForm.controls.donationDescription.valid}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fa fa-phone"></span>
@@ -107,10 +107,10 @@
                         </div>
                     </div>
                     <span class="help-block"
-                        *ngIf="donerForm.controls.donationDiscription.touched && donerForm.controls.donationDiscription.invalid|| donerForm.controls.donationDiscription.dirty">
-                        <ng-container *ngIf="donerForm.controls.donationDiscription.errors?.pattern">Please
+                        *ngIf="donerForm.controls.donationDescription.touched && donerForm.controls.donationDescription.invalid|| donerForm.controls.donationDescription.dirty">
+                        <ng-container *ngIf="donerForm.controls.donationDescription.errors?.pattern">Please
                             Enter valid Discription.</ng-container>
-                        <ng-container *ngIf="donerForm.controls.donationDiscription.errors?.required">
+                        <ng-container *ngIf="donerForm.controls.donationDescription.errors?.required">
                             Discription is Required</ng-container>
                     </span>
                 </div>

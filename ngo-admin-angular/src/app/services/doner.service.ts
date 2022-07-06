@@ -27,5 +27,8 @@ export class DonerService {
     getAllActiveDoner() {
         return this.donerRepo.getAllActiveDoner();
     }
+    isActiveDeactiveDoner(donerId: any,isPresent : any) {
+        return this.donerRepo.isActiveDeactiveDoner(donerId,isPresent);
+      }
 
 }
