@@ -11,7 +11,7 @@ public class EmployeeDto {
 	
     private String employeeName;
 
-	private java.sql.Date joiningDate;
+	private Date joiningDate;
 	
 	private Date leavingDate;
 	

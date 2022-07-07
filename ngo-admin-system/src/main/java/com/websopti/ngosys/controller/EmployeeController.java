@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.websopti.ngosys.dto.EmployeeDto;
 import com.websopti.ngosys.dto.EmployeeListDTO;
+import com.websopti.ngosys.dto.EmployeePagebleResponse;
 import com.websopti.ngosys.dto.EventListDTO;
 import com.websopti.ngosys.entity.Employee;
 import com.websopti.ngosys.entity.Event;
@@ -52,7 +53,7 @@ public class EmployeeController {
 		}
 		
 		@PostMapping("/get")
-		public Page<Employee> getWithParams(@RequestBody EmployeeListDTO employeeListDto) {
+		public Page<EmployeePagebleResponse> getWithParams(@RequestBody EmployeeListDTO employeeListDto) {
 			return employeeService.getWithParams(employeeListDto);
 		}
 		
