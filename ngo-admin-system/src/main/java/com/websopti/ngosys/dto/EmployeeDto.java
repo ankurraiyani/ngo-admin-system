@@ -1,18 +1,12 @@
-package com.websopti.ngosys.entity;
+package com.websopti.ngosys.dto;
+
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.List;
 
 import lombok.Data;
-
 @Data
-@Entity
-public class Employee {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+public class EmployeeDto {
+	
 	private Long id;
 	
     private String employeeName;
@@ -41,7 +35,4 @@ public class Employee {
 	
 	private Boolean isActive;
 
-	
-	
 }
-

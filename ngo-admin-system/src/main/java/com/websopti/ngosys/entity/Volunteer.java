@@ -44,7 +44,9 @@ public class Volunteer {
 
 	@Column(columnDefinition = "text")
 	private String areaOfInterest;
-
+	
 	private Boolean isActive;
+
+
 
 }
