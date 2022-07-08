@@ -13,10 +13,12 @@ import org.springframework.stereotype.Service;
 
 import com.websopti.ngosys.dto.EmployeeDto;
 import com.websopti.ngosys.dto.EmployeeListDTO;
-import com.websopti.ngosys.dto.EventDto;
+import com.websopti.ngosys.dto.EmployeePagebleResponse;
+import com.websopti.ngosys.entity.Doner;
 import com.websopti.ngosys.entity.Employee;
-import com.websopti.ngosys.entity.Event;
 import com.websopti.ngosys.repository.EmployeeRepository;
+
+
 
 @Service
 public class EmployeeService {
@@ -46,7 +48,7 @@ public class EmployeeService {
 		return employeeRepository.findById(id).orElse(null);
 	}
 	
-	public void deleteId(Long employeeId)
+		public void deleteId(Long employeeId)
 	{	
 //		optional<Employee> i= emplyeeRepository.findById(employeeId)
 		if(findBydId(employeeId) != null)
@@ -60,13 +62,14 @@ public class EmployeeService {
 	}
 
 	
-	public Page<Employee> getWithParams(EmployeeListDTO employeeListDto) {
+	public Page<EmployeePagebleResponse> getWithParams(EmployeeListDTO employeeListDto) {
 		
 
 		Pageable page = PageRequest.of(employeeListDto.getPageNo(), employeeListDto.getPageSize(),Direction.DESC, "joining_date");
 		//return employeeRepository.findAll(page);
 		
-		return employeeRepository.findEmployeeData(employeeListDto.getSearchStr(),page);
+		//return employeeRepository.findEmployeeData(employeeListDto.getSearchStr(),page);
+		return employeeRepository.findEmployeeData(employeeListDto.getSearchStr(), page);
 	}
 
 	public void employeeActiveDeactive(Long employeeId, Boolean isActive) {
