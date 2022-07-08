@@ -11,7 +11,27 @@ export class VolunteerRepository {
 
     addVolunteer(data : any)
     {
-        return this.apiClient.doPublicPost(VOLUNTEER_ADD,data);
+        let formData = new FormData()
+        console.log(data.imageInPut);
+		formData.append('imageInPut', data.imageInPut);
+        if(data.id)
+            formData.append('id', data.id);
+        
+        formData.append('name', data.name);
+        
+        formData.append('contactNumber', data.contactNumber);
+        formData.append('address', data.address);
+        formData.append('email', data.email);
+        formData.append('gender', data.gender);
+        formData.append('age', data.age);
+        formData.append('dateOfJoining', data.dateOfJoining);
+        formData.append('availableTime', data.availableTime);
+        formData.append('areaOfInterest', data.areaOfInterest);
+        formData.append('isActive', data.isActive);
+        formData.append('isImageUpload', data.isImageUpload);
+
+
+        return this.apiClient.doPublicPost(VOLUNTEER_ADD,formData);
     }
 
     getAllVolunteer(fetchVolunteerListParam:any)
