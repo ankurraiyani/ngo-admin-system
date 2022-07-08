@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.areaOfInterest.touched && volunteerForm.controls.areaOfInterest.invalid || volunteerForm.controls.contactNumber.dirty">
+                        *ngIf="volunteerForm.controls.areaOfInterest.touched && volunteerForm.controls.areaOfInterest.invalid || volunteerForm.controls.areaOfInterest.dirty">
                         <ng-container *ngIf="volunteerForm.controls.areaOfInterest.errors?.minlength">Min
                             Length is 3</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.areaOfInterest.errors?.maxlength">Max
@@ -114,7 +114,7 @@
                         </textarea>
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.address.touched && volunteerForm.controls.address.invalid || volunteerForm.controls.contactNumber.dirty">
+                        *ngIf="volunteerForm.controls.address.touched && volunteerForm.controls.address.invalid || volunteerForm.controls.address.dirty">
                         <ng-container *ngIf="volunteerForm.controls.address.errors?.minlength">Min
                             Length is 3</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.address.errors?.maxlength">Max
@@ -134,7 +134,7 @@
 						'is-valid' : volunteerForm.controls.age.touched && volunteerForm.controls.age.valid}">
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.age.touched && volunteerForm.controls.age.invalid || volunteerForm.controls.contactNumber.dirty">
+                        *ngIf="volunteerForm.controls.age.touched && volunteerForm.controls.age.invalid || volunteerForm.controls.age.dirty">
                         <ng-container *ngIf="volunteerForm.controls.age.errors?.minlength">Min
                             Length is 1</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.age.errors?.maxlength">Max
@@ -154,7 +154,7 @@
                     'is-valid' : volunteerForm.controls.gender.touched && volunteerForm.controls.gender.valid}">&nbsp; Female
 
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.gender.touched && volunteerForm.controls.gender.invalid || volunteerForm.controls.contactNumber.dirty">
+                        *ngIf="volunteerForm.controls.gender.touched && volunteerForm.controls.gender.invalid || volunteerForm.controls.gender.dirty">
                         <ng-container *ngIf="volunteerForm.controls.gender.errors?.required">
                             gender is required</ng-container>
                     </span>
@@ -167,7 +167,7 @@
 						'is-valid' : volunteerForm.controls.dateOfJoining.touched && volunteerForm.controls.dateOfJoining.valid}">
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.dateOfJoining.touched && volunteerForm.controls.dateOfJoining.invalid || volunteerForm.controls.contactNumber.dirty">
+                        *ngIf="volunteerForm.controls.dateOfJoining.touched && volunteerForm.controls.dateOfJoining.invalid || volunteerForm.controls.dateOfJoining.dirty">
                         <ng-container *ngIf="volunteerForm.controls.dateOfJoining.errors?.required">
                             Joining Date is required</ng-container>
                     </span>
@@ -180,13 +180,13 @@
 						'is-valid' : volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.valid}">
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.invalid || volunteerForm.controls.availableTimeirty">
+                        *ngIf="volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.invalid || volunteerForm.controls.availableTime.dirty">
                         <ng-container *ngIf="volunteerForm.controls.availableTime.errors?.required">
                             Time is required</ng-container>
                     </span>
                 </div>
                 <div class="form-group col-md-6">
-                    <label>volunteer's Activity</label>
+                    <label>Volunteer's Activity</label>
                     <div class="input-group custom-control 
                     custom-switch custom-switch-off-danger custom-switch-on-success">
                          <input type="checkbox" class="custom-control-input"  formControlName="isActive"
@@ -210,10 +210,6 @@
             </div>
 
         </div>
-
-        
-
-        
 
     </form>
 </div>
