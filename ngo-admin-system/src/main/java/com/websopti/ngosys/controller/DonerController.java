@@ -52,17 +52,11 @@ public class DonerController {
 
 	@PostMapping("/get")
 	public Page<DonerPageableResponse> getWithParams(@RequestBody DonerListDTO donerListDto) {
+		System.out.println(donerListDto);
 		return donerService.getWithParams(donerListDto);
-	}
+	}        
 
-//	@PostMapping("/volunteerActiveDeactive")
-//	public void volunteerActiveDeactive(@RequestParam(value = "volunteerId") Long volunteerId,
-//			@RequestParam(value = "isActive") Boolean isActive) {
-//		this.volunteerService.volunteerActiveDeactive(volunteerId, isActive);
-//	}
-	
-	@PostMapping("/donerActiveDeactive")
-	
+	@PostMapping("/donerActiveDeactive")	
 	public void donerActiveDeactive(@RequestParam(value = "donerId") Long donerId,
 			@RequestParam(value = "isPresent") Boolean isPresent) {
 	this.donerService.donerActiveDeactive(donerId, isPresent);

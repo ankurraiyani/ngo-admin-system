@@ -11,7 +11,7 @@ import { DonerService } from 'src/app/services/doner.service';
   styleUrls: ['./add-doner.component.css']
 })
 export class AddDonerComponent implements OnInit {
-  
+
   constructor(private donerService: DonerService,
     private commonService: CommonService,
     private router: Router, private activatedRouter: ActivatedRoute) { }
@@ -19,7 +19,7 @@ export class AddDonerComponent implements OnInit {
   donerForm: FormGroup;
   donerId: any;
   isAddForm = true;
-  isDiscritpionShow : boolean = false;
+  isDiscritpionShow: boolean = false;
 
 
   ngOnInit(): void {
@@ -62,8 +62,8 @@ export class AddDonerComponent implements OnInit {
   iniatilzeFrom() {
     this.donerForm = new FormGroup({
       id: new FormControl(''),
-      donerName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
 
+      donerName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
 
       donerEmail: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
 
@@ -75,16 +75,20 @@ export class AddDonerComponent implements OnInit {
 
       typeofDonation: new FormControl('', [Validators.required]),
 
-      donationDescription : new FormControl('', []),
-      isPresent:new FormControl(true)
+      donationDescription: new FormControl('', []),
+
+      isPresent: new FormControl(true)
     });
   }
 
   submit() {
     this.donerForm.markAllAsTouched();
+    console.log(this.donerForm.controls.typeofDonation.value);
 
     if (this.donerForm.valid) {
       this.donerService.addDoner(this.donerForm.value).subscribe((resultes) => {
+        // console.log(this.donerForm.controls.typeofDonation.value);
+
         let msg;
         if (this.isAddForm) {
           msg = "Doner Added Sucessfully";
@@ -92,7 +96,7 @@ export class AddDonerComponent implements OnInit {
           msg = "Doner Updated Sucessfully";
         }
         this.commonService.showMessage("success", msg);
-       // this.commonService.showMessage("success", "Donner Added Sucessfully");
+        // this.commonService.showMessage("success", "Donner Added Sucessfully");
         this.router.navigate(['/doner']);
       }, (error) => {
         this.commonService.showMessage("error", error.message);
@@ -100,13 +104,13 @@ export class AddDonerComponent implements OnInit {
     }
   }
 
-  donationTypeChnage(e : any){
+  donationTypeChnage(e: any) {
     this.removeValidation('donationDescription');
-    if(e.target.value){
+    if (e.target.value) {
       this.isDiscritpionShow = true;
-      if(e.target.value == "money"){
+      if (e.target.value == "money") {
         this.addValidation('donationDescription', [Validators.required, Validators.pattern("^[0-9]*$")]);
-      }else{
+      } else {
         this.addValidation('donationDescription', [Validators.required]);
       }
     } else {
@@ -115,15 +119,15 @@ export class AddDonerComponent implements OnInit {
   }
 
   addValidation(fieldName, validations) {
-		this.donerForm.controls[fieldName].setValidators(validations);
-		this.donerForm.controls[fieldName].updateValueAndValidity();
-	}
+    this.donerForm.controls[fieldName].setValidators(validations);
+    this.donerForm.controls[fieldName].updateValueAndValidity();
+  }
 
-	removeValidation(fieldName) {
-		this.donerForm.controls[fieldName].setErrors(null);
-		this.donerForm.controls[fieldName].clearValidators();
-		this.donerForm.controls[fieldName].updateValueAndValidity();
-	}
+  removeValidation(fieldName) {
+    this.donerForm.controls[fieldName].setErrors(null);
+    this.donerForm.controls[fieldName].clearValidators();
+    this.donerForm.controls[fieldName].updateValueAndValidity();
+  }
 }
 
 

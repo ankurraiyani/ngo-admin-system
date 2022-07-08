@@ -14,9 +14,9 @@ public interface DonerPageableResponse {
 
 	public Date getDateOfDonation();
 
-	public String getgetGettypeofDonation();
+	public String getTypeofDonation();
 
-	public String getgetReason();
+	public String getReason();
 
 	public String getDonationDescription();
 

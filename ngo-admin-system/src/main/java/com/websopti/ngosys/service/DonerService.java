@@ -17,7 +17,6 @@ import com.websopti.ngosys.dto.DonerPageableResponse;
 import com.websopti.ngosys.entity.Doner;
 import com.websopti.ngosys.entity.Volunteer;
 import com.websopti.ngosys.repository.DonerRepository;
-import com.websopti.ngosys.repository.VolunteerRepository;
 
 @Service
 public class DonerService {

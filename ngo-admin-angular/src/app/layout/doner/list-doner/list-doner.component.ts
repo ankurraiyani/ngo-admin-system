@@ -37,7 +37,9 @@ export class ListDonerComponent implements OnInit {
       this.searchSubscriber.unsubscribe();
     }
     this.searchSubscriber = this.donerService.getAllDoner(this.fetchDonerListParam).subscribe((results) => {
-      console.log(results);
+      console.log(this.donerService.getAllDoner((this.fetchDonerListParam)));
+
+      // console.log(results);
       this.donerList = results.content;
       this.totalCount = results.totalElements;
     }, (error) => {

@@ -59,9 +59,9 @@
                     <tbody>
                         <ng-container *ngIf="donerList?.length>0">
                             <tr *ngFor="let doner of donerList | paginate: { id: 'event_pages',
-                                                     itemsPerPage: fetchDonerListParam.pageSize,
-                                                     currentPage: fetchDonerListParam.currentPage,
-                                                     totalItems: totalCount }">
+                                itemsPerPage: fetchDonerListParam.pageSize,
+                                currentPage: fetchDonerListParam.currentPage,
+                                totalItems: totalCount }">
                                 <td>{{doner.donerName}}</td>
                                 <td>{{doner.contactNumber}}</td>
                                 <td>{{doner.donerEmail}}</td>
@@ -69,7 +69,7 @@
                                 <td>{{doner.typeofDonation}}</td>
                                 <td>{{doner.donationDescription}}</td>
                                 <td>{{doner.reason}}</td>
-
+                            
                                 <td>
                                     <span class="mr-2">
                                         <a (click)="editDoner(doner.id)">
@@ -89,15 +89,12 @@
 											custom-switch custom-switch-off-danger custom-switch-on-success">
                                             <input type="checkbox" class="custom-control-input"
                                                 [checked]="doner.isPresent"
-                                                (change)="toggleClick(doner.id,doner.isPresent)"
-                                                id="cb_{{doner.id}}">
-                                            <label class="custom-control-label"
-                                                [attr.for]="'cb_' + doner.id"></label>
+                                                (change)="toggleClick(doner.id,doner.isPresent)" id="cb_{{doner.id}}">
+                                            <label class="custom-control-label" [attr.for]="'cb_' + doner.id"></label>
                                         </div>
                                     </span>
                                 </td>
-                                <!-- <td>{{doner.typeofDonation}}</td>
-                                <td>{{doner.donerName}}</td> -->
+                                
                             </tr>
                         </ng-container>
                         <ng-container *ngIf="donerList?.length<=0">
