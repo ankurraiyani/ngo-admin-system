@@ -2,16 +2,22 @@
     <a [routerLink]="['dashboard']" class="brand-link">
       <!-- <img src="../../../../assets/images/webs_logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
         style="opacity: .8"> -->
-      <span class="brand-text font-weight-light">NGO ADMIN SYSTEM</span>
+      <span class="brand-text font-weight-light" style="font-family: Bahnschrift SemiBold ; "><i class="fa fa-university"></i>&nbsp;<b> NGO ADMIN SYSTEM</b></span>
     </a>
+
+    <!-- Palatino
+    Bahnschrift SemiBold
+Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+
+    -->
   
     <div class="sidebar">
   
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li [routerLinkActive]="['active']" class="nav-item has-treeview">
-            <a [routerLink]="['/']" class="nav-link" [routerLinkActive]="['active']"
-              [routerLinkActiveOptions]="{exact:true}">
+            <a [routerLink]="['/']" class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"> 
+      
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -19,17 +25,16 @@
             </a>
           </li>
           <li [routerLinkActive]="['active']" class="nav-item has-treeview">
-            <a [routerLink]="['/event']" class="nav-link" [routerLinkActive]="['active']"
-              [routerLinkActiveOptions]="{exact:true}">
-              <i class="nav-icon fas fa-calendar"></i>
+            <a [routerLink]="['/event']" class="nav-link" [routerLinkActive]="['active']">
+              <!-- [routerLinkActiveOptions]="{exact:true}"> -->
+              <i class="nav-icon fas fa-calendar-alt"></i>
               <p>
                 Manage Event
               </p>
             </a>
           </li>
           <li [routerLinkActive]="['active']" class="nav-item has-treeview">
-            <a [routerLink]="['/employee']" class="nav-link" [routerLinkActive]="['active']"
-              [routerLinkActiveOptions]="{exact:true}">
+            <a [routerLink]="['/employee']" class="nav-link" [routerLinkActive]="['active']">
               <i class="nav-icon fa fa-users"></i>
               <p>
                 Manage Employee
@@ -38,8 +43,7 @@
           </li>
 
           <li [routerLinkActive]="['active']" class="nav-item has-treeview">
-            <a [routerLink]="['/doner']" class="nav-link" [routerLinkActive]="['active']"
-              [routerLinkActiveOptions]="{exact:true}">
+            <a [routerLink]="['/doner']" class="nav-link" [routerLinkActive]="['active']">
               <i class="nav-icon fa fa-users"></i>
               <p>
               Manage Doner
@@ -47,8 +51,7 @@
           </a>
         </li>
           <li [routerLinkActive]="['active']" class="nav-item has-treeview">
-            <a [routerLink]="['/volunteer']" class="nav-link" [routerLinkActive]="['active']"
-              [routerLinkActiveOptions]="{exact:true}">
+            <a [routerLink]="['/volunteer']" class="nav-link" [routerLinkActive]="['active']">
               <i class="nav-icon fa fa-users"></i>
               <p>
                 Manage Volunteer

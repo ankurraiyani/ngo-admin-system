@@ -1,25 +1,25 @@
-
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
                 <div class="row justify-content-between">
                     <div class="col-md-6 align-self-center">
-                        <a href="javascript:void(0);" [routerLink]="['../doner/add']" class="btn btn-primary ms-3 btn-lg "><i
-                                class="fa fa-plus"></i> Create Doner</a>
+                        <a href="javascript:void(0);" [routerLink]="['../doner/add']"
+                            class="btn btn-dark ms-3"><b><i class="fa fa-user-plus"></i> Add Doner</b></a>
                     </div>
 
                     <div class="col-md-3 align-self-center">
                         <div class="input-group input-group-lg">
-                            <input type="text"  placeholder="Search here..."       [(ngModel)]="fetchDonerListParam.searchStr" (keyup)="getDonerData()" class="form-control">
+                            <input type="text" placeholder="Search here..." [(ngModel)]="fetchDonerListParam.searchStr"
+                                (keyup)="getDonerData()" class="form-control">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-lg btn-default">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </div>
                         </div>
-                        </div>
-    
+                    </div>
+
 
 
                     <div class="col-md-1 align-self-center">
@@ -45,16 +45,17 @@
                             <th>Name</th>
                             <th>Contact Number</th>
                             <th>Email</th>
-                            <th>Donation-Date </th>
+                            <th>Donation-Date</th>
                             <th>Type</th>
-                            <th>Description</th>
+                            <th>Donation Discription</th>
+                            <th>Reason</th>
                             <th width="15%">Actions</th>
                         </tr>
 
-                        
+
                     </thead>
 
-                
+
                     <tbody>
                         <ng-container *ngIf="donerList?.length>0">
                             <tr *ngFor="let doner of donerList | paginate: { id: 'event_pages',
@@ -66,19 +67,37 @@
                                 <td>{{doner.donerEmail}}</td>
                                 <td>{{doner.dateOfDonation}}</td>
                                 <td>{{doner.typeofDonation}}</td>
+                                <td>{{doner.donationDescription}}</td>
                                 <td>{{doner.reason}}</td>
+
                                 <td>
                                     <span class="mr-2">
                                         <a (click)="editDoner(doner.id)">
-                                        <i class="fas fa-edit action-icon"></i></a>
+                                            <i class="fas fa-edit action-icon"></i></a>
                                     </span>
                                     <span class="mr-2">
                                         <a (click)="deleteDoner(doner.id)">
-                                    
-                                        <i class="fa fa-trash action-icon"></i>
-                                    </a>
+
+                                            <i class="fa fa-trash action-icon"></i>
+                                        </a>
+                                    </span>
+
+
+                                    <span class="mr-2">
+
+                                        <div class="custom-control 
+											custom-switch custom-switch-off-danger custom-switch-on-success">
+                                            <input type="checkbox" class="custom-control-input"
+                                                [checked]="doner.isPresent"
+                                                (change)="toggleClick(doner.id,doner.isPresent)"
+                                                id="cb_{{doner.id}}">
+                                            <label class="custom-control-label"
+                                                [attr.for]="'cb_' + doner.id"></label>
+                                        </div>
                                     </span>
                                 </td>
+                                <!-- <td>{{doner.typeofDonation}}</td>
+                                <td>{{doner.donerName}}</td> -->
                             </tr>
                         </ng-container>
                         <ng-container *ngIf="donerList?.length<=0">

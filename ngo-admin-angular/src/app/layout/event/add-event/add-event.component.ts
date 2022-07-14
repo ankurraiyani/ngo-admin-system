@@ -64,7 +64,7 @@ export class AddEventComponent implements OnInit {
         this.eventFrom.controls.contactEmail.setValue(results.contactEmail);
         this.eventFrom.controls.contactNumber.setValue(results.contactNumber);
         this.eventFrom.controls.employeeIds.setValue(results.employeeIds);
-
+        this.eventFrom.controls.city.setValue(results.city);
       }, (error) => {
         this.commonService.showMessage("error", error.message);
       });
@@ -103,7 +103,7 @@ export class AddEventComponent implements OnInit {
       donerIds: new FormControl([]),
 
       volunteerIds: new FormControl([]),
-
+      city: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
 
     });
   }
@@ -113,8 +113,6 @@ export class AddEventComponent implements OnInit {
     this.eventFrom.markAllAsTouched();
     if (this.eventFrom.valid) {
       this.eventService.addEvent(this.eventFrom.value).subscribe((results) => {
-
-        console.log("-----------------------------")
         // console.log(results);
         let msg;
         if (this.isAddFrom) {

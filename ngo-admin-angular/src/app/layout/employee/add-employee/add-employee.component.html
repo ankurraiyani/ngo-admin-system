@@ -6,7 +6,7 @@
                 <div class="form-group col-md-6">
                     <label>Name Of Employee:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="employeeName" placeholder="First Name"
+                        <input type="text" class="form-control" name="employeeName" placeholder="Name"
                             formControlName="employeeName" [ngClass]=" {'is-invalid' : employeeForm.controls.employeeName.touched && employeeForm.controls.employeeName.invalid,	'is-valid' : employeeForm.controls.employeeName.touched && employeeForm.controls.employeeName.valid
 					}">
                         <div class="input-group-append">
@@ -74,11 +74,10 @@
                             length is 10</ng-container>
                     </span>
                 </div>
-
                 <div class="form-group col-md-6">
-                    <label>AadharNumber:</label>
+                    <label>Aadhar Card Number:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="aadharcardNo" placeholder="AadharNumber"
+                        <input type="text" class="form-control" name="aadharcardNo" placeholder="Aadhar Card Number"
                             minlength="12"
                             maxlength="12" formControlName="aadharcardNo"
                             [ngClass]=" {'is-invalid' : employeeForm.controls.aadharcardNo.touched && employeeForm.controls.aadharcardNo.invalid,
@@ -291,12 +290,16 @@
         <div class="card-footer">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary mr-2">
+                    <button type="submit" class="btn btn-dark mr-2">
                         <span *ngIf="isAddForm">Add Employee</span>
                         <span *ngIf="!isAddForm">Edit Employee</span>
                     </button>
-                    <a [routerLinkActive]="['active']" routerLink="/event" class="btn btn-default ">
-                        Cancel</a>
+                    <a [routerLinkActive]="['active']" routerLink="/employee">
+                        <button type="submit" class="btn btn-dark mr-2">
+                        Cancel
+                    </button>
+                    </a>
+                        
                 </div>
             </div>
 

@@ -5,7 +5,7 @@
                 <div class="row justify-content-between">
                     <div class="col-md-8 align-self-center">
                         <a href="javascript:void(0);" [routerLink]="['../employee/add']"
-                            class="btn btn-primary ms-3 btn-lg"><i class="fa fa-plus"></i> Create Employee</a>
+                            class="btn btn-dark ms-3"><b><i class="fa fa-user-plus"></i> Add Employee</b></a>
                     </div>
 
 
@@ -46,14 +46,14 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Contact Number</th>
-                            <th>Aadhar Number</th>
+                            <th>AadharCard Number</th>
                             <th>Adress</th>
-                            <th>Role Of Employee</th>
+                            <th>Employee's Role</th>
                             <th>Gender</th>
                             <th>Age</th>
-                            <th>Date Of join</th>
+                            <th>Joining Date</th>
                             <th>Salary</th>
-                            <th>Timing Of Employee</th>
+                            <th>Employee's Timing</th>
                             <th width="15%">Actions</th>
                         </tr>
                     </thead>
@@ -115,6 +115,7 @@
                 </table>
             </div>
 
+            
             <div class="row" *ngIf="employeeList?.length>0">
                 <div class="col-sm-12 col-md-5"></div>
                 <div class="col-sm-12 col-md-7">

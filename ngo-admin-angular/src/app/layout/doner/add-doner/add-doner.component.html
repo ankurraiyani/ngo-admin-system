@@ -6,7 +6,7 @@
                 <div class="form-group col-md-6">
                     <label>Donor Name:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="donerName" placeholder="First Name" minlength="3"
+                        <input type="text" class="form-control" name="donerName" placeholder="Name" minlength="3"
                             maxlength="50" formControlName="donerName" [ngClass]=" {'is-invalid' : donerForm.controls.donerName.touched && donerForm.controls.donerName.invalid,
 						'is-valid' : donerForm.controls.donerName.touched && donerForm.controls.donerName.valid}">
                         <div class="input-group-append">
@@ -76,7 +76,8 @@
                     <label>Type of Donation: </label>
 
                     <div class="input-group">
-                        <select class="form-control" (change)="donationTypeChnage($event)" name="typeofDonation" formControlName="typeofDonation" [ngClass]=" {'is-invalid' : donerForm.controls.typeofDonation.touched && donerForm.controls.typeofDonation.invalid,
+                        <select class="form-control" (change)="donationTypeChnage($event)" name="typeofDonation"
+                            formControlName="typeofDonation" [ngClass]=" {'is-invalid' : donerForm.controls.typeofDonation.touched && donerForm.controls.typeofDonation.invalid,
 						'is-valid' : donerForm.controls.typeofDonation.touched && donerForm.controls.typeofDonation.valid}">Donation
                             <option value="food">Food</option>
                             <option value="money">Money</option>
@@ -97,9 +98,9 @@
                 <div class="form-group col-md-6" *ngIf="isDiscritpionShow">
                     <label>Donation Discription:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="donationDiscription" placeholder="Donation Discription"
-                            formControlName="donationDiscription" [ngClass]=" {'is-invalid' : donerForm.controls.donationDiscription.touched && donerForm.controls.donationDiscription.invalid,
-						'is-valid' : donerForm.controls.donationDiscription.touched && donerForm.controls.donationDiscription.valid}">
+                        <input type="text" class="form-control" name="donationDescription"
+                            placeholder="Donation Description" formControlName="donationDescription" [ngClass]=" {'is-invalid' : donerForm.controls.donationDescription.touched && donerForm.controls.donationDescription.invalid,
+						'is-valid' : donerForm.controls.donationDescription.touched && donerForm.controls.donationDescription.valid}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fa fa-phone"></span>
@@ -107,10 +108,10 @@
                         </div>
                     </div>
                     <span class="help-block"
-                        *ngIf="donerForm.controls.donationDiscription.touched && donerForm.controls.donationDiscription.invalid|| donerForm.controls.donationDiscription.dirty">
-                        <ng-container *ngIf="donerForm.controls.donationDiscription.errors?.pattern">Please
+                        *ngIf="donerForm.controls.donationDescription.touched && donerForm.controls.donationDescription.invalid|| donerForm.controls.donationDescription.dirty">
+                        <ng-container *ngIf="donerForm.controls.donationDescription.errors?.pattern">Please
                             Enter valid Discription.</ng-container>
-                        <ng-container *ngIf="donerForm.controls.donationDiscription.errors?.required">
+                        <ng-container *ngIf="donerForm.controls.donationDescription.errors?.required">
                             Discription is Required</ng-container>
                     </span>
                 </div>
@@ -118,7 +119,7 @@
                 <div class="form-group col-md-6">
                     <label>Date of Donation: </label>
 
-                    <input type="date" name="dateOfDonation" formControlName="dateOfDonation" class="form-control" 
+                    <input type="date" name="dateOfDonation" formControlName="dateOfDonation" class="form-control"
                         [ngClass]=" {'is-invalid' : donerForm.controls.dateOfDonation.touched && donerForm.controls.dateOfDonation.invalid,
                     'is-valid' : donerForm.controls.dateOfDonation.touched && donerForm.controls.dateOfDonation.valid}">
 
@@ -152,13 +153,15 @@
             <div class="row">
                 <div class="col-md-12 text-center">
 
-                    <button type="submit" class="btn btn-primary mr-2">
+                    <button type="submit" class="btn btn-dark mr-2">
                         <span *ngIf="isAddForm">Add doner</span>
                         <span *ngIf="!isAddForm">Edit doner</span>
-
                     </button>
-                    <a [routerLinkActive]="['active']" routerLink="/doner" class="btn btn-default ">
-                        Cancel</a>
+                    <a [routerLinkActive]="['active']" routerLink="/doner">
+                        <button type="submit" class="btn btn-dark mr-2">
+                            Cancel
+                        </button>
+                    </a>
                 </div>
             </div>
 

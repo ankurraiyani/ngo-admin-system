@@ -37,6 +37,7 @@ export class ListDonerComponent implements OnInit {
       this.searchSubscriber.unsubscribe();
     }
     this.searchSubscriber = this.donerService.getAllDoner(this.fetchDonerListParam).subscribe((results) => {
+      console.log(results);
       this.donerList = results.content;
       this.totalCount = results.totalElements;
     }, (error) => {
@@ -82,5 +83,23 @@ export class ListDonerComponent implements OnInit {
   editDoner(id) {
     this.router.navigate(['/doner/add'], { queryParams: { id: id } });
   }
+
+
+  toggleClick(donerId:any , isPresent:any) {
+    console.log(isPresent)
+    this.donerService.isActiveDeactiveDoner(donerId,!isPresent).subscribe((results) => {
+      let msg ;
+      if(!isPresent) {
+         msg = 'Doner Activated Sucessfully';
+      } else {
+        msg = 'Doner Deactivated Sucessfully';
+      }
+      this.commonService.showMessage('success', msg);
+      this.getDonerData();
+    }, (error) => {
+      this.commonService.showMessage("error", error.message)
+    });
+  }
+
 }
 

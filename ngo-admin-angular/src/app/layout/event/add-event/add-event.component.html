@@ -138,9 +138,9 @@
 
 
                 <div class="form-group col-md-6">
-                    <label>Sponsors Name:</label>
+                    <label>Sponsor's Name:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="sponsors" placeholder="Sponsor Name" minlength="3"
+                        <input type="text" class="form-control" name="sponsors" placeholder="Sponsor's Name" minlength="3"
                             maxlength="50" formControlName="sponsors" [ngClass]=" {'is-invalid' : eventFrom.controls.sponsors.touched && eventFrom.controls.sponsors.invalid,
                          'is-valid' : eventFrom.controls.sponsors.touched && eventFrom.controls.sponsors.valid}">
                          <div class="input-group-append">
@@ -168,7 +168,7 @@
                 <div class="form-group col-md-6">
                     <label>Contact Person:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name=" Contact Person" placeholder=" contactPerson"
+                        <input type="text" class="form-control" name=" Contact Person" placeholder="Contact Person"
                             minlength="3" maxlength="50" formControlName="contactPerson" [ngClass]=" {'is-invalid' : eventFrom.controls. contactPerson.touched && eventFrom.controls. contactPerson.invalid,
         'is-valid' : eventFrom.controls.contactPerson.touched && eventFrom.controls.contactPerson.valid}">
                         <div class="input-group-append">
@@ -195,7 +195,7 @@
                 <div class="form-group col-md-6">
                     <label>Contact Number :</label>
                     <div class="input-group">
-                        <input type="tel" class="form-control" name="contact Number" minlength="10" maxlength="10"
+                        <input type="tel" class="form-control" name="contact Number" minlength="10" maxlength="10" placeholder="Contact Number"
                             formControlName="contactNumber" [ngClass]=" {'is-invalid' : eventFrom.controls.contactNumber.touched && eventFrom.controls.contactNumber.invalid,
 						'is-valid' : eventFrom.controls.contactNumber.touched && eventFrom.controls.contactNumber.valid}">
                         <div class="input-group-append">
@@ -312,16 +312,47 @@
                 </div>
 
 
+                <div class="form-group col-md-6">
+                    <label>City:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="city" placeholder="City" minlength="2"
+                            maxlength="50" formControlName="city" [ngClass]=" {'is-invalid' : eventFrom.controls.city.touched && eventFrom.controls.city.invalid,
+                         'is-valid' : eventFrom.controls.city.touched && eventFrom.controls.city.valid}">
+                         <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="eventFrom.controls.city.touched && eventFrom.controls.city.invalid">
+                        <ng-container *ngIf="eventFrom.controls.city.errors?.minlength">Min
+                            length is 3</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.city.errors?.maxlength">Max
+                            length is 50</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.city.errors?.whitespace">Please
+                            enter valid name.</ng-container>
+                        <ng-container *ngIf="eventFrom.controls.city.errors?.required">
+                            Name is required</ng-container>
+                    </span>
+                </div>
+
+
+
+        
             </div>
         </div>
         <div class="card-footer">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary mr-2">
+                    <button type="submit" class="btn btn-dark mr-2">
                         <span>Add Event</span>
                     </button>
-                    <a [routerLinkActive]="['active']" routerLink="/event" class="btn btn-default ">
-                        Cancel</a>
+                    <a [routerLinkActive]="['active']" routerLink="/event">
+                    <button type="submit" class="btn btn-dark mr-2">
+                        Cancel
+                        </button>
+                    </a>
                 </div>
             </div>
 
