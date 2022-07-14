@@ -3,6 +3,8 @@ package com.websopti.ngosys.dto;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 @Data
 public class EmployeeDto {
@@ -11,7 +13,7 @@ public class EmployeeDto {
 	
     private String employeeName;
 
-	private Date joiningDate;
+    private java.sql.Date joiningDate;
 	
 	private Date leavingDate;
 	
@@ -34,5 +36,11 @@ public class EmployeeDto {
 	private Long salary;
 	
 	private Boolean isActive;
+	
+	private byte[] imageOutPut;
+	
+	private MultipartFile imageInPut;
+	
+	private Boolean isImageUpload;
 
 }

@@ -20,6 +20,7 @@ export class AddEmployeeComponent implements OnInit {
               private activatedRoute:ActivatedRoute) { }
 
   employeeForm: FormGroup;
+  profileImage:any;
 
 
   ngOnInit(): void {
@@ -44,9 +45,15 @@ export class AddEmployeeComponent implements OnInit {
     {
       this.isAddForm=false;
       setTimeout(() => {
-        this.commonService.currentPageTitle = 'edit Employee';
+        this.commonService.currentPageTitle = 'Edit Employee';
       });
+      this.employeeForm.controls['imageInPut'].setErrors(null);
+        this.employeeForm.controls['imageInPut'].clearValidators();
+        this.employeeForm.controls['imageInPut'].updateValueAndValidity();
       this.employeeService.getEmployeeId(this.employeeId).subscribe((result)=>{
+
+        
+  
         this.employeeForm.controls.employeeName.setValue(result.employeeName);
         this.employeeForm.controls.id.setValue(result.id);
         this.employeeForm.controls.contactEmployyeEmail.setValue(result.contactEmployyeEmail)
@@ -60,6 +67,9 @@ export class AddEmployeeComponent implements OnInit {
         this.employeeForm.controls.salary.setValue(result.salary)
         this.employeeForm.controls.employeeTiming.setValue(result.employeeTiming)
         this.employeeForm.controls.isActive.setValue(result.isActive)
+        this.employeeForm.controls.isImageUpload.setValue(false);
+        this.profileImage = result.imageOutPut;
+       // console.log(this.employeeForm.controls.profileImage.value);
       });
 
     }
@@ -69,10 +79,6 @@ export class AddEmployeeComponent implements OnInit {
     this.employeeForm = new FormGroup({
       id:new FormControl(''),
       employeeName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]),
-
-      // lastname: new FormControl('',  [Validators.required,Validators.pattern('^[a-zA-Z ]*$')]),
-
-      // email: new FormControl('',  [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
 
       contactNumber: new FormControl('', [Validators.required, Validators.pattern("^((\\+91-?)\0)?[0-9]{10}$"), Validators.maxLength(10)]),
 
@@ -89,24 +95,25 @@ export class AddEmployeeComponent implements OnInit {
 
       joiningDate: new FormControl('', [Validators.required]),
 
-      // leavingDate:new FormControl('',  [Validators.required]),
-
       salary: new FormControl('', [Validators.required, Validators.maxLength(50), Validators.pattern("^[0-9,]*$")]),
 
       employeeTiming: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
 
       contactEmployyeEmail: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
 
-      isActive: new FormControl(true)
+      isActive: new FormControl(true),
+      imageInPut:new FormControl('',[Validators.required]),
+      isImageUpload:new FormControl(true)
     })
   }
 
   toggleClick(employeeId:any , isActive:any) {
-    console.log("asjcdfs"+employeeId)
+   //console.log("asjcdfs"+employeeId)
 
       console.log(isActive)
       this.employeeService.isActiveDeactiveEmployee(this.employeeForm.controls.id,!isActive).subscribe((results) => {
-        console.log("olfdl")
+        console.log("olfdl");
+        console.log(results);
         let msg ;
         if(!isActive) {
            msg = 'Employee Activated Sucessfully';
@@ -126,6 +133,7 @@ export class AddEmployeeComponent implements OnInit {
 
     if (this.employeeForm.valid) {
       this.employeeService.addEmployee(this.employeeForm.value).subscribe((results) => {
+        console.log(results);
         this.commonService.showMessage("success", "Employee Added Sucessfully");
         this.router.navigate(['/employee']);
       },
@@ -135,5 +143,11 @@ export class AddEmployeeComponent implements OnInit {
       );
     }
 
+  }
+  imageUpload(e)
+  {
+    this.employeeForm.controls.imageInPut.setValue(e.target.files[0]);
+    this.employeeForm.controls.isImageUpload.setValue(true);
+    
   }
 }
