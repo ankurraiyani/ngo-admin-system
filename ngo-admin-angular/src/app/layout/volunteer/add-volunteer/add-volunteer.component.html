@@ -5,8 +5,8 @@
                 <div class="form-group col-md-6">
                     <label>Volunteer Name : </label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="name" placeholder="First Name" minlength="2"
-                            maxlength="10" formControlName="name" [ngClass]=" {'is-invalid' : volunteerForm.controls.name.touched && volunteerForm.controls.name.invalid,
+                        <input type="text" class="form-control" name="name" placeholder="Name" minlength="2"
+                            maxlength="50" formControlName="name" [ngClass]=" {'is-invalid' : volunteerForm.controls.name.touched && volunteerForm.controls.name.invalid,
 						'is-valid' : volunteerForm.controls.name.touched && volunteerForm.controls.name.valid}">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -19,20 +19,20 @@
                         <ng-container *ngIf="volunteerForm.controls.name.errors?.minlength">Min
                             Length is 2</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.name.errors?.maxlength">Max
-                            Length is 10</ng-container>
+                            Length is 50</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.name.errors?.whitespace">Please
-                            Enter valid First Name</ng-container>
+                            Enter valid Name</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.name.errors?.required">
-                            First Name is required</ng-container>
+                         Name is required</ng-container>
                     </span>
                 </div>
-    
-                
+
+
                 <div class="form-group col-md-6">
                     <label>Email Address :</label>
                     <div class="input-group">
-                        <input type="email" class="form-control" name="email" placeholder="E.g.- abc@gmail.com" minlength="3"
-                            maxlength="50" formControlName="email" [ngClass]=" {'is-invalid' : volunteerForm.controls.email.touched && volunteerForm.controls.email.invalid,
+                        <input type="email" class="form-control" name="email" placeholder="E.g.- abc@gmail.com"
+                            minlength="3" maxlength="50" formControlName="email" [ngClass]=" {'is-invalid' : volunteerForm.controls.email.touched && volunteerForm.controls.email.invalid,
 						'is-valid' : volunteerForm.controls.email.touched && volunteerForm.controls.email.valid}">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -47,7 +47,7 @@
                         <ng-container *ngIf="volunteerForm.controls.email.errors?.whitespace">Please
                             Enter valid Email Address.</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.email.errors?.pattern">Please
-                                Enter valid Email Address.</ng-container>
+                            Enter valid Email Address.</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.email.errors?.required">
                             Email is required</ng-container>
                     </span>
@@ -56,8 +56,8 @@
                 <div class="form-group col-md-6">
                     <label>Contact Number :</label>
                     <div class="input-group">
-                        <input type="tel" class="form-control" name="contactNumber" placeholder="Contact Number" minlength="10"
-                            maxlength="10" formControlName="contactNumber" [ngClass]=" {'is-invalid' : volunteerForm.controls.contactNumber.touched && volunteerForm.controls.contactNumber.invalid,
+                        <input type="tel" class="form-control" name="contactNumber" placeholder="Contact Number"
+                            minlength="10" maxlength="10" formControlName="contactNumber" [ngClass]=" {'is-invalid' : volunteerForm.controls.contactNumber.touched && volunteerForm.controls.contactNumber.invalid,
 						'is-valid' : volunteerForm.controls.contactNumber.touched && volunteerForm.controls.contactNumber.valid}">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -67,7 +67,7 @@
                     </div>
                     <span class="help-block"
                         *ngIf="volunteerForm.controls.contactNumber.touched && volunteerForm.controls.contactNumber.invalid || volunteerForm.controls.contactNumber.dirty ">
-                        
+
                         <ng-container *ngIf="volunteerForm.controls.contactNumber.errors?.pattern">Please
                             Enter valid Contact Number</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.contactNumber.errors?.required">
@@ -78,8 +78,8 @@
                 <div class="form-group col-md-6">
                     <label>Area Of Interest : </label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="areaOfInterest" placeholder="Area of Interest" minlength="3"
-                            maxlength="80" formControlName="areaOfInterest" [ngClass]=" {'is-invalid' : volunteerForm.controls.areaOfInterest.touched && volunteerForm.controls.areaOfInterest.invalid,
+                        <input type="text" class="form-control" name="areaOfInterest" placeholder="Area of Interest"
+                            minlength="3" maxlength="80" formControlName="areaOfInterest" [ngClass]=" {'is-invalid' : volunteerForm.controls.areaOfInterest.touched && volunteerForm.controls.areaOfInterest.invalid,
 						'is-valid' : volunteerForm.controls.areaOfInterest.touched && volunteerForm.controls.areaOfInterest.valid}">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -88,7 +88,7 @@
                         </div>
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.areaOfInterest.touched && volunteerForm.controls.areaOfInterest.invalid || volunteerForm.controls.contactNumber.dirty">
+                        *ngIf="volunteerForm.controls.areaOfInterest.touched && volunteerForm.controls.areaOfInterest.invalid || volunteerForm.controls.areaOfInterest.dirty">
                         <ng-container *ngIf="volunteerForm.controls.areaOfInterest.errors?.minlength">Min
                             Length is 3</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.areaOfInterest.errors?.maxlength">Max
@@ -103,8 +103,8 @@
                 <div class="form-group col-md-6">
                     <label>Address :</label>
                     <div class="input-group">
-                        <textarea class="form-control" rows="4" cols="4" name="address" placeholder="Address" minlength="3"
-                            maxlength="150" formControlName="address" [ngClass]=" {'is-invalid' : volunteerForm.controls.address.touched && volunteerForm.controls.address.invalid,
+                        <textarea class="form-control" rows="4" cols="4" name="address" placeholder="Address"
+                            minlength="3" maxlength="150" formControlName="address" [ngClass]=" {'is-invalid' : volunteerForm.controls.address.touched && volunteerForm.controls.address.invalid,
 						'is-valid' : volunteerForm.controls.address.touched && volunteerForm.controls.address.valid}">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -114,7 +114,7 @@
                         </textarea>
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.address.touched && volunteerForm.controls.address.invalid || volunteerForm.controls.contactNumber.dirty">
+                        *ngIf="volunteerForm.controls.address.touched && volunteerForm.controls.address.invalid || volunteerForm.controls.address.dirty">
                         <ng-container *ngIf="volunteerForm.controls.address.errors?.minlength">Min
                             Length is 3</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.address.errors?.maxlength">Max
@@ -125,7 +125,7 @@
                             Address is required</ng-container>
                     </span>
                 </div>
-                
+
                 <div class="form-group col-md-6">
                     <label>Age :</label>
                     <div class="input-group">
@@ -134,7 +134,7 @@
 						'is-valid' : volunteerForm.controls.age.touched && volunteerForm.controls.age.valid}">
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.age.touched && volunteerForm.controls.age.invalid || volunteerForm.controls.contactNumber.dirty">
+                        *ngIf="volunteerForm.controls.age.touched && volunteerForm.controls.age.invalid || volunteerForm.controls.age.dirty">
                         <ng-container *ngIf="volunteerForm.controls.age.errors?.minlength">Min
                             Length is 1</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.age.errors?.maxlength">Max
@@ -144,17 +144,19 @@
                         <ng-container *ngIf="volunteerForm.controls.age.errors?.required">
                             Age is required</ng-container>
                     </span>
-            
+
                     <br>
                     <label for="">Gender : </label>&nbsp; &nbsp;&nbsp;
                     <input type="radio" name="gender" value="male" formControlName="gender" [ngClass]=" {'is-invalid' : volunteerForm.controls.gender.touched && volunteerForm.controls.gender.invalid,
-                    'is-valid' : volunteerForm.controls.gender.touched && volunteerForm.controls.gender.valid}">&nbsp; Male
+                    'is-valid' : volunteerForm.controls.gender.touched && volunteerForm.controls.gender.valid}">&nbsp;
+                    Male
                     &nbsp;&nbsp;&nbsp;
                     <input type="radio" name="gender" value="female" formControlName="gender" [ngClass]=" {'is-invalid' : volunteerForm.controls.gender.touched && volunteerForm.controls.gender.invalid,
-                    'is-valid' : volunteerForm.controls.gender.touched && volunteerForm.controls.gender.valid}">&nbsp; Female
+                    'is-valid' : volunteerForm.controls.gender.touched && volunteerForm.controls.gender.valid}">&nbsp;
+                    Female
 
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.gender.touched && volunteerForm.controls.gender.invalid || volunteerForm.controls.contactNumber.dirty">
+                        *ngIf="volunteerForm.controls.gender.touched && volunteerForm.controls.gender.invalid || volunteerForm.controls.gender.dirty">
                         <ng-container *ngIf="volunteerForm.controls.gender.errors?.required">
                             gender is required</ng-container>
                     </span>
@@ -163,11 +165,12 @@
                 <div class="form-group col-md-6">
                     <label>Joining Date :</label>
                     <div class="input-group">
-                        <input type="date" class="form-control" name="dateOfJoining" placeholder="Date" formControlName="dateOfJoining" [ngClass]=" {'is-invalid' : volunteerForm.controls.dateOfJoining.touched && volunteerForm.controls.dateOfJoining.invalid,
+                        <input type="date" class="form-control" name="dateOfJoining" placeholder="Date"
+                            formControlName="dateOfJoining" [ngClass]=" {'is-invalid' : volunteerForm.controls.dateOfJoining.touched && volunteerForm.controls.dateOfJoining.invalid,
 						'is-valid' : volunteerForm.controls.dateOfJoining.touched && volunteerForm.controls.dateOfJoining.valid}">
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.dateOfJoining.touched && volunteerForm.controls.dateOfJoining.invalid || volunteerForm.controls.contactNumber.dirty">
+                        *ngIf="volunteerForm.controls.dateOfJoining.touched && volunteerForm.controls.dateOfJoining.invalid || volunteerForm.controls.dateOfJoining.dirty">
                         <ng-container *ngIf="volunteerForm.controls.dateOfJoining.errors?.required">
                             Joining Date is required</ng-container>
                     </span>
@@ -176,59 +179,112 @@
                 <div class="form-group col-md-6">
                     <label>Availability Of Time :</label>
                     <div class="input-group">
-                        <input type="time" class="form-control" name="availableTime" placeholder="Time" formControlName="availableTime" [ngClass]=" {'is-invalid' : volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.invalid,
+                        <input type="time" class="form-control" name="availableTime" placeholder="Time"
+                            formControlName="availableTime" [ngClass]=" {'is-invalid' : volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.invalid,
 						'is-valid' : volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.valid}">
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.invalid || volunteerForm.controls.availableTimeirty">
+                        *ngIf="volunteerForm.controls.availableTime.touched && volunteerForm.controls.availableTime.invalid || volunteerForm.controls.availableTime.dirty">
                         <ng-container *ngIf="volunteerForm.controls.availableTime.errors?.required">
                             Time is required</ng-container>
                     </span>
                 </div>
                 <div class="form-group col-md-6">
-                    <label>volunteer's Activity</label>
+                    <label>Volunteer's Activity</label>
                     <div class="input-group custom-control 
                     custom-switch custom-switch-off-danger custom-switch-on-success">
-                         <input type="checkbox" class="custom-control-input"  formControlName="isActive"
-                         id="togglebtn"> 
-                     <label class="custom-control-label"	[attr.for]="'togglebtn'"></label>
+                        <input type="checkbox" class="custom-control-input" formControlName="isActive" id="togglebtn">
+                        <label class="custom-control-label" [attr.for]="'togglebtn'"></label>
                     </div>
-                   
+
                 </div>
 
-                <div class="form-group col-md-6">
+
+                <!-- <div class="row center-xs">
+                    <div class="image-container">
+                        <img src="ProfileDP" alt="Profile DP">
+                    </div>
+
+                </div>
+                <div class="row center-xs">
+                    <div class="col-xs-12">
+                        <input hidden type="file" #profileUpload (change)="ImageUpload($event)">
+                        <button mat-raised-button color="primary" (click)="profileUpload.click()">Change Image</button>
+                    </div> 
+                </div> -->
+
+
+
+
+
+
+
+                <!-- <div class="form-group col-md-6">
                     <label>Volunteer Image</label>
                     <div class="input-group">
                         <div class="custom-file">
-                            <input type="file" (change)="imageUpload($event)"class="custom-file-input" id="exampleInputFile">
+                            <input type="file" (change)="imageUpload($event)" class="custom-file-input"                     id="exampleInputFile">
                             <label class="custom-file-label" for="exampleInputFile">select Image</label>
                         </div>
 
                     </div>
-                    <img class="profile" [src]="'data:image/png;base64,'+profileImage"
-										style="width: 128px;" />
-                   
+                    <img class="profile" [src]="'data:image/png;base64,'+profileImage" style="width: 128px;" />
+
+                </div> -->
+
+
+
+
+                <div class="class=col-md-3">
+                    <div class="card-body box-profile">
+                        <label>Volunteer Image</label>
+                        <div class="text-center">
+                            <img class="profile-user-img img-fluid img-circle" *ngIf="!isAddForm"
+                                style="width: 150px; height: 150px;border: 4px solid rgb(104, 102, 102);"
+                                [src]="'data:image/png;base64,'+profileImage" />
+
+                            <img class="profile-user-img img-fluid    img-circle" *ngIf="isAddForm"
+                                style="width: 150px; height: 150px;border: 4px solid rgb(104, 102, 102);"
+                                [src]=profileImage />
+                        </div>
+                        <div class="input-group">
+
+                            <label class="custom-file-label" for="exampleInputFile">select Image</label>
+
+                            <input type="file" (change)="imageUpload($event)" class="custom-file-input"
+                                id="exampleInputFile">
+
+                            <span class="help-block"
+                                *ngIf="volunteerForm.controls.imageInPut.touched && volunteerForm.controls.imageInPut.invalid || volunteerForm.controls.imageInPut.dirty">
+
+                                <ng-container *ngIf="volunteerForm.controls.imageInPut.errors?.required">
+                                    Image is Required</ng-container>
+                            </span>
+
+                        </div>
+                    </div>
+
                 </div>
+
+
             </div>
         </div>
         <div class="card-footer">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary mr-2">
+                    <button type="submit" class="btn btn-dark mr-2">
                         <span *ngIf="isAddForm">Add Volunteer</span>
                         <span *ngIf="!isAddForm">Edit Volunteer</span>
                     </button>
-                    <a [routerLinkActive]="['active']" routerLink="/volunteer" class="btn btn-default ">
-                        Cancel</a>
+                    <a [routerLinkActive]="['active']" routerLink="/volunteer">
+                        <button type="submit" class="btn btn-dark mr-2">
+                            Cancel
+                        </button>
+                    </a>
                 </div>
             </div>
 
         </div>
 
-        
-
-        
-
     </form>
 </div>
-

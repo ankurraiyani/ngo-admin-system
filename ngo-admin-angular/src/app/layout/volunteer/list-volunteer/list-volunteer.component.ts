@@ -10,9 +10,10 @@ import Swal from 'sweetalert2';
   templateUrl: './list-volunteer.component.html',
   styleUrls: ['./list-volunteer.component.css']
 })
+
 export class ListVolunteerComponent implements OnInit {
   result: string;
-
+ 
   constructor(private volunteerService: VolunteerService,
     private commonService: CommonService,private router : Router) { }
 
@@ -27,8 +28,10 @@ export class ListVolunteerComponent implements OnInit {
   }
   searchSubscriber : Subscription
 
+
   ngOnInit(): void {
     setTimeout(() => {
+      
       this.commonService.currentPageTitle = 'Volunteer List';
     });
     this.getVolunteerData();

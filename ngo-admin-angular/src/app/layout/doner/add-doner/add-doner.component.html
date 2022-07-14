@@ -6,7 +6,7 @@
                 <div class="form-group col-md-6">
                     <label>Donor Name:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="donerName" placeholder="First Name" minlength="3"
+                        <input type="text" class="form-control" name="donerName" placeholder="Name" minlength="3"
                             maxlength="50" formControlName="donerName" [ngClass]=" {'is-invalid' : donerForm.controls.donerName.touched && donerForm.controls.donerName.invalid,
 						'is-valid' : donerForm.controls.donerName.touched && donerForm.controls.donerName.valid}">
                         <div class="input-group-append">
@@ -99,7 +99,7 @@
                     <label>Donation Discription:</label>
                     <div class="input-group">
                         <input type="text" class="form-control" name="donationDescription"
-                            placeholder="donationDescription" formControlName="donationDescription" [ngClass]=" {'is-invalid' : donerForm.controls.donationDescription.touched && donerForm.controls.donationDescription.invalid,
+                            placeholder="Donation Description" formControlName="donationDescription" [ngClass]=" {'is-invalid' : donerForm.controls.donationDescription.touched && donerForm.controls.donationDescription.invalid,
 						'is-valid' : donerForm.controls.donationDescription.touched && donerForm.controls.donationDescription.valid}">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -146,35 +146,33 @@
                     </div>
 
                 </div>
-               
+
                 <div class="class=col-md-3">
-                    
                     <div class="card-body box-profile">
                         <label>Doner Image:</label>
                         <div class="text-center">
-                           
-                            <img class="profile-user-img img-fluid img-circle"
+                            <img class="profile-user-img img-fluid img-circle" *ngIf="!isAddForm"
+                                style="width: 150px; height: 150px;border: 4px solid rgb(104, 102, 102);"
+                                [src]="'data:image/png;base64,'+profileImage" />
 
-                            style="width: 150px; height: 150px;border: 4px solid rgb(104, 102, 102);"
-                                [src]="'data:image/png;base64,'+profileImage"/>
-
-                               <!-- <img class="profile-user-img img-fluid img-circle"
-                               *ngif="isAddForm" [src]="profileImage" alt="User profile picture" /> -->
+                            <img class="profile-user-img img-fluid    img-circle" *ngIf="isAddForm"
+                                style="width: 150px; height: 150px;border: 4px solid rgb(104, 102, 102);"
+                                [src]=profileImage />
                         </div>
                         <div class="input-group">
-                          
-                                <label class="custom-file-label" for="exampleInputFile">select Image</label>
 
-                                <input type="file" (change)="imageUpload($event)" class="custom-file-input"
-                                   id="exampleInputFile"> 
-                                  
-                                <span class="help-block"
-                                    *ngIf="donerForm.controls.imageInPut.touched && donerForm.controls.imageInPut.invalid || donerForm.controls.imageInPut.dirty">
+                            <label class="custom-file-label" for="exampleInputFile">select Image</label>
 
-                                    <ng-container *ngIf="donerForm.controls.imageInPut.errors?.required">
-                                        Image is Required</ng-container>
-                                </span>
-                           
+                            <input type="file" (change)="imageUpload($event)" class="custom-file-input"
+                                id="exampleInputFile">
+
+                            <span class="help-block"
+                                *ngIf="donerForm.controls.imageInPut.touched && donerForm.controls.imageInPut.invalid || donerForm.controls.imageInPut.dirty">
+
+                                <ng-container *ngIf="donerForm.controls.imageInPut.errors?.required">
+                                    Image is Required</ng-container>
+                            </span>
+
                         </div>
                     </div>
 
@@ -214,13 +212,15 @@
             <div class="row">
                 <div class="col-md-12 text-center">
 
-                    <button type="submit" class="btn btn-primary mr-2">
+                    <button type="submit" class="btn btn-dark mr-2">
                         <span *ngIf="isAddForm">Add doner</span>
                         <span *ngIf="!isAddForm">Edit doner</span>
-
                     </button>
-                    <a [routerLinkActive]="['active']" routerLink="/doner" class="btn btn-default ">
-                        Cancel</a>
+                    <a [routerLinkActive]="['active']" routerLink="/doner">
+                        <button type="submit" class="btn btn-dark mr-2">
+                            Cancel
+                        </button>
+                    </a>
                 </div>
             </div>
 

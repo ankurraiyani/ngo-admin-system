@@ -1,15 +1,16 @@
 import { ModuleWithProviders } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { LayoutComponent } from "./layout.component";
-
 const routes: Routes = [
     { 
         path: '', component: LayoutComponent,
         children: [
             { 
                 path: '', 
+                
                 loadChildren: () => import('./dashboard/dashboard.module')
-                                .then(module => module.DashboardModule) 
+                                .then(module => module.DashboardModule) ,
+                               
             },
             { 
                 path: 'event', 

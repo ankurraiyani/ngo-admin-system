@@ -6,7 +6,7 @@
                 <div class="form-group col-md-6">
                     <label>Name Of Employee:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="employeeName" placeholder="First Name"
+                        <input type="text" class="form-control" name="employeeName" placeholder="Name"
                             formControlName="employeeName" [ngClass]=" {'is-invalid' : employeeForm.controls.employeeName.touched && employeeForm.controls.employeeName.invalid,	'is-valid' : employeeForm.controls.employeeName.touched && employeeForm.controls.employeeName.valid
 					}">
                         <div class="input-group-append">
@@ -74,11 +74,10 @@
                             length is 10</ng-container>
                     </span>
                 </div>
-
                 <div class="form-group col-md-6">
-                    <label>AadharNumber:</label>
+                    <label>Aadhar Card Number:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="aadharcardNo" placeholder="AadharNumber"
+                        <input type="text" class="form-control" name="aadharcardNo" placeholder="Aadhar Card Number"
                             minlength="12"
                             maxlength="12" formControlName="aadharcardNo"
                             [ngClass]=" {'is-invalid' : employeeForm.controls.aadharcardNo.touched && employeeForm.controls.aadharcardNo.invalid,
@@ -130,7 +129,8 @@
                         <ng-container *ngIf="employeeForm.controls.address.errors?.required">
                             Address is required</ng-container>
                     </span>
-                </div>
+    <!--  -->
+                 </div>
 
 
 
@@ -140,7 +140,7 @@
 
 
                 <!-- add extra fields -->
-                <div class="form-group col-md-6">
+                <!-- <div class="form-group col-md-6">
                     <label>Role of Employee</label>
                     <div class="input-group">
                         <input type="text" class="form-control" name="roleOfEmployee" placeholder="Role of Employee"
@@ -163,26 +163,10 @@
                             enter valid Role Of Employee</ng-container>
                         <ng-container *ngIf="employeeForm.controls.roleOfEmployee.errors?.required">
                             Role Of Employee is required</ng-container>
-                    </span>
+                    </span> -->
                     <!-- </div>  -->
                     <!-- <div class="form-group col-md-6"> -->
-                    <br>
-                    <label>Gender</label>&nbsp;&nbsp;&nbsp;
-
-                    <!-- <div class="input-group"> -->
-                    <input type="radio" name="gender" value="male" formControlName="gender" [ngClass]=" {'is-invalid' : employeeForm.controls.gender.touched && employeeForm.controls.gender.invalid,
-        'is-valid' : employeeForm.controls.gender.touched && employeeForm.controls.gender.valid}">Male
-
-                    <input type="radio" name="gender" value="female" formControlName="gender">Female
-
-
-                    <!-- </div> -->
-                    <span class="help-block"
-                        *ngIf="employeeForm.controls.gender.touched && employeeForm.controls.gender.invalid">
-                        <ng-container *ngIf="employeeForm.controls.gender.errors?.required">
-                            Gender is required</ng-container>
-                    </span>
-                </div>
+                   
 
 
                 <div class="form-group col-md-6">
@@ -203,7 +187,25 @@
                         <ng-container *ngIf="employeeForm.controls.age.errors?.required">
                             Age is required</ng-container>
                     </span>
-                </div>
+                <!-- </div> -->
+
+                <br>
+                <label>Gender</label>&nbsp;&nbsp;&nbsp;
+
+                <!-- <div class="input-group"> -->
+                <input type="radio" name="gender" value="male" formControlName="gender" [ngClass]=" {'is-invalid' : employeeForm.controls.gender.touched && employeeForm.controls.gender.invalid,
+    'is-valid' : employeeForm.controls.gender.touched && employeeForm.controls.gender.valid}">&nbsp;Male
+&nbsp;
+                <input type="radio" name="gender" value="female" formControlName="gender">&nbsp;Female
+
+
+                <!-- </div> -->
+                <span class="help-block"
+                    *ngIf="employeeForm.controls.gender.touched && employeeForm.controls.gender.invalid">
+                    <ng-container *ngIf="employeeForm.controls.gender.errors?.required">
+                        Gender is required</ng-container>
+                </span>
+            </div>
 
 
                 <div class="form-group col-md-6">
@@ -280,6 +282,52 @@
                    
                 </div>
 
+                <!-- <div class="form-group col-md-6">
+                    <label>Employee Image</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" (change)="imageUpload($event)"class="custom-file-input" id="exampleInputFile">
+                            <label class="custom-file-label" for="exampleInputFile">select Image</label>
+                        </div>
+
+                    </div>
+                    <img class="profile" [src]="'data:image/png;base64,'+profileImage"
+										style="width: 128px;" />
+                   
+                </div> -->
+
+
+                <div class="class=col-md-3">
+                    <div class="card-body box-profile">
+                        <label>Employee Image:</label>
+                        <div class="text-center">
+                            <img class="profile-user-img img-fluid img-circle" *ngIf="!isAddForm"
+                                style="width: 150px; height: 150px;border: 4px solid rgb(104, 102, 102);"
+                                [src]="'data:image/png;base64,'+profileImage" />
+
+                            <img class="profile-user-img img-fluid    img-circle" *ngIf="isAddForm"
+                                style="width: 150px; height: 150px;border: 4px solid rgb(104, 102, 102);"
+                                [src]=profileImage />
+                        </div>
+                        <div class="input-group">
+
+                            <label class="custom-file-label" for="exampleInputFile">select Image</label>
+
+                            <input type="file" (change)="imageUpload($event)" class="custom-file-input"
+                                id="exampleInputFile">
+
+                            <span class="help-block"
+                                *ngIf="employeeForm.controls.imageInPut.touched && employeeForm.controls.imageInPut.invalid || employeeForm.controls.imageInPut.dirty">
+
+                                <ng-container *ngIf="employeeForm.controls.imageInPut.errors?.required">
+                                    Image is Required</ng-container>
+                            </span>
+
+                        </div>
+                    </div>
+
+                </div>
+
 
 
 
@@ -291,12 +339,16 @@
         <div class="card-footer">
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary mr-2">
+                    <button type="submit" class="btn btn-dark mr-2">
                         <span *ngIf="isAddForm">Add Employee</span>
                         <span *ngIf="!isAddForm">Edit Employee</span>
                     </button>
-                    <a [routerLinkActive]="['active']" routerLink="/employee" class="btn btn-default ">
-                        Cancel</a>
+                    <a [routerLinkActive]="['active']" routerLink="/employee">
+                        <button type="submit" class="btn btn-dark mr-2">
+                        Cancel
+                    </button>
+                    </a>
+                        
                 </div>
             </div>
 

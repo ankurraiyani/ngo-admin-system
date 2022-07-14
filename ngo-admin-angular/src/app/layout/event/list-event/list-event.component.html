@@ -4,14 +4,13 @@
             <div class="card-header">
                 <div class="row justify-content-between">
                     <div class="col-md-6 align-self-center">
-                        <a href="javascript:void(0);" [routerLink]="['../event/add']" class="btn btn-primary mr-3"><i
-                                class="fa fa-plus"></i> Create Evnet</a>
-
-                                </div>
+                        <a href="javascript:void(0);" [routerLink]="['../event/add']" class="btn btn-dark mr-3 "><b><i
+                                class="fa fa-plus"></i>  Add Event</b></a>
+                    </div>
 
                     <div class="col-md-3 align-self-center">
                     <div class="input-group input-group-lg">
-                        <input type="text"  placeholder="Search here..."       [(ngModel)]="fetchEventListParam.searchStr" (keyup)="getEventData()" class="form-control">
+                        <input type="text"  placeholder="Search here..."  [(ngModel)]="fetchEventListParam.searchStr" (keyup)="getEventData()" class="form-control">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-lg btn-default">
                                 <i class="fa fa-search"></i>
@@ -46,16 +45,13 @@
                             <th>End Date</th>
                             <th>Address</th>
                             <th>City</th>
-                            <th>Volunteers Name</th>
-                            <th>Sponsors Name</th>
+                            <th>Volunteer's Name</th>
+                            <th>Sponsor's Name</th>
                             <th>Description</th>
-                            <th>Type of Event</th>
-                            <th>Event Organizer Name</th>
-                            <th>Organizer contact Number</th>
-                            <th>Organizer Email</th>
-
-                            
-
+                            <th>Event Type</th>
+                            <th>Organizer's Name</th>
+                            <th>Organizer's Number</th>
+                            <th>Organizer's Email</th>
                             <th width="15%">Actions</th>
                         </tr>
                     </thead>

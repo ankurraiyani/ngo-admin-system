@@ -5,7 +5,7 @@
                 <div class="row justify-content-between">
                     <div class="col-md-6 align-self-center">
                         <a href="javascript:void(0);" [routerLink]="['../volunteer/add']"
-                            class="btn btn-primary mr-3"><i class="fa fa-plus"></i> Create Volunteer</a>
+                            class="btn btn-dark mr-3"><b><i class="fa fa-user-plus"></i> Add Volunteer</b></a>
                     </div>
 
                     <div class="col-md-3 align-self-center">
@@ -46,11 +46,11 @@
                             <th>Email</th>
                             <th>Gender</th>
                             <th>Age</th>
-                            <th>Area Of Interest</th>
-                            <th>Date of Joining</th>
+                            <th>Interest</th>
+                            <th>Joining Date</th>
                             <th>Contact Number</th>
                             <th>Address</th>
-                            <th>Availability Of Time</th>
+                            <th>Available Time</th>
                             <th width="15%">Actions</th>
                         </tr>
                     </thead>
@@ -115,107 +115,107 @@
                 </div>
             </div>
 
-            <!-- <span *ngFor="let volunteer of volunteerList">
+<!-- <span *ngFor="let volunteer of volunteerList">
 
-            <div class="card card-solid">
+    <div class="card card-solid">
+        <span *ngFor="let volunteer of volunteerList">
+            <div class="card-body pb-0">
                 <span *ngFor="let volunteer of volunteerList">
-                <div class="card-body pb-0">
-                    <span *ngFor="let volunteer of volunteerList">
-                        <div class="row">
-                            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-                                <div class="card bg-light d-flex flex-fill">
-                                    <div class="card-header text-muted border-bottom-0">
-                                    </div>
-                                    <div class="card-body pt-0">
-                                        <div class="row">
-                                            <div class="col-7">
-                                                <h2 class="lead"><b> Name : {{volunteer.name}}</b></h2>
-                                                <p class="text-muted text-sm">Email : {{volunteer.email}}</p>
-                                                Email : {{volunteer.email}}
-                                                <br>
-                                                Gender : {{volunteer.gender}}
-                                                <br>
-                                                &nbsp;
-                                                Age : {{volunteer.age}}
-                                                <br>
-                                                Area Of Interest : {{volunteer.areaOfInterest}}
-                                                <br>
-                                                Date Of Joining : {{volunteer.dateOfJoining}}
-                                                <br>
-                                                Available Time : {{volunteer.availableTime}}
-                                                <ul class="ml-4 mb-0 fa-ul text-muted">
-                                                    <li class="small"><span class="fa-li"><i
-                                                                class="fas fa-lg fa-building"></i></span> 
-                                                                {{volunteer.address}}</li>
-                                                    <li class="small"><span class="fa-li"><i
-                                                                class="fas fa-lg fa-phone"></i></span>
-                                                        {{volunteer.contactNumber}}</li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-5 text-center">
-                                                <img src="../../dist/img/user1-128x128.jpg" alt="user-avatar"
-                                                    class="img-circle img-fluid">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="text-right">
-                                            <a href="#" class="btn btn-sm bg-teal">
-                                                <i class="fas fa-comments"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-sm btn-primary">
-                                                <i class="fas fa-user"></i> View Profile
-                                            </a>
-                                        </div>
-                                    </div>
-
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                            <div class="card bg-light d-flex flex-fill">
+                                <div class="card-header text-muted border-bottom-0">
                                 </div>
-                            </div>
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="lead"><b> Name : {{volunteer.name}}</b></h2>
+                                            <p class="text-muted text-sm">Email : {{volunteer.email}}</p>
+                                            Email : {{volunteer.email}}
+                                            <br>
+                                            Gender : {{volunteer.gender}}
+                                            <br>
+                                            &nbsp;
+                                            Age : {{volunteer.age}}
+                                            <br>
+                                            Area Of Interest : {{volunteer.areaOfInterest}}
+                                            <br>
+                                            Date Of Joining : {{volunteer.dateOfJoining}}
+                                            <br>
+                                            Available Time : {{volunteer.availableTime}}
+                                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                <li class="small"><span class="fa-li"><i
+                                                            class="fas fa-lg fa-building"></i></span>
+                                                    {{volunteer.address}}</li>
+                                                <li class="small"><span class="fa-li"><i
+                                                            class="fas fa-lg fa-phone"></i></span>
+                                                    {{volunteer.contactNumber}}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-5 text-center">
+                                            <img src="../../dist/img/user1-128x128.jpg" alt="user-avatar"
+                                                class="img-circle img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-right">
+                                        <a href="#" class="btn btn-sm bg-teal">
+                                            <i class="fas fa-comments"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i> View Profile
+                                        </a>
+                                    </div>
+                                </div>
 
+                            </div>
                         </div>
-                </div>
+
+                    </div>
+
                 </span>
             </div>
+        </span>
+
+    </div>
+
+    
 </span>
-
-        </div>
-    </div>
-
-</div>
- -->
-<!-- 
-
-<div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-    <div class="card bg-light d-flex flex-fill">
-        <div class="card-header text-muted border-bottom-0">
-            Digital Strategist
-        </div>
-        <div class="card-body pt-0">
-            <div class="row">
-                <div class="col-7">
-                    <h2 class="lead"><b>Nicole Pearson</b></h2>
-                    <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                    <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo
-                            Street 123, Demo City 04312, NJ</li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 -
-                            12 12 23 52</li>
-                    </ul>
-                </div>
-                <div class="col-5 text-center">
-                    <img src="../../dist/img/user1-128x128.jpg" alt="user-avatar" class="img-circle img-fluid">
+    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+        <div class="card bg-light d-flex flex-fill">
+            <div class="card-header text-muted border-bottom-0">
+                Digital Strategist
+            </div>
+            <div class="card-body pt-0">
+                <div class="row">
+                    <div class="col-7">
+                        <h2 class="lead"><b>Nicole Pearson</b></h2>
+                        <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover
+                        </p>
+                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address:
+                                Demo
+                                Street 123, Demo City 04312, NJ</li>
+                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: +
+                                800 -
+                                12 12 23 52</li>
+                        </ul>
+                    </div>
+                    <div class="col-5 text-center">
+                        <img src="../../dist/img/user1-128x128.jpg" alt="user-avatar" class="img-circle img-fluid">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="card-footer">
-            <div class="text-right">
-                <a href="#" class="btn btn-sm bg-teal">
-                    <i class="fas fa-comments"></i>
-                </a>
-                <a href="#" class="btn btn-sm btn-primary">
-                    <i class="fas fa-user"></i> View Profile
-                </a>
+            <div class="card-footer">
+                <div class="text-right">
+                    <a href="#" class="btn btn-sm bg-teal">
+                        <i class="fas fa-comments"></i>
+                    </a>
+                    <a href="#" class="btn btn-sm btn-primary">
+                        <i class="fas fa-user"></i> View Profile
+                    </a>
+                </div>
             </div>
-        </div>
-    </div>
-</div> -->
+
+        </div> -->

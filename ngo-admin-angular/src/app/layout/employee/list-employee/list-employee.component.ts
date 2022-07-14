@@ -48,6 +48,7 @@ export class ListEmployeeComponent implements OnInit {
     }
     this.searchSubscriber = this.employeeService.searchEmployee(this.fetchEmployeeListParam).subscribe((results) => {
       this.employeeList = results.content;
+      console.log(results);
       this.totalCount = results.totalElements;
     }, (error) => {
       this.commonService.showMessage("error", error.message)

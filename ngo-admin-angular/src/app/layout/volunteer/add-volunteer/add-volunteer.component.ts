@@ -10,15 +10,17 @@ import { VolunteerService } from 'src/app/services/volunteer.service';
   styleUrls: ['./add-volunteer.component.css']
 })
 export class AddVolunteerComponent implements OnInit {
-  volunteerId: any;
-  isAddForm=true;
+  
+  
   
   constructor(private volunteerService: VolunteerService,
     private commonService: CommonService,
     private router: Router,private activatedRoute : ActivatedRoute) { }
-
-  volunteerForm: FormGroup;
+    volunteerId: any;
+  isAddForm=true;
   profileImage:any;
+  volunteerForm: FormGroup;
+ 
   ngOnInit(): void {
    
     this.iniatilzeForm();
@@ -26,6 +28,7 @@ export class AddVolunteerComponent implements OnInit {
 
     if(this.volunteerId==undefined || this.volunteerId==null)
     {
+      this.profileImage = "/assets/images/user2-160x160.jpg";
       setTimeout(() => {
         this.commonService.currentPageTitle = 'Add Volunteer';
       });
@@ -54,7 +57,6 @@ export class AddVolunteerComponent implements OnInit {
             this.volunteerForm.controls.isActive.setValue(results.isActive);
             this.volunteerForm.controls.isImageUpload.setValue(false);
             this.profileImage = results.imageOutPut;
-
           });
       
     }
@@ -62,7 +64,7 @@ export class AddVolunteerComponent implements OnInit {
   iniatilzeForm() {
     this.volunteerForm = new FormGroup({
       id:new FormControl(''),
-      name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(10)]),
+      name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
 
       email: new FormControl('', [Validators.required, Validators.maxLength(50), Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
 
@@ -90,6 +92,7 @@ export class AddVolunteerComponent implements OnInit {
     this.volunteerForm.markAllAsTouched();
     if (this.volunteerForm.valid) {
       this.volunteerService.addVolunteer(this.volunteerForm.value).subscribe((results) => {
+        console.log(this.volunteerForm.controls.imageInPut.value)
         let msg;
         if (this.isAddForm) {
           msg = "Volunteer Added Sucessfully";
@@ -107,5 +110,6 @@ export class AddVolunteerComponent implements OnInit {
     this.volunteerForm.controls.imageInPut.setValue(e.target.files[0]);
     this.volunteerForm.controls.isImageUpload.setValue(true);
   }
+
 
 }
