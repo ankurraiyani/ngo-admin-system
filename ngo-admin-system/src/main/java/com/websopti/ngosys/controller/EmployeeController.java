@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,7 +33,7 @@ public class EmployeeController {
 		private EmployeeService employeeService;
 
 		@PostMapping("/save")
-		public Employee save(@RequestBody EmployeeDto employeeDto) {
+		public Employee save(@ModelAttribute EmployeeDto employeeDto) {
 			return employeeService.save(employeeDto);
 		}
 		

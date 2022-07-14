@@ -280,6 +280,20 @@
                    
                 </div>
 
+                <div class="form-group col-md-6">
+                    <label>Employee Image</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" (change)="imageUpload($event)"class="custom-file-input" id="exampleInputFile">
+                            <label class="custom-file-label" for="exampleInputFile">select Image</label>
+                        </div>
+
+                    </div>
+                    <img class="profile" [src]="'data:image/png;base64,'+profileImage"
+										style="width: 128px;" />
+                   
+                </div>
+
 
 
 

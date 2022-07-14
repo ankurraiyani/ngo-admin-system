@@ -8,9 +8,8 @@ public interface EmployeePagebleResponse {
 	
     public String getEmployeeName();
 
-	public Date getJoiningDate();
+	public java.sql.Date  getjoiningDate();
 	
-	public Date getleavingDate();
 	
 	public String getEmployeeTiming();
 
