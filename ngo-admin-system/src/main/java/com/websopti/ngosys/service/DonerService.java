@@ -1,8 +1,13 @@
 package com.websopti.ngosys.service;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,6 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.websopti.ngosys.dto.DonerDto;
 import com.websopti.ngosys.dto.DonerListDTO;
@@ -27,13 +33,23 @@ public class DonerService {
 	// save
 	public Doner save(DonerDto donerDto) {
 		Doner doner = this.convertDtoToEntity(donerDto);
-		return donerRepository.save(doner);
+		Doner donerNew=donerRepository.save(doner);
+		if(donerDto.getIsImageUpload())
+		{
+			System.out.println("image work.....");
+			System.out.println(donerDto.getImageInPut());
+			this.saveDonerProfile(donerDto.getImageInPut(),String.valueOf(donerNew.getId()));
+		}
+		return donerNew;
 	}
 
 	// GetByid
 	public DonerDto get(Long donerId) {
 		Doner doner = this.findById(donerId);
 		DonerDto donerDto = this.convertEntityToDto(doner);
+
+		byte[] image = this.getDonerProfile(String.valueOf(donerId));
+		donerDto.setImageOutPut(image);
 		return donerDto;
 	}
 
@@ -106,6 +122,46 @@ public class DonerService {
 
 		return donerDto;
 	}
+	
+	/*
+	 * saveDonerProfile
+	 * @param donerId
+	 * @return
+	 */
+	
+	public void saveDonerProfile(MultipartFile files,String donerId)
+	{
+		try {
+			
+			String mediaFolder = "C://Users/15DA435TX/eclipse-workspace/new/ngo-admin-system/ngo-admin-system/Images/Doner"+File.separator+donerId;
+			FileUtils.deleteDirectory(Paths.get(mediaFolder).toFile());
+			Path root=Files.createDirectories(Paths.get(mediaFolder));
+			files.transferTo(new File(mediaFolder,files.getOriginalFilename()));			
+		}
+		catch(Exception e){			
+			System.out.println("Doner Image Store Error : " +e);
+			
+		}
+	}
+	
+	/**
+	 * get Doner Image
+	 * @param donerId
+	 * @return
+	 */
+	
+	public byte[] getDonerProfile(String donerId) {
+		try {
+			String mediaFolder = "C://Users/15DA435TX/eclipse-workspace/new/ngo-admin-system/ngo-admin-system/Images/Doner" + File.separator + donerId;
+			File file = new File(mediaFolder);
+			if (file.exists() && file.listFiles().length > 0)
+				return Files.readAllBytes(file.listFiles()[0].toPath());
+		} catch (Exception e) {
+			System.out.println("Doner image get  Error: ");
+		}
+		return null;
+	}
+	
 
 
 }

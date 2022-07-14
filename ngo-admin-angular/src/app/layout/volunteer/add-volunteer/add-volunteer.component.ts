@@ -18,6 +18,7 @@ export class AddVolunteerComponent implements OnInit {
     private router: Router,private activatedRoute : ActivatedRoute) { }
 
   volunteerForm: FormGroup;
+  profileImage:any;
   ngOnInit(): void {
    
     this.iniatilzeForm();
@@ -35,7 +36,10 @@ export class AddVolunteerComponent implements OnInit {
       setTimeout(() => {
         this.commonService.currentPageTitle = 'Edit Volunteer';
       });
-      
+      this.volunteerForm.controls['imageInPut'].setErrors(null);
+      this.volunteerForm.controls['imageInPut'].clearValidators();
+      this.volunteerForm.controls['imageInPut'].updateValueAndValidity();
+
         this.volunteerService.getIdVolunteer(this.volunteerId).subscribe((results)=> {
             this.volunteerForm.controls.name.setValue(results.name);
             this.volunteerForm.controls.address.setValue(results.address);
@@ -48,8 +52,10 @@ export class AddVolunteerComponent implements OnInit {
             this.volunteerForm.controls.availableTime.setValue(results.availableTime);
             this.volunteerForm.controls.id.setValue(results.id);
             this.volunteerForm.controls.isActive.setValue(results.isActive);
+            this.volunteerForm.controls.isImageUpload.setValue(false);
+            this.profileImage = results.imageOutPut;
 
-                });
+          });
       
     }
   }
@@ -73,13 +79,15 @@ export class AddVolunteerComponent implements OnInit {
       availableTime: new FormControl('', [Validators.required]),
 
       areaOfInterest: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(80)]),
-      isActive:new FormControl(true)
+      isActive:new FormControl(true),
+      imageInPut: new FormControl('',[Validators.required]),
+      isImageUpload: new FormControl(true),
+
     });
   }
 
   submit() {
     this.volunteerForm.markAllAsTouched();
-
     if (this.volunteerForm.valid) {
       this.volunteerService.addVolunteer(this.volunteerForm.value).subscribe((results) => {
         let msg;
@@ -94,6 +102,10 @@ export class AddVolunteerComponent implements OnInit {
         this.commonService.showMessage("error", error.message);
       });
     }
+  }
+  imageUpload(e){
+    this.volunteerForm.controls.imageInPut.setValue(e.target.files[0]);
+    this.volunteerForm.controls.isImageUpload.setValue(true);
   }
 
 }

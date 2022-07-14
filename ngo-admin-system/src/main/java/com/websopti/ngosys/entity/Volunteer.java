@@ -16,7 +16,7 @@ public class Volunteer {
 
 	@javax.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 
 	private String name;
 
@@ -44,7 +44,9 @@ public class Volunteer {
 
 	@Column(columnDefinition = "text")
 	private String areaOfInterest;
-
+	
 	private Boolean isActive;
+
+
 
 }

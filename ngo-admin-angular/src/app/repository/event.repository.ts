@@ -1,7 +1,7 @@
 import { ThrowStmt } from "@angular/compiler";
 import { Injectable } from "@angular/core";
 import { ApiClientRepository } from "../common/Apiclient.repository";
-import { BASE_URL, EVENT_ADD, EVENT_DELETE, EVENT_GETALL, EVENT_GETID } from "../common/url";
+import { BASE_URL, EVENT_ADD, EVENT_DELETE, EVENT_GETALL, EVENT_GETID, EVENT_GET_ACTIVE,} from "../common/url";
 
 @Injectable()
 export class EvnetRepository {
@@ -23,6 +23,10 @@ export class EvnetRepository {
     {
         return this.apiClient.doPublicDelete(EVENT_DELETE+"/"+data);
 
+    }
+    getEvent()
+    {
+        return this.apiClient.doPublicGet(EVENT_GET_ACTIVE);
     }
     
         

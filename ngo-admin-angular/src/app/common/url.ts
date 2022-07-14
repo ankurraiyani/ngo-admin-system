@@ -15,7 +15,8 @@ export const EVENT_ADD: string = BASE_URL + "event/save";
 export const EVENT_GETALL:string= BASE_URL + "event/get";
 
 export const EVENT_DELETE: string=BASE_URL+"event/delete";
-export const EVENT_GETID: string=BASE_URL+"event/get"
+export const EVENT_GETID: string=BASE_URL+"event/get";
+export const EVENT_GET_ACTIVE:string=BASE_URL+"event/get/active"; 
 
 
 //employee apis

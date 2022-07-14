@@ -1,11 +1,14 @@
 package com.websopti.ngosys.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.websopti.ngosys.dto.EventDto;
 import com.websopti.ngosys.dto.EventPagabelReponse;
 import com.websopti.ngosys.entity.Event;
 
@@ -20,5 +23,6 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 			+ " WHERE ?1 IS NULL OR LOWER(e.name) LIKE LOWER(concat('%', ?1, '%')) "
 			+ " OR LOWER(e.city) LIKE LOWER(concat('%', ?1, '%'))",nativeQuery = true)
 	Page<EventPagabelReponse> findEventData(String searchStr, Pageable page);
+
 
 }

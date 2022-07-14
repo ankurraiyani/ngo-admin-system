@@ -1,8 +1,7 @@
 package com.websopti.ngosys.dto;
 
-import java.util.Date;
 
-
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
@@ -17,7 +16,7 @@ public class DonerDto {
 
 	private String donerEmail;
 
-	private Date dateOfDonation;
+	private java.sql.Date dateOfDonation;
 
 	private String typeofDonation;
 
@@ -26,5 +25,11 @@ public class DonerDto {
 	private String donationDescription;
 
 	private Boolean isPresent;
+	
+	private byte[] imageOutPut;
+	
+	private MultipartFile imageInPut;
+	
+	private Boolean isImageUpload;
 
 }

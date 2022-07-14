@@ -15,7 +15,8 @@ export class AddDonerComponent implements OnInit {
   constructor(private donerService: DonerService,
     private commonService: CommonService,
     private router: Router, private activatedRouter: ActivatedRoute) { }
-
+   profileImage:any;
+  // profileImage = "C://Users/15DA435TX/eclipse-workspace/new/ngo-admin-system/ngo-admin-system/Images/Doner/no image/dpno.jpg";
   donerForm: FormGroup;
   donerId: any;
   isAddForm = true;
@@ -39,8 +40,15 @@ export class AddDonerComponent implements OnInit {
       setTimeout(() => {
         this.commonService.currentPageTitle = 'Edit Doner';
       });
+
+      this.donerForm.controls['imageInPut'].setErrors(null);
+      this.donerForm.controls['imageInPut'].clearValidators();
+      this.donerForm.controls['imageInPut'].updateValueAndValidity();
+
+
       this.donerService.getIdDoner(this.donerId).subscribe((result) => {
         console.log(result);
+  
         this.donerForm.controls.donerName.setValue(result.donerName);
         this.donerForm.controls.id.setValue(result.id);
         this.donerForm.controls.contactNumber.setValue(result.contactNumber);
@@ -49,6 +57,9 @@ export class AddDonerComponent implements OnInit {
         this.donerForm.controls.dateOfDonation.setValue(result.dateOfDonation);
         this.donerForm.controls.donerEmail.setValue(result.donerEmail);
         this.donerForm.controls.donationDescription.setValue(result.donationDescription);
+        this.donerForm.controls.isImageUpload.setValue(false);
+        this.profileImage = result.imageOutPut;
+        
       }, (error) => {
 
       });
@@ -77,17 +88,21 @@ export class AddDonerComponent implements OnInit {
 
       donationDescription: new FormControl('', []),
 
-      isPresent: new FormControl(true)
+      isPresent: new FormControl(true),
+      imageInPut: new FormControl('',[Validators.required]),
+
+      isImageUpload: new FormControl(true)
     });
   }
 
   submit() {
     this.donerForm.markAllAsTouched();
-    console.log(this.donerForm.controls.typeofDonation.value);
-
+    console.log(this.donerForm.controls.imageInPut.value);
+    console.log("oyy");
     if (this.donerForm.valid) {
       this.donerService.addDoner(this.donerForm.value).subscribe((resultes) => {
-        // console.log(this.donerForm.controls.typeofDonation.value);
+        
+        
 
         let msg;
         if (this.isAddForm) {
@@ -96,7 +111,7 @@ export class AddDonerComponent implements OnInit {
           msg = "Doner Updated Sucessfully";
         }
         this.commonService.showMessage("success", msg);
-        // this.commonService.showMessage("success", "Donner Added Sucessfully");
+       
         this.router.navigate(['/doner']);
       }, (error) => {
         this.commonService.showMessage("error", error.message);
@@ -128,6 +143,12 @@ export class AddDonerComponent implements OnInit {
     this.donerForm.controls[fieldName].clearValidators();
     this.donerForm.controls[fieldName].updateValueAndValidity();
   }
+
+  imageUpload(e) {
+    this.donerForm.controls.imageInPut.setValue(e.target.files[0]);
+    this.donerForm.controls.isImageUpload.setValue(true);
+  }
+
 }
 
 

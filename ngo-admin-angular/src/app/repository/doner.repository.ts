@@ -14,7 +14,24 @@ export class DonerRepository {
     
     addDoner(data:any)
     {
-        return this.apiClient.doPublicPost(DONER_ADD,data);
+        let formData = new FormData()
+        console.log("-----"+data.imageInPut);
+		if(data.imageInPut)
+            formData.append('imageInPut', data.imageInPut);
+        if(data.id)
+            formData.append('id', data.id);
+            formData.append('donerName', data.donerName);
+            formData.append('contactNumber', data.contactNumber);
+            formData.append('donerEmail', data.donerEmail);
+            formData.append('dateOfDonation', data.dateOfDonation);
+            formData.append('typeofDonation',data.typeofDonation);
+            formData.append('reason', data.reason);
+            formData.append('donationDescription', data.donationDescription);
+            formData.append('isPresent', data.isPresent);
+            formData.append('isImageUpload', data.isImageUpload);
+        console.log(FormData);
+
+        return this.apiClient.doPublicPost(DONER_ADD,formData);
     }
     getAllDoner(fetchDonerListParam:any)
     {
@@ -37,6 +54,7 @@ export class DonerRepository {
         return this.apiClient.doPublicPostWithoutJson(DONER_ISACTIVE_DEACTIVE,formData);
    
     }
-
+   
     
 }
+

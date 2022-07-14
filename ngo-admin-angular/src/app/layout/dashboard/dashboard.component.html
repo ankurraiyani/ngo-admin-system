@@ -1,1 +1,71 @@
-<p>dashboard works!</p>
+<div class="row">
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-info">
+        <div class="inner">
+          <h3 (load)="getEventCount()" >
+            {{event}}</h3>
+
+          <p>Event</p>
+        </div>
+        <div class="icon">
+          <i class="far fa-calendar-alt"></i>
+        </div>
+        <a href="/event" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-success">
+        <div class="inner">
+         
+            
+            
+            
+            <h3  (load)="getDonerCount()">
+             {{doner}}
+            </h3>
+
+          <p>Doner</p>
+        </div>
+        <div class="icon">
+          <i class="far fa-id-badge" ></i>
+        </div>
+        <a href="/doner" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-warning">
+        <div class="inner">
+          <h3  (load)="getEmployeeCount()">{{employee}}</h3>
+
+          <p>Employee</p>
+        </div>
+        <div class="icon">
+            <i class="fa fa-users"></i>
+        </div>
+        <a href="/employee" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-danger">
+        <div class="inner">
+          <h3  (load)="getVolunteerCount()">{{volunteer}}</h3>
+
+          <p>Volunteer</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-users"></i>
+        </div>
+        <a href="/volunteer" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+  </div>
+<!-- ****************************** -->
+

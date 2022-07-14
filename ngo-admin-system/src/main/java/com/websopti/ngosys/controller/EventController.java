@@ -50,5 +50,11 @@ public class EventController {
 	public Page<EventPagabelReponse> getWithParams(@RequestBody EventListDTO eventListDto) {
 		return eventService.getWithParams(eventListDto);
 	}
+	
+	@GetMapping("/get/active")
+	public List<Event>getAllId()
+	{
+		return this.eventService.getAllId();
+	}
 
 }

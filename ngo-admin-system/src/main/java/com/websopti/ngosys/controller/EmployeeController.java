@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.websopti.ngosys.dto.EmployeeDto;
 import com.websopti.ngosys.dto.EmployeeListDTO;
+import com.websopti.ngosys.dto.EmployeePagebleResponse;
 import com.websopti.ngosys.dto.EventListDTO;
 import com.websopti.ngosys.entity.Employee;
 import com.websopti.ngosys.entity.Event;
@@ -30,8 +32,8 @@ public class EmployeeController {
 		private EmployeeService employeeService;
 
 		@PostMapping("/save")
-		public Employee save(@RequestBody Employee employee) {
-			return employeeService.save(employee);
+		public Employee save(@RequestBody EmployeeDto employeeDto) {
+			return employeeService.save(employeeDto);
 		}
 		
 		@GetMapping("/getAll/active")
@@ -40,8 +42,8 @@ public class EmployeeController {
 		}
 		
 		@GetMapping("/get/{employeeId}")
-		public Employee get(@PathVariable Long employeeId) {		
-			return employeeService.get(employeeId).get();
+		public EmployeeDto get(@PathVariable Long employeeId) {		
+			return employeeService.get(employeeId);
 		}
 		
 		@DeleteMapping("/deleteId/{employeeId}")
@@ -51,7 +53,7 @@ public class EmployeeController {
 		}
 		
 		@PostMapping("/get")
-		public Page<Employee> getWithParams(@RequestBody EmployeeListDTO employeeListDto) {
+		public Page<EmployeePagebleResponse> getWithParams(@RequestBody EmployeeListDTO employeeListDto) {
 			return employeeService.getWithParams(employeeListDto);
 		}
 		

@@ -57,6 +57,12 @@ public class EventService {
 		}
 	}
 
+	public List<Event>getAllId()
+	{
+		return this.eventRepository.findAll();
+	}
+	
+	
 	public Page<EventPagabelReponse> getWithParams(EventListDTO eventListDto) {
 
 		Pageable page = PageRequest.of(eventListDto.getPageNo(), eventListDto.getPageSize(), Direction.DESC,

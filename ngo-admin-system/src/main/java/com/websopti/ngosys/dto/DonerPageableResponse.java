@@ -12,7 +12,7 @@ public interface DonerPageableResponse {
 
 	public String getDonerEmail();
 
-	public Date getDateOfDonation();
+	public java.sql.Date getDateOfDonation();
 
 	public String getTypeofDonation();
 

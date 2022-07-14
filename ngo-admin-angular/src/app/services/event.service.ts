@@ -25,4 +25,8 @@ export class EvnetService {
         return this.eventRepo.getIdEvent(data);
     }
 
+    getEvent()
+    {
+        return this.eventRepo.getEvent();
+    }
 }

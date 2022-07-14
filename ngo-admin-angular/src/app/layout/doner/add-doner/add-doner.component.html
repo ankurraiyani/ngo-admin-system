@@ -76,7 +76,8 @@
                     <label>Type of Donation: </label>
 
                     <div class="input-group">
-                        <select class="form-control" (change)="donationTypeChnage($event)" name="typeofDonation" formControlName="typeofDonation" [ngClass]=" {'is-invalid' : donerForm.controls.typeofDonation.touched && donerForm.controls.typeofDonation.invalid,
+                        <select class="form-control" (change)="donationTypeChnage($event)" name="typeofDonation"
+                            formControlName="typeofDonation" [ngClass]=" {'is-invalid' : donerForm.controls.typeofDonation.touched && donerForm.controls.typeofDonation.invalid,
 						'is-valid' : donerForm.controls.typeofDonation.touched && donerForm.controls.typeofDonation.valid}">Donation
                             <option value="food">Food</option>
                             <option value="money">Money</option>
@@ -97,12 +98,12 @@
                 <div class="form-group col-md-6" *ngIf="isDiscritpionShow">
                     <label>Donation Discription:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="donationDescription" placeholder="donationDescription"
-                            formControlName="donationDescription" [ngClass]=" {'is-invalid' : donerForm.controls.donationDescription.touched && donerForm.controls.donationDescription.invalid,
+                        <input type="text" class="form-control" name="donationDescription"
+                            placeholder="donationDescription" formControlName="donationDescription" [ngClass]=" {'is-invalid' : donerForm.controls.donationDescription.touched && donerForm.controls.donationDescription.invalid,
 						'is-valid' : donerForm.controls.donationDescription.touched && donerForm.controls.donationDescription.valid}">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fa fa-phone"></span>
+                                <span class="nav-icon fas fa-edit"></span>
                             </div>
                         </div>
                     </div>
@@ -118,7 +119,7 @@
                 <div class="form-group col-md-6">
                     <label>Date of Donation: </label>
 
-                    <input type="date" name="dateOfDonation" formControlName="dateOfDonation" class="form-control" 
+                    <input type="date" name="dateOfDonation" formControlName="dateOfDonation" class="form-control"
                         [ngClass]=" {'is-invalid' : donerForm.controls.dateOfDonation.touched && donerForm.controls.dateOfDonation.invalid,
                     'is-valid' : donerForm.controls.dateOfDonation.touched && donerForm.controls.dateOfDonation.valid}">
 
@@ -145,6 +146,67 @@
                     </div>
 
                 </div>
+               
+                <div class="class=col-md-3">
+                    
+                    <div class="card-body box-profile">
+                        <label>Doner Image:</label>
+                        <div class="text-center">
+                           
+                            <img class="profile-user-img img-fluid img-circle"
+
+                            style="width: 150px; height: 150px;border: 4px solid rgb(104, 102, 102);"
+                                [src]="'data:image/png;base64,'+profileImage"/>
+
+                               <!-- <img class="profile-user-img img-fluid img-circle"
+                               *ngif="isAddForm" [src]="profileImage" alt="User profile picture" /> -->
+                        </div>
+                        <div class="input-group">
+                          
+                                <label class="custom-file-label" for="exampleInputFile">select Image</label>
+
+                                <input type="file" (change)="imageUpload($event)" class="custom-file-input"
+                                   id="exampleInputFile"> 
+                                  
+                                <span class="help-block"
+                                    *ngIf="donerForm.controls.imageInPut.touched && donerForm.controls.imageInPut.invalid || donerForm.controls.imageInPut.dirty">
+
+                                    <ng-container *ngIf="donerForm.controls.imageInPut.errors?.required">
+                                        Image is Required</ng-container>
+                                </span>
+                           
+                        </div>
+                    </div>
+
+                </div>
+                <!-- <img src="../../dist/img/user1-128x128.jpg" alt="user-avatar" class="img-circle img-fluid"> -->
+
+                <!-- <div class="class=col-md-3">
+                    <div class="form-group col-md-3">
+                    <label>Doner Image</label>
+                                   <div class="col-5 text-center">
+                <img class="profile" [src]="'data:image/png;base64,'+profileImage"
+                                    class="img-circle img-fluid" />
+                                </div>
+                            </div>
+                        <span class="help-block"
+                            *ngIf="donerForm.controls.imageInPut.touched && donerForm.controls.imageInPut.invalid">
+    
+                            <ng-container *ngIf="donerForm.controls.imageInPut.errors?.required">
+                                Image is Required</ng-container>
+                        </span>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" (change)="imageUpload($event)"class="custom-file-input" formControlName="imageInPut" id="exampleInputFile"class="form-control" 
+                                [ngClass]=" {'is-invalid' : donerForm.controls.imageInPut.touched && donerForm.controls.imageInPut.invalid,
+                            'is-valid' : donerForm.controls.imageInPut.touched && donerForm.controls.imageInPut.valid}">
+                            <label class="custom-file-label" for="exampleInputFile">select Image</label>
+                            </div>
+                            </div>
+            
+                </div>
+            -->
+
 
             </div>
         </div>

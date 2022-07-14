@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,7 +32,7 @@ public class DonerController {
 	private DonerService donerService;
 
 	@PostMapping("/save")
-	public Doner save(@RequestBody DonerDto donerDto) {
+	public Doner save(@ModelAttribute DonerDto donerDto) {		
 		return donerService.save(donerDto);
 	}
 
@@ -52,7 +53,6 @@ public class DonerController {
 
 	@PostMapping("/get")
 	public Page<DonerPageableResponse> getWithParams(@RequestBody DonerListDTO donerListDto) {
-		System.out.println(donerListDto);
 		return donerService.getWithParams(donerListDto);
 	}        
 
