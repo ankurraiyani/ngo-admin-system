@@ -103,19 +103,5 @@ export class ListDonerComponent implements OnInit {
     });
   }
 
-  countDoner()
-  {
-    this.donerService.getAllDoner(this.fetchDonerListParam).subscribe((result) => {
-      console.log(result);
-      this.donerList = result.content;
-      this.totalCount = result.totalElements
-     console.log("vcvv"+this.totalCount);
-
-    },(error) =>{
-
-
-    });
-  }
-
 }
 
