@@ -32,9 +32,8 @@ public class VolunteerService {
 	public Volunteer save(VolunteerDto volunteerDto) {
 		Volunteer volunteer = this.convertDtoToEntity(volunteerDto);
 		Volunteer volunteerNew = volunteerRepository.save(volunteer);
-		if(volunteerDto.getIsImageUpload()) {
-			System.out.println("NOT");
-			this.saveVolunteerProfile(volunteerDto.getImageInPut(),String.valueOf(volunteerNew.getId()));
+		if (volunteerDto.getIsImageUpload()) {
+			this.saveVolunteerProfile(volunteerDto.getImageInPut(), String.valueOf(volunteerNew.getId()));
 		}
 		return volunteerNew;
 	}
@@ -42,7 +41,7 @@ public class VolunteerService {
 	public VolunteerDto get(Long volunteerId) {
 		Volunteer volunteer = this.findById(volunteerId);
 		VolunteerDto volunteerDto = this.convertEntityToDto(volunteer);
-		
+
 		byte[] image = this.getVolunteerProfile(String.valueOf(volunteerId));
 		volunteerDto.setImageOutPut(image);
 		return volunteerDto;
@@ -110,26 +109,29 @@ public class VolunteerService {
 
 		return volunteerDto;
 	}
-	
-	public void saveVolunteerProfile(MultipartFile files,String userId) {
+
+	public void saveVolunteerProfile(MultipartFile files, String userId) {
 		try {
-				String mediaFolder = "/home/dev/NGO/ngo-admin-system/ngo-admin-system/Images/Volunteer" + File.separator + userId;
-				FileUtils.deleteDirectory(Paths.get(mediaFolder).toFile());
-				Path root = Files.createDirectories(Paths.get(mediaFolder));
-				files.transferTo(new File(mediaFolder, files.getOriginalFilename()));
-			} catch (Exception e) {
-				System.out.println("Volunteer image store  Error: "+e);
-			}
+			String mediaFolder = "C://Users/MITESH/eclipse-workspace/ngo-admin-system/ngo-admin-system/Images/Volunteer"
+					+ File.separator + userId;
+			FileUtils.deleteDirectory(Paths.get(mediaFolder).toFile());
+			Path root = Files.createDirectories(Paths.get(mediaFolder));
+			files.transferTo(new File(mediaFolder, files.getOriginalFilename()));
+		} catch (Exception e) {
+			System.out.println("Volunteer image store  Error: " + e);
+		}
 	}
-	
+
 	/**
 	 * get image
+	 * 
 	 * @param userId
 	 * @return
 	 */
 	public byte[] getVolunteerProfile(String userId) {
 		try {
-			String mediaFolder = "/home/dev/NGO/ngo-admin-system/ngo-admin-system/Images/Volunteer" + File.separator + userId;
+			String mediaFolder = "C://Users/MITESH/eclipse-workspace/ngo-admin-system/ngo-admin-system/Images/Volunteer"
+					+ File.separator + userId;
 			File file = new File(mediaFolder);
 			if (file.exists() && file.listFiles().length > 0)
 				return Files.readAllBytes(file.listFiles()[0].toPath());
@@ -138,5 +140,4 @@ public class VolunteerService {
 		}
 		return null;
 	}
-
 }
