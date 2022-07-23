@@ -1,0 +1,46 @@
+<!-- <h1>service</h1> -->
+<div class="card card-primary">
+    <form [formGroup]="servicetypeForm" #add="ngForm" (ngSubmit)="submit()">
+
+        <div class="card-body">
+            <div class="row">
+
+                <div class="form-group col-md-6">
+                    <label>Name Of servicetype:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="serviceName" placeholder="Name"
+                            formControlName="serviceName">
+                       </div>
+                    <span class="help-block"
+                        *ngIf="servicetypeForm.controls.serviceName.touched && servicetypeForm.controls.serviceName.invalid ||servicetypeForm.controls.serviceName.dirty">
+                        <ng-container *ngIf="servicetypeForm.controls.serviceName.errors?.required">
+                            First Name is required</ng-container>
+                        <ng-container *ngIf="servicetypeForm.controls.serviceName.errors?.pattern">Please
+                            enter valid name.</ng-container>
+                    </span>
+                </div>
+                </div>
+                </div>
+              
+     
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <!-- <a [routerLinkActive]="['active']" routerLink="/servicetype"> -->
+                    <button type="submit" class="btn btn-dark mr-2">Submit
+                         <span *ngIf="isAddForm">Add</span>
+                        <!-- <span *ngIf="!isAddForm">Edit Employee</span> -->
+                    </button>
+                    <!-- </a> -->
+                    <a [routerLinkActive]="['active']" routerLink="/servicetype">
+                        <button type="submit" class="btn btn-dark mr-2">
+                        Cancel
+                    </button>
+                    </a>
+                        
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

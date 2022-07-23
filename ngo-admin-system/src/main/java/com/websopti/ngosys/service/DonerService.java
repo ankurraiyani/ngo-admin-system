@@ -133,7 +133,7 @@ public class DonerService {
 	{
 		try {
 			
-			String mediaFolder = "C://Users/MITESH/eclipse-workspace/ngo-admin-system/ngo-admin-system/Images/Doner"+File.separator+donerId;
+			String mediaFolder = "C:/Users/Admin/eclipse-workspace/ngo-admin-system/ngo-admin-system/Images/Doner"+File.separator+donerId;
 			FileUtils.deleteDirectory(Paths.get(mediaFolder).toFile());
 			Path root=Files.createDirectories(Paths.get(mediaFolder));
 			files.transferTo(new File(mediaFolder,files.getOriginalFilename()));			
@@ -152,7 +152,7 @@ public class DonerService {
 	
 	public byte[] getDonerProfile(String donerId) {
 		try {
-			String mediaFolder = "C://Users/MITESH/eclipse-workspace/ngo-admin-system/ngo-admin-system/Images/Doner" + File.separator + donerId;
+			String mediaFolder = "C:/Users/Admin/eclipse-workspace/ngo-admin-system/ngo-admin-system/Images/Doner" + File.separator + donerId;
 			File file = new File(mediaFolder);
 			if (file.exists() && file.listFiles().length > 0)
 				return Files.readAllBytes(file.listFiles()[0].toPath());

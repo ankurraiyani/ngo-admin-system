@@ -31,7 +31,18 @@ const routes: Routes = [
                 path: 'volunteer', 
                 loadChildren: () => import('./volunteer/volunteer.module')
                                 .then(module => module.VolunteerModule) 
-            }
+            },
+            {
+                path: 'servicetype', 
+                loadChildren: () => import('./servicetype/servicetype.module')
+                                .then(module => module.ServicetypeModule) 
+            },
+            {
+                path: 'role', 
+                loadChildren: () => import('./role/role.module')
+                                .then(module => module.RoleModule) 
+            },
+            
             
         ]
     }

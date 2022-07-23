@@ -13,6 +13,10 @@ import { EmployeeService } from './services/employee.service';
 import { DonerService } from './services/doner.service';
 import { DonerRepository } from './repository/doner.repository';
 import { CommonService } from './common/common.service';
+import { ServicetypeRepository } from './repository/servicetype.repository';
+import { ServicetypeService } from './services/servicetype.service';
+import { RoleService } from './services/role.service';
+import { RoleRepository } from './repository/role.repository';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,13 @@ import { CommonService } from './common/common.service';
     EmployeeService,
     DonerService,
     DonerRepository,
-    CommonService
+    ServicetypeService,
+    ServicetypeRepository,
+    CommonService,
+    RoleService,
+    RoleRepository
+    
+
   ],
   bootstrap: [AppComponent],
 })
