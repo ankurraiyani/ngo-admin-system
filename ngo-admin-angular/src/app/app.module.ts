@@ -15,6 +15,8 @@ import { DonerRepository } from './repository/doner.repository';
 import { CommonService } from './common/common.service';
 import { servicedetailRepository } from './repository/serviceDetail.repository';
 import { ServicedetailService } from './services/servicedetail.service';
+import { RoleService } from './services/role.service';
+import { RoleRepository } from './repository/role.repository';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,10 @@ import { ServicedetailService } from './services/servicedetail.service';
     DonerRepository,
     servicedetailRepository,
     ServicedetailService,
-    CommonService
+    CommonService,
+    RoleService,
+    RoleRepository
+    
   ],
   bootstrap: [AppComponent],
 })

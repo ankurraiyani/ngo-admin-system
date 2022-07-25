@@ -1,0 +1,46 @@
+<!-- <p>add-role works!</p> -->
+<div class="card card-primary">
+    <form [formGroup]="roleForm" #add="ngForm" (ngSubmit)="submit()">
+
+        <div class="card-body">
+            <div class="row">
+
+                <div class="form-group col-md-6">
+                    <label>Name Of Role</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="roleName" placeholder="Role Name"
+                            formControlName="roleName">
+                       </div>
+                    <span class="help-block"
+                        *ngIf="roleForm.controls.roleName.touched && roleForm.controls.roleName.invalid ||roleForm.controls.roleName.dirty">
+                        <ng-container *ngIf="roleForm.controls.roleName.errors?.required">
+                            First Name is required</ng-container>
+                        <ng-container *ngIf="roleForm.controls.roleName.errors?.pattern">Please
+                            enter valid name.</ng-container>
+                    </span>
+                </div>
+                </div>
+                </div>
+              
+     
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <!-- <a [routerLinkActive]="['active']" routerLink="/servicetype"> -->
+                    <button type="submit" class="btn btn-dark mr-2">
+                         <span *ngIf="isAddForm">Add Role</span>
+                        <span *ngIf="!isAddForm">Edit Role</span> 
+                    </button>
+                    <!-- </a> -->
+                    <a [routerLinkActive]="['active']" routerLink="/role">
+                        <button type="submit" class="btn btn-dark mr-2">
+                        Cancel
+                    </button>
+                    </a>
+                        
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

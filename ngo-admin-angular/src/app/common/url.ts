@@ -35,3 +35,6 @@ export const SERVICEDETAIL_ADD : string = BASE_URL+"serviceDetail/save";
 export const SERVICEDETAIL_GETALL : string = BASE_URL+"serviceDetail/get";
 export const SERVICEDETAIL_DELETE : string = BASE_URL+"serviceDetail/delete"; 
 export const SERVICEDETAIL_GETID : string = BASE_URL+"serviceDetail/get";
+
+//role
+export const ROLE_ADD:string =BASE_URL+"role/save";

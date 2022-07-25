@@ -30,9 +30,4 @@ export class DonerService {
     isActiveDeactiveDoner(donerId: any,isPresent : any) {
         return this.donerRepo.isActiveDeactiveDoner(donerId,isPresent);
       }
-    countDoner()
-    {
-            return this.donerRepo.getAllActiveDoner();
-    }
-
 }

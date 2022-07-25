@@ -134,8 +134,18 @@ export class AddEmployeeComponent implements OnInit {
 
     if (this.employeeForm.valid) {
       this.employeeService.addEmployee(this.employeeForm.value).subscribe((results) => {
-        console.log(results);
-        this.commonService.showMessage("success", "Employee Added Sucessfully");
+        //console.log(results);
+        let msg;
+        if(this.isAddForm)
+        {
+          msg="Employee Added Sucessfully"
+        }
+        else
+        {
+          msg="Employee Updated Sucessfully"
+        }
+        
+        this.commonService.showMessage("success",msg);
         this.router.navigate(['/employee']);
       },
         (error) => { 

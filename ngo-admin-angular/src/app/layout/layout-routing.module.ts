@@ -33,8 +33,15 @@ const routes: Routes = [
                                 .then(module => module.VolunteerModule) 
             },
             {
+
                 path : 'servicedetail',
                 loadChildren: () => import('./servicedetail/servicedetail.module').then(module => module.ServicedetailModule)
+            },
+
+            {
+                path: 'role', 
+                loadChildren: () => import('./role/role.module')
+                                .then(module => module.RoleModule) 
             }
             
         ]
