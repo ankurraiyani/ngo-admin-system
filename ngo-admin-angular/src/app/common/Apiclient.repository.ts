@@ -14,6 +14,7 @@ export class ApiClientRepository {
     // }
 
     doPublicPost(url: any, data: any): Observable<any> {
+        console.log("data");
         return this.httpClient.post(url, data);
     }
 

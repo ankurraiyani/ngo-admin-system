@@ -29,3 +29,17 @@ export const DONER_DELETE: string=BASE_URL+"doner/delete";
 export const DONER_GETID:string=BASE_URL+"doner/get";
 export const GET_ALL_ACTIVE_DONER:string=BASE_URL+"doner/getAll/active";
 export const DONER_ISACTIVE_DEACTIVE:string=BASE_URL+"doner/donerActiveDeactive";
+
+//expenses apis
+
+export const EXPENSES_ADD:string=BASE_URL+"expenses/save";
+
+export const EXPENSES_GETID:string=BASE_URL+"expenses/get";
+
+export const EXPENSES_DELETE:string=BASE_URL+"expenses/delete";
+
+export const EXPENSES_GETALL:string=BASE_URL+"expenses/get";
+
+//permission apis
+
+export const GET_ALL_PERMISSION:string=BASE_URL+"permission/get/all"

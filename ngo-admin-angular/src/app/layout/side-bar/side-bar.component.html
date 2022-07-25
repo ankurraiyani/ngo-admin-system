@@ -29,9 +29,7 @@ Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
             <a [routerLink]="['/doner']" class="nav-link" [routerLinkActive]="['active']"
               [routerLinkActiveOptions]="{exact:true}">
               
-              &nbsp;<i class="far fa-id-badge" ></i>
-             
-              &nbsp;
+              <i class="nav-icon far fa-id-badge" ></i>
               <p> 
               Manage Doner
             </p>
@@ -54,6 +52,25 @@ Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
               </p>
             </a>
           </li>
+
+          <li [routerLinkActive]="['active']" class="nav-item has-treeview">
+            <a [routerLink]="['/expenses']" class="nav-link" [routerLinkActive]="['active']">
+              <i class="nav-icon far fa-credit-card" aria-hidden="true"></i>
+              <p>
+                Manage Expenses
+              </p>
+            </a>
+          </li>
+
+          <li [routerLinkActive]="['active']" class="nav-item has-treeview">
+            <a [routerLink]="['/permission']" class="nav-link" [routerLinkActive]="['active']">
+              <i class="nav-icon far fa-edit" aria-hidden="true"></i>
+              <p>
+                Manage Permission
+              </p>
+            </a>
+          </li>
+            
           <li [routerLinkActive]="['active']" class="nav-item has-treeview">
             <a [routerLink]="['/volunteer']" class="nav-link" [routerLinkActive]="['active']">
               <i class="nav-icon fa fa-users"></i>
@@ -61,7 +78,9 @@ Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
                 Manage Volunteer
               </p>
             </a>
-            </li>
+          </li>
+
+           
           
         </ul>
       </nav>

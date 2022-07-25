@@ -1,0 +1,265 @@
+<div class="card card-primary">
+    <form [formGroup]="expensesForm" #add="ngForm" (ngSubmit)="submit()">
+        <div class="card-body">
+            <div class="row">
+
+                <div class="form-group col-md-6">
+                    <label>Type of Expenses: </label>
+                    <div class="input-group">
+                        <select name="typeofExpenses" (change)="ExpensesTypeChnage($event)" class="form-control"
+                            formControlName="typeofExpenses"
+                            [ngClass]="{'is-invalid':expensesForm.controls.typeofExpenses.touched && expensesForm.controls.typeofExpenses.invalid ,'is-valid':expensesForm.controls.typeofExpenses.touched && expensesForm.controls.typeofExpenses.valid}">
+                            <option value='' disabled selected>Expenses</option>
+                            <option *ngFor="let nm of enumkeys" [value]="nm"> {{type[nm]}} </option>
+                        </select>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="expensesForm.controls.typeofExpenses.touched && expensesForm.controls.typeofExpenses.invalid||expensesForm.controls.typeofExpenses.dirty">
+
+                        <ng-container *ngIf="expensesForm.controls.typeofExpenses.errors?.required">Type of Expenses is
+                            Required
+                        </ng-container>
+                    </span>
+                </div>
+                <!-- <div *ngFor="let typeofExpense of ExpensesType.typeofExpenses.controls;let i=index; ">
+
+
+                <input type="checkbox" name="typeofExpenses" value="typeofExpenses" [formControl]="typeofExpenses"/>{{typeofExpenses}}hello
+
+                
+            </div> -->
+
+
+
+                <div class="form-group col-md-6">
+                    <label>Amount:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="amount" formControlName="amount"
+                            placeholder="Amount" class="form-control" [ngClass]=" {'is-invalid' : expensesForm.controls.amount.touched && expensesForm.controls.amount.invalid,
+                        'is-valid' : expensesForm.controls.amount.touched && expensesForm.controls.amount.valid}">
+                    </div>
+                    <span class="help-block"
+                        *ngIf="expensesForm.controls.amount.touched && expensesForm.controls.amount.invalid  || expensesForm.controls.amount.dirty">
+
+
+                        <ng-container *ngIf="expensesForm.controls.amount.errors?.pattern">Please
+                            Enter valid Amount.</ng-container>
+                        <ng-container *ngIf="expensesForm.controls.amount.errors?.required">
+                            Amount is required</ng-container>
+                    </span>
+                </div>
+
+
+
+
+                <div class="form-group col-md-6" *ngIf="isDiscritpionShow">
+                    <label for="">GST: </label>&nbsp; &nbsp;&nbsp;
+                    <br>
+
+                    <input type="radio" name="gst" value="gst" formControlName="gst" [ngClass]=" {'is-invalid' : expensesForm.controls.gst.touched && expensesForm.controls.gst.invalid,
+                    'is-valid' : expensesForm.controls.gst.touched && expensesForm.controls.gst.valid}">&nbsp;
+                    GST
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="gst" value="igst" formControlName="gst" [ngClass]=" {'is-invalid' : expensesForm.controls.gst.touched && expensesForm.controls.gst.invalid,
+                    'is-valid' : expensesForm.controls.gst.touched && expensesForm.controls.gst.valid}">&nbsp;
+                    IGST
+
+                    <span class="help-block"
+                        *ngIf="expensesForm.controls.gst.touched && expensesForm.controls.gst.invalid || expensesForm.controls.gst.dirty">
+                        <ng-container *ngIf="expensesForm.controls.gst.errors?.required">
+                            Gst is required</ng-container>
+                    </span>
+                </div>
+
+
+                <div class="form-group col-md-6" *ngIf="isDiscritpionShow">
+                    <label>GST Percentage:</label>
+                    <div class="input-group">
+                        <select class="form-control" name="gstPercentage" formControlName="gstPercentage"
+                            [ngClass]=" {'is-invalid' : expensesForm.controls.gstPercentage.touched && expensesForm.controls.gstPercentage.invalid,
+                'is-valid' : expensesForm.controls.gstPercentage.touched && expensesForm.controls.gstPercentage.valid}">
+                            <option value='' disabled selected>GST Percentage</option>
+                            <option value="5%">5%</option>
+                            <option value="18%">18%</option>
+
+
+                        </select>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="expensesForm.controls.gstPercentage.touched && expensesForm.controls.gstPercentage.invalid || expensesForm.controls.gstPercentage.dirty">
+
+
+                        <ng-container *ngIf="expensesForm.controls.gstPercentage.errors?.required">
+                            GST Percentage is Required</ng-container>
+                    </span>
+                </div>
+
+
+                <div class="form-group col-md-6" *ngIf="isDiscritpionShow">
+                    <label>Billing Date:</label>
+                    <div class="input-group">
+                        <input type="date" name="billingDate" class="form-control" formControlName="billingDate"
+                            [ngClass]="{'is-invalid':expensesForm.controls.billingDate.touched && expensesForm.controls.billingDate.invalid ,'is-valid':expensesForm.controls.billingDate.touched && expensesForm.controls.billingDate.valid}">
+
+                    </div>
+                    <span class="help-block"
+                        *ngIf="expensesForm.controls.billingDate.touched && expensesForm.controls.billingDate.invalid">
+
+                        <ng-container *ngIf="expensesForm.controls.billingDate.errors?.required">Billing Date is
+                            Required
+                        </ng-container>
+                    </span>
+
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Transaction Date:</label>
+                    <div class="input-group">
+                        <input type="date" name="transactionDate" class="form-control" formControlName="transactionDate"
+                            [ngClass]="{'is-invalid':expensesForm.controls.transactionDate.touched && expensesForm.controls.transactionDate.invalid ,'is-valid':expensesForm.controls.transactionDate.touched && expensesForm.controls.transactionDate.valid}">
+
+                    </div>
+                    <span class="help-block"
+                        *ngIf="expensesForm.controls.transactionDate.touched && expensesForm.controls.transactionDate.invalid">
+
+                        <ng-container *ngIf="expensesForm.controls.transactionDate.errors?.required">Transaction Date is
+                            Required
+                        </ng-container>
+                    </span>
+
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Payment Method:</label>
+                    <div class="input-group">
+                        <select class="form-control" name="paymentMethod" formControlName="paymentMethod"
+                            (change)="ExpensesTypeChnage($event)"
+                            [ngClass]=" {'is-invalid' : expensesForm.controls.paymentMethod.touched && expensesForm.controls.paymentMethod.invalid,
+                'is-valid' : expensesForm.controls.paymentMethod.touched && expensesForm.controls.paymentMethod.valid}">
+                            <option value='' disabled selected>Payment Method</option>
+                            <option value="Cash">Cash</option>
+                            <option value="Check">Check</option>
+
+                        </select>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="expensesForm.controls.paymentMethod.touched && expensesForm.controls.paymentMethod.invalid || expensesForm.controls.paymentMethod.dirty">
+
+
+                        <ng-container *ngIf="expensesForm.controls.paymentMethod.errors?.required">
+                            Payment Method is Required</ng-container>
+                    </span>
+                </div>
+
+                <div class="form-group col-md-6" *ngIf="isCheckNumber">
+                    <label>Check Number:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="checkNumber" formControlName="checkNumber"
+                            placeholder="Check Number" class="form-control" [ngClass]=" {'is-invalid' : expensesForm.controls.checkNumber.touched && expensesForm.controls.checkNumber.invalid,
+                'is-valid' : expensesForm.controls.checkNumber.touched && expensesForm.controls.checkNumber.valid}">
+                    </div>
+                    <span class="help-block"
+                        *ngIf="expensesForm.controls.checkNumber.touched && expensesForm.controls.checkNumber.invalid  || expensesForm.controls.checkNumber.dirty">
+
+
+                        <ng-container *ngIf="expensesForm.controls.checkNumber.errors?.pattern">Please
+                            Enter valid Check Number.</ng-container>
+                        <ng-container *ngIf="expensesForm.controls.checkNumber.errors?.required">
+                            Check Number is required</ng-container>
+                    </span>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="form-group col-md-6">
+                    <label>Expenses Details:</label>
+                    <div class="input-group">
+                        <textarea class="form-control" name="description" placeholder="Write here... " rows="4" cols="5"
+                            formControlName="description" [ngClass]=" {'is-invalid' : expensesForm.controls.description.touched && expensesForm.controls.description.invalid,
+                'is-valid' : expensesForm.controls.description.touched && expensesForm.controls.description.valid}">
+                    </textarea>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-edit"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="expensesForm.controls.description.touched && expensesForm.controls.description.invalid || expensesForm.controls.description.dirty">
+
+                        <ng-container *ngIf="expensesForm.controls.description.errors?.whitespace">Please
+                            enter valid Expenses Details</ng-container>
+                        <ng-container *ngIf="expensesForm.controls.description.errors?.required">
+                            Expenses Details is required</ng-container>
+                    </span>
+                </div>
+
+
+
+                <!-- <div class="class=col-md-3" *ngIf="isDiscritpionShow">
+                    <div class="card-body box-profile">
+                        <label>Bill Image:</label>
+                        <div class="text-center">
+                            <img class="profile-user-img img-fluid " *ngIf="!isAddForm"
+                                style="width: 150px; height: 150px;border: 4px solid rgb(104, 102, 102);"
+                                [src]="'data:image/png;base64,'+profileImage" />
+
+                            <img class="profile-user-img img-fluid" *ngIf="isAddForm"
+                                style="width: 150px; height: 150px;border: 4px solid rgb(104, 102, 102);"
+                                [src]=profileImage />
+                        </div>
+                        <div class="input-group">
+
+                            <label class="custom-file-label" for="exampleInputFile">select Bill Image</label>
+
+                            <input type="file" (change)="imageUpload($event)" class="custom-file-input"
+                                id="exampleInputFile">
+
+                        </div>
+
+                        <span class="help-block"
+                        *ngIf="expensesForm.controls.imageInPut.touched && expensesForm.controls.imageInPut.invalid || expensesForm.controls.imageInPut.dirty">
+
+                        <ng-container *ngIf="expensesForm.controls.imageInPut.errors?.required">
+                            Image is Required</ng-container>
+                    </span>
+
+                    </div> -->
+
+                <!-- </div> -->
+
+
+
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-12 text-center">
+
+                    <button type="submit" class="btn btn-dark mr-2">
+                        <span *ngIf="isAddForm">Add Expenses</span>
+                        <span *ngIf="!isAddForm">Edit Expenses</span>
+                    </button>
+
+                    <a [routerLinkActive]="['active']" routerLink="/expenses">
+                        <button type="submit" class="btn btn-dark mr-2">
+                            Cancel
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

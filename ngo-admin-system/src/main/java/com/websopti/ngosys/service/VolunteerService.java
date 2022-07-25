@@ -112,7 +112,7 @@ public class VolunteerService {
 
 	public void saveVolunteerProfile(MultipartFile files, String userId) {
 		try {
-			String mediaFolder = "C://Users/MITESH/eclipse-workspace/ngo-admin-system/ngo-admin-system/Images/Volunteer"
+			String mediaFolder = "C://Users/15DA435TX/eclipse-workspace/new/ngo-admin-system/ngo-admin-system/Images/Volunteer"
 					+ File.separator + userId;
 			FileUtils.deleteDirectory(Paths.get(mediaFolder).toFile());
 			Path root = Files.createDirectories(Paths.get(mediaFolder));
@@ -130,7 +130,7 @@ public class VolunteerService {
 	 */
 	public byte[] getVolunteerProfile(String userId) {
 		try {
-			String mediaFolder = "C://Users/MITESH/eclipse-workspace/ngo-admin-system/ngo-admin-system/Images/Volunteer"
+			String mediaFolder = "C://Users/15DA435TX/eclipse-workspace/new/ngo-admin-system/ngo-admin-system/Images/Volunteer"
 					+ File.separator + userId;
 			File file = new File(mediaFolder);
 			if (file.exists() && file.listFiles().length > 0)

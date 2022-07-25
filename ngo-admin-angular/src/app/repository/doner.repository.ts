@@ -15,7 +15,7 @@ export class DonerRepository {
     addDoner(data:any)
     {
         let formData = new FormData()
-        console.log("-----"+data.imageInPut);
+        // console.log("-----"+data.imageInPut);
 		if(data.imageInPut)
             formData.append('imageInPut', data.imageInPut);
         if(data.id)
@@ -29,7 +29,7 @@ export class DonerRepository {
             formData.append('donationDescription', data.donationDescription);
             formData.append('isPresent', data.isPresent);
             formData.append('isImageUpload', data.isImageUpload);
-        console.log(FormData);
+        // console.log(FormData);
 
         return this.apiClient.doPublicPost(DONER_ADD,formData);
     }

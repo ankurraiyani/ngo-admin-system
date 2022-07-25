@@ -58,9 +58,9 @@
                     <tbody>
                         <ng-container *ngIf="eventList?.length>0">
                             <tr *ngFor="let event of eventList | paginate: { id: 'event_pages',
-                                                     itemsPerPage: fetchEventListParam.pageSize,
-                                                     currentPage: fetchEventListParam.currentPage,
-                                                     totalItems: totalCount }">
+                            itemsPerPage: fetchEventListParam.pageSize,
+                            currentPage: fetchEventListParam.currentPage,
+                            totalItems: totalCount }">
                                 <td>{{event.name}}</td>
                                 <td>{{event.startDate}}</td>
                                 <td>{{event.endDate}}</td>

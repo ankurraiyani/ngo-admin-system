@@ -93,6 +93,7 @@ export class AddDonerComponent implements OnInit {
       donationDescription: new FormControl('', []),
 
       isPresent: new FormControl(false),
+      
       imageInPut: new FormControl('',[Validators.required]),
 
       isImageUpload: new FormControl(true)

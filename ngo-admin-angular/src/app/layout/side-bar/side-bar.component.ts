@@ -8,7 +8,7 @@ import { CommonService } from 'src/app/common/common.service';
 })
 export class SideBarComponent implements OnInit {
 
-  constructor(private commonService :CommonService) { }
+  constructor(private commonService:CommonService) { }
 
   ngOnInit(): void {
 

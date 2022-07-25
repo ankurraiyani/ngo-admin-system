@@ -101,7 +101,7 @@ public class EmployeeService {
 
 	public void saveEmployeeProfile(MultipartFile files, String userID) {
 		try {
-			String mediaFolder = "C://Users/MITESH/eclipse-workspace/ngo-admin-system/ngo-admin-system/Images/Employee"
+			String mediaFolder = "C://Users/15DA435TX/eclipse-workspace/new/ngo-admin-system/ngo-admin-system/Images/Employee"
 					+ File.separator + userID;
 			FileUtils.deleteDirectory(Paths.get(mediaFolder).toFile());
 			Path root = Files.createDirectories(Paths.get(mediaFolder));
@@ -119,7 +119,7 @@ public class EmployeeService {
 	 */
 	public byte[] getEmployeeProfile(String userId) {
 		try {
-			String mediaFolder = "C://Users/MITESH/eclipse-workspace/ngo-admin-system/ngo-admin-system/Images/Employee"
+			String mediaFolder = "C://Users/15DA435TX/eclipse-workspace/new/ngo-admin-system/ngo-admin-system/Images/Employee"
 					+ File.separator + userId;
 			File file = new File(mediaFolder);
 			if (file.exists() && file.listFiles().length > 0)

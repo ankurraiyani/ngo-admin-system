@@ -1,6 +1,6 @@
 
 package com.websopti.ngosys.dto;
-import java.util.Date;
+
 
 public interface DonerPageableResponse {
 
