@@ -19,14 +19,12 @@ export class AddEventComponent implements OnInit {
     private employeeService: EmployeeService,
     private donerService : DonerService,
     private volunteerService : VolunteerService,
-
     private router: Router, private activatedRoute: ActivatedRoute) { }
 
   eventFrom: FormGroup;
   eventId: any;
   isAddFrom: boolean = true;
   employeeList: any = [];
-
   donerList:any=[];
   volunteerList : any = [];
  

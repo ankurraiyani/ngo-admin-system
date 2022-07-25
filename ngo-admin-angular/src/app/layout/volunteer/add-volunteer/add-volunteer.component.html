@@ -15,7 +15,7 @@
                         </div>
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.name.touched && volunteerForm.controls.name.invalid || volunteerForm.controls.contactNumber.dirty">
+                        *ngIf="volunteerForm.controls.name.touched && volunteerForm.controls.name.invalid || volunteerForm.controls.name.dirty">
                         <ng-container *ngIf="volunteerForm.controls.name.errors?.minlength">Min
                             Length is 2</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.name.errors?.maxlength">Max
@@ -41,8 +41,8 @@
                         </div>
                     </div>
                     <span class="help-block"
-                        *ngIf="volunteerForm.controls.email.touched && volunteerForm.controls.email.invalid || volunteerForm.controls.contactNumber.dirty">
-                        <ng-container *ngIf="volunteerForm.controls.email.errors?.maxlength">Max
+                        *ngIf="volunteerForm.controls.email.touched && volunteerForm.controls.email.invalid || volunteerForm.controls.email.dirty">
+                        <ng-container *ngIf="volunteerForm.controls.email.errors?.maxlength">Maximum
                             Length is 50</ng-container>
                         <ng-container *ngIf="volunteerForm.controls.email.errors?.whitespace">Please
                             Enter valid Email Address.</ng-container>

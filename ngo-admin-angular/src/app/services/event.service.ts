@@ -5,7 +5,6 @@ import { EvnetRepository } from "../repository/event.repository";
 @Injectable()
 export class EvnetService {
 
-
     constructor(
         private eventRepo: EvnetRepository) { }
 

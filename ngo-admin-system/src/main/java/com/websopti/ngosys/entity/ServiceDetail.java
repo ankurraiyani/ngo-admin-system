@@ -23,4 +23,6 @@ public class ServiceDetail {
 	
 	private String address;
 	
+	private String servicetype;
+	
 }
