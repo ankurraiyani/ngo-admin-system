@@ -59,11 +59,11 @@ public class ServiceDetailService {
 		}
 	}
 	
-//	public Page<ServiceDetailPageableResponse> getWithParams(ServiceDetailListDTO serviceDetailListDTO)
-//	{
-//		Pageable page = PageRequest.of(serviceDetailListDTO.getPageNo(), serviceDetailListDTO.getPageSize(),Direction.DESC,"name");
-//		return serviceDetailRepository.findServiceDetailData(serviceDetailListDTO.getSearchStr(),page);
-//	}
+	public Page<ServiceDetailPageableResponse> getWithParams(ServiceDetailListDTO serviceDetailListDTO)
+	{
+		Pageable page = PageRequest.of(serviceDetailListDTO.getPageNo(), serviceDetailListDTO.getPageSize(),Direction.DESC,"name");
+		return serviceDetailRepository.findServiceDetailData(serviceDetailListDTO.getSearchStr(),page);
+	}
 	
 
 	

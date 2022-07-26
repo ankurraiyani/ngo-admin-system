@@ -17,6 +17,10 @@ import { ExpensesRepository } from './repository/expenses.repository';
 import { ExpensesService } from './services/expenses.service';
 import { PermissionRepository } from './repository/permission.repository';
 import { PermissionService } from './services/permission.service';
+import { servicedetailRepository } from './repository/serviceDetail.repository';
+import { ServicedetailService } from './services/servicedetail.service';
+import { RoleService } from './services/role.service';
+import { RoleRepository } from './repository/role.repository';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,13 @@ import { PermissionService } from './services/permission.service';
     ExpensesRepository,
     ExpensesService,
     PermissionRepository,
-    PermissionService
+    PermissionService,
+    servicedetailRepository,
+    ServicedetailService,
+    CommonService,
+    RoleService,
+    RoleRepository
+    
   ],
   bootstrap: [AppComponent],
 })

@@ -33,6 +33,7 @@ const routes: Routes = [
                                 .then(module => module.VolunteerModule) 
             },
             {
+
                 path: 'expenses',
                 loadChildren:()=>import('./expenses/expenses.module')
                                 .then(module=>module.ExpensesModule)
@@ -41,6 +42,18 @@ const routes: Routes = [
                 path:'permission',
                 loadChildren:()=>import('./permission/permission.module')
                                  .then(module=>module.PermissionModule)
+            },
+            {
+
+                path : 'servicedetail',
+                loadChildren: () => import('./servicedetail/servicedetail.module').then(module => module.ServicedetailModule)
+            },
+
+            {
+                path: 'role', 
+                loadChildren: () => import('./role/role.module')
+                                .then(module => module.RoleModule) 
+
             }
             
         ]

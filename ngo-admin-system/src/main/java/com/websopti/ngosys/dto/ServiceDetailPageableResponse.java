@@ -12,4 +12,6 @@ public interface ServiceDetailPageableResponse {
 	
 	public String getAddress();
 	
+	public String getServicetype();
+	
 }

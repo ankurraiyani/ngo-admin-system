@@ -30,6 +30,7 @@ export const DONER_GETID:string=BASE_URL+"doner/get";
 export const GET_ALL_ACTIVE_DONER:string=BASE_URL+"doner/getAll/active";
 export const DONER_ISACTIVE_DEACTIVE:string=BASE_URL+"doner/donerActiveDeactive";
 
+
 //expenses apis
 
 export const EXPENSES_ADD:string=BASE_URL+"expenses/save";
@@ -43,3 +44,15 @@ export const EXPENSES_GETALL:string=BASE_URL+"expenses/get";
 //permission apis
 
 export const GET_ALL_PERMISSION:string=BASE_URL+"permission/get/all"
+
+//serviceDetail apis
+export const SERVICEDETAIL_ADD : string = BASE_URL+"serviceDetail/save";
+export const SERVICEDETAIL_GETALL : string = BASE_URL+"serviceDetail/get";
+export const SERVICEDETAIL_DELETE : string = BASE_URL+"serviceDetail/delete"; 
+export const SERVICEDETAIL_GETID : string = BASE_URL+"serviceDetail/get";
+
+//role apis
+export const ROLE_ADD:string =BASE_URL+"role/save";
+export const ROLE_DELETE:string=BASE_URL+"role/deleteId";
+export const ROLE_GETALL:string=BASE_URL+"role/get/all";
+

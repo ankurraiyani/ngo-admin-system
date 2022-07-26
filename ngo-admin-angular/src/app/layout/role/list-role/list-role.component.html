@@ -1,0 +1,91 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row justify-content-between">
+                    <div class="col-md-6 align-self-center">
+                        <a href="javascript:void(0);" [routerLink]="['../role/add']"
+                            class="btn btn-dark ms-3"><b><i class="fa fa-user-plus"></i> Add role</b></a>
+
+                    </div>
+
+                    <!-- <div class="col-md-3 align-self-center">
+                        <div class="input-group input-group-lg">
+                            <input type="text" placeholder="Search here..."
+                                (keyup)="getRoleData()" class="form-control">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-lg btn-default">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div> -->
+
+
+
+                   
+                </div>
+            </div>
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover usr-table">
+                    <thead>
+                        <tr role="row">
+                            <th>Role TYPE</th>
+                            <th>Permission</th>
+                            <th width="15%">Actions</th>
+                        </tr>
+
+
+                    </thead>
+
+
+                    <tbody>
+                        <ng-container *ngIf="roleList?.length>0 || permissionList?.length>0">
+                            <tr *ngFor="let role of roleList,permissionList
+                               ">
+                               <td>{{role.roleName}}</td>
+                               <!-- <tr *ngFor="let permission of permissionList 
+                               "> -->
+                               <td>{{role.permissionType}}</td>
+                               
+                                                           
+                                <td>
+                                    <span class="mr-2">
+                                        <a (click)="editRole(role.id)">
+                                            <i class="fas fa-edit action-icon"></i></a>
+                                    </span>
+                                    <span class="mr-2">
+                                        <a (click)="deleteRole(role.id)">
+
+                                            <i class="fa fa-trash action-icon"></i>
+                                        </a>
+                                    </span>
+
+
+                                  
+                                </td>
+                                
+                            </tr>
+
+
+
+
+                            
+                        </ng-container>
+                        <ng-container *ngIf="roleList?.length<=0">
+                            <tr>
+                                <td [attr.colspan]="6" class="text-center">No Results Found</td>
+                            </tr>
+                        </ng-container>
+
+                    </tbody>
+                </table>
+            </div>
+
+            
+            
+
+        </div>
+    </div>
+
+</div>

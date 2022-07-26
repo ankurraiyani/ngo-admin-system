@@ -1,0 +1,144 @@
+<div class="card card-primary">
+    <form [formGroup]="servicedetailFrom" #add="ngForm" (ngSubmit)="submit()">
+        <div class="card-body">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Service Detail Name:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="name" placeholder=" Name" minlength="3"
+                            maxlength="50" formControlName="name"
+                            [ngClass]=" {'is-invalid' : servicedetailFrom.controls.name.touched && servicedetailFrom.controls.name.invalid,
+                            'is-valid' : servicedetailFrom.controls.name.touched && servicedetailFrom.controls.name.valid}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="servicedetailFrom.controls.name.touched && servicedetailFrom.controls.name.invalid">
+                        <ng-container *ngIf="servicedetailFrom.controls.name.errors?.minlength">Min
+                            length is 3</ng-container>
+                        <ng-container *ngIf="servicedetailFrom.controls.name.errors?.maxlength">Max
+                            length is 50</ng-container>
+                        <ng-container *ngIf="servicedetailFrom.controls.name.errors?.whitespace">Please
+                            enter valid name.</ng-container>
+                        <ng-container *ngIf="servicedetailFrom.controls.name.errors?.required">
+                            Name is required</ng-container>
+                    </span>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Contact Number :</label>
+                    <div class="input-group">
+                        <input type="tel" class="form-control" name="contactNumber" placeholder="Contact Number"
+                            minlength="10" maxlength="10" formControlName="contactNumber"
+                            [ngClass]=" {'is-invalid' : servicedetailFrom.controls.contactNumber.touched && servicedetailFrom.controls.contactNumber.invalid,
+                            'is-valid' : servicedetailFrom.controls.contactNumber.touched && servicedetailFrom.controls.contactNumber.valid}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-phone"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="servicedetailFrom.controls.contactNumber.touched && servicedetailFrom.controls.contactNumber.invalid || servicedetailFrom.controls.contactNumber.dirty ">
+
+                        <ng-container *ngIf="servicedetailFrom.controls.contactNumber.errors?.pattern">Please
+                            Enter valid Contact Number</ng-container>
+                        <ng-container *ngIf="servicedetailFrom.controls.contactNumber.errors?.required">
+                            Contact Number is required</ng-container>
+                    </span>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Address :</label>
+                    <div class="input-group">
+                        <textarea class="form-control" rows="3" cols="4" name="address" placeholder="Address"
+                            minlength="3" maxlength="150" formControlName="address"
+                            [ngClass]=" {'is-invalid' : servicedetailFrom.controls.address.touched && servicedetailFrom.controls.address.invalid,
+                            'is-valid' : servicedetailFrom.controls.address.touched && servicedetailFrom.controls.address.valid}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </div>
+                        </div>
+                        </textarea>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="servicedetailFrom.controls.address.touched && servicedetailFrom.controls.address.invalid || servicedetailFrom.controls.address.dirty">
+                        <ng-container *ngIf="servicedetailFrom.controls.address.errors?.minlength">Min
+                            Length is 3</ng-container>
+                        <ng-container *ngIf="servicedetailFrom.controls.address.errors?.maxlength">Max
+                            Length is 150</ng-container>
+                        <ng-container *ngIf="servicedetailFrom.controls.address.errors?.whitespace">Please
+                            Enter valid Address</ng-container>
+                        <ng-container *ngIf="servicedetailFrom.controls.address.errors?.required">
+                            Address is required</ng-container>
+                    </span>
+                </div>
+
+
+                <div class="form-group col-md-6">
+                    <label>Aadhar Card Number:</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="aadharcardNo" placeholder="Aadhar Card Number"
+                            minlength="12" maxlength="12" formControlName="aadharcardNo"
+                            [ngClass]=" {'is-invalid' : servicedetailFrom.controls.aadharcardNo.touched && servicedetailFrom.controls.aadharcardNo.invalid,
+                            'is-valid' : servicedetailFrom.controls.aadharcardNo.touched && servicedetailFrom.controls.aadharcardNo.valid}">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="servicedetailFrom.controls.aadharcardNo.touched && servicedetailFrom.controls.aadharcardNo.invalid || servicedetailFrom.controls.aadharcardNo.dirty">
+                        <ng-container *ngIf="servicedetailFrom.controls.aadharcardNo.errors?.minlength">Minimum
+                            Length is 12</ng-container>
+                        <ng-container *ngIf="servicedetailFrom.controls.aadharcardNo.errors?.maxlength">Maximum
+                            Length is 12</ng-container>
+                        <ng-container *ngIf="servicedetailFrom.controls.aadharcardNo.errors?.required">
+                            AadharCard Number is required</ng-container>
+                        <ng-container *ngIf="servicedetailFrom.controls.aadharcardNo.errors?.pattern">
+                            Enter Valid Aadhar card Number</ng-container>
+                    </span>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Service Type : </label>
+                    <div class="input-group">
+                        <select name="servicetype" class="form-control" formControlName="servicetype" [ngClass]=" {'is-invalid' : servicedetailFrom.controls.servicetype.touched && servicedetailFrom.controls.servicetype.invalid,
+                        'is-valid' : servicedetailFrom.controls.servicetype.touched && servicedetailFrom.controls.servicetype.valid}">
+                            <option value="" disabled selected>Service Type</option>
+                            <option *ngFor="let item of enumkeys" [value]="item">{{type[item]}}</option>
+                        </select>
+                    </div>
+                    <span class="help-block"
+                        *ngIf="servicedetailFrom.controls.servicetype.touched && servicedetailFrom.controls.servicetype.invalid || servicedetailFrom.controls.servicetype.dirty">
+                        <ng-container *ngIf="servicedetailFrom.controls.servicetype.errors?.required">
+                            Service Type is required</ng-container>    
+                    </span>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-dark mr-2">
+                        <span *ngIf="isAddFrom">Add Service Details</span>
+                        <span *ngIf="!isAddFrom">Edit Service Details</span>
+                    </button>
+                    <a [routerLinkActive]="['active']" routerLink="/servicedetail">
+                        <button type="submit" class="btn btn-dark mr-2">
+                            Cancel
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

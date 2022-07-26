@@ -1,0 +1,84 @@
+<!-- <p>add-role works!</p> -->
+<div class="card card-primary">
+    <form [formGroup]="roleForm" #add="ngForm" (ngSubmit)="submit()">
+
+        <div class="card-body">
+            <div class="row">
+
+                <div class="form-group col-md-6">
+                    <label>Name Of Role</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="roleName" placeholder="Role Name"
+                            formControlName="roleName">
+                    </div>
+                    <span class="help-block"
+                        *ngIf="roleForm.controls.roleName.touched && roleForm.controls.roleName.invalid ||roleForm.controls.roleName.dirty">
+                        <ng-container *ngIf="roleForm.controls.roleName.errors?.required">
+                            Role is required</ng-container>
+                        <ng-container *ngIf="roleForm.controls.roleName.errors?.pattern">Please
+                            enter valid Role</ng-container>
+                    </span>
+                </div>
+
+
+                <div class="form-group col-md-6">
+                    <label>Permission :</label>
+                    <div class="input-group">
+                        <div style="width: 100%;">
+                            <ng-select [searchable]="true" [multiple]="true" [items]="permissionList"
+                                placeholder="Select Permission" [bindValue]="'id'" [bindLabel]="'permissionType'"
+                                formControlName="permissionIds">
+                                <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+                                    <div class="ng-value" *ngFor="let item of items | slice:0:1">
+                                        <span class="ng-value-label">{{item.permissionType}}</span>
+                                        <span class="ng-value-icon right" (click)="clear(item)"
+                                            aria-hidden="true">×</span>
+                                    </div>
+                                    <div class="ng-value" *ngIf="items.length > 1">
+                                        <span class="ng-value-label">{{items.length - 1}} more..</span>
+                                    </div>
+                                </ng-template>
+
+                            </ng-select>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <!-- <a [routerLinkActive]="['active']" routerLink="/servicetype"> -->
+                    <button type="submit" class="btn btn-dark mr-2">
+                        <span *ngIf="isAddForm">Add Role</span>
+                        <span *ngIf="!isAddForm">Edit Role</span>
+                    </button>
+                    <!-- </a> -->
+                    <a [routerLinkActive]="['active']" routerLink="/role">
+                        <button type="submit" class="btn btn-dark mr-2">
+                            Cancel
+                        </button>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

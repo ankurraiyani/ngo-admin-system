@@ -28,28 +28,4 @@ export class ExpensesService {
         {
             return this.expensesRepo.getAllExpenses(fetchExpensesListParam);
         }
-
-
-    // addDoner(data:any)
-    // {
-    //     return this.donerRepo.addDoner(data);
-    // }
-    // getAllDoner(fetchDonerListParam:any)
-    // {
-    //     return this.donerRepo.getAllDoner(fetchDonerListParam);
-    // }
-    // deleteDoner(data:any)
-    // {
-    //     return this.donerRepo.deleteDoner(data);
-    // }
-    // getIdDoner(data:any)
-    // {  
-    //     return this.donerRepo.getIdDoner(data);      
-    // }
-    // getAllActiveDoner() {
-    //     return this.donerRepo.getAllActiveDoner();
-    // }
-    // isActiveDeactiveDoner(donerId: any,isPresent : any) {
-    //     return this.donerRepo.isActiveDeactiveDoner(donerId,isPresent);
-    //   }
 }

@@ -9,20 +9,12 @@ import lombok.Data;
 
 @Data
 @Entity
-public class ServiceDetail {
-
+public class Permission {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private String name;
-	
-	private String aadharcardNo;
-	
-	private String contactNumber;
-	
-	private String address;
-	
-	private String servicetype;
-	
+	private String permissionType;
+
 }

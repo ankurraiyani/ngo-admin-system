@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListPermissionComponent } from './list-permission/list-permission.component';
-import { PERMISSION_ROUTE } from './permission-routing.module';
+import { AddRoleComponent } from './add-role/add-role.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListRoleComponent } from './list-role/list-role.component';
+import { ROLE_ROUTE } from './role-routing.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
 @NgModule({
   declarations: [
-    ListPermissionComponent
+    AddRoleComponent,
+    ListRoleComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
     NgSelectModule,
-    PERMISSION_ROUTE
+    ROLE_ROUTE
   ]
 })
-export class PermissionModule { }
+export class RoleModule { }

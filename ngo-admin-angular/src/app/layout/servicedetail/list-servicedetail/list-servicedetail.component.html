@@ -4,14 +4,13 @@
             <div class="card-header">
                 <div class="row justify-content-between">
                     <div class="col-md-6 align-self-center">
-                        <a href="javascript:void(0);" [routerLink]="['../volunteer/add']"
-                            class="btn btn-dark mr-3"><b><i class="fa fa-user-plus"></i> Add Volunteer</b></a>
+                        <a href="javascript:void(0);" [routerLink]="['../servicedetail/add']"
+                            class="btn btn-dark mr-3"><b><i class="fa fa-user-plus"></i> Add Service Details</b></a>
                     </div>
-
                     <div class="col-md-3 align-self-center">
                         <div class="input-group input-group-lg">
                             <input type="text" placeholder="Search here..."
-                                [(ngModel)]="fetchVolunteerListParam.searchStr" (keyup)="getVolunteerData()"
+                                [(ngModel)]="fetchServicedetailListParam.searchStr" (keyup)="getServicedetailData()"
                                 class="form-control">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-lg btn-default">
@@ -27,9 +26,9 @@
                             <div class="dataTables_length" id="example1_length">
                                 <label>Show:</label>
                                 <select name="example1_length" aria-controls="example1"
-                                    [(ngModel)]="fetchVolunteerListParam.pageSize"
+                                    [(ngModel)]="fetchServicedetailListParam.pageSize"
                                     class="custom-select custom-select-sm form-control form-control-sm"
-                                    (change)="getVolunteerData()">
+                                    (change)="getServicedetailData()">
                                     <option *ngFor="let p of pageLimitOptions" [value]=p>{{p}}</option>
                                 </select>
 
@@ -43,61 +42,42 @@
                     <thead>
                         <tr role="row">
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Gender</th>
-                            <th>Age</th>
-                            <th>Interest</th>
-                            <th>Joining Date</th>
+                            <th>Service Type</th>
+                            <th>Aadhar Card Number</th>
                             <th>Contact Number</th>
                             <th>Address</th>
-                            <th>Available Time</th>
                             <th width="15%">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <ng-container *ngIf="volunteerList?.length>0">
-                            <tr *ngFor="let volunteer of volunteerList | paginate: { id: 'volunteer_pages',
-                                                     itemsPerPage: fetchVolunteerListParam.pageSize,
-                                                     currentPage: fetchVolunteerListParam.currentPage,
+                        <ng-container *ngIf="servicedetailList?.length>0">
+                            <tr *ngFor="let servicedetail of servicedetailList | paginate: { id: 'servicedetail_pages',
+                                                     itemsPerPage: fetchServicedetailListParam.pageSize,
+                                                     currentPage: fetchServicedetailListParam.currentPage,
                                                      totalItems: totalCount }">
-                                <td>{{volunteer.name}}</td>
-                                <td>{{volunteer.email}}</td>
-                                <td>{{volunteer.gender}}</td>
-                                <td>{{volunteer.age}}</td>
-                                <td>{{volunteer.areaOfInterest}}</td>
-                                <td>{{volunteer.dateOfJoining}}</td>
-                                <td>{{volunteer.contactNumber}}</td>
-                                <td>{{volunteer.address}}</td>
-                                <td>{{volunteer.availableTime}}</td>
+                                <td>{{servicedetail.name}}</td>
+                                <td>{{servicedetail.servicetype}}</td>
+                                <td>{{servicedetail.aadharcardNo}}</td>
+                                <td>{{servicedetail.contactNumber}}</td>
+                                <td>{{servicedetail.address}}</td>
                                 <td>
                                     <span class="mr-2">
-                                        <a (click)="editVolunteer(volunteer.id)">
+                                        <a (click)="editServicedetail(servicedetail.id)">
                                             <i class="fas fa-edit action-icon"></i>
                                         </a>
                                     </span>
                                     <span class="mr-2">
-                                        <a (click)="deleteIdVolunteer(volunteer.id)">
+                                        <a (click)="deleteIdServicedetail(servicedetail.id)">
                                             <i class="fa fa-trash action-icon"></i>
                                         </a>
                                     </span>
 
-                                    <span class="mr-2">
-
-                                        <div class="custom-control 
-											custom-switch custom-switch-off-danger custom-switch-on-success">
-                                            <input type="checkbox" class="custom-control-input"
-                                                [checked]="volunteer.isActive"
-                                                (change)="toggleClick(volunteer.id,volunteer.isActive)"
-                                                id="cb_{{volunteer.id}}">
-                                            <label class="custom-control-label"
-                                                [attr.for]="'cb_' + volunteer.id"></label>
-                                        </div>
-                                    </span>
+                                  
 
                                 </td>
                             </tr>
                         </ng-container>
-                        <ng-container *ngIf="volunteerList?.length<=0">
+                        <ng-container *ngIf="servicedetailList?.length<=0">
                             <tr>
                                 <td [attr.colspan]="6" class="text-center">No Results Found</td>
                             </tr>
@@ -106,10 +86,10 @@
                     </tbody>
                 </table>
             </div>
-            <div class="row" *ngIf="volunteerList?.length>0">
+            <div class="row" *ngIf="servicedetailList?.length>0">
                 <div class="col-sm-12 col-md-5"></div>
                 <div class="col-sm-12 col-md-7">
-                    <pagination-controls id="volunteer_pages" (pageChange)="pageChanged($event)"
+                    <pagination-controls id="servicedetail_pages" (pageChange)="pageChanged($event)"
                         (pageBoundsCorrection)="pageChanged($event)" maxSize="9" directionLinks="true" autoHide="true"
                         responsive="true" previousLabel="Previous" nextLabel="Next"></pagination-controls>
                 </div>

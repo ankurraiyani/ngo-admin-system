@@ -14,5 +14,7 @@ public class ServiceDetailDto {
 	private String contactNumber;
 	
 	private String address;
+	
+	private String servicetype;
 
 }

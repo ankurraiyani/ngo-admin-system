@@ -53,12 +53,12 @@ public class ServiceDetailController {
 		serviceDetailService.deleteId(serviceDetailId);
 	}
 	
-//	@PostMapping("/get")
-//	public Page<ServiceDetailPageableResponse> getWithParams(@RequestBody ServiceDetailListDTO serviceDetailListDTO)
-//	{
-//		return serviceDetailService.getWithParams(serviceDetailListDTO);	
-//	}
-//	
+	@PostMapping("/get")
+	public Page<ServiceDetailPageableResponse> getWithParams(@RequestBody ServiceDetailListDTO serviceDetailListDTO)
+	{
+		return serviceDetailService.getWithParams(serviceDetailListDTO);	
+	}
+	
 	
 	
 	

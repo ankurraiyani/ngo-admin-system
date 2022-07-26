@@ -1,10 +1,8 @@
 import { Injectable } from "@angular/core";
-import { EVENT_DELETE } from "../common/url";
 import { EvnetRepository } from "../repository/event.repository";
 
 @Injectable()
 export class EvnetService {
-
 
     constructor(
         private eventRepo: EvnetRepository) { }

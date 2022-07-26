@@ -154,13 +154,17 @@
                 <div class="form-group col-md-6" *ngIf="isCheckNumber">
                     <label>Check Number:</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="checkNumber" formControlName="checkNumber"
+                        <input type="text" class="form-control" name="checkNumber" formControlName="checkNumber" minlength="6" maxlength="6"
                             placeholder="Check Number" class="form-control" [ngClass]=" {'is-invalid' : expensesForm.controls.checkNumber.touched && expensesForm.controls.checkNumber.invalid,
                 'is-valid' : expensesForm.controls.checkNumber.touched && expensesForm.controls.checkNumber.valid}">
                     </div>
                     <span class="help-block"
                         *ngIf="expensesForm.controls.checkNumber.touched && expensesForm.controls.checkNumber.invalid  || expensesForm.controls.checkNumber.dirty">
 
+                        <ng-container *ngIf="expensesForm.controls.checkNumber.errors?.minlength">Min
+                            length is 6</ng-container>
+                        <ng-container *ngIf="expensesForm.controls.checkNumber.errors?.maxlength">Max
+                            length is 6</ng-container>
 
                         <ng-container *ngIf="expensesForm.controls.checkNumber.errors?.pattern">Please
                             Enter valid Check Number.</ng-container>
